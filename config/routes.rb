@@ -1,4 +1,6 @@
 HalolaneApp::Application.routes.draw do
+  get "static_pages/home"
+
   resources :memories
 
 
