@@ -10,9 +10,13 @@
 #
 
 class Memory < ActiveRecord::Base
-  attr_accessible :content, :user_id
+  attr_accessible :content
   
   belongs_to :user
 
-  validates :content, :length => { :maximum => 255 }
+  validates :user_id, presence: true  
+  validates :content, presence: true, :length => { :maximum => 255 }
+
+  # Sorts it by created_at descending
+  default_scope order: 'memories.created_at DESC'
 end

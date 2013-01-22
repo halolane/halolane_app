@@ -8,6 +8,15 @@
       </h1>
     </section>
   </aside>
+  <div class="span8">
+    <% if @user.memories.any? %>
+      <h3>Memories (<%= @user.memories.count %>)</h3>
+      <ol class="memories">
+        <%= render @memories %>
+      </ol>
+      <%= will_paginate @memories %>
+    <% end %>
+  </div>
 </div>
 
 

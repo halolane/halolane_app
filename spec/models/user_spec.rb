@@ -16,6 +16,7 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }  
+  it { should respond_to(:memories) }
 
   it { should be_valid }
 
@@ -104,5 +105,29 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "memory associations" do
+
+    before { @user.save }
+    let!(:older_memory) do 
+      FactoryGirl.create(:memory, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_memory) do
+      FactoryGirl.create(:memory, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right memories in the right order" do
+      @user.memories.should == [newer_memory, older_memory]
+    end
+
+    it "should destroy associated memories" do
+      memories = @user.memories.dup
+      @user.destroy
+      memories.should_not be_empty
+      memories.each do |memory|
+        Memory.find_by_id(memory.id).should be_nil
+      end
+    end
   end
 end
