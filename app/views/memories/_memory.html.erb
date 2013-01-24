@@ -1,0 +1,11 @@
+<li>
+  <span class="content"><%= memory.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(memory.created_at) %> ago.
+  </span>
+  <% if current_user?(memory.user) %>
+    <%= link_to "delete", memory, method: :delete,
+                                     data: { confirm: "You sure?" },
+                                     title: memory.content %>
+  <% end %>
+</li>

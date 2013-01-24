@@ -71,6 +71,19 @@ describe "Authentication" do
           specify { response.should redirect_to(signin_path) }
         end
       end
+
+      describe "in the Memories controller" do
+
+        describe "submitting to the create action" do
+          before { post memories_path }
+          specify { response.should redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete memory_path(FactoryGirl.create(:memory)) }
+          specify { response.should redirect_to(signin_path) }
+        end
+      end
     end
 
     describe "as wrong user" do
