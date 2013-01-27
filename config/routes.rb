@@ -1,4 +1,6 @@
 HalolaneApp::Application.routes.draw do
+  get "profiles/new"
+
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   resources :memories, only: [:create, :destroy]
