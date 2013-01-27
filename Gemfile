@@ -17,6 +17,7 @@ group :development, :test do
   gem 'factory_girl_rails', '4.1.0'
   gem 'guard-spork', '1.2.0'
   gem 'spork', '0.9.2'
+  gem 'validates_timeliness', '~> 3.0'
 end
 
 group :test do
@@ -24,7 +25,6 @@ group :test do
   gem 'factory_girl_rails', '4.1.0'
   gem 'cucumber-rails', '1.2.1', :require => false
   gem 'database_cleaner', '0.7.0'
-  gem 'validates_timeliness', '~> 3.0'
   # gem 'launchy', '2.1.0'
   # gem 'rb-fsevent', '0.9.1', :require => false
   # gem 'growl', '1.0.3'

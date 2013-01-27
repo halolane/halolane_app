@@ -1,14 +1,16 @@
 HalolaneApp::Application.routes.draw do
   get "profiles/new"
 
-  resources :users
+  resources :users, :profiles
   resources :sessions, only: [:new, :create, :destroy]
   resources :memories, only: [:create, :destroy]
 
   get "users/new"
+  get "profiles/new"
 
   root to: 'static_pages#home'
   match '/about', to: 'static_pages#about'
+  match '/createstorybook', to: 'profiles#new'
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

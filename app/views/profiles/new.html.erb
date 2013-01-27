@@ -1,2 +1,42 @@
-<h1>Profiles#new</h1>
-<p>Find me in app/views/profiles/new.html.erb</p>
+<% provide(:title, 'Create a new life storybook') %>
+<h1>Create a new life storybook</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@profile) do |f| %>
+
+		  <%= render 'shared/error_messages', object: f.object %>
+
+		  <%= f.label :first_name %>
+		  <%= f.text_field :first_name %>
+
+		  <%= f.label :last_name %>
+		  <%= f.text_field :last_name %>
+
+		  <%= f.label :birthday %>
+		  <%= f.date_select :birthday,
+		                    :order => [:day, :month, :year], 
+		                    :start_year => 1900, 
+                    	    :end_year => Date.today.year %>
+
+		  <%= f.label :deathday %>
+		  <%= f.date_select :deathday, 
+		                    :order => [:day, :month, :year], 
+		                    :start_year => 1900, 
+                    	    :end_year => Date.today.year %>
+
+		  <%= f.label :privacy, "Privacy setting" %>
+		  <%= f.radio_button :privacy, '2', :checked => true %>
+		  <%= f.label :privacy, "Only selected friends and family can post memories and view the life storybook" %> 
+		  <%= f.radio_button :privacy, '1' %>
+		  <%= f.label :privacy, "Only selected friends and family can post memories" %> 
+		  <%= f.radio_button :privacy, '0' %> 
+		  <%= f.label :privacy, "Public" %> 
+		 
+		  
+
+
+		  <%= f.submit "Create the life storybook", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
