@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation
   has_secure_password
   has_many :memories, dependent: :destroy
+  has_many :relationships, dependent: :destroy
+  has_many :profiles, through: :relationships
   
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
@@ -26,6 +28,18 @@ class User < ActiveRecord::Base
                     uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+
+  def contribute!(profile)
+    relationships.create!(profile_id: profile.id)
+  end
+
+  def contributing?(profile)
+    relationships.find_by_profile_id(profile.id)
+  end
+
+  def uncontribute!(profile)
+    relationships.find_by_profile_id(profile.id).destroy
+  end
 
   private
 

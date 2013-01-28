@@ -14,4 +14,13 @@ FactoryGirl.define do
     content "Hi there"
     user
   end
+
+  factory :profile do
+    first_name  "test"
+    last_name   "user"
+    birthday    70.years.ago
+    deathday    Date.today
+    privacy 0
+    
+  end
 end

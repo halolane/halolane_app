@@ -18,6 +18,8 @@ describe User do
   it { should respond_to(:admin) }
   it { should respond_to(:authenticate) }  
   it { should respond_to(:memories) }
+  it { should respond_to(:relationships) }
+  it { should respond_to(:profiles) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -139,6 +141,30 @@ describe User do
       memories.each do |memory|
         Memory.find_by_id(memory.id).should be_nil
       end
+    end
+  end
+
+  describe "contributing" do
+    let(:profile) { FactoryGirl.create(:profile) }
+    before do
+      @user.save
+      @user.contribute!(profile)
+    end
+
+    it { should be_contributing(profile) }
+    its(:profiles) { should include(profile) }
+
+    describe "to profiles" do
+      subject { profile } 
+      its(:users) { should include(@user) }
+    end
+
+    describe "and uncontribute" do
+      before { @user.uncontribute!(profile) }
+
+      it { should_not be_contributing(profile) }
+
+      its(:profiles) { should_not include(profile) }
     end
   end
 end

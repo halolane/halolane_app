@@ -2,13 +2,14 @@ require 'spec_helper'
 
 describe Profile do
 
-	let(:user) { FactoryGirl.create(:user) }
+	
   before do
-    @profile = Profile.new(first_name: "Ramli", last_name: "Solidum", 
+    @profile = Profile.new(first_name: "Test", last_name: "User", 
                      birthday: 70.years.ago , 
-                     deathday: Date.today,
-                     privacy: 0)
+                     deathday: Date.today )
+    @profile.privacy = 0
   end
+  
 
   subject { @profile }
 
@@ -17,6 +18,8 @@ describe Profile do
   it { should respond_to(:birthday) }
   it { should respond_to(:deathday) }
   it { should respond_to(:privacy) }
+  it { should respond_to(:relationships) }
+  it { should respond_to(:users) }
   
 
   it { should be_valid }
@@ -89,5 +92,27 @@ describe Profile do
   	it { should_not be_valid }
   end
 
+  describe "contributors" do
+    let(:user) { FactoryGirl.create(:user) }
+    before do
+      @profile.save
+      user.contribute!(@profile)
+    end
 
+    it { should be_contributor(user) }
+    its(:users) { should include(user) }
+
+    describe "by users" do
+      subject { user } 
+      its(:profiles) { should include(@profile) }
+    end
+
+    describe "and noncontributors" do
+      before { user.uncontribute!(@profile) }
+
+      it { should_not be_contributor(user) }
+
+      its(:users) { should_not include(@user) }
+    end
+  end
 end
