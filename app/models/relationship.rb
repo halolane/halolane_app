@@ -1,5 +1,5 @@
 class Relationship < ActiveRecord::Base
-  attr_accessible :profile_id, :user_id, :description
+  attr_accessible :profile_id, :description
 
   belongs_to :user
   belongs_to :profile
