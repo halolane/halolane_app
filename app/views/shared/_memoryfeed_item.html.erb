@@ -1,0 +1,10 @@
+<li id="<%= memoryfeed_item.id %>">
+  <%= link_to gravatar_for(memoryfeed_item.user), memoryfeed_item.user %>
+  <span class="user">
+    <%= link_to memoryfeed_item.user.name, memoryfeed_item.user %>
+  </span>
+  <span class="content"><%= memoryfeed_item.content %></span>
+  <span class="timestamp">
+    Posted <%= time_ago_in_words(memoryfeed_item.created_at) %> ago.
+  </span>
+</li>

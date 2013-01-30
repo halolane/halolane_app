@@ -1,6 +1,7 @@
 class Profile < ActiveRecord::Base
   attr_accessible :birthday, :deathday, :first_name, :last_name, :privacy
   has_many :relationships, dependent: :destroy
+  has_many :memories, dependent: :destroy
   has_many :users, through: :relationships
 
   validates :first_name, presence: true, length: { maximum: 50 }
@@ -21,7 +22,12 @@ class Profile < ActiveRecord::Base
 
   validates_numericality_of :privacy, :greater_than_or_equal_to => 0,
                             :only_integer => true, :allows_nil => false
-
+  
+  def memoryfeed
+    # This is preliminary
+    Memory.where("profile_id = ?", id)
+  end
+  
   def contributor?(user)
     relationships.find_by_user_id(user.id)
   end

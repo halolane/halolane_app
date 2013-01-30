@@ -10,11 +10,13 @@
 #
 
 class Memory < ActiveRecord::Base
-  attr_accessible :content
+  attr_accessible :content, :profile_id
   
   belongs_to :user
+  belongs_to :profile
 
   validates :user_id, presence: true  
+  validates :profile_id, presence: true
   validates :content, presence: true, :length => { :maximum => 255 }
 
   # Sorts it by created_at descending

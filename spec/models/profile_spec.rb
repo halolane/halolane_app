@@ -2,15 +2,13 @@ require 'spec_helper'
 
 describe Profile do
 
-	
   before do
     @profile = Profile.new(first_name: "Test", last_name: "User", 
                      birthday: 70.years.ago , 
-                     deathday: Date.today )
-    @profile.privacy = 0
+                     deathday: Date.today ,
+                     privacy: 0 )
   end
   
-
   subject { @profile }
 
   it { should respond_to(:first_name) }
@@ -20,6 +18,7 @@ describe Profile do
   it { should respond_to(:privacy) }
   it { should respond_to(:relationships) }
   it { should respond_to(:users) }
+  it { should respond_to(:memories) }
   
 
   it { should be_valid }
@@ -90,6 +89,40 @@ describe Profile do
   describe "when privacy setting is a decimal number" do
   	before { @profile.privacy = 1.1 }
   	it { should_not be_valid }
+  end
+
+  describe "memory associations" do
+
+    before do 
+      @profile.save
+      FactoryGirl.create(:memory, profile: @profile)
+    end
+
+    it "should destroy associated memories" do
+      memories = @profile.memories.dup
+      @profile.destroy
+      memories.should_not be_empty
+      memories.each do |memory|
+        Memory.find_by_id(@profile.id).should be_nil
+      end
+    end
+  end
+
+  describe "relationship associations" do
+
+    before do 
+      @profile.save
+      FactoryGirl.create(:memory, profile: @profile)
+    end
+
+    it "should destroy associated memories" do
+      memories = @profile.memories.dup
+      @profile.destroy
+      memories.should_not be_empty
+      memories.each do |memory|
+        Memory.find_by_id(@profile.id).should be_nil
+      end
+    end
   end
 
   describe "contributors" do

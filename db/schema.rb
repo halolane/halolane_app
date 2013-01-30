@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127222147) do
+ActiveRecord::Schema.define(:version => 20130129041424) do
 
   create_table "memories", :force => true do |t|
     t.string   "content"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20130127222147) do
     t.integer  "profile_id"
   end
 
+  add_index "memories", ["profile_id", "created_at"], :name => "index_memories_on_profile_id_and_created_at"
   add_index "memories", ["user_id", "created_at"], :name => "index_memories_on_user_id_and_created_at"
   add_index "memories", ["user_id", "profile_id", "created_at"], :name => "index_memories_on_user_id_and_profile_id_and_created_at"
 

@@ -13,6 +13,7 @@ FactoryGirl.define do
   factory :memory do
     content "Hi there"
     user
+    profile
   end
 
   factory :profile do

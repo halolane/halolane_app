@@ -3,7 +3,18 @@ require 'spec_helper'
 describe "Profile pages" do
 
   describe "createstorybook" do
-    before { visit createstorybook_path }
+
+  let (:user) { FactoryGirl.create(:user) }
+  let (:profile) { FactoryGirl.create(:profile) }
+  let (:relationship) { user.profiles.build(profile_id: profile.id)}
+
+  before do  
+    user.save
+    profile.save
+    sign_in user
+    visit createstorybook_path
+  end
+
 
     let(:submit) { "Create the life storybook" }
 

@@ -2,12 +2,14 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>
-        <%= @profile.first_name + " " + @profile.last_name %></br>
-        Born: <%= @profile.birthday %></br>
-        Passed Away: <%= @profile.deathday %></br>
-        Privacy: <%= @profile.privacy %></br>
-      </h1>
+      <%= render 'shared/profile_info' %>
+    </section>
+    <section>
+      <%= render 'shared/memory_form' %>
     </section>
   </aside>
+  <div class="span8">
+    <h3>Memory Lane</h3>
+    <%= render 'shared/memoryfeed' %>
+  </div>
 </div>
