@@ -16,8 +16,9 @@ class UsersController < ApplicationController
   	@user = User.new(params[:user])
   	if @user.save
       sign_in @user
-  		flash[:success] = "Welcome to the HaloLane App!"
-  		redirect_to @user
+  		flash[:success] = "Welcome " + @user.name + "!  
+      Just one more step to create your life storybook"
+  		redirect_to createstorybook_url
   	else
   		render 'new'
   	end

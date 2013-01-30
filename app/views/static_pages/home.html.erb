@@ -9,12 +9,13 @@
   </div>  
 <% else %>
 	<div class="center hero-unit">
-	  <h1>Welcome to the HaloLane App</h1>
+	  <h1>HaloLane</h1></br>
 
 	  <h2>
-	    This is the home page for the HaloLane application
+	    I want to capture, celebrate and share the life of
+	     <input type="text" id="name" name="name" placeholder="Name" size="1" />
 	  </h2>
-
-	  <%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+	 
+	  <%= link_to "Create Your Life Storybook", signup_path, class: "btn btn-large btn-primary"%>
 	</div>
 <% end %>

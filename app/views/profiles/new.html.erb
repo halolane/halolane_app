@@ -1,6 +1,8 @@
 <% provide(:title, 'Create a new life storybook') %>
 <h1>Create a new life storybook</h1>
 
+<h2>Please fill in who this life storybook is dedicated to.</h2>
+
 <div class="row">
 	<div class="span6 offset3">
 		<%= form_for(@profile) do |f| %>
@@ -15,15 +17,15 @@
 
 		  <%= f.label :birthday %>
 		  <%= f.date_select :birthday,
-		                    :order => [:day, :month, :year], 
-		                    :start_year => 1900, 
-                    	    :end_year => Date.today.year %>
+		                    { :order => [:month, :day, :year], 
+		                      :start_year => 1900,
+                    	      :end_year => Date.today.year,
+                    	      :default => Date.new(1950, 01, 01) } %>
 
-		  <%= f.label :deathday %>
+		  <%= f.label :deathday, "Date of passing: "%>
 		  <%= f.date_select :deathday, 
-		                    :order => [:day, :month, :year], 
-		                    :start_year => 1900, 
-                    	    :end_year => Date.today.year %>
+		                    { :order => [:month, :day, :year], 
+		                      :start_year => 1900 } %>
 
 		  <%= f.label :privacy, "Privacy setting" %>
 		  <%= f.radio_button :privacy, '2', :checked => true %>
