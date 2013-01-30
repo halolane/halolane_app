@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   	@user = User.new(params[:user])
   	if @user.save
       sign_in @user
-  		flash[:success] = "Welcome " + @user.name + "!  
+  		flash[:success] = "Welcome " + @user.first_name + "!  
       Just one more step to create your life storybook"
   		redirect_to createstorybook_url
   	else
