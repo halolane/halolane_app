@@ -30,8 +30,9 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
-  def contribute!(profile)
-    relationships.create!(profile_id: profile.id)
+  def contribute!(profile, description = "", admin = false)
+    @relationship = relationships.create!(profile_id: profile.id, description: description)
+    @relationship.toggle!(:profile_admin) if admin 
   end
 
   def contributing?(profile)

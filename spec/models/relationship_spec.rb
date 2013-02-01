@@ -7,6 +7,11 @@ describe Relationship do
 
   subject { relationship }
 
+  it { should respond_to(:user_id) }
+  it { should respond_to(:profile_id) }
+  it { should respond_to(:description) }
+  it { should respond_to(:profile_admin) }
+
   it { should be_valid }
 
   describe "accessible attributes" do

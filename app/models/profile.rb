@@ -31,5 +31,9 @@ class Profile < ActiveRecord::Base
   def contributor?(user)
     relationships.find_by_user_id(user.id)
   end
+
+  def changeprivacy(p)
+    privacy = p
+  end
 end
 

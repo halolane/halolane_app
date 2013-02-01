@@ -5,3 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+[	"Friend", 
+	"Father", 
+	"Mother", 
+	"Husband", 
+	"Wife", 
+	"Son", 
+	"Daughter", 
+	"Uncle", 
+	"Aunt", 
+	"Grandfather",
+	"Grandmother", 
+	"Niece", 
+	"Nephew", 
+	"Girlfriend", 
+	"Boyfriend", 
+	"Spouse", 
+	"Partner"]. each do |r|
+ 	Relationshipdesc.find_or_create_by_description(r)
+ end
+
+

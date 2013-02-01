@@ -9,32 +9,48 @@
 
 		  <%= render 'shared/error_messages', object: f.object %>
 
-		  <%= f.label :first_name %>
-		  <%= f.text_field :first_name %>
+      <p>
+		  	<%= f.label :first_name %>
+		  	<%= f.text_field :first_name %>
+  		</p>
 
-		  <%= f.label :last_name %>
-		  <%= f.text_field :last_name %>
+		  <p>
+		  	<%= f.label :last_name %>
+		  	<%= f.text_field :last_name %>
+		  </p>
 
-		  <%= f.label :birthday %>
-		  <%= f.date_select :birthday,
+		  <p>
+		  	<%= f.label :birthday %>
+		  	<%= f.date_select :birthday,
 		                    { :order => [:month, :day, :year], 
 		                      :start_year => 1900,
                     	      :end_year => Date.today.year,
                     	      :default => Date.new(1950, 01, 01) } %>
+      </p>
 
-		  <%= f.label :deathday, "Date of passing: "%>
-		  <%= f.date_select :deathday, 
+      <p>
+		  	<%= f.label :deathday, "Date of passing: "%>
+		  	<%= f.date_select :deathday, 
 		                    { :order => [:month, :day, :year], 
 		                      :start_year => 1900 } %>
+    	</p>
 
-		  <%= f.label :privacy, "Privacy setting" %>
-		  <%= f.radio_button :privacy, '2', :checked => true %>
-		  <%= f.label :privacy, "Only selected friends and family can post memories and view the life storybook" %> 
-		  <%= f.radio_button :privacy, '1' %>
-		  <%= f.label :privacy, "Only selected friends and family can post memories" %> 
-		  <%= f.radio_button :privacy, '0' %> 
-		  <%= f.label :privacy, "Public" %> 
-		 
+    	
+  		<p>
+  			<label for="relationship_description">This person is my</label>
+  			<%= select "relationship","description", 
+  									Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
+  		</p>
+
+    	<p>
+			  <%= f.label :privacy, "Privacy setting" %>
+			  <%= f.radio_button :privacy, '2', :checked => true %>
+			  <%= f.label :privacy, "Only selected friends and family can post memories and view the life storybook" %> 
+			  <%= f.radio_button :privacy, '1' %>
+			  <%= f.label :privacy, "Only selected friends and family can post memories" %> 
+			  <%= f.radio_button :privacy, '0' %> 
+			  <%= f.label :privacy, "Public" %> 
+		 	</p>
 		  
 
 

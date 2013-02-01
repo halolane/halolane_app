@@ -3,17 +3,24 @@ class MemoriesController < ApplicationController
   before_filter :correct_user,   only: :destroy
 
   def create
+    
     @profile = Profile.find(params[:memory][:profile_id])
-    @memory = current_user.memories.build(:content => params[:memory][:content], :profile_id => @profile.id ) 
-
-    if @memory.save
-      flash[:success] = "Memory created"
-      redirect_back_or root_url
+    authorized = Relationship.exists?(:profile_id => @profile.id , :user_id => current_user.id)
+    
+    if (@profile.privacy > 0 ) and not authorized
+      flash[:error] = "You are not authorized to contribute to this profile"
     else
-      flash[:error] = "Content can't be blank"
-      @memoryfeed_items = []
-      redirect_back_or root_url
+      @memory = current_user.memories.build(:content => params[:memory][:content], :profile_id => @profile.id ) 
+
+      if @memory.save
+        flash[:success] = "Memory created"
+      else
+        flash[:error] = "Content can't be blank"
+        @memoryfeed_items = []
+      end
     end
+
+    redirect_back_or root_url
   end
   
   def destroy

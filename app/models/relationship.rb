@@ -1,11 +1,13 @@
 class Relationship < ActiveRecord::Base
-  attr_accessible :profile_id
+  attr_accessible :profile_id, :description
 
   belongs_to :user
   belongs_to :profile
 
   validates :profile_id, presence: true
   validates :user_id, presence: true
+
+  
 
   validates_uniqueness_of :profile_id, :scope => :user_id
 end
