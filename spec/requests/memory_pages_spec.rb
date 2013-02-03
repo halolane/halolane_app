@@ -13,6 +13,7 @@ describe "Memory pages" do
     @profile = Profile.new(first_name: "Test", last_name: "User", 
                      birthday: 70.years.ago , 
                      deathday: Date.today ,
+                     url: "testuser",
                      privacy: 0 )
     sign_in user
   end
@@ -21,7 +22,7 @@ describe "Memory pages" do
     before do
       @profile.save
       user.contribute!(@profile)
-      visit '/profiles/1' 
+      visit '/profiles/testuser' 
     end
 
     describe "with invalid information" do
@@ -109,10 +110,8 @@ describe "Memory pages" do
       before do 
         @profile.privacy = 1
         @profile.save
-        visit '/profiles/1' 
-        fill_in 'memory_content', with: "Lorem ipsum"
       end
-      it { expect { click_button "Post" }.not_to change(Memory, :count) }
+      it { page.should_not have_content ("memories") }
     end
 
     describe "set to privacy setting level 2 should not create memory" do

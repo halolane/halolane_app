@@ -1,23 +1,26 @@
-HalolaneApp::Application.routes.draw do
-  get "profiles/new"
+HalolaneApp::Application.routes.draw do 
 
   resources :users
   resources :profiles
+  resources :memories
   resources :sessions, only: [:new, :create, :destroy]
   resources :memories, only: [:create, :destroy]
+  resources :invitations
 
   get "users/new"
   get "profiles/new"
 
   root to: 'static_pages#home'
+  
   match '/about', to: 'static_pages#about'
   match '/createstorybook', to: 'profiles#new'
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  match '/:url', to: 'profiles#show'
+  match '/:url/:invitation_token', to: 'profiles#show'
 
-  resources :memories
-  resources :users
+  
 
 
   # The priority is based upon order of creation:

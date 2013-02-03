@@ -4,9 +4,17 @@
     <section>
       <%= render 'shared/profile_info' %>
     </section>
-    <section>
-      <%= render 'shared/memory_form' %>
-    </section>
+    <% if 
+          ( signed_in? and @profile.privacy == 0 ) or
+          ( signed_in? and @profile.privacy > 0 and has_relationship?(@profile.id, current_user.id)) or
+          ( is_invited?(params[:invitation_token])) %>
+      <section>
+        <%= render 'shared/memory_form' %>
+      </section>
+      <section>
+        <%= render 'shared/invitation_form' %>
+      </section>
+    <% end %>
   </aside>
   <div class="span8">
     <h3>Memory Lane</h3>

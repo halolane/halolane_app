@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :relationships, dependent: :destroy
   has_many :profiles, through: :relationships
   
+  has_many :invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
+
   before_save { |user| user.email = email.downcase }
   before_save :create_remember_token
 

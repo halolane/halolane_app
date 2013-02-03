@@ -13,6 +13,7 @@ describe "Profile pages" do
     @profile = Profile.new(first_name: "Test", last_name: "User", 
                      birthday: 70.years.ago , 
                      deathday: Date.today ,
+                     url: "testuser",
                      privacy: 0 )
     visit createstorybook_path
   end
@@ -78,7 +79,7 @@ describe "Profile pages" do
       before do 
         @profile.save
         user.contribute!(@profile)
-        visit '/profiles/1' 
+        visit '/profiles/testuser' 
       end
       it { should_not have_content('not authorized') }
     end
@@ -88,7 +89,7 @@ describe "Profile pages" do
         @profile.privacy = 1
         @profile.save
         user.contribute!(@profile)
-        visit '/profiles/1'
+        visit '/profiles/testuser'
       end
       it { should_not have_content('not authorized') }
     end
@@ -98,7 +99,7 @@ describe "Profile pages" do
         @profile.privacy = 2
         @profile.save
         user.contribute!(@profile)
-        visit '/profiles/1'
+        visit '/profiles/testuser'
       end
       it { page.should_not have_content('not authorized') }
     end
@@ -120,7 +121,7 @@ describe "Profile pages" do
       before do 
         @profile.privacy = 1
         @profile.save
-        visit '/profiles/1'
+        visit '/profiles/testuser'
       end
       it { page.should_not have_content('not authorized') }
     end

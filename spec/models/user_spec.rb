@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe User do
 
+  let(:profile) { FactoryGirl.create(:profile) }
+
   before do
     @user = User.new(first_name: "New", last_name: "User", email: "user@example.com", 
                      password: "foobar", password_confirmation: "foobar")
@@ -125,10 +127,10 @@ describe User do
 
     before { @user.save }
     let!(:older_memory) do 
-      FactoryGirl.create(:memory, user: @user, created_at: 1.day.ago)
+      FactoryGirl.create(:memory, user: @user, profile: profile, created_at: 1.day.ago)
     end
     let!(:newer_memory) do
-      FactoryGirl.create(:memory, user: @user, created_at: 1.hour.ago)
+      FactoryGirl.create(:memory, user: @user, profile: profile, created_at: 1.hour.ago)
     end
 
     it "should have the right memories in the right order" do
@@ -146,7 +148,7 @@ describe User do
   end
 
   describe "contributing" do
-    let(:profile) { FactoryGirl.create(:profile) }
+    
     before do
       @user.save
       @user.contribute!(profile)

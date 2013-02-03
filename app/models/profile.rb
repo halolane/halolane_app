@@ -1,11 +1,17 @@
 class Profile < ActiveRecord::Base
-  attr_accessible :birthday, :deathday, :first_name, :last_name, :privacy
+  extend FriendlyId
+  friendly_id :url, use: :slugged
+
+
+  attr_accessible :url, :birthday, :deathday, :first_name, :last_name, :privacy
   has_many :relationships, dependent: :destroy
   has_many :memories, dependent: :destroy
   has_many :users, through: :relationships
+  has_many :invitations, dependent: :destroy
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
+  validates :url, presence: true, length: { maximum: 50 }
 
   validates_date :birthday, :before => :deathday,
                             :before_message => 'must be before date of passing'
@@ -22,7 +28,8 @@ class Profile < ActiveRecord::Base
 
   validates_numericality_of :privacy, :greater_than_or_equal_to => 0,
                             :only_integer => true, :allows_nil => false
-  
+ 
+
   def memoryfeed
     # This is preliminary
     Memory.where("profile_id = ?", id)

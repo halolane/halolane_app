@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130201002624) do
+ActiveRecord::Schema.define(:version => 20130203192202) do
+
+  create_table "invitations", :force => true do |t|
+    t.integer  "sender_id"
+    t.integer  "profile_id"
+    t.string   "recipient_email"
+    t.string   "token"
+    t.datetime "sent_at"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.boolean  "active"
+  end
 
   create_table "memories", :force => true do |t|
     t.string   "content"
@@ -33,7 +44,12 @@ ActiveRecord::Schema.define(:version => 20130201002624) do
     t.integer  "privacy"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "slug"
+    t.string   "url"
   end
+
+  add_index "profiles", ["slug"], :name => "index_profiles_on_slug", :unique => true
+  add_index "profiles", ["url"], :name => "index_profiles_on_url", :unique => true
 
   create_table "relationshipdescs", :force => true do |t|
     t.string   "description"

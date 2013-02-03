@@ -1,0 +1,13 @@
+one:
+  sender_id: 1
+  profile_id: 1
+  recipient_email: MyString
+  token: MyString
+  sent_at: 2013-02-02 18:39:11
+
+two:
+  sender_id: 1
+  profile_id: 1
+  recipient_email: MyString
+  token: MyString
+  sent_at: 2013-02-02 18:39:11

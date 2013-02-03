@@ -17,6 +17,18 @@ module SessionsHelper
     @current_user ||= User.find_by_remember_token(cookies[:remember_token])
   end
 
+  def has_relationship?(profile_id, user_id)
+    Relationship.exists?(:profile_id => profile_id, :user_id => user_id)
+  end
+
+  def is_invited?(token)
+    Invitation.exists?(:token => token)
+  end
+
+  def is_a_user_already?(email)
+    User.find_by_email(email)
+  end
+
   def current_user?(user)
     user == current_user
   end
