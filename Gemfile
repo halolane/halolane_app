@@ -8,6 +8,7 @@ gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
 gem "friendly_id", "~> 4.0.9"
+gem 'validates_timeliness', '~> 3.0'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -17,7 +18,6 @@ group :development, :test do
   gem 'factory_girl_rails', '4.1.0'
   gem 'guard-spork', '1.2.0'
   gem 'spork', '0.9.2'
-  gem 'validates_timeliness', '~> 3.0'
   gem 'nifty-generators'
 end
 
