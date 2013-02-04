@@ -36,44 +36,44 @@ describe "User pages" do
     end
   end
 
-  describe "signup" do
+  # describe "signup" do
 
-    before { visit signup_path }
+  #   before { visit signup_path }
 
-    let(:submit) { "Create my account" }
+  #   let(:submit) { "Create my account" }
     
-    # Making sure that invalid data doesn't put into database
-    # test by making sure User count doesn't incremement
-    describe "with invalid information" do
-      it "should not create a user" do
-        expect { click_button submit }.not_to change(User, :count)
-      end
-    end
+  #   # Making sure that invalid data doesn't put into database
+  #   # test by making sure User count doesn't incremement
+  #   describe "with invalid information" do
+  #     it "should not create a user" do
+  #       expect { click_button submit }.not_to change(User, :count)
+  #     end
+  #   end
 
-    # Valid information - It should go increment User count by one
-    describe "with valid information" do
-      before do
-        fill_in "First name",         with: "New"
-        fill_in "Last name",         with: "User"
-        fill_in "Email",        with: "user@example.com"
-        fill_in "Password",     with: "foobar"
-        fill_in "Confirmation", with: "foobar"
-      end
+  #   # Valid information - It should go increment User count by one
+  #   describe "with valid information" do
+  #     before do
+  #       fill_in "First name",         with: "New"
+  #       fill_in "Last name",         with: "User"
+  #       fill_in "Email",        with: "user@example.com"
+  #       fill_in "Password",     with: "foobar"
+  #       fill_in "Confirmation", with: "foobar"
+  #     end
 
-      it "should create a user" do
-        expect { click_button submit }.to change(User, :count).by(1)
-      end
+  #     it "should create a user" do
+  #       expect { click_button submit }.to change(User, :count).by(1)
+  #     end
 
-      describe "after saving the user" do
-        before { click_button submit }
-        let(:user) { User.find_by_email('user@example.com') }
+  #     describe "after saving the user" do
+  #       before { click_button submit }
+  #       let(:user) { User.find_by_email('user@example.com') }
 
-        #it { should have_selector('title', text: user.name) }
-        it { should have_selector('div.alert.alert-success', text: 'Welcome') }
-        it { should have_link('Sign out') }
-      end
-    end
-  end
+  #       #it { should have_selector('title', text: user.name) }
+  #       it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+  #       it { should have_link('Sign out') }
+  #     end
+  #   end
+  # end
 
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }

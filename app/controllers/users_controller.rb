@@ -13,15 +13,38 @@ class UsersController < ApplicationController
   end
 
   def create
-  	@user = User.new(params[:user])
-  	if @user.save
+    temppassword = rand(999999).to_s.center(6, rand(9).to_s)
+    @user = User.new(email: params[:user][:email], first_name: "New",
+        last_name: "User",
+        password: temppassword, password_confirmation: temppassword )
+
+    @profile = Profile.new(first_name: params[:user][:profile][:first_name],
+                           last_name: params[:user][:profile][:last_name],
+                           birthday: 70.years.ago , 
+                           deathday: Date.today ,
+                           privacy: 2)
+    
+    newurl = @profile.first_name.downcase + @profile.last_name.downcase
+    i = 0
+    while Profile.exists?(newurl) do
+      i = i + 1
+      newurl = newurl + i.to_s
+    end
+    @profile.url = newurl
+  
+      
+    if @user.save and @profile.save
       sign_in @user
-  		flash[:success] = "Welcome " + @user.first_name + "!  
-      Just one more step to create your life storybook"
-  		redirect_to createstorybook_url
-  	else
-  		render 'new'
-  	end
+      @user.contribute!(@profile, "1", true)
+      flash[:success] = "Welcome to the HaloLane App!"
+      redirect_to root_url + @profile.url
+    elsif not @profile.save
+      flash[:error] = "Unable to save storybook. Please fill in the following fields"
+      redirect_to createstorybook_url
+    else
+      flash[:error] = "The email " + params[:user][:email] + " is already registered. Please log in"
+      redirect_to signin_url
+    end
   end
 
   def destroy

@@ -13,6 +13,7 @@ HalolaneApp::Application.routes.draw do
   root to: 'static_pages#home'
   
   match '/about', to: 'static_pages#about'
+  match '/pagenotfound', to: 'static_pages#pagenotfound'
   match '/createstorybook', to: 'profiles#new'
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'

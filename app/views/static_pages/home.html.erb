@@ -11,11 +11,26 @@
 	<div class="center hero-unit">
 	  <h1>HaloLane</h1></br>
 
-	  <h2>
-	    I want to capture, celebrate and share the life of
-	     <input type="text" id="name" name="name" placeholder="Name" size="1" />
-	  </h2>
+		<%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+			
+
+	  	<h2>
+	    	I want to capture, celebrate and share the life of
+		    <p>
+		    	<%= f.fields_for :profile do |p| %>
+				  	<%= p.text_field :first_name, :placeholder => "First name" %>
+				  	<%= p.text_field :last_name, :placeholder => "Last name" %>
+			  	<% end %>
+	  		</p>
+	  	</h2>
+	  	<hr />
+	
+		  <%= f.text_field :email, :placeholder => "My email address" %>
+			
+		  <%= f.submit "Create Your Life Storybook", class: "btn btn-large btn-primary" %>
+		<% end %>
+		</p>
 	 
-	  <%= link_to "Create Your Life Storybook", signup_path, class: "btn btn-large btn-primary"%>
 	</div>
 <% end %>
