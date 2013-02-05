@@ -25,7 +25,12 @@
 	  		</p>
 	  	</h2>
 	  	<hr />
-	
+
+	  	  <a href="/auth/facebook" class="auth_provider">
+		  	<%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+		  		Sign in with Facebook
+			</a>
+	       or 
 		  <%= f.text_field :email, :placeholder => "My email address" %>
 			
 		  <%= f.submit "Create Your Life Storybook", class: "btn btn-large btn-primary" %>

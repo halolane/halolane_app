@@ -1,0 +1,7 @@
+<%= form_for(@profile) do |p| %>
+  <%= render 'shared/error_messages', object: p.object %>
+	<%= p.text_field :first_name, :placeholder => "First name" %>
+	<%= p.text_field :last_name, :placeholder => "Last name" %>
+
+  <%= p.submit "Create a new life storybook", class: "btn btn-large btn-primary" %>
+<% end %>

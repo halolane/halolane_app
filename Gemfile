@@ -9,6 +9,10 @@ gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
 gem "friendly_id", "~> 4.0.9"
 gem 'validates_timeliness', '~> 3.0'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'mongrel', '1.2.0.pre2'
+gem "authbuttons-rails"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -46,7 +50,7 @@ group :assets do
 end
 
 group :production do
-  gem 'pg', '0.12.2'
+  gem "pg", "~> 0.14.1"
 end
 
 # To use ActiveModel has_secure_password

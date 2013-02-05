@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :memories, dependent: :destroy
   has_many :relationships, dependent: :destroy
   has_many :profiles, through: :relationships
+  has_many :profiles_with_relationships, :through => :relationships, :source => :profile
+  has_many :authentications
   
   has_many :invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
 

@@ -1,5 +1,6 @@
 HalolaneApp::Application.routes.draw do 
 
+  resources :authentications
   resources :users
   resources :profiles
   resources :memories
@@ -9,6 +10,7 @@ HalolaneApp::Application.routes.draw do
 
   get "users/new"
   get "profiles/new"
+  get '/login', :to => 'sessions#new', :as => :login
 
   root to: 'static_pages#home'
   
@@ -18,6 +20,8 @@ HalolaneApp::Application.routes.draw do
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete
+  match '/auth/:provider/callback', :to => 'authentications#create'
+  match '/auth/failure', :to => 'sessions#failure'
   match '/:url', to: 'profiles#show'
   match '/:url/:invitation_token', to: 'profiles#show'
 

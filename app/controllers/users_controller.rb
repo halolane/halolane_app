@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   before_filter :admin_user,     only: :destroy
 
   def show
+    @profile = Profile.new
   	@user = User.find(params[:id])
+    @profiles = @user.profiles_with_relationships.paginate(page: params[:page])
+
     @memories = @user.memories.paginate(page: params[:page])
   end
 
@@ -24,7 +27,7 @@ class UsersController < ApplicationController
                            deathday: Date.today ,
                            privacy: 2)
     
-    newurl = @profile.first_name.downcase + @profile.last_name.downcase
+    newurl = (@profile.first_name.downcase + @profile.last_name.downcase).gsub(/ /,'')
     i = 0
     while Profile.exists?(newurl) do
       i = i + 1
