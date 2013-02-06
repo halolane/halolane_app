@@ -21,7 +21,9 @@ class User < ActiveRecord::Base
   has_many :invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
 
   before_save { |user| user.email = email.downcase }
+
   before_save :create_remember_token
+  before_create :generate_token
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
@@ -51,5 +53,9 @@ class User < ActiveRecord::Base
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
+    end
+
+    def generate_token
+      self.token = Digest::SHA1.hexdigest([Time.now, rand].join)
     end
 end

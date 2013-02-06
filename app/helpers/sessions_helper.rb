@@ -25,6 +25,10 @@ module SessionsHelper
     Invitation.exists?(:token => token)
   end
 
+  def email_is_invited?(email)
+    Invitation.exists?(:recipient_email => email)
+  end
+
   def is_a_user_already?(email)
     User.find_by_email(email)
   end
@@ -35,6 +39,13 @@ module SessionsHelper
 
   def signed_in_user
     unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Please sign in"
+    end
+  end
+
+  def signed_in_user_or_invited(token)
+    unless ( signed_in? or is_invited?(token) )
       store_location
       redirect_to signin_url, notice: "Please sign in"
     end

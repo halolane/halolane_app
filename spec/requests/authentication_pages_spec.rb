@@ -2,6 +2,9 @@ require 'spec_helper'
 
 describe "Authentication" do
 
+  let(:user) { FactoryGirl.create(:user) }
+  before { user.save }
+
   subject { page }
 
   describe "signin" do
@@ -18,7 +21,6 @@ describe "Authentication" do
     end
 
     describe "with valid information" do
-      let(:user) { FactoryGirl.create(:user) }
       before { sign_in user }
 
 
@@ -41,10 +43,11 @@ describe "Authentication" do
   describe "authorization" do
 
     describe "for non-signed-in users" do
-      let(:user) { FactoryGirl.create(:user) }
+
 
       describe "when attempting to visit a protected page" do
         before do
+
           visit edit_user_path(user)
           fill_in "Email",    with: user.email
           fill_in "Password", with: user.password
@@ -87,9 +90,11 @@ describe "Authentication" do
     end
 
     describe "as wrong user" do
-      let(:user) { FactoryGirl.create(:user) }
       let(:wrong_user) { FactoryGirl.create(:user, email: "wrong@example.com") }
-      before { sign_in user }
+      before do 
+        wrong_user.save
+        sign_in user 
+      end
 
       describe "visiting Users#edit page" do
         before { visit edit_user_path(wrong_user) }

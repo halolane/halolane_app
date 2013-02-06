@@ -1,9 +1,9 @@
 <h1>
 	<%= @profile.first_name + " " + @profile.last_name %></br>
-    Born: <%= @profile.birthday %></br>
-    Passed Away: <%= @profile.deathday %></br>
-    Privacy: <%= @profile.privacy %></br>
+    Born: <%= @profile.birthday.strftime("%B %d, %Y") %></br>
+    Passed Away: <%= @profile.deathday.strftime("%B %d, %Y") %></br>
+ 	
 </h1>
 <span>
-	<%= pluralize(@profile.memories.count, "memory") %>
+	<%= link_to "Edit this storybook", edit_profile_path(@profile) %>
 </span>

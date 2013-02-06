@@ -22,8 +22,12 @@ HalolaneApp::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/auth/:provider/callback', :to => 'authentications#create'
   match '/auth/failure', :to => 'sessions#failure'
+  match '/login/:verify_token', to: 'users#edit'
+
+  #This must be last of the match statements
   match '/:url', to: 'profiles#show'
   match '/:url/:invitation_token', to: 'profiles#show'
+
 
   
 

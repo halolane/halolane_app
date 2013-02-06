@@ -6,7 +6,6 @@ describe Profile do
     @profile = Profile.new(first_name: "Test", last_name: "User", 
                      birthday: 70.years.ago , 
                      deathday: Date.today ,
-                     url: "testuser",
                      privacy: 0 )
   end
   

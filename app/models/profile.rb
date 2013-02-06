@@ -3,15 +3,17 @@ class Profile < ActiveRecord::Base
   friendly_id :url, use: :slugged
 
 
-  attr_accessible :url, :birthday, :deathday, :first_name, :last_name, :privacy
+  attr_accessible :birthday, :deathday, :first_name, :last_name, :privacy
   has_many :relationships, dependent: :destroy
   has_many :memories, dependent: :destroy
   has_many :users, through: :relationships
   has_many :invitations, dependent: :destroy
 
+  before_save :setprettyurl
+
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
-  validates :url, presence: true, length: { maximum: 50 }
+  validates :url, length: { maximum: 50 }
 
   validates_date :birthday, :before => :deathday,
                             :before_message => 'must be before date of passing'
@@ -42,5 +44,17 @@ class Profile < ActiveRecord::Base
   def changeprivacy(p)
     privacy = p
   end
+  
+  private 
+
+    def setprettyurl
+      newurl = self.first_name.downcase + self.last_name.downcase
+      i = 0
+      while Profile.exists?(newurl) do
+        i = i + 1
+        newurl = newurl + i.to_s
+      end
+      self.url = newurl.gsub(/\s+/, "")
+    end 
 end
 

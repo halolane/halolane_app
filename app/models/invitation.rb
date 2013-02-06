@@ -7,6 +7,13 @@ class Invitation < ActiveRecord::Base
 
   before_create :generate_token
 
+  before_save { |invitation| invitation.recipient_email = recipient_email.downcase }
+
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  validates :recipient_email, presence: true, 
+            format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: true
+
   validate :recipient_email, presence: true
   validate :recipient_is_not_registered
 

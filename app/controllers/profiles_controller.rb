@@ -5,6 +5,19 @@ class ProfilesController < ApplicationController
   	@profile = Profile.new
   end
 
+  def edit
+    @profile = Profile.find(params[:id])
+  end
+
+  def update
+    if @profile.update_attributes(params[:profile])
+      flash[:success] = "Storybook updated"
+      redirect_back_or @profile
+    else
+      render 'edit'
+    end
+  end
+
   def show
     if params[:url] != nil
       @profile = Profile.find_by_url(params[:url])
@@ -39,19 +52,17 @@ class ProfilesController < ApplicationController
   end
 
   def create
-  	@profile = Profile.new(params[:profile])
-    newurl = @profile.first_name.downcase + @profile.last_name.downcase
-    i = 0
-    while Profile.exists?(newurl) do
-      i = i + 1
-      newurl = newurl + i.to_s
+
+    if params[:profile][:birthday] == nil
+      @profile = Profile.new(first_name: params[:profile][:first_name], last_name: params[:profile][:last_name], birthday: 70.years.ago, deathday: Date.today, privacy: 2)
+      relationship = "1"   #set default relationship to 1, friend
+    else
+    	@profile = Profile.new(params[:profile])
+      relationship params[:relationship][:description]
     end
 
-    @profile.url = newurl
-
-   
   	if @profile.save
-      current_user.contribute!(@profile, params[:relationship][:description], true)
+      current_user.contribute!(@profile, relationship, true)
   		flash[:success] = "Welcome to the HaloLane App!"
   		redirect_to root_url + @profile.url
   	else
@@ -79,5 +90,7 @@ class ProfilesController < ApplicationController
       @user.save
       @invitation.toggle!(:active)
       sign_in @user
+      Mailer.validate_account(current_user, root_url + "login/" + current_user.token).deliver
+      @user.contribute!(@profile, "1", false)
     end
 end

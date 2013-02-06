@@ -6,11 +6,19 @@
     <%= form_for(@user) do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+      <% if @user.verified %>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
 
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+      <% else %>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, :value => "", :placeholder => "First name" %>
+
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, :value => "", :placeholder => "Last name" %>
+      <% end %>
 
       <%= f.label :email %>
       <%= f.text_field :email %>

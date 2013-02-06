@@ -1,0 +1,59 @@
+<% provide(:title, "edit the storybook of" + @profile.first_name + " " + @profile.last_name) %> 
+<h1>Update the storybook of <%= @profile.first_name + " " + @profile.last_name %> </h1>
+
+
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for(@profile) do |f| %>
+
+		  <%= render 'shared/error_messages', object: f.object %>
+
+      <p>
+		  	<%= f.label :first_name %>
+		  	<%= f.text_field :first_name %>
+  		</p>
+
+		  <p>
+		  	<%= f.label :last_name %>
+		  	<%= f.text_field :last_name %>
+		  </p>
+
+		  <p>
+		  	<%= f.label :birthday %>
+		  	<%= f.date_select :birthday,
+		                    { :order => [:month, :day, :year], 
+		                      :start_year => 1900,
+                    	      :end_year => Date.today.year,
+                    	      :default => Date.new(1950, 01, 01) } %>
+      </p>
+
+      <p>
+		  	<%= f.label :deathday, "Date of passing: "%>
+		  	<%= f.date_select :deathday, 
+		                    { :order => [:month, :day, :year], 
+		                      :start_year => 1900 } %>
+    	</p>
+
+    	
+  		<p>
+  			<label for="relationship_description">This person is my</label>
+  			<%= select "relationship","description", 
+  									Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
+  		</p>
+
+    	<p>
+			  <%= f.label :privacy, "Privacy setting" %>
+			  <%= f.radio_button :privacy, '2', :checked => true %>
+			  <%= f.label :privacy, "Only selected friends and family can post memories and view the life storybook" %> 
+			  <%= f.radio_button :privacy, '1' %>
+			  <%= f.label :privacy, "Only selected friends and family can post memories" %> 
+			  <%= f.radio_button :privacy, '0' %> 
+			  <%= f.label :privacy, "Public" %> 
+		 	</p>
+		  
+
+
+		  <%= f.submit "Create the life storybook", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>

@@ -10,9 +10,18 @@ class Mailer < ActionMailer::Base
     @invitation = invitation
     @profile = profile
     @user = user
-    
+    full_name = @profile.first_name + " "  + @profile.last_name
+    subject = @user.first_name + " invites you in a digital life story book of " + full_name
     @url = url
-    mail(:to => "rsolidum@gmail.com" , :subject => 'HaloLane invitation')
+    mail( :from => @user.email, 
+          :to => "rsolidum@gmail.com" , 
+          :subject => subject )
     invitation.update_attribute(:sent_at, Time.now)
+  end
+
+  def validate_account(user, url)
+    @user = user
+    @url = url
+    mail(:to => "rsolidum@gmail.com" , :subject => 'Your temporary password to HaloLane')
   end
 end

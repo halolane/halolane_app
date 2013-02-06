@@ -9,6 +9,7 @@ describe "User pages" do
     let(:user) { FactoryGirl.create(:user) }
 
     before(:each) do
+      user.save
       sign_in user
       visit users_path
     end
@@ -78,6 +79,7 @@ describe "User pages" do
   describe "edit" do
     let(:user) { FactoryGirl.create(:user) }
     before do
+      user.save
       sign_in user
       visit edit_user_path(user)
     end
@@ -92,17 +94,19 @@ describe "User pages" do
       let(:new_fname)  { "New" }
       let(:new_lname)  { "Name" }
       let(:new_email) { "new@example.com" }
+      let(:new_password)  { "abc1333" }
       before do
         fill_in "First name",             with: new_fname
-        fill_in "First name",             with: new_lname
+        fill_in "Last name",             with: new_lname
         fill_in "Email",            with: new_email
-        fill_in "Password",         with: user.password
-        fill_in "Confirm Password", with: user.password
+        fill_in "Password",         with: new_password
+        fill_in "Confirm Password", with: new_password
         click_button "Save changes"
       end
 
       #it { should have_selector('title', text: new_fname) + " " + new_lname }
       #it { should have_link('Sign out', href: signout_path) }
+      it { page.should have_content('Account successfully validated') }
       it { should have_selector('div.alert.alert-success') }
       
       # specify { user.reload.name.should  == new_name }
