@@ -13,8 +13,8 @@
 
 		<%= form_for(@user) do |f| %>
 		<%= render 'shared/error_messages', object: f.object %>
-			
-
+		
+		  <hr />
 	  	<h2>
 	    	I want to capture, celebrate and share the life of
 		    <p>
@@ -23,18 +23,19 @@
 				  	<%= p.text_field :last_name, :placeholder => "Last name" %>
 			  	<% end %>
 	  		</p>
-	  	</h2>
-	  	<hr />
-
-	  	  <a href="/auth/facebook" class="auth_provider">
-		  	<%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
-		  		Sign in with Facebook
-			</a>
-	       or 
-		  <%= f.text_field :email, :placeholder => "My email address" %>
+	  	</h2> 
+	  	<%= f.text_field :email, :placeholder => "My email address" %>
+	  	
+	  	
 			
 		  <%= f.submit "Create Your Life Storybook", class: "btn btn-large btn-primary" %>
 		<% end %>
+		<p>
+			or<br/>
+			<a href="/auth/facebook" class="auth_provider">
+		  	<%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>
+		  		Connect with Facebook
+			</a>
 		</p>
 	 
 	</div>

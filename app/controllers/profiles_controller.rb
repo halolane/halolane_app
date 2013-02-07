@@ -63,7 +63,7 @@ class ProfilesController < ApplicationController
 
   	if @profile.save
       current_user.contribute!(@profile, relationship, true)
-  		flash[:success] = "Welcome to the HaloLane App!"
+  		flash[:success] = "Welcome to the HaloLane! We sent you an email to validate your account."
   		redirect_to root_url + @profile.url
   	else
   		render 'new'
