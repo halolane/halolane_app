@@ -1,12 +1,5 @@
 <% if signed_in? %>
-  <div class="row">
-    <aside class="span4">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      
-    </aside>
-  </div>  
+	<%= render 'shared/user_frontpage' %>
 <% else %>
 	<div class="center hero-unit">
 	  <h1>HaloLane</h1></br>

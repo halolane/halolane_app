@@ -11,8 +11,11 @@ gem "friendly_id", "~> 4.0.9"
 gem 'validates_timeliness', '~> 3.0'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omnicontacts'
 gem 'mongrel', '1.2.0.pre2'
 gem "authbuttons-rails"
+gem "paperclip", "= 3.0.4" 
+gem "cocaine", "= 0.3.2"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

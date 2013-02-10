@@ -1,8 +1,12 @@
-<%= form_for @memory do |f| %>
+<%= form_for @memory, :html => { :multipart => true } do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  
   <input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
+
+  <input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
   <div class="field">
   	<%= f.text_area :content, placeholder: "Compose a new memory" %>
+  	<%= f.file_field :photo %>
   </div>
   <%= f.submit "Post", class: "btn btn-large btn-primary" %>
 <% end %>

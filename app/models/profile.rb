@@ -33,8 +33,11 @@ class Profile < ActiveRecord::Base
  
 
   def memoryfeed
-    # This is preliminary
     Memory.where("profile_id = ?", id)
+  end
+
+  def photofeed
+    Photomemory.where("profile_id = ?", id)
   end
   
   def contributor?(user)

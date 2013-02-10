@@ -47,6 +47,7 @@ GEM
       xpath (~> 0.1.4)
     childprocess (0.3.5)
       ffi (~> 1.0, >= 1.0.6)
+    cocaine (0.3.2)
     coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -139,6 +140,15 @@ GEM
     omniauth-oauth2 (1.1.1)
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
+    omnicontacts (0.2.3)
+      json
+      rack
+    paperclip (3.0.4)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (>= 0.0.2)
+      mime-types
     pg (0.14.1)
     polyglot (0.3.3)
     pry (0.9.11.3)
@@ -229,6 +239,7 @@ DEPENDENCIES
   bootstrap-sass (= 2.1)
   bootstrap-will_paginate (= 0.0.6)
   capybara (= 1.1.2)
+  cocaine (= 0.3.2)
   coffee-rails (= 3.2.2)
   cucumber-rails (= 1.2.1)
   database_cleaner (= 0.7.0)
@@ -242,6 +253,8 @@ DEPENDENCIES
   nifty-generators
   omniauth
   omniauth-facebook
+  omnicontacts
+  paperclip (= 3.0.4)
   pg (~> 0.14.1)
   rails (= 3.2.11)
   rspec-rails (= 2.11.0)

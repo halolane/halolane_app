@@ -1,0 +1,24 @@
+<div class="row">
+  <aside class="span4">
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.first_name %>
+        <%= @user.last_name %>
+      </h1>
+    </section>
+    <section>
+        I want to capture, celebrate and share the life of
+        <%= render 'shared/profile_form' %>
+    </section>
+  </aside>
+  <div class="span8">
+    <% if @user.profiles_with_relationships.any? %>
+      <h3>Storybooks that you are contributing to</h3>
+      <ol class="memories">
+        <%= render @profiles %>
+      </ol>
+      <%= will_paginate @profiles %>
+    <% end %>
+  </div>
+</div>

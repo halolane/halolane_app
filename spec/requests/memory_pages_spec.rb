@@ -33,7 +33,7 @@ describe "Memory pages" do
 
       describe "error messages" do
         before { click_button "Post" }
-        it { should have_content("Content can't be blank") } 
+        it { should have_content("Content and photo can't be blank") } 
       end
     end
 
