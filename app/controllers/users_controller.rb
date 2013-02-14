@@ -20,18 +20,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    temppassword = rand(999999).to_s.center(6, rand(9).to_s)
+    
     @user = User.new(email: params[:user][:email], first_name: "New",
         last_name: "User",
-        password: temppassword, password_confirmation: temppassword )
-    @user.verified = false
+        password: params[:user][:password], password_confirmation: params[:user][:password] )
+    @user.verified = true
 
-    @profile = Profile.new(first_name: params[:user][:profile][:first_name], last_name: params[:user][:profile][:last_name], birthday: 70.years.ago, deathday: Date.today, privacy: 2)
+    @profile = Profile.new(first_name: params[:user][:profile][:first_name], last_name: params[:user][:profile][:last_name], birthday: 70.years.ago, deathday: Date.today, privacy: 1)
   
     if @user.save and @profile.save
       sign_in @user
       @user.contribute!(@profile, "1", true)
-      Mailer.validate_account(current_user, root_url + "login/" + @user.token).deliver
       flash[:success] = "Welcome to the HaloLane App!"
       redirect_to root_url + @profile.url
     elsif @user.save and not @profile.save

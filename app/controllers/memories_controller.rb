@@ -20,7 +20,7 @@ class MemoriesController < ApplicationController
         if @memory.save
           flash[:success] = "Memory created"
         else
-          flash[:error] = "Content can't be blank"
+          flash[:error] = "Can't upload file"
           @memoryfeed_items = []
         end
       end

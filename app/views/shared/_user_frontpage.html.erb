@@ -8,17 +8,21 @@
       </h1>
     </section>
     <section>
-        I want to capture, celebrate and share the life of
-        <%= render 'shared/profile_form' %>
+      <% if @user.profiles_with_relationships.any? %>
+        <h4>Storybooks that you are contributing to</h4>
+        <ol class="memories">
+          <%= render @profiles %>
+        </ol>
+        <%= will_paginate @profiles %>
+      <% end %>
     </section>
   </aside>
   <div class="span8">
-    <% if @user.profiles_with_relationships.any? %>
-      <h3>Storybooks that you are contributing to</h3>
-      <ol class="memories">
-        <%= render @profiles %>
-      </ol>
-      <%= will_paginate @profiles %>
-    <% end %>
+    <h2>
+      I want to capture and celebrate the life of</br></br>
+      <%= render 'shared/profile_form' %>
+
+    </h2>
+        
   </div>
 </div>

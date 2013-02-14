@@ -163,6 +163,12 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
+#profile_last_name, #user_profile_last_name, #user_email, #user_password, #profile_first_name, #user_profile_first_name {
+  border: 1px solid #bbb;
+  width: 40%;
+  margin-bottom: 15px;
+}
+
 input {
   height: auto !important;
 }

@@ -28,11 +28,13 @@ describe "Static Pages" do
       let(:new_fname)  { "New" }
       let(:new_lname)  { "Name" }
       let(:new_email) { "new@example.com" }
+      let(:new_password) { "foobar" }
 
       before do
-        fill_in "user_profile_first_name",             with: new_fname
-        fill_in "user_profile_last_name",             with: new_lname
-        fill_in "user_email",            with: new_email
+        fill_in "user_profile_first_name",  with: new_fname
+        fill_in "user_profile_last_name",   with: new_lname
+        fill_in "user_email",               with: new_email
+        fill_in "user_password",            with: new_password    
         click_button "Create Your Life Storybook"
       end
 
@@ -45,12 +47,14 @@ describe "Static Pages" do
       let(:new_fname)  { "New" }
       let(:new_lname)  { "Name" }
       let(:new_email) { "new@example.com" }
+      let(:new_password) { "foobar" }
+
 
       before do
-        fill_in "user_profile_first_name",             with: new_fname
-        fill_in "user_profile_last_name",             with: new_lname
-        fill_in "user_email",            with: new_email
-        
+        fill_in "user_profile_first_name",  with: new_fname
+        fill_in "user_profile_last_name",   with: new_lname
+        fill_in "user_email",               with: new_email
+        fill_in "user_password",            with: new_password    
       end
 
       it "should create a profile" do

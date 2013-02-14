@@ -7,6 +7,9 @@
         <%= @user.first_name %>
         <%= @user.last_name %>
       </h1>
+      <span>
+        <%= link_to "Edit this user", edit_user_path(@user) %>
+      </span>
     </section>
     <section>
         I want to capture, celebrate and share the life of

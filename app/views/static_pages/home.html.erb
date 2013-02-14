@@ -9,7 +9,7 @@
 		
 		  <hr />
 	  	<h2>
-	    	I want to capture, celebrate and share the life of
+	    	I want to capture, celebrate and remember the life of
 		    <p>
 		    	<%= f.fields_for :profile do |p| %>
 				  	<%= p.text_field :first_name, :placeholder => "First name" %>
@@ -17,12 +17,14 @@
 			  	<% end %>
 	  		</p>
 	  	</h2> 
-	  	<%= f.text_field :email, :placeholder => "My email address" %>
-	  	
-	  	
+	  	<h2>My information<p>
+		  	<%= f.text_field :email, :placeholder => "My email address" %>
+		  	<%= f.password_field :password, :placeholder => "My password" %>
+	  	</p></h2>
 			
 		  <%= f.submit "Create Your Life Storybook", class: "btn btn-large btn-primary" %>
 		<% end %>
+		<hr />
 		<p>
 			or<br/>
 			<a href="/auth/facebook" class="auth_provider">
