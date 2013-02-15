@@ -19,11 +19,14 @@ class ProfilesController < ApplicationController
   end
 
   def show
+
     if params[:url] != nil
       @profile = Profile.find_by_url(params[:url])
     else
       @profile = Profile.find(params[:id])
     end
+
+
     
     @invitation = Invitation.find_by_token(params[:invitation_token])
     #@profile = Profile.find_by_id(params[:id])
@@ -35,9 +38,11 @@ class ProfilesController < ApplicationController
       if ( @profile.privacy != 2 ) or 
          ( @profile.privacy == 2 and signed_in? and has_relationship?(@profile.id, current_user.id) )
         showprofile
+        render :layout => "storyboard_layout"
       elsif is_invited?(params[:invitation_token]) and @invitation.active == true
         createnewuser
         showprofile
+        render :layout => "storyboard_layout"
       elsif is_invited?(params[:invitation_token]) and @invitation.active == false
         flash[:error] = "The invitation link has expired."
         redirect_to root_url

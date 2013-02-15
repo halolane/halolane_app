@@ -1,0 +1,26 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+
+  <div class="navbar-inner">
+    <div class="container">
+      <nav>
+        <ul class="nav pull-left">
+          <li><div class="topbarname"><h4>
+            <%= link_to  @profile.first_name + " " + @profile.last_name, edit_profile_path(@profile), rel:"tooltip", title:"Edit this" %>
+          </h4></div></li>
+        </ul>
+        <ul class="nav pull-right">
+          <li class="topbar _showAddCollaborator">
+            <div class="icon-add-contributor">
+        
+              <a href="#addcontributor" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true" >
+                <%= image_tag("/assets/static/icons/addcollaborator.png")%>
+              </a>
+
+          </div>
+          </li>
+          <li><%= link_to image_tag("/assets/logo.png"), root_path, id: "logo" %> </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

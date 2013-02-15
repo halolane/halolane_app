@@ -1,18 +1,13 @@
 <% provide(:title, @profile.first_name + " " + @profile.last_name) %>
 <div class="row">
   <aside class="span4">
-    <section>
-      <%= render 'shared/profile_info' %>
-    </section>
     <% if 
           ( signed_in? and @profile.privacy == 0 ) or
           ( signed_in? and @profile.privacy > 0 and has_relationship?(@profile.id, current_user.id)) or
           ( is_invited?(params[:invitation_token])) %>
       <section>
         <%= render 'shared/memory_form' %>
-      </section>
-      <section>
-        <%= render 'shared/invitation_form' %>
+        
       </section>
     <% end %>
   </aside>
@@ -21,3 +16,5 @@
     <%= render 'shared/memoryfeed' %>
   </div>
 </div>
+<%= render 'shared/invitation_modal' %>
+
