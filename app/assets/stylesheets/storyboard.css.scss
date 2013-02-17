@@ -1,13 +1,48 @@
+/* storybook */
+body {
+	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	overflow: auto;
+}
+
+/* topbar */
+
 .topbar {
-	margin: 2px 0px;
+	margin: -4px -5px;
 	text-decoration: none;
 	overflow: hidden;
 	text-align: middle;
 	vertical-align: middle;
-	
-
 }
 
+.navbar .navbar-inner .container {
+    top: 0px;
+    width: 940px;
+}
+
+.navbar .nav > li > a {
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+
+.messageBoxContainer.collapsed .messageSection {
+	background-color: transparent;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+
+.btn-topbar-left {
+	position: absolute !important;
+	float: left;
+	text-decoration: none;
+	text-align: middle;
+	vertical-align: middle;
+}
 
 
 .topbarname {
@@ -19,19 +54,153 @@
 	h4 { 
 		font-size: 18px; 
 		line-height: 20px; 
-		color: white;
+		color: #474747;
 	}
 
 	a {
-		color: white;
+		color: #474747;
+		text-decoration: none;
 	}
-	
+
+	a:hover { 
+		background-color: transparent;
+	}
+}
+
+li.iconaddcontributor {
+	margin: 4px 0px;
+	width: 38px;
+	height: 38px;
+}
+
+a.iconaddcontributorlink {
+	margin: 4px 0px;
+	padding: 0px 0px;
+	width: 38px;
+	height: 38px;
+}
+
+li.storyboardlogo {
+	margin: 0px 0px;
+	width: 150px;
+	height: 38px;
+}
+
+
+/* Message box */
+
+.messageBoxContainer.collapsed {
+	z-index: 0;
+	display: block;
+	float: left;
+	width: 580px;
+	height: 32px;
+	.messageSection .messageBox {
+		height: 32px;
+	}
+	.composerBox textarea  {
+		height: 33px;
+		margin: 0px 0px;
+		padding: 5px 10px;
+	}
+}
+
+.messageBox {
+	background-color: #F7F8F9;
+}
+
+.messageBoxContainer.expanded {
+	z-index: 0;
+	display: block;
+	float: left;
+	width: 580px;
+	height: 207px;
+	.messageSection {
+		height: 138px;
+
+	}
+
+	.messageBox {
+		height: 140px;
+		outline: 1px solid gray;
+	}
+	.composerBox textarea  {
+		height: 100px;
+		margin: 0px 0px;
+		padding: 5px 10px;
+	}
+}
+
+.messageBoxContainer .messageSection {
+	background-color: #d9dbdd;
+	width: 543px; 
+	padding: 4px;
+	-moz-box-shadow: 10px 2px 50px rgba(0,0,0,0.5);
+	-webkit-box-shadow:10px 2px 50px rgba(0,0,0,0.5);
+	box-shadow:10px 2px 50px rgba(0,0,0,0.5);
+}
+
+
+.messageBoxContainer.collapsed.composerBox textarea {
+	width: 543px;
+	height: 26px;
+	line-height: 25px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#messageTools {
+	height: 38px;
+	width: 540px;
+	text-color: gray;
 
 }
 
-.icon-add-contributor {
+#memorycounter {
+	position: absolute;
+	z-index: 1;
+	float: left;
+	padding-left: 10px;
+	color: gray;
+	font-size: 1em;
+	padding-top: 7px;
+}
 
-	width: 30px;
-	height: 30px;
-	outline: 0;
+/* Adding Photo */
+.addphoto {
+	position: relative;
+	background-color: #d9dbdd;
+	display: block;
+	float: left;
+	-moz-box-shadow: 10px 2px 50px rgba(0,0,0,0.5);
+	-webkit-box-shadow:10px 2px 50px rgba(0,0,0,0.5);
+	box-shadow:10px 2px 50px rgba(0,0,0,0.5);
+	width: 543px;
+	outline: 1px solid gray;
+
+	input {
+		margin: 5px 5px;
+	}
+}
+
+
+.addphoto.hidden, .btn-post.hidden, .addphoto-icon.hidden, #messageTools.hidden {
+	display: none;
+}
+
+.addphoto, .btn-post, .addphoto-icon, #messageTools{
+	display: inline;
+}
+
+.addphoto-icon {
+	float: left;
+	padding-top: 2px;
+	padding-left: 40px;
+}
+
+.btn-post {
+	float: right;
+	padding-top: 5px;
+	margin: -5px 5px;
 }

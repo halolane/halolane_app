@@ -1,17 +1,6 @@
 <% provide(:title, @profile.first_name + " " + @profile.last_name) %>
-<div class="row">
-  <aside class="span4">
-    <% if 
-          ( signed_in? and @profile.privacy == 0 ) or
-          ( signed_in? and @profile.privacy > 0 and has_relationship?(@profile.id, current_user.id)) or
-          ( is_invited?(params[:invitation_token])) %>
-      <section>
-        <%= render 'shared/memory_form' %>
-        
-      </section>
-    <% end %>
-  </aside>
-  <div class="span8">
+<div class="row storybook">
+  <div class="span12 storybook">
     <h3>Memory Lane</h3>
     <%= render 'shared/memoryfeed' %>
   </div>

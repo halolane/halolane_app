@@ -37,10 +37,9 @@ describe "Static Pages" do
         fill_in "user_password",            with: new_password    
         click_button "Create Your Life Storybook"
       end
-
-      it { should have_link('Sign out', href: signout_path) }
-      it { should_not have_link('Sign in', href: signin_path) }
       it { should have_content('Welcome') }
+      it { should_not have_link('Sign in', href: signin_path) }
+      
     end
 
     describe "with valid information to test profile and user count" do

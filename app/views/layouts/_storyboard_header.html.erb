@@ -1,24 +1,21 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<header class="navbar navbar-fixed-top">
 
   <div class="navbar-inner">
     <div class="container">
       <nav>
-        <ul class="nav pull-left">
+        <ul class="nav btn-topbar-left">
+          <li> <%= render 'shared/memory_form' %> </li>
           <li><div class="topbarname"><h4>
-            <%= link_to  @profile.first_name + " " + @profile.last_name, edit_profile_path(@profile), rel:"tooltip", title:"Edit this" %>
+            <%= link_to  @profile.first_name + " " + @profile.last_name, edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
           </h4></div></li>
         </ul>
         <ul class="nav pull-right">
-          <li class="topbar _showAddCollaborator">
-            <div class="icon-add-contributor">
-        
-              <a href="#addcontributor" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true" >
-                <%= image_tag("/assets/static/icons/addcollaborator.png")%>
+          <li class="iconaddcontributor _showAddCollaborator">
+              <a href="#addcontributor" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
+                <%= image_tag("/assets/static/icons/addcollaborator.png", width: "28px", height: "28px") %>
               </a>
-
-          </div>
           </li>
-          <li><%= link_to image_tag("/assets/logo.png"), root_path, id: "logo" %> </li>
+          <li class="storyboardlogo _showLogo"><%= link_to image_tag("/assets/logo.png"), root_path, id: "logo" %> </li>
         </ul>
       </nav>
     </div>
