@@ -1,0 +1,44 @@
+<script type="text/javascript">
+		
+		$(document).ready(function(){
+		var $container = $('#content');
+$container.isotope({
+	filter: '*',
+	layoutMode: 'masonryHorizontal',
+	animationEngine: 'jquery',
+	animationOptions: {
+     duration: 250,
+     easing: 'linear',
+     queue: false,
+   }
+});
+
+<% if @memoryfeed_items.any? %>
+  
+   var $newtext = $("<div class='blank'></div><div class='newbox cat1'>
+  <% if memoryfeed_item.photo.file? %>
+    <span class='box-text'>
+     <%= image_tag memoryfeed_item.photo, class: "storyimage" %></br>
+    </span>
+  <% end %>
+  
+    <%= memoryfeed_item.content %>
+  </span>
+  
+  <span class='box-user'>
+    <%= link_to gravatar_for(memoryfeed_item.user), memoryfeed_item.user %>
+  
+    <%= link_to memoryfeed_item.user.first_name, memoryfeed_item.user %>
+  </span>
+  <span class='box-timestamp'>
+    Posted <%= time_ago_in_words(memoryfeed_item.created_at) %> ago.
+  </span>
+<div class='box-text'>Urna vut, eros aliquet sagittis augue?</div>
+</div>");
+  $container.isotope('insert', $newtext);
+  $('.newbox').draggable();
+  
+<% end %>
+	
+});
+</script>

@@ -1,8 +1,8 @@
 
 
-	<div class="messageBoxContainer collapsed _messageBox">
-		<div class="messageSection _messageArea">
-			<div class="messageBox _messageContainer ui-droppable"> 
+	<div class="messageBoxContainer collapsed">
+		<div class="messageSection">
+			<div class="messageBox"> 
 				<%= form_for @memory, :html => { :multipart => true } do |f| %>
 			  <%= render 'shared/error_messages', object: f.object %>
 			  
@@ -13,7 +13,7 @@
 			  	
 			  </div>
 				
-				<div id="messageTools" class="_addLinkBlock _messageTools messageTools hidden" >
+				<div id="messageTools" class="_addLinkBlock messageTools hidden" >
 					<div class="controls">
 						<span id="memorycounter">
 						</span>

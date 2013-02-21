@@ -16,6 +16,9 @@ gem 'mongrel', '1.2.0.pre2'
 gem "authbuttons-rails"
 gem "paperclip", "= 3.0.4" 
 gem "cocaine", "= 0.3.2"
+gem 'masonry-rails'
+gem 'modernizr-rails'
+gem 'sanitize-rails', :require => 'sanitize/rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

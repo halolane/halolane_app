@@ -1,6 +1,20 @@
 <% if @memoryfeed_items.any? %>
-  <ol class="memories">
+<script type="text/javascript">
+$(document).ready(function() {
+  var $container = $('#content');
+
+  $container.isotope({
+    filter: '*',
+    layoutMode: 'masonryHorizontal',
+    animationEngine: 'jquery',
+    animationOptions: {
+       duration: 250,
+       easing: 'linear',
+       queue: false,
+     }
+  });
+
     <%= render partial: 'shared/memoryfeed_item', collection: @memoryfeed_items %>
-  </ol>
- 
+});
+</script>
 <% end %>

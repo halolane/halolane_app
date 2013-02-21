@@ -1,5 +1,4 @@
 require 'spec_helper'
-
 describe "Memory pages" do
 
   subject { page }
