@@ -17,7 +17,6 @@ class Memory < ActiveRecord::Base
   belongs_to :user
   belongs_to :profile
 
-  
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true
@@ -38,4 +37,5 @@ class Memory < ActiveRecord::Base
         self.errors.add :base, 'My string can not be nil'
       end
     end
+
 end

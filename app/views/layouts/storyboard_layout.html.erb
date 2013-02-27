@@ -4,17 +4,20 @@
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application-storyboard", media: "all" %>
   <%= javascript_include_tag "application" %>
-  <%= render 'shared/memoryfeed' %>
+ 
+  
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>  <!-- partial app/views/layouts/_shim.html.erb -->
-
+   
 </head>
 <body>
   <%= render 'layouts/storyboard_header' %>
+  
     <% flash.each do |key, value| %>
        <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
   	<%= yield %>
     <%= debug(params) if Rails.env.development? %>
+    
 </body>
 </html>

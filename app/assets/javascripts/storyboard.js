@@ -63,5 +63,19 @@ $(document).ready(function(){
     $('#memorycounter').text(left);
 	});
 
+	var $container = $('#content');
+
+  $container.imagesLoaded( function() {
+    $container.isotope({
+      itemSelector : '.newbox', 
+     /* filter: '*',*/
+      layoutMode: 'masonryHorizontal',
+      animationEngine: 'jquery',
+      animationOptions: {
+         easing: 'linear',
+         queue: false,
+       }
+    });
+  });
 
 });
