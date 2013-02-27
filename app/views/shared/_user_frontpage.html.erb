@@ -1,5 +1,5 @@
-<div class="row">
-  <aside class="span4">
+<div class="tabbable tabs-left">
+  <aside>
     <section>
       <h1>
         <%= gravatar_for @user %>
@@ -7,22 +7,37 @@
         <%= @user.last_name %>
       </h1>
     </section>
-    <section>
+  </aside>
+  <ul class="nav nav-tabs span2">
+    <li class="active"><a href="#tab1" data-toggle="tab">Storybooks</a></li>
+    <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+    <!-- <li><a href="#tab3" data-toggle="tab">Notification</a></li> -->
+  </ul>
+    
+  <div class="tab-content span9">
+    <div class="tab-pane active" id="tab1">
+      <p>
+        <a href="#newstorybook" class="newstorybooklink" rel="tooltip" data-placement="bottom" title="Create a new storybook" data-toggle="modal" data-keyboard="true">
+          <button class="btn btn-medium btn-primary" type="button">
+            Create a new storybook      
+          </button>
+        </a>
+      </p></br>
       <% if @user.profiles_with_relationships.any? %>
-        <h4>Storybooks that you are contributing to</h4>
+        <h5>Storybooks that you are contributing to
+          <a href="#newstorybook" class="newstorybooklink" rel="tooltip" data-placement="bottom" title="Create a new storybook" data-toggle="modal" data-keyboard="true">
+            <i class="icon-plus"></i>
+          </a>
+
+        </h5>
         <ol class="memories">
           <%= render @profiles %>
         </ol>
         <%= will_paginate @profiles %>
+      <% else %>
+        <p>You don't have any life storybooks. Why don't you create one?</p>
       <% end %>
-    </section>
-  </aside>
-  <div class="span8">
-    <h2>
-      I want to capture and celebrate the life of</br></br>
-      <%= render 'shared/profile_form' %>
-
-    </h2>
-        
-  </div>
-</div>
+    </div><!-- .tab-pane tab1 -->
+  </div><!-- .tabcontent -->
+</div><!-- .tabbable -->
+<%= render 'shared/new_storybook_modal' %>

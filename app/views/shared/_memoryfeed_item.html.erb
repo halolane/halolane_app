@@ -1,6 +1,6 @@
-var $firstpart = '<div class="blank"></div><div class="newbox">';
-var $secondpart = '<% if memoryfeed_item.photo.file? %><span class="box-text"><%= image_tag memoryfeed_item.photo, class: "storyimage" %></br></span><% end %>';
-var $thirdpart = "<%= raw(memoryfeed_item.content) %></span><span class='box-user'>";
+var $firstpart = '<div class="newbox" id="blank"></div><div class="newbox">';
+var $secondpart = '<% if memoryfeed_item.photo.file? %><span class="box-image"><%= image_tag memoryfeed_item.photo, class: "storyimage" %></br></span><% end %>';
+var $thirdpart = "<span class='box-text'><%= raw(memoryfeed_item.content) %></span><span class='box-user'>";
 var $fourthpart = '<%= link_to gravatar_for(memoryfeed_item.user), memoryfeed_item.user %><%= link_to memoryfeed_item.user.first_name, memoryfeed_item.user %></span><span class="box-timestamp">Posted <%= time_ago_in_words(memoryfeed_item.created_at) %> ago.</span></div>';
 var $newtext = $firstpart + $secondpart + $thirdpart + $fourthpart;
 $container.isotope('insert', $($newtext));

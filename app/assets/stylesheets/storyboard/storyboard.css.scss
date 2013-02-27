@@ -25,7 +25,7 @@ background-color:#F7F5F5;
 font-family: arial;
 font-size: 15px;
 line-height: 28px;
-overflow-y:hidden;
+/*overflow-y:hidden;*/
 z-index: 10;
 }
 /* HTML5 display-role reset for older browsers */
@@ -254,46 +254,51 @@ li.storyboardlogo {
 width: 0;
 margin: 0 10%;
 margin-top: 5%;
-height: 500px;
+height: 600px;
 }
  
- .blank {
-	width: 302px;
-	height: 20px;
+#blank {
+	display: block;
+	width: 282px;
+	height: 2px;
+	margin-left: 10px;
+	margin-right: 10px;
+	border: none;
+	padding: 0;
+	color: none;
+	background: none;
+	margin-bottom: 2px;
+	border: 1px dotted red;
  }
  
 .box-title {
-font-size: 30px;
+	font-size: 30px;
 }
  
-.box {
+.newbox {
 	color: #212121;
-padding: 15px;
-/*float: left;*/
-display: inline-block;
-margin-left: 10px;
-margin-right: 10px;
-width: 250px;
-background: #ffffff;
-border: 2px solid #787878;
-margin-bottom: 20px;
+	display: inline-block;
+	padding: 15px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 250px;
+	background: #fff444;
+	border: 2px solid #787878;
+	margin-bottom: 10px;
 }
 
 .box-text {
 	font-size: 15px;
 }
 
-.newbox {
-	color: #212121;
-/*float: left;*/
-display: inline-block;
-padding: 15px;
-margin-left: 10px;
-margin-right: 10px;
-width: 250px;
-background: #fff444;
-border: 2px solid #787878;
-margin-bottom: 20px;
+.box-user {
+	display: block;
+	font-size: 12px;
+}
+
+.box-timestamp {
+	display: inline-block;
+	font-size: 10px;
 }
 
 .storyimage {

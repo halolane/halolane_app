@@ -1,38 +1,24 @@
 <% provide(:title, "Edit user") %> 
-<h1>Update your profile</h1>
-
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <% if @user.verified %>
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name %>
-
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name %>
-      <% else %>
-        <%= f.label :first_name %>
-        <%= f.text_field :first_name, :value => "", :placeholder => "First name" %>
-
-        <%= f.label :last_name %>
-        <%= f.text_field :last_name, :value => "", :placeholder => "Last name" %>
-      <% end %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirm Password" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
-
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">change</a>
-  </div>
-</div>
+<div class="tabbable tabs-left">
+  <aside>
+    <section>
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.first_name %>
+        <%= @user.last_name %>
+      </h1>
+    </section>
+  </aside>
+  <ul class="nav nav-tabs span2">
+    <li><%= link_to "Storybooks", root_url %></li>
+    <li class="active"><a href="#tab2" data-toggle="tab">Settings</a></li>
+    <!-- <li><a href="#tab3" data-toggle="tab">Notification</a></li> -->
+  </ul>
+    
+  <div class="tab-content span9">
+    <div class="tab-pane active" id="tab2">
+      <%= render 'shared/user_edit_form' %>
+    </div><!-- .tab-pane tab2 -->
+  </div><!-- .tabcontent -->
+</div><!-- .tabbable -->
+<%= render 'shared/new_storybook_modal' %>

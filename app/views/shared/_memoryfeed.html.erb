@@ -1,20 +1,26 @@
 <% if @memoryfeed_items.any? %>
 <script type="text/javascript">
-$(document).ready(function() {
+$(window).load(function() {
   var $container = $('#content');
 
-  $container.isotope({
-    filter: '*',
+  $container.imagesLoaded( function() {
+    $container.isotope({
+      itemSelector : '.newbox', 
+   /* filter: '*',*/
     layoutMode: 'masonryHorizontal',
     animationEngine: 'jquery',
     animationOptions: {
-       duration: 250,
+       duration: 1500,
        easing: 'linear',
        queue: false,
      }
-  });
 
+
+    });
+  
+  
     <%= render partial: 'shared/memoryfeed_item', collection: @memoryfeed_items %>
+    });
 });
 </script>
 <% end %>

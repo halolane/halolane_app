@@ -58,6 +58,11 @@ class UsersController < ApplicationController
         flash[:notice] = "Please change your password to validate your account."
       end
     end
+    @profile = Profile.new
+    @user = User.find(params[:id])
+    @profiles = @user.profiles_with_relationships.paginate(page: params[:page])
+
+    @memories = @user.memories.paginate(page: params[:page])
   end
 
   def update
