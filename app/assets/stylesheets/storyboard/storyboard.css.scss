@@ -204,10 +204,14 @@ li.storyboardlogo {
 	position: absolute;
 	z-index: 1;
 	float: left;
-	padding-left: 10px;
 	color: gray;
+	padding-left: 10px;
 	font-size: 1em;
 	padding-top: 7px;
+}
+
+.text-error {
+	color: red;
 }
 
 /* Adding Photo */
@@ -238,8 +242,8 @@ li.storyboardlogo {
 
 .addphoto-icon {
 	float: left;
-	padding-top: 2px;
-	padding-left: 40px;
+	padding-top: 5px;
+	padding-left: 50px;
 }
 
 .btn-post {
