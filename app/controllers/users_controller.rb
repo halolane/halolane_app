@@ -21,9 +21,11 @@ class UsersController < ApplicationController
 
   def create
     
-    @user = User.new(email: params[:user][:email], first_name: "New",
-        last_name: "User",
-        password: params[:user][:password], password_confirmation: params[:user][:password] )
+    @user = User.new(email: params[:user][:email], 
+        first_name: params[:user][:first_name],
+        last_name: params[:user][:last_name],
+        password: params[:user][:password], 
+        password_confirmation: params[:user][:password] )
     @user.verified = true
 
     @profile = Profile.new(first_name: params[:user][:profile][:first_name], last_name: params[:user][:profile][:last_name], birthday: 70.years.ago, deathday: Date.today, privacy: 1)
@@ -31,10 +33,13 @@ class UsersController < ApplicationController
     if @user.save and @profile.save
       sign_in @user
       @user.contribute!(@profile, "1", true)
+      Mailer.validate_account(current_user, root_url + "login/" + current_user.token).deliver
       flash[:success] = "Welcome to the HaloLane App!"
       redirect_to root_url + @profile.url
     elsif @user.save and not @profile.save
+      sign_in @user
       flash[:error] = "Sorry, we weren't able to save your storybook. Please fill in the following fields"
+      Mailer.validate_account(current_user, root_url + "login/" + current_user.token).deliver
       redirect_to createstorybook_url
     elsif is_a_user_already?(params[:user][:email])
       flash[:error] = "The email " + params[:user][:email] + " is already registered. Please log in"

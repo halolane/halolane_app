@@ -10,4 +10,9 @@
  *
  *= require_self
  *= require_tree .
+ *= require gallery/responsive/elastislide
+ *= require gallery/responsive
+ *= require gallery/slideshow
+ *= require gallery/galleria/classic
+ *= require gallery/touch_touch
  */

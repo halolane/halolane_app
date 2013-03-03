@@ -163,7 +163,7 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
-#profile_last_name, #user_profile_last_name, #user_email, #user_password, #profile_first_name, #user_profile_first_name {
+#profile_last_name, #user_profile_last_name, #user_email, #user_password, #profile_first_name, #user_profile_first_name, #user_first_name, #user_last_name {
   border: 1px solid #bbb;
   width: 40%;
   margin-bottom: 15px;
@@ -234,7 +234,7 @@ aside {
 .modal-backdrop {background-color: white;}
 
 .navbar-inner {
-  background-image:url(../images/themes/first_time/trim.png);
+  background-image:url(image_path('themes/first_time/trim.png'));
   background-position:0 0;
   background-repeat:repeat-x;
   background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.42,#e9e9e9),color-stop(0.71,#f6f6f6));
@@ -252,4 +252,78 @@ aside {
 .selectedItem {
   background-color:#d8dfea;
   font-weight:bold;
+}
+
+.coloredstrong {
+  font-size: 16px;
+  color: #ffd700 !important;
+  font-weight: bold;
+}
+
+.btn_yellow span {
+  background: url(image_path('btn-cta-yellow.png')) no-repeat 0 0 transparent;
+  padding: 17px 0 21px 20px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  color: #a0741f;
+  line-height: 14px;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0px 1px 1px #ffffff;
+  display: block;
+  text-transform: uppercase;
+}
+.btn_yellow {
+  background: url(image_path('btn-cta-yellow-span.png')) no-repeat top right transparent;
+  height: 52px;
+  padding-right: 20px;
+  margin-left: 250px;
+  margin-top: 20px !important;
+  display: block;
+  text-decoration: none;
+  width: 300px;
+}
+.btn_yellow:hover span {
+  background-position: 0 -52px;
+}
+.btn_yellow:hover {
+  background-position: right -52px;
+  text-decoration: none;
+}
+/*Small yellow button*/
+.btn_yellowsmall span {
+  background: url(image_path('btn-yellow-small.png')) no-repeat 0 0 transparent;
+  padding: 11px 0 13px 20px;
+  font-family: 'Lato', sans-serif;
+  font-size: 12px;
+  color: #a0741f;
+  line-height: 12px;
+  font-weight: 700;
+  text-align: center;
+  text-shadow: 0px 1px 1px #ffffff;
+  display: block;
+  text-transform: uppercase;
+}
+
+.btn_yellowsmall {
+  background: url(image_path('btn-yellow-small-span.png')) no-repeat top right transparent;
+  height: 36px;
+  padding-right: 20px;
+  margin-top: 20px !important;
+  display: block;
+  text-decoration: none;
+  float: left;
+}
+.btn_yellowsmall:hover span {
+  background-position: 0 -36px;
+}
+.btn_yellowsmall:hover {
+  background-position: right -36px;
+  text-decoration: none;
+}
+
+.button_wrapper {
+  position: relative;
+  left: 50%;
+  float: left;
 }

@@ -17,6 +17,13 @@
        <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
   	<%= yield %>
+
+    <ul class="bxslider">
+  <li><img src="/images/730_200/tree_root.jpg" title="Funky roots" /></li>
+  <li><img src="/images/730_200/hill_road.jpg" title="The long and winding road" /></li>
+  <li><img src="/images/730_200/trees.jpg" title="Happy trees" /></li>
+</ul>
+
     <%= debug(params) if Rails.env.development? %>
     
 </body>

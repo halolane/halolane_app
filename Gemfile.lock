@@ -186,6 +186,9 @@ GEM
       activesupport (= 3.2.11)
       bundler (~> 1.0)
       railties (= 3.2.11)
+    rails-gallery (0.3.1)
+      hashie (~> 1.2.0)
+      rails
     railties (3.2.11)
       actionpack (= 3.2.11)
       activesupport (= 3.2.11)
@@ -285,6 +288,7 @@ DEPENDENCIES
   paperclip (= 3.0.4)
   pg (~> 0.14.1)
   rails (= 3.2.11)
+  rails-gallery
   rspec-rails (= 2.11.0)
   sanitize-rails
   sass-rails (= 3.2.5)
