@@ -1,0 +1,19 @@
+<!-- Modal -->
+<div id="slideshow" class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="slideshowLabel" aria-hidden="true">
+   
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  
+  <div class="modal-body">
+  <% if @memoryfeed_items.any? %>
+
+
+	  <div class="flexslider">
+		  <ul class="slides">
+		    <%= render partial: 'slideshowfeed_item', collection: @memoryfeed_items %>
+		  </ul>
+		</div>
+	<% else %>
+		You have no memories for <%= @profile.first_name %>
+	<% end %>
+  </div>
+</div>

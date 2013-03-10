@@ -110,17 +110,14 @@ table {
 	}
 }
 
-li.iconaddcontributor {
-	margin: 4px 0px;
-	width: 38px;
-	height: 38px;
+li.playslideshow {
+	padding-top: 10px;
+	padding-right: 10px;
 }
 
-a.iconaddcontributorlink {
-	margin: 4px 0px;
-	padding: 0px 0px;
-	width: 38px;
-	height: 38px;
+li.iconaddcontributor {
+	padding-top: 7px;
+	padding-right: 10px;
 }
 
 li.storyboardlogo {
@@ -128,7 +125,6 @@ li.storyboardlogo {
 	width: 150px;
 	height: 38px;
 }
-
 
 /* Message box */
 
@@ -359,4 +355,43 @@ height: 600px;
           transition-duration: 0s;
 }
 
+/* slideshow */
+.modal-body {
+	max-height: 800px;
+}
 
+
+.flexslider .slides {width: 100%; }
+#slideshow { 
+	position:fixed;
+	top: 250px; 
+	left: 280px;
+	overflow:hidden; 
+	height:100%; 
+	width:100%;
+
+	.flexslider {
+
+	}
+	li {
+		position: relative;
+		float: none;
+	}
+
+
+	.slides {
+		position:relative;
+	}
+	.slideshow-content {
+
+		font-style:italic;
+	}
+
+	.slideshow-user {
+		display: block;
+		font-style:italic;
+		float: right;
+		padding-right: 10px;
+	}
+
+}

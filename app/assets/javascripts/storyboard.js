@@ -9,15 +9,25 @@ $(document).ready(function(){
 	$(".tooltip").tooltip();
   $("a[rel=tooltip]").tooltip();
 
-	$(".iconaddcontributor").fadeTo("fast", 0.6);
-	$('.iconaddcontributor').hover(function() {
+ 
+
+	$(".iconaddcontributor, .playslideshow").fadeTo("fast", 0.6);
+	$(".iconaddcontributor, .playslideshow").hover(function() {
 		$(this).fadeTo('fast',1);
 	}, function() {
    	$(this).fadeTo("fast", 0.6);
  	});
-	$('.iconaddcontributor').click(function() {
+	$(".iconaddcontributor, .playslideshow").click(function() {
 		$(this).fadeTo('fast',1);
 	});
+
+	$(".playslideshow").click(function() {
+		$('#slideshow').removeClass("hide");
+	 	$('.flexslider').flexslider({
+	    	animation: "slide"
+		});
+	});
+
 
 	$('#newmemory').collapse("hide");
 
