@@ -9,7 +9,7 @@ class Profile < ActiveRecord::Base
   has_many :users, through: :relationships
   has_many :invitations, dependent: :destroy
 
-  before_save :setprettyurl
+  before_create :setprettyurl
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
@@ -53,7 +53,7 @@ class Profile < ActiveRecord::Base
     def setprettyurl
       newurl = self.first_name.downcase + self.last_name.downcase
       i = 0
-      while Profile.exists?(newurl) do
+      while Profile.exists?(url: newurl) do
         i = i + 1
         newurl = newurl + i.to_s
       end
