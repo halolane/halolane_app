@@ -10,8 +10,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @profile = Profile.find(params[:id])
+    relationship = params[:relationship][:description]
     if @profile.update_attributes(params[:profile])
       flash[:success] = "Storybook updated"
+      current_user.updateRelationship!(@profile, relationship)
       redirect_back_or @profile
     else
       render 'edit'

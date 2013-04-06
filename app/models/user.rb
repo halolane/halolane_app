@@ -41,6 +41,11 @@ class User < ActiveRecord::Base
     @relationship.toggle!(:profile_admin) if admin 
   end
 
+  def updateRelationship!(profile, description = "")
+    @relationship = Relationship.find_by_profile_id(profile.id)
+    @relationship.description = description
+  end
+
   def contributing?(profile)
     relationships.find_by_profile_id(profile.id)
   end
