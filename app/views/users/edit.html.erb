@@ -17,6 +17,11 @@
     
   <div class="tab-content span9">
     <div class="tab-pane active" id="tab2">
+      <% if current_user.verified == false %>
+        <h2>
+          Please update your setting to save your storybooks.
+        </h2>
+      <% end %>
       <%= render 'shared/user_edit_form' %>
     </div><!-- .tab-pane tab2 -->
   </div><!-- .tabcontent -->

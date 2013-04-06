@@ -21,6 +21,12 @@
               </a>
           </li>
           <li class="storyboardlogo _showLogo"><%= link_to image_tag("/assets/logo.png"), root_path, id: "logo" %> </li>
+
+          <% if current_user.verified == false %>
+            <li>
+              <%= link_to "Save", edit_user_path(current_user) %>
+            </li>
+          <% end %>
         </ul>
       </nav>
     </div>
