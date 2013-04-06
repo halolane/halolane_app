@@ -12,7 +12,8 @@
 class Memory < ActiveRecord::Base
   
   attr_accessible :content, :profile_id, :photo
-  has_attached_file :photo
+  has_attached_file :photo,
+                    :default_url => ':rails_root/assets/:class/:id_partition/:style/:filename'
 
   belongs_to :user
   belongs_to :profile
@@ -20,7 +21,7 @@ class Memory < ActiveRecord::Base
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true
-  validates :content, :length => { :maximum => 255 }
+  validates :content, :length => { :maximum => 500 }
   
   validates_attachment :photo,
   :content_type => { :content_type => /image/ },

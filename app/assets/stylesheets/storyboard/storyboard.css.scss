@@ -22,9 +22,10 @@ time, mark, audio, video {
 
 body {
 background-color:#F7F5F5;
+background-image:url('/images/textured_paper.png');
 font-family: arial;
 font-size: 15px;
-line-height: 28px;
+line-height: 20px;
 /*overflow-y:hidden;*/
 z-index: 10;
 }
@@ -110,17 +111,14 @@ table {
 	}
 }
 
-li.iconaddcontributor {
-	margin: 4px 0px;
-	width: 38px;
-	height: 38px;
+li.playslideshow {
+	padding-top: 10px;
+	padding-right: 10px;
 }
 
-a.iconaddcontributorlink {
-	margin: 4px 0px;
-	padding: 0px 0px;
-	width: 38px;
-	height: 38px;
+li.iconaddcontributor {
+	padding-top: 7px;
+	padding-right: 10px;
 }
 
 li.storyboardlogo {
@@ -128,7 +126,6 @@ li.storyboardlogo {
 	width: 150px;
 	height: 38px;
 }
-
 
 /* Message box */
 
@@ -204,10 +201,14 @@ li.storyboardlogo {
 	position: absolute;
 	z-index: 1;
 	float: left;
-	padding-left: 10px;
 	color: gray;
+	padding-left: 10px;
 	font-size: 1em;
 	padding-top: 7px;
+}
+
+.text-error {
+	color: red;
 }
 
 /* Adding Photo */
@@ -238,8 +239,8 @@ li.storyboardlogo {
 
 .addphoto-icon {
 	float: left;
-	padding-top: 2px;
-	padding-left: 40px;
+	padding-top: 5px;
+	padding-left: 50px;
 }
 
 .btn-post {
@@ -269,6 +270,7 @@ height: 600px;
 	background: none;
 	margin-bottom: 2px;
 	/*border: 1px dotted red;*/
+	box-shadow: none;
  }
  
 .box-title {
@@ -282,9 +284,10 @@ height: 600px;
 	margin-left: 10px;
 	margin-right: 10px;
 	width: 250px;
-	background: #ffffff;
-	border: 2px solid #787878;
-	margin-bottom: 10px;
+	background: #eee;
+	border: 1px solid #ddd;
+	margin-bottom: 5px;
+	box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
 }
 
 .box-text {
@@ -292,6 +295,9 @@ height: 600px;
 }
 
 .box-user {
+	border-top: 1px solid #ccc;
+	padding-top: 10px;
+	margin-top: 10px;
 	display: block;
 	font-size: 12px;
 }
@@ -355,4 +361,43 @@ height: 600px;
           transition-duration: 0s;
 }
 
+/* slideshow */
+.modal-body {
+	max-height: 800px;
+}
 
+
+.flexslider .slides {width: 100%; }
+#slideshow { 
+	position:fixed;
+	top: 250px; 
+	left: 280px;
+	overflow:hidden; 
+	height:100%; 
+	width:100%;
+
+	.flexslider {
+
+	}
+	li {
+		position: relative;
+		float: none;
+	}
+
+
+	.slides {
+		position:relative;
+	}
+	.slideshow-content {
+
+		font-style:italic;
+	}
+
+	.slideshow-user {
+		display: block;
+		font-style:italic;
+		float: right;
+		padding-right: 10px;
+	}
+
+}

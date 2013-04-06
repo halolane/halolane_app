@@ -17,13 +17,10 @@
 			  	<% end %>
 	  		</p>
 	  	</h2> 
-	  	<h2>My information<p>
-		  	<%= f.text_field :email, :placeholder => "My email address" %>
-		  	<%= f.password_field :password, :placeholder => "My password" %>
-	  	</p></h2>
-			
-		  <%= f.submit "Create Your Life Storybook", class: "btn btn-large btn-primary" %>
-		<% end %>
+	  	
+			<p>
+			<a href="#userinfo" class="btn_yellow" data-toggle="modal" data-keyboard="true"><span>Create your storybook for free</span></a></p>
+		  
 		<hr />
 		<p>
 			or<br/>
@@ -33,5 +30,21 @@
 			</a>
 		</p>
 	 
+	</div>
+	<div id="userinfo" class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="userinfoLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="userinfoLabel">Just one more step</h3>
+	  </div>
+	  <div class="modal-body">
+	    <h2>My information<p>
+	    		<%= f.text_field :first_name, :placeholder => "First name" %> </br>
+	    		<%= f.text_field :last_name, :placeholder => "Last name" %></br>
+			  	<%= f.text_field :email, :placeholder => "My email address" %></br>
+			  	<%= f.password_field :password, :placeholder => "My password" %></br>
+		  	</p></h2>
+		  	<%= f.submit "Get Started", class: "btn btn-large btn-primary" %>
+			<% end %>
+	  </div>
 	</div>
 <% end %>

@@ -19,6 +19,7 @@ gem "cocaine", "= 0.3.2"
 gem 'masonry-rails'
 gem 'modernizr-rails'
 gem 'sanitize-rails', :require => 'sanitize/rails'
+gem 'rails-gallery'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

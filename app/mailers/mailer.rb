@@ -14,7 +14,7 @@ class Mailer < ActionMailer::Base
     subject = @user.first_name + " invites you in a digital life story book of " + full_name
     @url = url
     mail( :from => @user.email, 
-          :to => @invitation.recipient_email, 
+          :to => @user.email, 
           :subject => subject )
     invitation.update_attribute(:sent_at, Time.now)
   end
@@ -22,6 +22,6 @@ class Mailer < ActionMailer::Base
   def validate_account(user, url)
     @user = user
     @url = url
-    mail(:to => @user.email , :subject => 'Your temporary password to HaloLane')
+    mail(:from => 'info@halolane.com', :to => @user.email , :subject => 'Welcome to HaloLane')
   end
 end

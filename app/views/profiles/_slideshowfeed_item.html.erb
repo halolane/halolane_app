@@ -1,0 +1,16 @@
+<li>
+	<% if slideshowfeed_item.photo.file? %>
+		<span class="slideshow-image">
+			<%= image_tag slideshowfeed_item.photo, class: "storyimage" %></br>
+		</span>
+	<% end %>
+
+	<% if slideshowfeed_item.content != "" %>
+		<span class="slideshow-content">
+				<p>"<%= raw(slideshowfeed_item.content) %>"</p>
+		</span>
+	<% end %>
+	<span class="slideshow-user">
+		<%= slideshowfeed_item.user.first_name %>
+	</span>
+</li>

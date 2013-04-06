@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209220922) do
+ActiveRecord::Schema.define(:version => 20130301010107) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -81,6 +81,12 @@ ActiveRecord::Schema.define(:version => 20130209220922) do
   add_index "relationships", ["profile_id"], :name => "index_relationships_on_profile_id"
   add_index "relationships", ["user_id", "profile_id"], :name => "index_relationships_on_user_id_and_profile_id", :unique => true
   add_index "relationships", ["user_id"], :name => "index_relationships_on_user_id"
+
+  create_table "storybook_questions", :force => true do |t|
+    t.text     "question"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "email"
