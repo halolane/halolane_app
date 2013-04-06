@@ -26,14 +26,6 @@
                     	      :end_year => Date.today.year,
                     	      :default => Date.new(1950, 01, 01) } %>
       </p>
-
-      <p>
-		  	<%= f.label :deathday, "Date of passing: "%>
-		  	<%= f.date_select :deathday, 
-		                    { :order => [:month, :day, :year], 
-		                      :start_year => 1900 } %>
-    	</p>
-
     	
   		<p>
   			<label for="relationship_description">This person is my</label>

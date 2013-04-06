@@ -30,6 +30,11 @@
 	    <h3 id="userinfoLabel">Just one more step</h3>
 	  </div>
 	  <div class="modal-body">
+	  	<h2>This person is my</h2>
+	  	<p>
+	  	<%= select "relationship","description", 
+  				Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
+  		</p>
 	    <h2>My information<p>
 	    		<%= f.text_field :first_name, :placeholder => "First name" %> </br>
 	    		<%= f.text_field :last_name, :placeholder => "Last name" %></br>

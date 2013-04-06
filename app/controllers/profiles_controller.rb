@@ -60,11 +60,11 @@ class ProfilesController < ApplicationController
 
     if params[:profile][:birthday] == nil
       @profile = Profile.new(first_name: params[:profile][:first_name], last_name: params[:profile][:last_name], birthday: 70.years.ago, deathday: Date.today, privacy: 2)
-      relationship = "1"   #set default relationship to 1, friend
     else
     	@profile = Profile.new(params[:profile])
-      relationship params[:relationship][:description]
     end
+
+    relationship = params[:relationship][:description]
 
   	if @profile.save
       current_user.contribute!(@profile, relationship, true)

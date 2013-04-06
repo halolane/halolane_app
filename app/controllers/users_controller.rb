@@ -29,10 +29,10 @@ class UsersController < ApplicationController
     @user.verified = true
 
     @profile = Profile.new(first_name: params[:user][:profile][:first_name], last_name: params[:user][:profile][:last_name], birthday: 70.years.ago, deathday: Date.today, privacy: 1)
-  
+    relationship = params[:relationship][:description]
     if @user.save and @profile.save
       sign_in @user
-      @user.contribute!(@profile, "1", true)
+      @user.contribute!(@profile, relationship, true)
       Mailer.validate_account(current_user, root_url + "login/" + current_user.token).deliver
       flash[:success] = "Welcome to the HaloLane App!"
       redirect_to root_url + @profile.url
