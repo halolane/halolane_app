@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    "application-frontpage", media: "all" %>
+  <%= javascript_include_tag "application" %>
+  <script type="text/javascript">
+      $(window).load(function(){
+          $('#newstorybookmodal').modal('show');
+      });
+  </script>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>  <!-- partial app/views/layouts/_shim.html.erb -->
+  <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+  
+</head>
+<body>
+  <%= render 'layouts/home_header' %>
+  <
+  <div class="container">
+    <% flash.each do |key, value| %>
+       <div class="alert alert-<%= key %>"><%= value %></div>
+    <% end %>
+  	<%= yield %>
+      </div>
+</body>
+</html>
