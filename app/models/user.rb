@@ -54,6 +54,10 @@ class User < ActiveRecord::Base
     relationships.find_by_profile_id(profile.id).destroy
   end
 
+  def memorycount
+    Memory.where("user_id = ?", id).count
+  end
+
   private
 
     def create_remember_token

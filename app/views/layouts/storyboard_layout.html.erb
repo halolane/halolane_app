@@ -4,7 +4,15 @@
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application-storyboard", media: "all" %>
   <%= javascript_include_tag "application" %>
- 
+
+  <% if current_user.memorycount == 0 %>
+    <script type="text/javascript">
+      $(window).load(function(){
+          $('#newuserstorybook').modal('show');
+      });
+    </script>
+  <% end %>
+
   
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>  <!-- partial app/views/layouts/_shim.html.erb -->

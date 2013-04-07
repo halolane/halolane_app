@@ -1,0 +1,27 @@
+<!-- Modal -->
+<div id="newuserstorybook" class="modal fade hide" tabindex="-1" role="dialog" aria-labelledby="newuserstorybookLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Skip this step</button>
+    Welcome to your FamilyTales storybook for <%= @profile.first_name + " " + @profile.last_name %>
+  </div>  
+  <div class="modal-body">
+	  <p>Let's begin your first story about <%= @profile.first_name %>
+	  	. What's your earliest memory of <%= @profile.first_name %>?
+	  </p>
+	  <p>(250 characters max)</p>
+	  <div class="messageBox">
+			<%= form_for @memory, :html => { :multipart => true } do |f| %>
+		  <%= render 'shared/error_messages', object: f.object %>
+			<input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
+			<input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
+			<div class="composerBox"><%= f.text_area :content, rows:"5", maxlength:"250" %></div>
+			<span id="memorycounter"></span>
+			<p>You can also add photos of <%= @profile.first_name %>. Let's add one now.</p>
+			<p>
+			<p><%= f.file_field :photo%></p>
+			</p>
+			<%= f.submit "Let's get started!", class: "btn btn-medium btn-primary"%>	
+		</div>
+  </div>
+</div>
+<% end %>

@@ -9,7 +9,7 @@
 			  <input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
 			  <input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
 			  <div class="composerBox hidden">
-			  	<%= f.text_area :content, placeholder: StorybookQuestion.find(rand(StorybookQuestion.count)).question.gsub("@profile.first_name", @profile.first_name), rows:"1", cols:"1"%>
+			  	<%= f.text_area :content, placeholder: StorybookQuestion.find(rand(StorybookQuestion.count)).question.gsub("@profile.first_name", @profile.first_name), rows:"1", cols:"1", maxlength:"250"%>
 			  	
 			  </div>
 				
