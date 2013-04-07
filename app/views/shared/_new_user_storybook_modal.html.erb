@@ -1,12 +1,14 @@
-<!-- Modal -->
+
 <div id="newuserstorybook" class="modal fade hide" tabindex="-1" role="dialog" aria-labelledby="newuserstorybookLabel" aria-hidden="true">
   <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">Skip this step</button>
-    Welcome to your FamilyTales storybook for <%= @profile.first_name + " " + @profile.last_name %>
+<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+  	<h3 id="newuserstorybookLabel">Welcome to FamilyTales!</h3>
   </div>  
   <div class="modal-body">
-	  <p>Let's begin your first story about <%= @profile.first_name %>
-	  	. What's your earliest memory of <%= @profile.first_name %>?
+  	  	<p>
+		Welcome to your FamilyTales storybook for <%= @profile.first_name + " " + @profile.last_name %>!
+  	</p></br>
+	  <p>Let's begin your first story about <%= @profile.first_name %>. What's your earliest memory of <%= @profile.first_name %>?
 	  </p>
 	  <p>(250 characters max)</p>
 	  <div class="messageBox">
