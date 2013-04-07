@@ -31,9 +31,9 @@
           </li>
         -->
           <% if current_user.verified == false %>
-            <li>
+            <li class="iconaddcontributor">
               <button type="button">
-              <%= link_to "Save", edit_user_path(current_user) %>
+              <%= link_to "Save", edit_user_path(current_user), rel:"tooltip", title:"Save this storybook" %>
             </button>
             </li>
           <% end %>
