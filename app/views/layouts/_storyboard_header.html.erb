@@ -22,7 +22,10 @@
                 <%= image_tag("/assets/static/icons/addcollaborator.png", width: "28px", height: "28px") %>
               </a>
           </li>
-          <li class="storyboardlogo _showLogo"><%= link_to image_tag("/assets/logo.png"), root_path, id: "logo" %> </li>
+          <li class="storyboardlogo _showLogo">
+            <!-- <%= link_to image_tag("/assets/logo.png"), root_path, id: "logo" %> -->
+            <%= link_to "FamilyTales", root_path, id:"logo" %>
+          </li>
           <!--
           <li class="newuserstorybook _showAddCollaborator">
               <a href="#newuserstorybook" class="newuserstorybooklink" rel="tooltip" data-placement="bottom" title="New box" data-toggle="modal" data-keyboard="true">

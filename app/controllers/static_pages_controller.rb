@@ -1,7 +1,11 @@
 class StaticPagesController < ApplicationController
   def home
-  	@user = User.new
+  	@user = current_user
   	@profile = Profile.new
+
+    @profiles = @user.profiles_with_relationships.paginate(page: params[:page])
+
+    @memories = @user.memories.paginate(page: params[:page])
 
     if signed_in?
       render :layout => "application"

@@ -22,7 +22,7 @@
           </button>
         </a>
       </p></br>
-      <% if @user.profiles_with_relationships.any? %>
+      <% if current_user.profiles_with_relationships.any? %>
         <h5>Storybooks that you are contributing to
           <a href="#newstorybook" class="newstorybooklink" rel="tooltip" data-placement="bottom" title="Create a new storybook" data-toggle="modal" data-keyboard="true">
             <i class="icon-plus"></i>
