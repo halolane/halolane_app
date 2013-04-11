@@ -86,9 +86,10 @@ class UsersController < ApplicationController
         flash[:success] = "Account successfully validated"
       end
       sign_in @user
-      redirect_back_or @user
+      redirect_back_or edit_user_path(current_user)
     else
-      render 'edit'
+      redirect_to edit_user_path(current_user)
+      flash[:error] = "Please enter the missing fields."
     end
   end
 

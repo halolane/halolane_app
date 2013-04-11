@@ -2,7 +2,12 @@ class StaticPagesController < ApplicationController
   def home
   	@user = User.new
   	@profile = Profile.new
-    render :layout => "home_layout"
+
+    if signed_in?
+      render :layout => "application"
+    else
+      render :layout => "home_layout"
+    end
     
   	if signed_in? 
   		@user = current_user

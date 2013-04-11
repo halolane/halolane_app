@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
       current_user.updateRelationship!(@profile, relationship)
       redirect_back_or @profile
     else
-      render 'edit'
+      redirect_to edit_profile_path(@profile)
     end
   end
 
