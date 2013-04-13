@@ -3,7 +3,7 @@
 	<div class="messageBoxContainer collapsed">
 		<div class="messageSection">
 			<div class="messageBox"> 
-				<%= form_for @memory, :html => { :multipart => true } do |f| %>
+				<%= form_for @memory, :html => { :multipart => true }, :remote => true do |f| %>
 			  <%= render 'shared/error_messages', object: f.object %>
 			  
 			  <input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />

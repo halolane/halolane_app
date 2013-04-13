@@ -1,23 +1,16 @@
 class StaticPagesController < ApplicationController
   def home
-  	@user = current_user
-  	@profile = Profile.new
-
-    @profiles = @user.profiles_with_relationships.paginate(page: params[:page])
-
-    @memories = @user.memories.paginate(page: params[:page])
-
+  	
     if signed_in?
+      @user = current_user
+      @memories = @user.memories.paginate(page: params[:page])
+      @profiles = @user.profiles_with_relationships.paginate(page: params[:page])
+      @memory = current_user.memories.build 
       render :layout => "application"
     else
+      @user = User.new
       render :layout => "home_layout"
     end
-    
-  	if signed_in? 
-  		@user = current_user
-  		@profiles = @user.profiles_with_relationships.paginate(page: params[:page])
-  		@memory = current_user.memories.build 
-  	end
   	
   end
 
