@@ -21,7 +21,7 @@ class Memory < ActiveRecord::Base
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true
-  validates :content, :length => { :maximum => 500 }
+  validates :content, :length => { :maximum => 250 }
   
   validates_attachment :photo,
   :content_type => { :content_type => /image/ },

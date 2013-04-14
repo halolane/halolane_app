@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
   	
     if signed_in?
       @user = current_user
+      @profile = Profile.new
       @memories = @user.memories.paginate(page: params[:page])
       @profiles = @user.profiles_with_relationships.paginate(page: params[:page])
       @memory = current_user.memories.build 

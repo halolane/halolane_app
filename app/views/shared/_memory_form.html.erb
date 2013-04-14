@@ -2,35 +2,45 @@
 
 	<div class="messageBoxContainer collapsed">
 		<div class="messageSection">
+		
 			<div class="messageBox"> 
 				<%= form_for @memory, :html => { :multipart => true }, :remote => true do |f| %>
 			  <%= render 'shared/error_messages', object: f.object %>
-			  
+		  
 			  <input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
 			  <input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
+		  <div class="field">
 			  <div class="composerBox hidden">
 			  	<%= f.text_area :content, placeholder: StorybookQuestion.find(rand(StorybookQuestion.count)).question.gsub("@profile.first_name", @profile.first_name), rows:"1", cols:"1", maxlength:"250"%>
 			  	
 			  </div>
+
+				<div class="addphoto hidden">
+					<%= f.file_field :photo%>
+				</div>
+
+			</div>
 				
 				<div id="messageTools" class="_addLinkBlock messageTools hidden" >
 					<div class="controls">
 						<span id="memorycounter">
 						</span>
 						<span class="addphoto-icon hidden">
+							
 						 <%= image_tag("/assets/static/icons/addphoto.png", width: "28px", height: "28px", title: "Add an image", rel: "tooptip") %>
 						</span>
 						<span class="btn-post hidden">
-							<%= f.submit "Post", class: "btn btn-medium btn-primary"%>
+							<div class="actions">
+								<%= f.submit "Post", class: "btn btn-medium btn-primary"%>
+							</div>
 						</span>
 					</div>
 				</div>
 				
 			</div>
-			<div class="addphoto hidden">
-					<%= f.file_field :photo%>
-				</div>
 			
+			
+
 			<% end %>
 		</div>
 	</div>

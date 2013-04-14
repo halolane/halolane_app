@@ -20,6 +20,7 @@ gem 'masonry-rails'
 gem 'modernizr-rails'
 gem 'sanitize-rails', :require => 'sanitize/rails'
 gem 'rails-gallery'
+gem "remotipart", "~> 1.0.5"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

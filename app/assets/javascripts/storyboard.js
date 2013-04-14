@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+
+
 	$('a').tooltip({
   	placement : 'bottom'
   });
@@ -10,6 +12,7 @@ $(document).ready(function(){
   $("a[rel=tooltip]").tooltip();
 
  
+
 
 	$(".iconaddcontributor, .playslideshow").fadeTo("fast", 0.6);
 	$(".iconaddcontributor, .playslideshow").hover(function() {
@@ -39,7 +42,7 @@ $(document).ready(function(){
 			$('.addphoto-icon').removeClass("hidden");
 			$('.messageTools').removeClass("hidden");
 			if ($('#memory_content').val() == ""){
-				$('#memorycounter').text('500');
+				$('#memorycounter').text('250');
 			}
 		}
 	});
@@ -69,13 +72,20 @@ $(document).ready(function(){
  		$('.addphoto').toggleClass("hidden");
  	});
 
-	$('#memory_content').keyup(function () {
-	    var left = 500 - $(this).val().length;
-	    if (left < 0) {
-	        $('#memorycounter').addClass("text-error");
-	    }
-	    $('#memorycounter').text(left);
+	$('#memory_content').keypress(function (e) {
+		if((e.which == 13) || (e.which < 0x20)) {
+      e.preventDefault();
+      return false;
+    }
+    
+    var left = 250 - $(this).val().length;
+    if (left < 0) {
+        $('#memorycounter').addClass("text-error");
+    }
+    $('#memorycounter').text(left);
+	    
 	});
+
 
 	var $container = $('#content');
 
