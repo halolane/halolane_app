@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.11'
 gem 'bootstrap-sass', '2.1'
 gem 'bcrypt-ruby', '3.0.1'
-gem 'faker'
+gem 'faker', '1.0.1'
 gem 'will_paginate', '3.0.3'
 gem 'bootstrap-will_paginate', '0.0.6'
 gem 'jquery-rails', '2.0.2'
@@ -14,13 +14,13 @@ gem 'omniauth-facebook'
 gem 'omnicontacts'
 gem 'mongrel', '1.2.0.pre2'
 gem "authbuttons-rails"
-gem "paperclip" 
-gem "cocaine" 
+gem "paperclip", "= 3.0.4" 
+gem "cocaine", "= 0.3.2"
 gem 'masonry-rails'
 gem 'modernizr-rails'
 gem 'sanitize-rails', :require => 'sanitize/rails'
 gem 'rails-gallery'
-gem "remotipart"
+gem "remotipart", "~> 1.0.5"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
