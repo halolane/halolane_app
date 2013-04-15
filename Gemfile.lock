@@ -274,7 +274,7 @@ DEPENDENCIES
   cucumber-rails (= 1.2.1)
   database_cleaner (= 0.7.0)
   factory_girl_rails (= 4.1.0)
-  faker (= 1.0.1)
+  faker
   friendly_id (~> 4.0.9)
   guard-spork (= 1.2.0)
   jquery-rails (= 2.0.2)
