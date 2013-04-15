@@ -7,6 +7,12 @@
  *
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
+ html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+}
 .clearfix {
   *zoom: 1;
 }
@@ -203,6 +209,70 @@ textarea {
     page-break-after: avoid;
   }
 }
+ul#social {
+    position: fixed;
+    margin: 0px;
+    padding: 0px;
+    top: 15%;
+    left: 0px;
+    list-style: none;
+    z-index:9999;
+}
+ul#social li {
+    width: 100px;
+}
+ul#social li a {
+    display: block;
+    margin-left: -2px;
+    width: 90px;
+    height: 70px;
+    background-color:#676060;
+    background-repeat:no-repeat;
+    background-position:center center;
+    border:1px solid #5e5757;
+    -moz-border-radius:0px 10px 10px 0px;
+    -webkit-border-bottom-right-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -khtml-border-bottom-right-radius: 10px;
+    -khtml-border-top-right-radius: 10px;
+    -webkit-box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    3px 3px 5px rgba(50, 50, 50, 0.75);
+	box-shadow:         3px 3px 5px rgba(50, 50, 50, 0.75);
+}
+ul#social .twitter a{
+    background-image: url(/images/twitter.png);
+}
+ul#social .fb a{
+    background-image: url(/images/facebook.png);
+}
+ul#social .contact a{
+    background-image: url(/images/mail.png);
+}
+#topright {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	height: 200px;
+	width: 190px;
+	background: url(/images/betatag3.gif) no-repeat;
+	z-index: 9999;
+}
+.splash img {
+	margin-top: 5%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 100%;
+    height: auto;
+    width: auto\9; /* ie8 */
+	margin-bottom: 5%;
+}
+.splash {
+	margin-left: auto;
+	margin-right: auto;
+	width: 50%;
+	
+}
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -210,7 +280,7 @@ body {
   line-height: 20px;
   color: #333333;
   background-color: #ffffff;
-  background-image:url('/images/burgundybg_txt_1420.png');
+  background-image:url('/images/burgundybg.jpg');
 	background-size: 100% auto;
 }
 a {
@@ -2191,6 +2261,9 @@ input[type="button"].btn-block {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
   border-color: #0044cc #0044cc #002a80;
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 3px 3px 5px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    3px 3px 5px rgba(50, 50, 50, 0.75);
+  box-shadow:         3px 3px 5px rgba(50, 50, 50, 0.75);
   *background-color: #0044cc;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
@@ -3096,6 +3169,7 @@ input[type="submit"].btn.btn-mini {
   border-radius: 0 0 6px 6px;
 }
 .nav {
+  z-index: 100;
   margin-left: 0;
   margin-bottom: 20px;
   list-style: none;
@@ -4702,27 +4776,13 @@ a.thumbnail:focus {
   filter: alpha(opacity=80);
 }
 .modal {
-  position: fixed;
-  top: 10%;
-  left: 50%;
+  position: relative;
+  display: block;
+  clear: both;
+  margin-top: 3%;
+  text-align: center;
   z-index: 1050;
-  width: 560px;
-  margin-left: -280px;
-  /*background-color: #ffffff;
-  border: 1px solid #999;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  *border: 1px solid #999;*/
-  /* IE6-7 */
-
-/*  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
-  -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
-  -webkit-background-clip: padding-box;
-  -moz-background-clip: padding-box;
-  background-clip: padding-box; */
+  max-width: 100%;
   outline: none;
 }
 .modal.fade {
@@ -4738,7 +4798,6 @@ a.thumbnail:focus {
 .modal-header {
   text-align: center;
   padding: 9px 15px;
-  border-top: 1px solid #eee;
   font-size: 25px;  
   font-family: 'Myriad-Pro', 'Myriad', helvetica, arial, sans-serif;  
   text-shadow: 2px 3px 3px #292929;  
@@ -4757,6 +4816,9 @@ a.thumbnail:focus {
   max-height: 400px;
   padding: 15px;
   text-align: center;
+  font-size: 16px;
+  color: #ffffff;
+  text-shadow: 1px 1px 1px #000;
 }
 .modal-form {
   margin-bottom: 0;
@@ -6307,4 +6369,9 @@ button.close {
     height: auto !important;
     overflow: visible !important;
   }
+}
+.addthis_toolbox {
+	position:absolute;
+    bottom:0px;
+	margin-left: 15px;
 }

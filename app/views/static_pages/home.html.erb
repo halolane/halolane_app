@@ -2,52 +2,66 @@
 	<%= render 'shared/user_frontpage' %>
 <% else %>
 
-	<div class="page1">
-
-		<div class="container">
-			<%= form_for(@user) do |f| %>
-			<%= render 'shared/error_messages', object: f.object %>
-			<div id="newstorybookmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-			  <div class="modal-header">
-				<h3 id="myModalLabel">Which family member do you want to start a story about?</h3>
-			  </div>
-			  <div class="modal-body">
-				<div class="userinput">
-					<%= f.fields_for :profile do |p| %>
-				  	<%= p.text_field :first_name, :placeholder => "First name" %>
-				  	<%= p.text_field :last_name, :placeholder => "Last name" %>
-			  	<% end %>
-				</div>
-			  </div>
-			  <div class="modal-footer">
-				<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#userinfo">OK</button>
-			  </div>
-			</div>  
+	<div class="container">
+		
+		<%= form_for(@user) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
+		<div id="newstorybookmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+		  <div class="modal-header">
+			<h3 id="myModalLabel">Which family member do you want to start a story about?</h3>
+		  </div>
+		  <div class="modal-body">
+			<div class="userinput">
+				<%= f.fields_for :profile do |p| %>
+			  	<%= p.text_field :first_name, :placeholder => "First name" %>
+			  	<%= p.text_field :last_name, :placeholder => "Last name" %>
+		  	<% end %>
+			</div>
+		  </div>
+		  <div class="modal-footer">
+			<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#userinfo">Next</button>
+		  </div>
+		</div>  
 			 
-			<div id="userinfo" class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="userinfoLabel" aria-hidden="true" data-backdrop="false">
-			  <div class="modal-header">
-			    <h3 id="myModalLabel">This person is my 
-			  	<%= select "relationship","description", 
-		  				Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
-		  		<h3>
-			  </div>
-			  <div class="modal-body">
-			  	
-
-		  		<!--
-			    <h2>My information<p>
-			    		<%= f.text_field :first_name, :placeholder => "First name" %> </br>
-			    		<%= f.text_field :last_name, :placeholder => "Last name" %></br>
-					  	<%= f.text_field :email, :placeholder => "My email address" %></br>
-					  	<%= f.password_field :password, :placeholder => "My password" %></br>
-				  	</p></h2>
-				  -->
-			  </div>
-			  <div class="modal-footer">
-				  	<%= f.submit "Start my storybook", class: "btn btn-primary", width:"40px" %>
-					<% end %>
-			  </div>
+		<div id="userinfo" class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="userinfoLabel" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+		  <div class="modal-header">
+		    <h3 id="myModalLabel">This person is my 
+		  	<%= select "relationship","description", 
+					Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
+		 	<h3>
+		  </div>
+		  <div class="modal-body">
+		  	
+		  	<!--
+			<h2>My information<p>
+			   		<%= f.text_field :first_name, :placeholder => "First name" %> </br>
+			   		<%= f.text_field :last_name, :placeholder => "Last name" %></br>
+				  	<%= f.text_field :email, :placeholder => "My email address" %></br>
+				  	<%= f.password_field :password, :placeholder => "My password" %></br>
+			  	</p></h2>
+			  -->
+		  </div>
+		  <div class="modal-footer">
+			  	<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#betaModal">One more thing ...</button>
+		  </div>
+		</div>
+		
+		<div id="betaModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="startModalLabel" aria-hidden="true" data-keyboard="false">
+			<div class="modal-header">
+				FamilyTales is proud to be in beta mode!
+			</div>
+			<div class="modal-body">
+				But that also means that some things may not work as expected. We are working hard to make FamilyTales a smooth
+				and fun experience.<br><br>
+				If you happen to notice any issues, or have any ideas on what would make FamilyTales even better, please contact
+				us via our feedback form below or <a href="mailto:familytalesus@gmail.com">email us</a>. Your input is valuable to us!<br>
+			</div>
+			<div class="modal-footer">
+				<%= f.submit "Start my storybook", class: "btn btn-primary", width:"40px" %>
+				<% end %>
 			</div>
 		</div>
+		
 	</div>
+	
 <% end %>
