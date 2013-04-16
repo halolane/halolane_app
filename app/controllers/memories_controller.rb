@@ -13,7 +13,6 @@ class MemoriesController < ApplicationController
     respond_to do | format |   
       if @memory.save
         format.html { redirect_to root_url + @profile.url, notice: 'Post was successfully updated.' } 
-        format.json { render json: @profile, status: :created, location: @profile }
         format.js 
       else
         format.html { redirect_to root_url + @profile.url, notice: 'Unable to load memory.' } 
