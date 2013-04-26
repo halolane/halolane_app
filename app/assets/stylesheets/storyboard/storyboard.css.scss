@@ -145,9 +145,11 @@ li.storyboardlogo {
 	}
 }
 
+
 .messageBox {
 	background-color: #F7F8F9;
 }
+
 
 .messageBoxContainer.expanded {
 	z-index: 0;
@@ -157,13 +159,25 @@ li.storyboardlogo {
 	height: 207px;
 	.messageSection {
 		height: 138px;
+		outline: 1px solid gray;
 
+		.messageBox {
+			height: 140px;
+			outline: 1px solid gray;
+		}
+
+		.messageBox.withphoto {
+			height: 209px;
+			outline: 1px solid gray;
+		}
 	}
 
-	.messageBox {
-		height: 140px;
+	.messageSection.withphoto {
+		height: 210px;
 		outline: 1px solid gray;
 	}
+
+	
 	.composerBox textarea  {
 		height: 100px;
 		margin: 0px 0px;
@@ -178,6 +192,7 @@ li.storyboardlogo {
 	-moz-box-shadow: 10px 2px 50px rgba(0,0,0,0.5);
 	-webkit-box-shadow:10px 2px 50px rgba(0,0,0,0.5);
 	box-shadow:10px 2px 50px rgba(0,0,0,0.5);
+			
 }
 
 
@@ -198,13 +213,12 @@ li.storyboardlogo {
 }
 
 #memorycounter {
-	position: absolute;
 	z-index: 1;
 	float: left;
 	color: gray;
 	padding-left: 10px;
 	font-size: 1em;
-	padding-top: 7px;
+	padding-top: 9px;
 }
 
 .text-error {
@@ -217,9 +231,7 @@ li.storyboardlogo {
 	background-color: #d9dbdd;
 	display: block;
 	float: left;
-	-moz-box-shadow: 10px 2px 50px rgba(0,0,0,0.5);
-	-webkit-box-shadow:10px 2px 50px rgba(0,0,0,0.5);
-	box-shadow:10px 2px 50px rgba(0,0,0,0.5);
+
 	width: 543px;
 	outline: 1px solid gray;
 
@@ -240,7 +252,7 @@ li.storyboardlogo {
 .addphoto-icon {
 	float: left;
 	padding-top: 5px;
-	padding-left: 50px;
+	padding-left: 10px;
 }
 
 .btn-post {

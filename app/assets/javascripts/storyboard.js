@@ -35,8 +35,11 @@ $(document).ready(function(){
 	$('#newmemory').collapse("hide");
 
 	$(".composerBox").click(function(e) {
-		if($('.messageBoxContainer').hasClass('collapsed')){    
-	    $('.messageBoxContainer').addClass("expanded");
+		
+		if($('.messageBoxContainer').hasClass('collapsed')){   
+			$('.messageBox').removeClass("withphoto");
+		$('.messageSection').removeClass ("withphoto");
+	    	$('.messageBoxContainer').addClass("expanded");
 			$('.messageBoxContainer').removeClass("collapsed");
 			$('.btn-post').removeClass("hidden");
 			$('.addphoto-icon').removeClass("hidden");
@@ -48,8 +51,10 @@ $(document).ready(function(){
 	});
 
 	$('.messageBoxContainer').bind('clickoutside', function (event) {
+		$('.messageBox').removeClass("withphoto");
+		$('.messageSection').removeClass ("withphoto");
 		if($('.messageBoxContainer').hasClass('expanded')){    
-	    $('.messageBoxContainer').removeClass("expanded");
+	    	$('.messageBoxContainer').removeClass("expanded");
 			$('.messageBoxContainer').addClass("collapsed");
 			$('.btn-post').addClass("hidden");
 			$('.addphoto-icon').addClass("hidden");
@@ -70,6 +75,8 @@ $(document).ready(function(){
  	$('.addphoto-icon').click(function() {
  		$('.addphoto-icon').fadeTo('fast',1);
  		$('.addphoto').toggleClass("hidden");
+ 		$('.messageSection').toggleClass ("withphoto");
+ 		$('.messageBox').toggleClass ("withphoto");
  	});
 
 	$('#memory_content').keypress(function (e) {
