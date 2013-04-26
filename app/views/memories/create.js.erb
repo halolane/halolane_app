@@ -4,7 +4,10 @@ $(document).ready(function(){
 		<% if params[:memory][:photo] == nil and params[:memory][:content] == "" %>
 			alert("Missing memory and photo!");
 		<% else %>  
-		  $('.messageBoxContainer').removeClass("expanded");
+			var $newMemoryQuestion = <%= raw (StorybookQuestion.find(rand(StorybookQuestion.count)).question.gsub("@profile.first_name", @profile.first_name)).to_json %>;
+			var $newMemoryForm = '<textarea cols="1" id="memory_content" maxlength="250" name="memory[content]" placeholder="' + $newMemoryQuestion + '"" rows="1"></textarea>';
+			$('div.composerBox').html($newMemoryForm);
+		  	$('.messageBoxContainer').removeClass("expanded");
 			$('.messageBoxContainer').addClass("collapsed");
 			$('.btn-post').addClass("hidden");
 			$('.addphoto-icon').addClass("hidden");
