@@ -129,6 +129,11 @@ li.storyboardlogo {
 
 /* Message box */
 
+.newmemorybtn {
+	margin-left: 20px;
+	margin-right: 300px;
+}
+
 .messageBoxContainer.collapsed {
 	z-index: 0;
 	display: block;
@@ -185,6 +190,13 @@ li.storyboardlogo {
 	}
 }
 
+.composerBox textarea  {
+	height: 100px;
+	margin: 0px 0px;
+	padding: 5px 10px;
+	resize: none;
+}
+
 .messageBoxContainer .messageSection {
 	background-color: #d9dbdd;
 	width: 543px; 
@@ -232,7 +244,7 @@ li.storyboardlogo {
 	display: block;
 	float: left;
 
-	width: 543px;
+	width: 530px;
 	outline: 1px solid gray;
 
 	input {

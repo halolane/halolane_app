@@ -4,7 +4,9 @@
     <div class="container">
       <nav>
         <ul class="nav btn-topbar-left">
-          <li> <%= render 'shared/memory_form' %> </li>
+          <li><div class="newmemorybtn" >
+            <button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal">Add a new memory</button></div></li>
+
           <li><div class="topbarname"><h4>
             <%= link_to  @profile.first_name + " " + @profile.last_name, edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
           </h4></div></li>
@@ -33,12 +35,13 @@
               </a>
           </li>
         -->
-          <% if current_user.verified == false %>
+          <!--<% if current_user.verified == false %>
             <li class="iconaddcontributor">
               <button type="button">
               <%= link_to "Save", edit_user_path(current_user), rel:"tooltip", title:"Save this storybook" %>
             </button>
             </li>
+          -->
           <% end %>
         </ul>
       </nav>

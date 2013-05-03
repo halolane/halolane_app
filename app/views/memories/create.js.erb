@@ -7,14 +7,30 @@ $(document).ready(function(){
 			var $newMemoryQuestion = <%= raw (StorybookQuestion.find(rand(StorybookQuestion.count)).question.gsub("@profile.first_name", @profile.first_name)).to_json %>;
 			var $newMemoryForm = '<textarea cols="1" id="memory_content" maxlength="250" name="memory[content]" placeholder="' + $newMemoryQuestion + '"" rows="1"></textarea>';
 			$('div.composerBox').html($newMemoryForm);
+		  	/* Old code saved when the memory box creation was on the upper left side
 		  	$('.messageBoxContainer').removeClass("expanded");
 			$('.messageBoxContainer').addClass("collapsed");
 			$('.btn-post').addClass("hidden");
 			$('.addphoto-icon').addClass("hidden");
 			$('.messageTools').addClass("hidden");
-			$('.addphoto').addClass("hidden");
+			$('.addphoto').addClass("hidden"); */
 			$("#memory_content").val('');
 			$("#memory_photo").val('');
+			var left = 250; 	
+			$('#memorycounter').text('250');
+			$('#memory_content').keypress(function (e) {
+				if((e.which == 13) || (e.which < 0x20)) {
+			      e.preventDefault();
+			      return false;
+			    }
+			    
+			    var left = 250 - $(this).val().length;
+			    if (left < 0) {
+			        $('#memorycounter').addClass("text-error");
+			    }
+			    $('#memorycounter').text(left);
+				    
+			});
 
 			var $content = <%= raw @memory.content.to_json %>;
 

@@ -1,0 +1,46 @@
+<!-- Modal -->
+<div id="newmemorymodal" class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="newMemoryLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="newMemoryLabel">Write a new story about <%= @profile.first_name %>!</h3>
+  </div>
+  <div class="modal-body">
+    <div class="messageBox"> 
+			<%= form_for @memory, :html => { :multipart => true }, :remote => true do |f| %>
+		  <%= render 'shared/error_messages', object: f.object %>
+	  
+		  <input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
+		  <input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
+		  <div class="field">
+			  <div class="composerBox expanded">
+			  	<%= f.text_area :content, placeholder: StorybookQuestion.find(rand(StorybookQuestion.count)).question.gsub("@profile.first_name", @profile.first_name), rows:"1", cols:"10", maxlength:"250"%>
+			  </div>
+
+				<div class="addphoto hidden">
+					<%= f.file_field :photo%>
+				</div>
+
+			</div>
+		</div>
+		
+  </div>
+  <div class="modal-footer">
+		<div id="messageTools" class="_addLinkBlock messageTools" >
+
+			<div class="controls">
+				<span id="memorycounter">
+				</span>
+				<span class="addphoto-icon">
+					
+				 <%= image_tag("/assets/static/icons/addphoto.png", width: "28px", height: "28px", title: "Add an image", rel: "tooptip") %>
+				</span>
+				<span class="btn-post">
+					<div class="actions">
+						<%= f.submit "Post", class: "btn btn-medium btn-primary"%>
+					</div>
+				</span>
+			</div>
+			<% end %>
+		</div>
+  </div>
+</div>

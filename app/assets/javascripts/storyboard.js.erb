@@ -33,7 +33,7 @@ $(document).ready(function(){
 
 
 	$('#newmemory').collapse("hide");
-
+	/* Old code saved when adding a new memory was a box in the left top side
 	$(".composerBox").click(function(e) {
 		
 		if($('.messageBoxContainer').hasClass('collapsed')){   
@@ -65,7 +65,7 @@ $(document).ready(function(){
 		}
   })
 
-
+*/
 	$('.addphoto-icon ').hover(function() {
 		$(this).fadeTo('fast',1);
 	}, function() {
@@ -75,24 +75,24 @@ $(document).ready(function(){
  	$('.addphoto-icon').click(function() {
  		$('.addphoto-icon').fadeTo('fast',1);
  		$('.addphoto').toggleClass("hidden");
- 		$('.messageSection').toggleClass ("withphoto");
- 		$('.messageBox').toggleClass ("withphoto");
+ 		//$('.messageSection').toggleClass ("withphoto");
+ 		//$('.messageBox').toggleClass ("withphoto");
  	});
 
 
-
+ 	$('#memorycounter').text('250');
 	$('#memory_content').keypress(function (e) {
 		if((e.which == 13) || (e.which < 0x20)) {
-      e.preventDefault();
-      return false;
-    }
-    
-    var left = 250 - $(this).val().length;
-    if (left < 0) {
-        $('#memorycounter').addClass("text-error");
-    }
-    $('#memorycounter').text(left);
+	      e.preventDefault();
+	      return false;
+	    }
 	    
+	    var left = 250 - $(this).val().length;
+	    if (left < 0) {
+	        $('#memorycounter').addClass("text-error");
+	    }
+	    $('#memorycounter').text(left);
+		    
 	});
 
 
