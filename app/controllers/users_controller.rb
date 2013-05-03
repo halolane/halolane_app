@@ -22,6 +22,11 @@ class UsersController < ApplicationController
   def create
     
     # For sign up with user
+    #@user = User.new(email: emailtoken, 
+    #    first_name: "Guest",
+    #    last_name: "Editor",
+    #    password: passwordtoken, 
+    #    password_confirmation: passwordtoken )
     #@user = User.new(email: params[:user][:email], 
     #    first_name: params[:user][:first_name],
     #    last_name: params[:user][:last_name],
@@ -29,11 +34,11 @@ class UsersController < ApplicationController
     #    password_confirmation: params[:user][:password] )
     emailtoken = Digest::SHA1.hexdigest([Time.now, rand].join) + "@example.com"
     passwordtoken = Digest::SHA1.hexdigest([Time.now, rand].join)
-    @user = User.new(email: emailtoken, 
-        first_name: "Guest",
-        last_name: "Editor",
-        password: passwordtoken, 
-        password_confirmation: passwordtoken )
+    @user = User.new(email: params[:user][:email], 
+       first_name: params[:user][:first_name],
+       last_name: params[:user][:last_name],
+       password: params[:user][:password], 
+       password_confirmation: params[:user][:password] )
     @user.verified = false
 
     @profile = Profile.new(first_name: params[:user][:profile][:first_name], last_name: params[:user][:profile][:last_name], birthday: 70.years.ago, deathday: Date.today, privacy: 2)

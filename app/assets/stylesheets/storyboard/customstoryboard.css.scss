@@ -1,8 +1,10 @@
 @import "bootstrap";
-
+@import "font-awesome";
 /* mixins, variables, etc. */
 
 $grayMediumLight: #eaeaea;
+$grayLighter: #eaeaea;
+$grayLight: #eaeaea;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 

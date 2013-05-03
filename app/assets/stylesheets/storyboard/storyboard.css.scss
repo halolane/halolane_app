@@ -241,7 +241,7 @@ li.storyboardlogo {
 }
 
 
-.addphoto.hidden, .btn-post.hidden, .addphoto-icon.hidden, #messageTools.hidden {
+.addphoto.hidden, .btn-post.hidden, .addphoto-icon.hidden, #messageTools.hidden, .skipquestion.hidden {
 	display: none;
 }
 
@@ -253,6 +253,15 @@ li.storyboardlogo {
 	float: left;
 	padding-top: 5px;
 	padding-left: 10px;
+}
+
+.skipquestion {
+	position:relative;
+	float: right;
+	margin-top: -25px;
+	margin-right: 20px;
+	height: 32px;
+	height: 32px;
 }
 
 .btn-post {

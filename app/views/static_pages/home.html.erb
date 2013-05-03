@@ -6,20 +6,37 @@
 		
 		<%= form_for(@user) do |f| %>
 		<%= render 'shared/error_messages', object: f.object %>
-		<div id="newstorybookmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+		<div id="newusermodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false" data-keyboard="false">
+		  <div class="modal-header">
+			<h3 id="myModalLabel">Sign up now to start your family storybook. It's free.</h3>
+		  </div>
+		  <div class="modal-body">
+			<div class="userinput">
+			  	<%= f.text_field :first_name, :placeholder => "Your first name" %>
+			  	<%= f.text_field :last_name, :placeholder => "Your last name" %>
+			  	<%= f.text_field :email, :placeholder => "Your email" %>
+			  	<%= f.password_field :password, :placeholder => "Your new password" %>
+			</div>
+		  </div>
+		  <div class="modal-footer">
+			<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#newstorybookmodal">Step 1 of 3</button>
+		  </div>
+		</div>  
+
+		<div id="newstorybookmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModal2Label" aria-hidden="true" data-backdrop="false" data-keyboard="false">
 		  <div class="modal-header">
 			<h3 id="myModalLabel">Which family member do you want to start a story about?</h3>
 		  </div>
 		  <div class="modal-body">
 			<div class="userinput">
 				<%= f.fields_for :profile do |p| %>
-			  	<%= p.text_field :first_name, :placeholder => "First name" %>
-			  	<%= p.text_field :last_name, :placeholder => "Last name" %>
+			  	<%= p.text_field :first_name, :placeholder => "Your family member's first name" %>
+			  	<%= p.text_field :last_name, :placeholder => "Your family member's last name" %>
 		  	<% end %>
 			</div>
 		  </div>
 		  <div class="modal-footer">
-			<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#userinfo">Next</button>
+			<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#userinfo">Step 2 of 3</button>
 		  </div>
 		</div>  
 			 
@@ -30,19 +47,8 @@
 					Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
 		 	<h3>
 		  </div>
-		  <div class="modal-body">
-		  	
-		  	<!--
-			<h2>My information<p>
-			   		<%= f.text_field :first_name, :placeholder => "First name" %> </br>
-			   		<%= f.text_field :last_name, :placeholder => "Last name" %></br>
-				  	<%= f.text_field :email, :placeholder => "My email address" %></br>
-				  	<%= f.password_field :password, :placeholder => "My password" %></br>
-			  	</p></h2>
-			  -->
-		  </div>
 		  <div class="modal-footer">
-			  	<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#betaModal">One more thing ...</button>
+			  	<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#betaModal">Start my family storybook now!</button>
 		  </div>
 		</div>
 		

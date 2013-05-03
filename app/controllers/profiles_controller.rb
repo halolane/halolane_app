@@ -21,6 +21,24 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def updatequestion
+
+    if params[:url] != nil
+      @profile = Profile.find_by_url(params[:url])
+    else
+      @profile = Profile.find(params[:id])
+    end
+
+    respond_to do | format |   
+      if @memory.save
+        format.html { redirect_to root_url + @profile.url, notice: 'Post was successfully updated.' } 
+        format.js 
+      else
+        format.html { redirect_to root_url + @profile.url, notice: 'Unable to load memory.' } 
+      end
+    end 
+  end
+
   def show
 
     if params[:url] != nil

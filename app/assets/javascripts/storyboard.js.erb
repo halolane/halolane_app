@@ -14,7 +14,7 @@ $(document).ready(function(){
  
 
 
-	$(".iconaddcontributor, .playslideshow").fadeTo("fast", 0.6);
+	$(".iconaddcontributor, .playslideshow, .skipquestion").fadeTo("fast", 0.6);
 	$(".iconaddcontributor, .playslideshow").hover(function() {
 		$(this).fadeTo('fast',1);
 	}, function() {
@@ -78,6 +78,8 @@ $(document).ready(function(){
  		$('.messageSection').toggleClass ("withphoto");
  		$('.messageBox').toggleClass ("withphoto");
  	});
+
+
 
 	$('#memory_content').keypress(function (e) {
 		if((e.which == 13) || (e.which < 0x20)) {

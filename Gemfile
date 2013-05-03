@@ -21,6 +21,7 @@ gem 'modernizr-rails'
 gem 'sanitize-rails', :require => 'sanitize/rails'
 gem 'rails-gallery'
 gem "remotipart", "~> 1.0.5"
+gem "font-awesome-rails"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
