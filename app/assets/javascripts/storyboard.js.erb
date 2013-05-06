@@ -29,39 +29,30 @@ $(document).ready(function(){
 	});
 
 	$('#newmemory').collapse("hide");
-	/* Old code saved when adding a new memory was a box in the left top side
-	$(".composerBox").click(function(e) {
-		
-		if($('.messageBoxContainer').hasClass('collapsed')){   
-			$('.messageBox').removeClass("withphoto");
-		$('.messageSection').removeClass ("withphoto");
-	    	$('.messageBoxContainer').addClass("expanded");
-			$('.messageBoxContainer').removeClass("collapsed");
-			$('.btn-post').removeClass("hidden");
-			$('.addphoto-icon').removeClass("hidden");
-			$('.messageTools').removeClass("hidden");
-			if ($('#memory_content').val() == ""){
-				$('#memorycounter').text('250');
-			}
-		}
+	
+	$('[placeholder]').focus(function() {
+	  var input = $(this);
+	  if (input.val() == input.attr('placeholder')) {
+	    input.val('');
+	    input.removeClass('placeholder');
+	  }
+	}).blur(function() {
+	  var input = $(this);
+	  if (input.val() == '' || input.val() == input.attr('placeholder')) {
+	    input.addClass('placeholder');
+	    input.val(input.attr('placeholder'));
+	  }
+	}).blur();
+
+	$('[placeholder]').parents('form').submit(function() {
+	  $(this).find('[placeholder]').each(function() {
+	    var input = $(this);
+	    if (input.val() == input.attr('placeholder')) {
+	      input.val('');
+	    }
+	  })
 	});
-
-	$('.messageBoxContainer').bind('clickoutside', function (event) {
-		$('.messageBox').removeClass("withphoto");
-		$('.messageSection').removeClass ("withphoto");
-		if($('.messageBoxContainer').hasClass('expanded')){    
-	    	$('.messageBoxContainer').removeClass("expanded");
-			$('.messageBoxContainer').addClass("collapsed");
-			$('.btn-post').addClass("hidden");
-			$('.addphoto-icon').addClass("hidden");
-			$('.messageTools').addClass("hidden");
-		}
-		if(!$('.addphoto').hasClass('hidden')){
-			$('.addphoto').addClass("hidden");
-		}
-  })
-
-*/
+	
 	$('.addphoto-icon ').hover(function() {
 		$(this).fadeTo('fast',1);
 	}, function() {

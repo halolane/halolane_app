@@ -11,46 +11,46 @@
 			<h3 id="myModalLabel">Sign up now to start your family storybook. It's free.</h3>
 		  </div>
 		  <div class="modal-body">
+
 			<div class="userinput">
-			  	<%= f.text_field :first_name, :placeholder => "Your first name" %>
-			  	<%= f.text_field :last_name, :placeholder => "Your last name" %>
-			  	<%= f.text_field :email, :placeholder => "Your email" %>
+			  	<%= f.text_field :first_name, :placeholder => "Your first name" %></br>
+			  	<%= f.text_field :last_name, :placeholder => "Your last name" %></br>
+			  	<%= f.text_field :email, :placeholder => "Your email" %></br>
 			  	<%= f.password_field :password, :placeholder => "Your new password" %>
 			</div>
 		  </div>
 		  <div class="modal-footer">
-			<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#newstorybookmodal">Step 1 of 3</button>
+			<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#newstorybookmodal">Step 1 of 2</button>
 		  </div>
 		</div>  
 
 		<div id="newstorybookmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModal2Label" aria-hidden="true" data-backdrop="false" data-keyboard="false">
 		  <div class="modal-header">
-			<h3 id="myModalLabel">Which family member do you want to start a story about?</h3>
+				<h3 id="myModalLabel">I want to start a storybook for my</h3>
 		  </div>
 		  <div class="modal-body">
-			<div class="userinput">
-				<%= f.fields_for :profile do |p| %>
-			  	<%= p.text_field :first_name, :placeholder => "Your family member's first name" %>
-			  	<%= p.text_field :last_name, :placeholder => "Your family member's last name" %>
-		  	<% end %>
-			</div>
+		  	
+		  	<div class="relationshipdesc">
+					<h3 id="myModalLabel">
+				  	<%= select "relationship","description", 
+							Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
+				 	</p>
+				</div>
+				<div class="userinput">
+					<p>
+					<%= f.fields_for :profile do |p| %>
+
+				  	<%= p.text_field :first_name, :placeholder => "Their first name" %></br>
+				  	<%= p.text_field :last_name, :placeholder => "Their last name" %>
+				  	</p>
+			  	<% end %>
+				</div>
+				
 		  </div>
 		  <div class="modal-footer">
-			<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#userinfo">Step 2 of 3</button>
+			<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#betaModal">Start my family storybook now!</button>
 		  </div>
 		</div>  
-			 
-		<div id="userinfo" class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="userinfoLabel" aria-hidden="true" data-backdrop="false" data-keyboard="false">
-		  <div class="modal-header">
-		    <h3 id="myModalLabel">This person is my 
-		  	<%= select "relationship","description", 
-					Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
-		 	<h3>
-		  </div>
-		  <div class="modal-footer">
-			  	<button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#betaModal">Start my family storybook now!</button>
-		  </div>
-		</div>
 		
 		<div id="betaModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="startModalLabel" aria-hidden="true" data-keyboard="false">
 			<div class="modal-header">
