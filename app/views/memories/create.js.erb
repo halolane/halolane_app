@@ -41,6 +41,7 @@ $(document).ready(function(){
 			// var newItems = $('<div class="newbox" id="blank"></div><div class="newbox"><% if @memory.photo.file? %><span class="box-image"><%= image_tag @memory.photo, class: "storyimage" %></br></span><% end %><span class="box-text"><%= @memory.content %></span><span class="box-user"><!-- <%= link_to gravatar_for(@memory.user), @memory.user %> --><%= link_to @memory.user.first_name, @memory.user %></span><span class="box-timestamp">Posted <%= time_ago_in_words(@memory.created_at) %> ago.</span></div>');
 
 			//$('#content').prepend(newItems).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
+			$('#newmemorymodal').modal('hide');
 		<% end %>
 	<% end %>
 });
