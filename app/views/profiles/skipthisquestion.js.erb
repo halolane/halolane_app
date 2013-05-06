@@ -1,0 +1,5 @@
+$(document).ready(function(){
+	alert "Hi I'm here";
+	var $newMemoryQuestion = "<p>" + <%= raw (StorybookQuestion.find(Random.new.rand(10)).question.gsub("@profile.first_name", @profile.first_name)).to_json %> + "</p>";
+    $('div.memoryquestion').html($newMemoryQuestion);
+});

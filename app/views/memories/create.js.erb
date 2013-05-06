@@ -4,9 +4,8 @@ $(document).ready(function(){
 		<% if params[:memory][:photo] == nil and params[:memory][:content] == "" %>
 			alert("Missing memory and photo!");
 		<% else %>  
-			var $newMemoryQuestion = <%= raw (StorybookQuestion.find(rand(StorybookQuestion.count)).question.gsub("@profile.first_name", @profile.first_name)).to_json %>;
-			var $newMemoryForm = '<textarea cols="1" id="memory_content" maxlength="250" name="memory[content]" placeholder="' + $newMemoryQuestion + '"" rows="1"></textarea>';
-			$('div.composerBox').html($newMemoryForm);
+			var $newMemoryQuestion = "<p>" + <%= raw (StorybookQuestion.find(rand(StorybookQuestion.count)).question.gsub("@profile.first_name", @profile.first_name)).to_json %> + "</p>";
+			$('div.memoryquestion').html($newMemoryQuestion);
 		  	/* Old code saved when the memory box creation was on the upper left side
 		  	$('.messageBoxContainer').removeClass("expanded");
 			$('.messageBoxContainer').addClass("collapsed");
