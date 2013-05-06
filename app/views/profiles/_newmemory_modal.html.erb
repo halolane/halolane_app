@@ -13,7 +13,7 @@
 		  <input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
 		  <div class="field">
 		  	<div class="memoryquestion">
-		  		<p><%= StorybookQuestion.find(rand(StorybookQuestion.count)).question.gsub("@profile.first_name", @profile.first_name) %></p>
+		  		<p><%= StorybookQuestion.find(rand(StorybookQuestion.count) + StorybookQuestion.first.id).question.gsub("@profile.first_name", @profile.first_name) %></p>
 		  	</div>
 		  	<div class="skipquestion">
 		  		<a rel="tooltip" title="Skip this question"><i class="icon-forward"></i></a>

@@ -12,12 +12,12 @@
       });
     </script>
   <% end %>
-  <script type="text/javascript">
 
-      function skipQuestion() {         
-        var $newMemoryQuestion = "<p>" + <%= raw (StorybookQuestion.find(rand(StorybookQuestion.count)).question.gsub("@profile.first_name", @profile.first_name)).to_json %> + "</p>";
-        $('div.memoryquestion').html($newMemoryQuestion);
-      }
+  <script type="text/javascript">
+    function skipQuestion() {
+      var $newMemoryQuestion = "<p>" + <%= raw (StorybookQuestion.find(rand(StorybookQuestion.count) + StorybookQuestion.first.id).question.gsub("@profile.first_name", @profile.first_name)).to_json %> + "</p>";
+      $('div.memoryquestion').html($newMemoryQuestion);
+    }
   </script>
   
   <%= csrf_meta_tags %>
