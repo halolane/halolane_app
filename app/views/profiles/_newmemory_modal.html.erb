@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div id="newmemorymodal" class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="newMemoryLabel" aria-hidden="true">
+<div id="newmemorymodal" class="modal hide fade newmemorymodal" tabindex="-1" role="dialog" aria-labelledby="newMemoryLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="newMemoryLabel">Write a new story about <%= @profile.first_name %>!</h3>
@@ -23,18 +23,18 @@
 		  		<p>The questions are here to guide you write stories about <%= @profile.first_name %>. Feel free to write your own or skip the questions!</p>
 		  	</div>
 		  	</br>
-			  <div class="composerBox expanded">
-			  	<%= f.text_area :content, placeholder: "Write a new memory about " + @profile.first_name + "...", rows:"1", cols:"10", maxlength:"250"%>
-			  </div>
-
+				<div class="composerBox expanded">
+				  	<%= f.text_area :content, placeholder: "Write a new story about " + @profile.first_name + "...", rows:"1", cols:"10", maxlength:"250"%>
+				</div>
+			
 				<div class="addphoto hidden">
 					<%= f.file_field :photo%>
 				</div>
-
 			</div>
 		</div>
+	</div>
+
 		
-  </div>
   <div class="modal-footer">
 		<div id="messageTools" class="_addLinkBlock messageTools" >
 

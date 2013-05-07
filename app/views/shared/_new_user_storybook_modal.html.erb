@@ -1,28 +1,19 @@
 
-<div id="newuserstorybook" class="modal fade hide" tabindex="-1" role="dialog" aria-labelledby="newuserstorybookLabel" aria-hidden="true">
-  <div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-  	<h3 id="newuserstorybookLabel">Welcome to FamilyTales!</h3>
+<div id="newuserstorybook" class="modal fade newuserstorybook" tabindex="-1" role="dialog" aria-labelledby="newuserstorybookLabel" aria-hidden="true">
+  <div class="welcome">
+  	<%= image_tag("/images/coachmarks/welcome.png") %>
   </div>  
-  <div class="modal-body">
-  	  	<p>
-		Welcome to your FamilyTales storybook for <%= @profile.first_name + " " + @profile.last_name %>!
-  	</p></br>
-	  <p>Let's begin your first story! If a close friend were to ask you "tell me about <%= @profile.first_name %>", how would you answer?
-	  </p></br>
-	  <div class="messageBox">
-			<%= form_for @memory, :html => { :multipart => true } do |f| %>
-		  <%= render 'shared/error_messages', object: f.object %>
-			<input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
-			<input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
-			<div class="composerBox"><%= f.text_area :content, rows:"5", maxlength:"250" %></div>
-			<span id="memorycounter"></span>
-			<p>You can also add photos of <%= @profile.first_name %>. Let's add one now.</p></br>
-			<p>
-			<p><%= f.file_field :photo%></p>
-			</p>
-			<%= f.submit "Save my first story!", class: "btn btn-medium btn-primary"%>	
-		</div>
+<!--   
+  <div class="view">
+  	<%= image_tag("/images/coachmarks/view.png") %>
+  </div> -->
+  <div class="addmemory">
+  	<%= image_tag("/images/coachmarks/memory.png") %>
+  </div>
+  <div class="edit">
+  	<%= image_tag("/images/coachmarks/edit.png") %>
+  </div>
+  <div class="invite">
+  	<%= image_tag("/images/coachmarks/invite.png") %>
   </div>
 </div>
-<% end %>

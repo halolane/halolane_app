@@ -233,7 +233,10 @@ aside {
 }
 
 /* bootstrap mods */
-.modal-backdrop {background-color: white;}
+.modal-backdrop {
+  opacity: 100;
+}
+
 
 .navbar-inner {
   background-image:url(../images/themes/first_time/trim.png);

@@ -454,3 +454,60 @@ height: 600px;
 	}
 
 }
+
+/* new storybook modal */
+.newuserstorybook {
+
+	padding-left: -300px;
+	margin-left: -700px;
+	margin-top: -375px;
+	background-color: transparent !important;
+	color: transparent !important;
+	border:none !important;
+	border: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	overflow: hidden !important;
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	background-clip: none !important;
+	outline: none !important;
+	width: 900px !important;
+
+}
+
+.newuserstorybook {
+	.welcome {
+		position: fixed;
+		margin-left: 350px;
+		margin-top: 250px;
+	}
+	.addmemory {
+		position: fixed;
+		float: left;
+		margin-left: 100px;
+		margin-top: 25px;
+	}
+	.edit {
+		position: fixed;
+		float: left;
+		margin-left: 500px;
+		margin-top: 25px;
+	}
+	.invite {
+		position: fixed;
+		float: left;
+		margin-left: 720px;
+		margin-top: 0px;
+	}
+}
+
+.newmemorymodal {
+	.picture {
+		position: fixed;
+		float: left;
+		margin-left: -33px;
+		margin-top: -15px;
+	}
+}
