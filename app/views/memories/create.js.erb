@@ -3,7 +3,7 @@ $(document).ready(function(){
 		<% if params[:memory][:photo] == nil and params[:memory][:content] == "" %>
 			alert("Missing memory and photo!");
 		<% else %>  
-			var $newMemoryQuestion = "<p>" + <%= raw (StorybookQuestion.find(rand(StorybookQuestion.count)).question.gsub("@profile.first_name", @profile.first_name)).to_json %> + "</p>";
+			var $newMemoryQuestion = "<p>" + <%= raw (StorybookQuestion.find(rand(StorybookQuestion.count) + StorybookQuestion.first.id).question.gsub("@profile.first_name", @profile.first_name)).to_json %> + "</p>";
 			$('div.memoryquestion').html($newMemoryQuestion);
 		  	/* Old code saved when the memory box creation was on the upper left side
 		  	$('.messageBoxContainer').removeClass("expanded");
