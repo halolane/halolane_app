@@ -33,7 +33,6 @@ class ProfilesController < ApplicationController
     
     @invitation = Invitation.find_by_token(params[:invitation_token])
     #@profile = Profile.find_by_id(params[:id])
-    
     #
     # privacy == 2 means that only related family and friends can view and post in profile
     #
