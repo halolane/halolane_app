@@ -476,30 +476,12 @@ height: 600px;
 	width: 900px !important;
 
 }
-
-.newuserstorybook {
-	.welcome {
-		position: fixed;
-		margin-left: 350px;
-		margin-top: 250px;
-	}
-	.addmemory {
+.newmemorymodal {
+	.picture {
 		position: fixed;
 		float: left;
-		margin-left: 100px;
-		margin-top: 25px;
-	}
-	.edit {
-		position: fixed;
-		float: left;
-		margin-left: 500px;
-		margin-top: 25px;
-	}
-	.invite {
-		position: fixed;
-		float: left;
-		margin-left: 720px;
-		margin-top: 0px;
+		margin-left: -33px;
+		margin-top: -15px;
 	}
 }
 
@@ -510,4 +492,52 @@ height: 600px;
 		margin-left: -33px;
 		margin-top: -15px;
 	}
+}
+
+
+.welcome-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: -375px;
+	margin-left: 300px;
+	z-index: 1050;
+}
+
+.edit-coachmark {
+		position: absolute;
+		float: left;
+		margin-top: -625px;
+		margin-left: 500px;
+		z-index: 1050;
+	}
+.invite-coachmark {
+	position: relative;
+	float: left;
+	margin-top: -650px;
+	margin-left: 50%;
+	z-index: 1050;
+}
+
+.addmemory-coachmark {
+		position: absolute;
+		float: left;
+		margin-top: -625px;
+		margin-left: 50px;
+		z-index: 1050;
+	}
+
+.modal-backdrop, .modal-backdrop.fade.in {
+    filter: alpha(opacity=50);
+    -khtml-opacity: 0.5;
+    -moz-opacity: 0.5;
+    opacity: 0.5;
+ }
+
+.modal-backdrop {
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }

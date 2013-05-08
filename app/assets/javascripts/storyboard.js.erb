@@ -88,8 +88,18 @@ $(document).ready(function(){
 		    
 	});
 
-	$('#newuserstorybook').click(function() {
+	$('.coachmarks').click(function() {
 		$('.modal.in').modal('hide') 
+	});
+
+
+	$('#newuserstorybook').on('show', function () {
+	    $('.coachmarks').removeClass('hide');
+	});
+
+	$('#newuserstorybook').on('hide', function () {
+	    $('.coachmarks').addClass('hide');
+	
 	});
 
 	var $container = $('#content');

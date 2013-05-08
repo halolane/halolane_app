@@ -1,8 +1,8 @@
 <% provide(:title, @profile.first_name + " " + @profile.last_name) %>
-
 <div id="content">
     <%= render 'shared/memoryfeed' %>
 </div>
+<%= render 'coachmarks' %>
 <%= render 'invitation_modal' %>
 <%= render 'newmemory_modal' %>
 <%= render 'shared/new_user_storybook_modal' %>
