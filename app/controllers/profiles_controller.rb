@@ -30,32 +30,31 @@ class ProfilesController < ApplicationController
     end
 
 
-    
-    @invitation = Invitation.find_by_token(params[:invitation_token])
-    #@profile = Profile.find_by_id(params[:id])
-    #
-    # privacy == 2 means that only related family and friends can view and post in profile
-    #
-    #if @profile != nil 
-      if ( @profile.privacy != 2 ) or 
-         ( @profile.privacy == 2 and signed_in? and has_relationship?(@profile.id, current_user.id) )
+    if params[:url] == "favicon"
+      redirect_back_or root_url
+    else
+      if params[:invitation_token] != nil
+        @invitation = Invitation.find_by_token(params[:invitation_token])
+        if is_invited?(params[:invitation_token]) and @invitation.active == true
+          createnewuser
+          showprofile
+          render :layout => "storyboard_layout"
+        elsif is_invited?(params[:invitation_token]) and @invitation.active == false
+          flash[:error] = "The invitation link has expired."
+          redirect_to root_url
+        else
+          flash[:error] = "You are not authorized to view that profile"
+          redirect_to root_url
+        end
+      elsif (( @profile.privacy != 2 ) or 
+         ( @profile.privacy == 2 and signed_in? and has_relationship?(@profile.id, current_user.id) ))
         showprofile
         render :layout => "storyboard_layout"
-      elsif is_invited?(params[:invitation_token]) and @invitation.active == true
-        createnewuser
-        showprofile
-        render :layout => "storyboard_layout"
-      elsif is_invited?(params[:invitation_token]) and @invitation.active == false
-        flash[:error] = "The invitation link has expired."
-        redirect_to root_url
       else
         flash[:error] = "You are not authorized to view that profile"
         redirect_to root_url
       end
-    #else
-     # flash[:error] = "The life storybook you were looking for was not found"
-      #redirect_to root_url
-    #end
+    end
   end
 
   def create
