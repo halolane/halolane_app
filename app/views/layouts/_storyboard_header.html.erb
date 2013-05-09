@@ -4,8 +4,11 @@
     <div class="container">
       <nav>
         <ul class="nav btn-topbar-left">
-          <li><div class="newmemorybtn" >
-            <button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal">Add a new story</button></div></li>
+          <li class="newmemorybtn">
+            <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal" rel="tooltip" title="Add a new story">
+              <i class="icon-plus"></i><span class="addnewstorytext">Add a new story</span>
+            </a>
+          </li>
           <li><div class="topbarname"><h4>
             <%= link_to  @profile.first_name + " " + @profile.last_name, edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
           </h4></div></li>
@@ -23,14 +26,24 @@
                 </a>
               <% end %>
           </li>
-          <li class="storyboardlogo _showLogo">
-            <!-- <%= link_to image_tag("/assets/logo.png"), root_path, id: "logo" %> -->
-            <%= link_to "FamilyTales", root_path, id:"logo" %>
+          <li class="iconfamtree">
+            <%= link_to root_path, rel:"tooltip", title:"View your family tree" do %>
+              <i class="icon-sitemap"></i>
+            <% end %>
           </li>
-          <li>
-            <div class="helpbtn" >
-            <button data-toggle="modal" class="btn btn-primary" data-dismiss="modal" aria-hidden="true" href="#newuserstorybook">Help</button></div>
+          <li class="iconsignout">
+            <%= link_to signout_path, method: "delete", rel:"tooltip", title:"Sign out of this account" do %>
+              <i class="icon-signout"></i>
+            <% end %>
           </li>
+          <li class="iconhelp">
+            <a href="#newuserstorybook" data-toggle="modal" data-dismiss="modal" aria-hidden="true" rel="tooltip" title="Show the help guides"><i class="icon-question-sign"></i></a>
+          </li>
+          
+          <li class="storyboardlogo">
+            <%= link_to image_tag("/images/logo.png"), root_path, id: "logo" %> 
+          </li>
+          
         </ul>
       </nav>
     </div>

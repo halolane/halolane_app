@@ -11,8 +11,8 @@ $(document).ready(function(){
 	$(".tooltip").tooltip();
   $("a[rel=tooltip]").tooltip();
 
-	$(".iconaddcontributor, .playslideshow, .skipquestion").fadeTo("fast", 0.6);
-	$(".iconaddcontributor, .playslideshow, .skipquestion").hover(function() {
+	$(".iconaddcontributor, .playslideshow, .skipquestion, .iconsignout, .iconhelp, .iconfamtree").fadeTo("fast", 0.6);
+	$(".iconaddcontributor, .playslideshow, .skipquestion, .iconsignout, .iconhelp, .iconfamtree").hover(function() {
 		$(this).fadeTo('fast',1);
 	}, function() {
    	$(this).fadeTo("fast", 0.6);
@@ -20,6 +20,17 @@ $(document).ready(function(){
 	$(".iconaddcontributor, .playslideshow").click(function() {
 		$(this).fadeTo('fast',1);
 	});
+
+	$(".newmemorybtn").fadeTo("fast", 0.8);
+	$(".newmemorybtn").hover(function() {
+		$(this).fadeTo('fast',1);
+	}, function() {
+   	$(this).fadeTo("fast", 0.8);
+ 	});
+	$(".iconaddcontributor, .playslideshow").click(function() {
+		$(this).fadeTo('fast',1);
+	});
+
 
 	$(".playslideshow").click(function() {
 		$('#slideshow').removeClass("hide");

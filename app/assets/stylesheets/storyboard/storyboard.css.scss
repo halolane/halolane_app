@@ -90,6 +90,7 @@ table {
 
 .topbarname {
 	margin: 8px -2px;
+	margin-right: 50px;
 	font-size: 12px;
 	text-align: middle;
 	vertical-align: middle;
@@ -115,9 +116,38 @@ li.playslideshow {
 	padding-right: 10px;
 }
 
+
+
 li.iconaddcontributor {
 	padding-top: 7px;
 	padding-right: 10px;
+}
+
+.icon-signout, .icon-question-sign, .icon-sitemap {
+	opacity: 0.6;
+    text-shadow: 1px 1px 1px #ccc;
+    font-size: 27px;
+    padding-top: 7px;
+	padding-right: 10px;
+}
+
+.newmemorybtn {
+	
+	.icon-plus {
+		padding-top: 7px;
+		font-size: 27px;
+		color: #9a1b39;
+	}
+
+	a {
+		.addnewstorytext {
+			float: right;
+			padding-top: 10px;
+			padding-left: 10px;
+			font-size: 18px;
+			color: #9a1b39;
+		}
+	}	
 }
 
 li.storyboardlogo {
@@ -130,7 +160,7 @@ li.storyboardlogo {
 
 .newmemorybtn {
 	margin-left: 20px;
-	margin-right: 300px;
+	margin-right: 200px;
 }
 
 .messageBoxContainer.collapsed {
@@ -507,7 +537,7 @@ height: 600px;
 		position: absolute;
 		float: left;
 		margin-top: -625px;
-		margin-left: 500px;
+		margin-left: 400px;
 		z-index: 1050;
 	}
 .invite-coachmark {
