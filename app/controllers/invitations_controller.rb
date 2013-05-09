@@ -11,9 +11,7 @@ class InvitationsController < ApplicationController
     @invitation.active = true
 
     # Need to verify account first
-    if current_user.verified != true
-      redirect_to login_path + "/" + current_user.token
-    elsif is_a_user_already?(@invitation.recipient_email) 
+    if is_a_user_already?(@invitation.recipient_email) 
       
       @user = User.find_by_email(@invitation.recipient_email)
       if has_relationship?(@profile.id, @user.id)

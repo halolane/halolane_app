@@ -73,11 +73,14 @@ class UsersController < ApplicationController
     if not params[:verify_token] == nil
       @user = User.find_by_token(params[:verify_token])
       if @user.verified != true
-        flash[:notice] = "Please change your password to validate your account."
+        flash[:notice] = "Your email has been verified."
+        @user.toggle!(:verified)
       end
+    else
+      @user = User.find(params[:id])
     end
     @profile = Profile.new
-    @user = User.find(params[:id])
+    
     @profiles = @user.profiles_with_relationships.paginate(page: params[:page])
 
     @memories = @user.memories.paginate(page: params[:page])
