@@ -3,12 +3,12 @@ development:
   :port: 587
   :authentication: plain
   :user_name: familytalesus@gmail.com
-  :password: IVEYmba2013
+  :password: IVEYmba2013!
   :enable_starttls_auto: true
 production:
   :address: smtp.gmail.com
   :port: 587
   :authentication: plain
   :user_name: familytalesus@gmail.com
-  :password: IVEYmba2013
+  :password: IVEYmba2013!
   :enable_starttls_auto: true
