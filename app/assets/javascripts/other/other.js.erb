@@ -21,4 +21,14 @@ $(document).ready(function(){
 	    }
 	  })
 	});
+
+	$('#newuserstorybook').on('show', function () {
+	    $('.coachmarks').removeClass('hide');
+	});
+
+	$('#newuserstorybook').on('hide', function () {
+	    $('.coachmarks').addClass('hide');
+	    $('#newstorybook').modal('show');
+	
+	});
 });

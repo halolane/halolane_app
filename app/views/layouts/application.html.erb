@@ -4,6 +4,13 @@
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag "application-other", media: "all" %>
   <%= javascript_include_tag "application-other" %>
+  <% if current_user.storybookcount == 0 && full_title(yield(:title)) == "FamilyTales" %>
+    <script type="text/javascript">
+      $(window).load(function(){
+          $('#newuserstorybook').modal('show');
+      });
+    </script>
+  <% end %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>  <!-- partial app/views/layouts/_shim.html.erb -->
 </head>
@@ -22,5 +29,6 @@
 window.usabilla_live = lightningjs.require("usabilla_live", "//w.usabilla.com/672be2fd7d0e.js");
 /*]]>{/literal}*/</script>
 <!-- end usabilla live embed code -->
+<%= render 'shared/new_user_storybook_modal' %>
 </body>
 </html>

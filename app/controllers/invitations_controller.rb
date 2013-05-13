@@ -15,7 +15,7 @@ class InvitationsController < ApplicationController
       
       @user = User.find_by_email(@invitation.recipient_email)
       if has_relationship?(@profile.id, @user.id)
-        flash[:error] = @invitation.recipient_email + " is already contributing to this HaloLane storybook"
+        flash[:error] = @invitation.recipient_email + " is already contributing to this FamilyTales storybook"
         redirect_back_or root_url
       else
         @user.contribute!(@profile, "1", false)

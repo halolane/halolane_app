@@ -341,6 +341,57 @@ section.above_fold .carousel .nav .nav_control.right,section.testimonials .carou
 #newstorybook .modal-body, #newstorybook .modal-footer {
 	text-align: center;
 }
+.newuserstorybook {
+	padding-left: -300px;
+	margin-left: -700px;
+	margin-top: -375px;
+	background-color: transparent !important;
+	color: transparent !important;
+	border:none !important;
+	border: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	overflow: hidden !important;
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	background-clip: none !important;
+	outline: none !important;
+	width: 900px !important;
+}
+
+.firststorybook-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: -120px;
+	margin-left: 300px;
+	z-index: 1050;
+}
+
+.welcomefamilytales-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: 20px;
+	margin-left: 200px;
+	z-index: 1050;
+}
+
+.modal-backdrop, .modal-backdrop.fade.in {
+    filter: alpha(opacity=50);
+    -khtml-opacity: 0.5;
+    -moz-opacity: 0.5;
+    opacity: 1;
+    z-index: 1040;
+ }
+
+.modal-backdrop {
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
 .app-wrapper.overlay-active{-webkit-filter:blur(0px);-moz-filter:blur(0px);filter:blur(0px)}
 
 section.above_fold .carousel .item.first img {
@@ -776,6 +827,9 @@ section.signup_bar .signup_form .signup_button:hover{
 	text-shadow:0 -1px 0px rgba(0,0,0,0.7);
 	border-width:1px;border-style:solid
 }
+
+
+
 section.signup_bar .signup_form .signup_button:disabled{background:#888;border:1px solid #666;color:#ccc}
 section.video{background:#eee url(https://d1pocdzmde73mw.cloudfront.net/assets/static/backgrounds/product_icons-239c1813f0865d77c7a9f65d95b82aa6.png)}
 section.video .video_preview{border:10px solid rgba(0,0,0,0.3);-moz-border-radius:6px;-webkit-border-radius:6px;border-radius:6px;width:48.3871%;float:left;margin-right:3.22581%;display:inline}

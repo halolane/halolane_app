@@ -58,6 +58,10 @@ class User < ActiveRecord::Base
     Memory.where("user_id = ?", id).count
   end
 
+  def storybookcount
+    Relationship.where("user_id = ?", id).count
+  end
+
   private
 
     def create_remember_token
