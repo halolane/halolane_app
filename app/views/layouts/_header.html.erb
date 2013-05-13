@@ -1,25 +1,31 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
-    <div class="container">
-      <!-- <%= link_to image_tag("/assets/logo.png"), root_path, id: "logo" %> -->
-      <%= link_to "FamilyTales", root_path, class:"brand" %>
-      <div class="home-header" >
-        <div>
-          <ul class="nav">
-            <% if signed_in? %>
-
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-              <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
-                  
-          </ul>
-         
-            <% else %>
-              <li><%= link_to "Sign in", signin_path %></li>
-            <% end %>
-          </ul>
+<div class='header wrapper'>
+  <header>
+    <div class='branding'>
+      <h1 class='logo'>
+        <%= image_tag("/images/fulllogo.png") %>
+      </h1>
+      <div class='sm'>
+        <a href="http://twitter.com/myFamilyTales" class="twitter" title="Follow us on Twitter" target="_blank">Follow us on Twitter</a>
+        <a href="http://facebook.com/myFamilyTales/" class="fb" title="Become a fan on Facebook" target="_blank">Become a fan on Facebook</a>
+        <div class='phone'>
+            Need help?
+          <span class='number'>
+            1 (877) 753-9166
+          </span>
         </div>
       </div>
     </div>
-  </div>
-</header>
+    <nav>
+      <ul>
+        <li>
+          <%= link_to "Profile", current_user, :class=>"home selected" %>
+        <li>
+          <%= link_to "Settings", edit_user_path(current_user), :class=>"" %>
+        </li>
+        <li>
+          <%= link_to "Sign out", signout_path, method: "delete" %>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</div>

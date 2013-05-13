@@ -1,23 +1,16 @@
 <div class="tabbable tabs-left">
-  <aside>
-    <section>
-      <h1>
-        <%= @user.first_name %>
-        <%= @user.last_name %>
-      </h1>
-    </section>
-  </aside>
   <ul class="nav nav-tabs span2">
+    <%= render 'shared/user_info' %><br>
     <li class="active"><a href="#tab1" data-toggle="tab">Storybooks</a></li>
     <li><%= link_to "Settings", edit_user_path(current_user) %></li>
     <!-- <li><a href="#tab3" data-toggle="tab">Notification</a></li> -->
   </ul>
     
-  <div class="tab-content span9">
+  <div class="tab-content span9" id="front-tab-content">
     <div class="tab-pane active" id="tab1">
       <p>
         <a href="#newstorybook" class="newstorybooklink" rel="tooltip" data-placement="bottom" title="Create a new storybook" data-toggle="modal" data-keyboard="true">
-          <button class="btn btn-medium btn-primary" type="button">
+          <button class="green_button" type="button">
             Create a new storybook      
           </button>
         </a>
