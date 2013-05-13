@@ -20,20 +20,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    
-    # For sign up with user
-    #@user = User.new(email: emailtoken, 
-    #    first_name: "Guest",
-    #    last_name: "Editor",
-    #    password: passwordtoken, 
-    #    password_confirmation: passwordtoken )
-    #@user = User.new(email: params[:user][:email], 
-    #    first_name: params[:user][:first_name],
-    #    last_name: params[:user][:last_name],
-    #    password: params[:user][:password], 
-    #    password_confirmation: params[:user][:password] )
-    emailtoken = Digest::SHA1.hexdigest([Time.now, rand].join) + "@example.com"
-    passwordtoken = Digest::SHA1.hexdigest([Time.now, rand].join)
     @user = User.new(email: params[:user][:email], 
       first_name: params[:user][:first_name],
       last_name: params[:user][:last_name],
@@ -41,25 +27,26 @@ class UsersController < ApplicationController
       password_confirmation: params[:user][:password] )
     @user.verified = false
 
-    @profile = Profile.new(first_name: params[:user][:profile][:first_name], last_name: params[:user][:profile][:last_name], birthday: 70.years.ago, deathday: Date.today, privacy: 2)
-    relationship = params[:relationship][:description]
-    if @user.save and @profile.save
+    # @profile = Profile.new(first_name: params[:user][:profile][:first_name], last_name: params[:user][:profile][:last_name], birthday: 70.years.ago, deathday: Date.today, privacy: 2)
+    # relationship = params[:relationship][:description]
+    # if @user.save and @profile.save
+    if @user.save 
       sign_in @user
-      @user.contribute!(@profile, relationship, true)
       Mailer.validate_account(current_user, root_url + "login/" + current_user.token).deliver
-      flash[:success] = "Welcome to the HaloLane App!"
-      redirect_to root_url + @profile.url
-    elsif @user.save and not @profile.save
-      sign_in @user
-      flash[:error] = "Sorry, we weren't able to save your storybook. Please fill in the following fields"
-      Mailer.validate_account(current_user, root_url + "login/" + current_user.token).deliver
-      redirect_to createstorybook_url
-    elsif is_a_user_already?(params[:user][:email])
-      flash[:error] = "The email " + params[:user][:email] + " is already registered. Please log in"
-      redirect_to signin_url
+      flash[:success] = "Welcome to the FamilyTales!"
+      redirect_to root_url
+      # redirect_to root_url + @profile.url
+    # elsif @user.save and not @profile.save
+    #   sign_in @user
+    #   flash[:error] = "Sorry, we weren't able to save your storybook. Please fill in the following fields"
+    #   Mailer.validate_account(current_user, root_url + "login/" + current_user.token).deliver
+    #   redirect_to createstorybook_url
+    # elsif is_a_user_already?(params[:user][:email])
+    #   flash[:error] = "The email " + params[:user][:email] + " is already registered. Please log in"
+    #   redirect_to signin_url
     else
       flash[:error] = "Please fill out these fields"
-      redirect_to root_url
+      redirect_to signup_url
     end
   end
 
