@@ -337,6 +337,10 @@ section.above_fold .carousel .nav .nav_control.right,section.testimonials .carou
 	padding:1em
 }
 .modal .content{padding:1em}
+
+#newstorybook .modal-body, #newstorybook .modal-footer {
+	text-align: center;
+}
 .app-wrapper.overlay-active{-webkit-filter:blur(0px);-moz-filter:blur(0px);filter:blur(0px)}
 
 section.above_fold .carousel .item.first img {

@@ -2,10 +2,26 @@
 <div id="newstorybook" class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="addcontributorLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="newstorybookLabel">New storybook</h3>
+    <h3 id="newstorybookLabel">Create a new storybook</h3>
   </div>
   <div class="modal-body">
-  	<h2>Which family member do you want to start a new story about?</h2>
-  	<p><%= render 'shared/profile_form' %></p>
+  	<h4>I want to start a storybook about my</h4>
+  	<p>
+  		<%= form_for(@profile) do |p| %>
+		  <%= render 'shared/error_messages', object: p.object %>
+		  <p><%= select "relationship","description", 
+				  				Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%></p>
+		  <p>
+				<%= p.text_field :first_name, :placeholder => "Their first name" %>
+		  </p>
+		  <p>
+				<%= p.text_field :last_name, :placeholder => "Their last name" %>
+		  </p>
+		  	
+  	</p>
+  </div>
+  <div class="modal-footer">
+  	<%= p.submit "Start your storybook", class: "green_button" %>
+		<% end %>
   </div>
 </div>
