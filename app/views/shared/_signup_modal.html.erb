@@ -1,0 +1,46 @@
+
+<div id="signup_modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="betamodalLabel" aria-hidden="true">
+  <div class="modal-header">
+  	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	<h3 id="myModalLabel">Sign up now!</h3>
+  </div>
+  <div class="modal-body">
+  	<p>Get started in capturing your family stories!</p>
+	<div class="userinput">
+		<%= form_for(@user) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+	  	<%= f.text_field :first_name, :placeholder => "Your first name" %></br>
+	  	<%= f.text_field :last_name, :placeholder => "Your last name" %></br>
+	  	<%= f.text_field :email, :placeholder => "Your email" %></br>
+	  	<%= f.password_field :password, :placeholder => "Your new password" %>
+	</div>
+  </div>
+  <div class="modal-footer">
+	<a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#betadescmodal" class="submit_button">Start my storybook</a>
+  </div>
+</div>  
+
+		
+<div id="betadescmodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="startModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="betadescmodalLabel">FamilyTales is in beta</h3>
+	</div>
+	<div class="modal-body">
+		<p>We would love to hear from you! Please notify us of any issues or ideas of improvement:
+			<ul>
+				<li>Send an email <a href="mailto:hello@familytales.co">hello@familytales.co</a></li>
+				<li>Call our toll-free number <strong>1-877-753-9166</strong> </li>
+				<li>Click on the <strong>feedback form</strong> on the bottom-right of our website</li>
+			</ul>
+		</p>
+		<p><strong>Are you willing to openly and honestly give us feedback?</strong></p>
+	</div>
+	<div class="modal-footer">
+		<div class="storybook-choice">
+			<%= f.submit "Start my storybook!", class: "signup_button", width:"40px" %> - or -
+			<a href="http://www.familytales.co"><button class="signup_button" width="40px">No, bring me back.</button></a>
+			<% end %>
+		</div>
+	</div>
+</div>

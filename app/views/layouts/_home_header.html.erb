@@ -1,4 +1,51 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class='header wrapper'>
+  <header>
+    <div class='branding'>
+      <h1 class='logo'>
+        <%= image_tag("/images/fulllogo.png") %>
+      </h1>
+      <div class='sm'>
+        <a href="http://twitter.com/myFamilyTales" class="twitter" title="Follow us on Twitter" target="_blank">Follow us on Twitter</a>
+        <a href="http://facebook.com/myFamilyTales/" class="fb" title="Become a fan on Facebook" target="_blank">Become a fan on Facebook</a>
+        <div class='phone'>
+            Need help?
+          <span class='number'>
+            1 (877) 753-9166
+          </span>
+        </div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a href="/" class="home selected">Home</a>
+        </li>
+        <li>
+          <a href="/#" class="">About</a>
+        </li>
+        <li>
+          <a href="/#" class="">Blog</a>
+        </li>
+        <!-- use this when the website goes live 
+        <li class='login'>
+          <a href="/login" class="">Login</a>
+        </li>
+        <li class='signup'>
+          <a href="/signup" class="">Signup</a>
+        </li>
+      -->
+      <li class='login'>
+          <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#signin_modal" >Login</a>
+        </li>
+        <li class='signup'>
+          <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#betamodal" >Signup</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<!-- <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
       <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -9,11 +56,11 @@
       <%= link_to "FamilyTales", root_path, class:"brand" %>
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <!-- <li class="active"><a href="#">Top</a></li> -->
+          <!-- <li class="active"><a href="#">Top</a></li>
           <li><%= link_to "Sign in", signin_path %></li>
-          <!--<li><a href="#contact">Contact</a></li>-->
+          <!--<li><a href="#contact">Contact</a></li>
         </ul>
-      </div><!--/.nav-collapse -->
+      </div><!--/.nav-collapse 
     </div>
   </div>
-</div>
+</div>-->
