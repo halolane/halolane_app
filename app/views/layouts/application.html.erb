@@ -24,7 +24,7 @@
   <%= stylesheet_link_tag "application-other", media: "all" %>
   <%= javascript_include_tag "application-other" %>
 
-  <% if current_user.storybookcount == 0 && full_title(yield(:title)) == "FamilyTales" %>
+  <% if full_title(yield(:title)) == "FamilyTales" && signed_in? && current_user.storybookcount == 0 %>
     <script type="text/javascript">
       $(window).load(function(){
           $('#newuserstorybook').modal('show');
@@ -36,6 +36,7 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
+  <%= render 'shared/loading_spinner_icon' %>
   <div class="container">
     <% flash.each do |key, value| %>
        <div class="alert alert-<%= key %>"><%= value %></div>
@@ -50,5 +51,6 @@ window.usabilla_live = lightningjs.require("usabilla_live", "//w.usabilla.com/96
 /*]]>{/literal}*/</script>
 <!-- end usabilla live embed code -->
 <%= render 'shared/new_user_storybook_modal' %>
+<%= render 'shared/loading_spinner' %>
 </body>
 </html>

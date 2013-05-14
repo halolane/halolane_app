@@ -360,6 +360,36 @@ section.above_fold .carousel .nav .nav_control.right,section.testimonials .carou
 	width: 900px !important;
 }
 
+.loading_spinner {
+	margin-top: 5% !important;
+	padding-left: 5% !important;
+	background-color: transparent !important;
+	color: #fff !important;
+	border:none !important;
+	border: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	overflow: hidden !important;
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	background-clip: none !important;
+	outline: none !important;
+	text-align: center;
+	z-index: 1040;
+}
+
+.loading-spinner-icon {
+	position: absolute;
+	color: #fff;
+	float: left;
+	font-weight: bold;
+	margin-left: 40%;
+	margin-top: 15%;
+	text-align:center;
+	z-index: 1050;
+}
+
 .firststorybook-coachmark {
 	position: absolute;
 	float: left;

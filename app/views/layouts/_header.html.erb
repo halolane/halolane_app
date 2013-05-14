@@ -15,17 +15,47 @@
         </div>
       </div>
     </div>
-    <nav>
-      <ul>
-        <li>
-          <%= link_to "Profile", current_user, :class=>"home selected" %>
-        <li>
-          <%= link_to "Settings", edit_user_path(current_user), :class=>"" %>
-        </li>
-        <li>
-          <%= link_to "Sign out", signout_path, method: "delete" %>
-        </li>
-      </ul>
-    </nav>
+    <% if signed_in? %>
+      <nav>
+        <ul>
+          <li>
+            <%= link_to "Profile", current_user, :class=>"home selected" %>
+          <li>
+            <%= link_to "Settings", edit_user_path(current_user), :class=>"" %>
+          </li>
+          <li>
+            <%= link_to "Sign out", signout_path, method: "delete" %>
+          </li>
+        </ul>
+      </nav>
+    <% else %>
+      <nav>
+        <ul>
+          <li>
+            <a href="/" class="home selected">Home</a>
+          </li>
+          <li>
+            <a href="/#" class="">About</a>
+          </li>
+          <li>
+            <a href="/#" class="">Blog</a>
+          </li>
+          <!-- use this when the website goes live 
+          <li class='login'>
+            <a href="/login" class="">Login</a>
+          </li>
+          <li class='signup'>
+            <a href="/signup" class="">Signup</a>
+          </li>
+        -->
+        <li class='login'>
+            <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="/login" >Login</a>
+          </li>
+          <li class='signup'>
+            <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="/signup" >Signup</a>
+          </li>
+        </ul>
+      </nav>
+    <% end %>
   </header>
 </div>

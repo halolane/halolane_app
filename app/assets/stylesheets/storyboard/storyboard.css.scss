@@ -123,19 +123,21 @@ li.iconaddcontributor {
 	padding-right: 10px;
 }
 
-.icon-signout, .icon-question-sign, .icon-sitemap {
+.icon-signout, .icon-question-sign, .icon-sitemap {	
 	opacity: 0.6;
     text-shadow: 1px 1px 1px #ccc;
     font-size: 27px;
-    padding-top: 7px;
+    top: 7px;
 	padding-right: 10px;
+	position: relative;
 }
 
 .newmemorybtn {
 	
 	.icon-plus {
-		padding-top: 7px;
+		top: 7px;
 		font-size: 27px;
+		position: relative;
 		color: #9a1b39;
 	}
 
@@ -449,6 +451,36 @@ height: 600px;
 	max-height: 800px;
 }
 
+.loading_spinner {
+	margin-top: 5% !important;
+	padding-left: 5% !important;
+	background-color: transparent !important;
+	color: #fff !important;
+	border:none !important;
+	border: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	overflow: hidden !important;
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	background-clip: none !important;
+	outline: none !important;
+	text-align: center;
+	z-index: 1040;
+}
+
+.loading-spinner-icon {
+	position: absolute;
+	color: #fff;
+	float: left;
+	font-weight: bold;
+	margin-left: 40%;
+	margin-top: 15%;
+	text-align:center;
+	z-index: 1050;
+}
+
 
 .flexslider .slides {width: 100%; }
 #slideshow { 
@@ -543,13 +575,13 @@ height: 600px;
 .invite-coachmark {
 	position: relative;
 	float: left;
-	margin-top: -650px;
-	margin-left: 50%;
+	margin-top: -645px;
+	margin-left: 55%;
 	z-index: 1050;
 }
 
 .addmemory-coachmark {
-		position: absolute;
+		position: relative;
 		float: left;
 		margin-top: -625px;
 		margin-left: 50px;
@@ -570,4 +602,25 @@ height: 600px;
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.green_button {
+	width: 40%;
+	position:relative;
+	padding:0.9em 2em;color:#fff;display:inline-block;font-size:1.2em;text-align:center;background-color:#69a100;
+	background-image:-webkit-linear-gradient(#95c53d, #69a100, #5f8f05);
+	background-image:-moz-linear-gradient(#95c53d, #69a100, #5f8f05);
+	color:#fff;text-align:center;-moz-border-radius:4px;-webkit-border-radius:4px;border-radius:4px;
+	box-shadow:0 2px 4px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.4);
+	border-width:1px;border-style:solid;border-color:#5f8f05;
+	text-shadow:0 -1px 0 rgba(0,0,0,0.6);
+	cursor:pointer;margin:0em;font-size:16px;margin-right:0%
+}
+
+.green_button:hover {
+	background-image:-webkit-linear-gradient(#69a100, #95c53d, #5f8f05);
+	color:#fff;
+	border-color:#69a100;
+	text-shadow:0 -1px 0px rgba(0,0,0,0.7);
+	border-width:1px;border-style:solid
 }

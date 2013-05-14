@@ -50,7 +50,7 @@
 <body class='home' data-action='show' data-controller='pages' data-id='home'>
   <%= render 'layouts/home_header' %>
   
-  
+<%= render 'shared/loading_spinner_icon' %>
 <% flash.each do |key, value| %>
    <div class="alert alert-<%= key %>"><%= value %></div>
 <% end %>
@@ -65,6 +65,7 @@ window.usabilla_live = lightningjs.require("usabilla_live", "//w.usabilla.com/96
 <%= render 'shared/betasignup' %>
 <%= render 'shared/signup_modal' %>
 <%= render 'shared/signin_modal' %>
+<%= render 'shared/loading_spinner' %>
 <%= render 'layouts/home_footer' %>
 </body>
 </html>

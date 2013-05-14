@@ -21,6 +21,21 @@ $(document).ready(function(){
 	    }
 	  })
 	});
+	
+	// use this if you want to use the spinner
+	// $(".createstorybook_button").click(function(){
+	// $('#betadescmodal').modal('hide');
+ 	// $('#loading_spinner').modal('show');
+	// });
+
+	$('#loading_spinner').on('show', function () {
+	    $('.loading-spinner-icon').removeClass('hide');
+	});
+
+	$('#loading_spinner').on('hide', function () {
+	    $('.loading-spinner-icon').addClass('hide');
+	
+	});
 
 	$('#newuserstorybook').on('show', function () {
 	    $('.coachmarks').removeClass('hide');
