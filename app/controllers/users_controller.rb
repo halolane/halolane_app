@@ -26,11 +26,14 @@ class UsersController < ApplicationController
       password: params[:user][:password], 
       password_confirmation: params[:user][:password] )
     @user.verified = false
-
+  
     # @profile = Profile.new(first_name: params[:user][:profile][:first_name], last_name: params[:user][:profile][:last_name], birthday: 70.years.ago, deathday: Date.today, privacy: 2)
     # relationship = params[:relationship][:description]
     # if @user.save and @profile.save
-    if @user.save 
+    if is_a_user_already?((params[:user][:email]).downcase)
+      flash[:error] = "It looks like you already have an account on FamilyTales. Please enter your email and password here to login"
+      redirect_to login_url
+    elsif  @user.save 
       sign_in @user
       Mailer.validate_account(current_user, root_url + "login/" + current_user.token).deliver
       flash[:success] = "Welcome to the FamilyTales!"
