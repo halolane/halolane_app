@@ -7,9 +7,9 @@
   <div class="modal-body">
     <%= form_for(:session, url: sessions_path) do |f| %>
 
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :placeholder=>"Email address" %>
 
-      <%= f.password_field :password %>
+      <%= f.password_field :password, :placeholder=>"Password" %>
        <%= f.submit "Sign in", class: "signin_button"%>
     <% end %>
   </div>
