@@ -390,6 +390,12 @@ section.above_fold .carousel .nav .nav_control.right,section.testimonials .carou
 	z-index: 1050;
 }
 
+.loading-desc h2 {
+	color: #fff !important;
+	font-color: #fff !important;
+	z-index: 1050;
+}
+
 .firststorybook-coachmark {
 	position: absolute;
 	float: left;
@@ -421,6 +427,7 @@ section.above_fold .carousel .nav .nav_control.right,section.testimonials .carou
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 1040;
 }
 .app-wrapper.overlay-active{-webkit-filter:blur(0px);-moz-filter:blur(0px);filter:blur(0px)}
 

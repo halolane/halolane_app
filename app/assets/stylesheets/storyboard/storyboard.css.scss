@@ -451,25 +451,6 @@ height: 600px;
 	max-height: 800px;
 }
 
-.loading_spinner {
-	margin-top: 5% !important;
-	padding-left: 5% !important;
-	background-color: transparent !important;
-	color: #fff !important;
-	border:none !important;
-	border: none !important;
-	-webkit-box-shadow: none !important;
-	-moz-box-shadow: none !important;
-	box-shadow: none !important;
-	overflow: hidden !important;
-	-webkit-border-radius: 0px !important;
-	-moz-border-radius: 0px !important;
-	background-clip: none !important;
-	outline: none !important;
-	text-align: center;
-	z-index: 1040;
-}
-
 .loading-spinner-icon {
 	position: absolute;
 	color: #fff;
@@ -481,6 +462,11 @@ height: 600px;
 	z-index: 1050;
 }
 
+.loading-desc h2 {
+	color: #fff !important;
+	font-color: #fff !important;
+	z-index: 1050;
+}
 
 .flexslider .slides {width: 100%; }
 #slideshow { 
