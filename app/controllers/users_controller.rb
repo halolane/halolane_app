@@ -53,6 +53,17 @@ class UsersController < ApplicationController
     end
   end
 
+  def send_password_reset 
+    email = params[:user][:email]
+
+    if is_a_user_already?(email.downcase)
+      
+    else
+      flash[:error] = email + " is not a registered email on FamilyTales."
+      redirect_to login_url
+    end
+  end
+
   def destroy
     User.find(params[:id]).destroy
     flash[:success] = "User destroyed."

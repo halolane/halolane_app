@@ -1,5 +1,6 @@
 HalolaneApp::Application.routes.draw do 
 
+
   resources :authentications
   resources :users
   resources :profiles
@@ -7,12 +8,15 @@ HalolaneApp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :memories, only: [:create, :destroy]
   resources :invitations
+  resources :password_resets
 
+  get "password_resets/new"
   get "users/new"
   get "profiles/new"
   get '/login', :to => 'sessions#new', :as => :login
 
   root to: 'static_pages#home'
+  resources :password_resets
   
   match '/about', to: 'static_pages#about'
   match '/pagenotfound', to: 'static_pages#pagenotfound'
@@ -23,6 +27,7 @@ HalolaneApp::Application.routes.draw do
   match '/auth/:provider/callback', :to => 'authentications#create'
   match '/auth/failure', :to => 'sessions#failure'
   match '/login/:verify_token', to: 'users#edit'
+  match '/resetsent', to: 'password_resets#confirm'
 
   #This must be last of the match statements
   match '/:url', to: 'profiles#show'

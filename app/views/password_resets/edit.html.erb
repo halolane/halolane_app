@@ -1,0 +1,28 @@
+<% provide(:title, 'Reset password') %>
+<div class="row">
+  <div class="span6 offset3">
+    <h1> Choose a new password</h1>
+    <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+      <% if @user.errors.any? %>
+        <div class="error_messages">
+          <h2>Form is invalid</h2>
+          <ul>
+            <% for message in @user.errors.full_messages %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <p>A strong password is a combination of letters and punctuation marks. It must be at least 6 characters long.</p>
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, :placeholder => "Password" %>
+      </div>
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, :placeholder => "Password confirmation" %>
+      </div>
+      <div class="actions"><%= f.submit "Update Password", :class => "green_button" %></div>
+    <% end %>
+  </div>
+</div>
