@@ -6,15 +6,15 @@
 <h3>Product</h3>
 <ul>
 <li><a href="/">Home</a></li>
-<li><a href="/signup">Sign up</a></li>
+<li><a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#betasignup" >Sign up</a></li>
 <li><a href="#">Help</a></li>
 </ul>
 </li>
 <li class='menu_group'>
 <h3>Company</h3>
 <ul>
-<li><a href="/about">About</a></li>
-<li><a href="http://blog.familytales.co">Blog</a></li>
+<li><a href="/">About</a></li>
+<li><a href="#">Blog</a></li>
 </ul>
 </li>
 <li class='menu_group'>
@@ -49,7 +49,7 @@ M5G 1L7
 </nav>
 <div class='logo'>
 
-<%= image_tag("/images/fulllogo1.png", :alt => "logo") %>
+<a href="/" class="home"><%= image_tag("/images/fulllogo1.png", :alt => "logo") %></a>
 </div>
 <!-- %small.copyright &copy;#{Time.now.strftime('%Y')} ShopLocket -->
 </footer>
