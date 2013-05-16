@@ -341,6 +341,14 @@ section.above_fold .carousel .nav .nav_control.right,section.testimonials .carou
 #newstorybook .modal-body, #newstorybook .modal-footer {
 	text-align: center;
 }
+
+.composerBox textarea  {
+	height: 100px;
+	margin: 0px 0px;
+	padding: 5px 10px;
+	resize: none;
+}
+
 .newuserstorybook {
 	padding-left: -300px;
 	margin-left: -700px;

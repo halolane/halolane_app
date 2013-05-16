@@ -610,3 +610,15 @@ height: 600px;
 	text-shadow:0 -1px 0px rgba(0,0,0,0.7);
 	border-width:1px;border-style:solid
 }
+
+.story-edit-btn {
+	position: relative;
+	opacity: 0;
+	float: right;
+	margin-top: -4%;
+	margin-left: 0%;
+	z-index: 100;
+	.btn {
+		font-size: 0.7em;
+	}
+}

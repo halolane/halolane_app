@@ -1,6 +1,7 @@
 class MemoriesController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :signed_in_user, only: [:create, :destroy, :edit]
   before_filter :correct_user,   only: :destroy
+  before_filter :correct_user,   only: :edit
 
   def create
     
@@ -19,8 +20,27 @@ class MemoriesController < ApplicationController
       end
     end    
   end
+
+  def edit
+    @memory = current_user.memories.find_by_id(params[:id])
+    @profile = Profile.find_by_id(@memory.profile_id)
+  end
+
+  def update
+    @memory = current_user.memories.find_by_id(params[:id])
+    if @memory.update_attributes(params[:memory])
+      @profile = Profile.find_by_id(@memory.profile_id)
+      flash[:success] = "Memory updated"
+      redirect_to root_url + @profile.url
+    else
+      flash[:error] = "Please enter the missing fields."
+      redirect_to edit_memory_path(@memory)
+    end
+  end
+
   
   def destroy
+    @memory = current_user.memories.find_by_id(params[:id])
     @memory.destroy
     redirect_back_or root_url
   end
@@ -28,7 +48,7 @@ class MemoriesController < ApplicationController
   private
 
     def correct_user
-      @memory = current_user.memories.find_by_id(params[:memory])
+     
       rescue
         redirect_to root_url
     end

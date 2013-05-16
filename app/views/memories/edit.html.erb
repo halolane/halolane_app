@@ -1,6 +1,35 @@
-<h1>Editing memory</h1>
+<% provide(:title, 'Edit story') %>
+<div class="row">
+  <div class="span6 offset3">
 
-<%= render 'form' %>
+	  <h3 id="editmemorymodalLabel">Edit your story about <%= @profile.first_name %></h3>
 
-<%= link_to 'Show', @memory %> |
-<%= link_to 'Back', memories_path %>
+	  <div class="messageBox"> 
+			<%= form_for(@memory) do |f| %>
+		  <%= render 'shared/error_messages', object: f.object %>
+		  <div class="field">
+		  	<% if @memory.photo.file? %>
+				<span class="edit-image">
+					<%= image_tag @memory.photo, class: "storyimage" %>
+					</br>
+				</span>
+			<% end %>
+		  	</br>
+				<div class="composerBox expanded">
+				  	<%= f.text_area :content, rows:"1", cols:"10", maxlength:"250", :value => @memory.content %><br><br>
+				</div>
+			</div>
+		</div>
+
+		<div class="btn-post">
+			<div class="actions">
+				<%= f.submit "Update your story", class: "green_button editstory_button"%>
+			</div>
+		</div>
+
+		<% end %>
+
+
+
+	</div>
+</div>

@@ -1,0 +1,43 @@
+<!-- Modal -->
+<div id="editmemorymodal" class="modal hide fade editmemorymodal" tabindex="-1" role="dialog" aria-labelledby="editmemorymodalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="editmemorymodalLabel">Edit this story</h3>
+  </div>
+  <div class="modal-body">
+    <div class="messageBox"> 
+			<%= form_for(@memory) do |f| %>
+		  <%= render 'shared/error_messages', object: f.object %>
+	  
+		  <div class="field">
+		  	<% if @memory.photo.file? %>
+				<span class="edit-image">
+					<%= image_tag @memory.photo, class: "storyimage" %>
+					</br>
+				</span>
+			<% end %>
+		  	</br>
+				<div class="composerBox expanded">
+				  	<%= f.text_area :content, rows:"1", cols:"10", maxlength:"250", :value => @memory.content %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		
+  <div class="modal-footer">
+		<div id="messageTools" class="_addLinkBlock messageTools" >
+
+			<div class="controls">
+				<span id="memorycounter">
+				</span>
+				<span class="btn-post">
+					<div class="actions">
+						<%= f.submit "Update this story", class: "green_button editstory_button"%>
+					</div>
+				</span>
+			</div>
+			<% end %>
+		</div>
+  </div>
+</div>

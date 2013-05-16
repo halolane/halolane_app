@@ -73,6 +73,7 @@ class ProfilesController < ApplicationController
   		redirect_to root_url + @profile.url
   	else
   		render 'new'
+      edit_memory_path(@profile)
   	end
   end
 

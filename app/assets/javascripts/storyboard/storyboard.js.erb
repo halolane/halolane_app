@@ -31,6 +31,11 @@ $(document).ready(function(){
 		$(this).fadeTo('fast',1);
 	});
 
+	$(".newbox").hover(function() {
+		$(this).find(".story-edit-btn").fadeTo(50,1);
+	}, function() {
+   		$(this).find(".story-edit-btn").fadeTo(50,0);
+ 	});
 
 	$(".playslideshow").click(function() {
 		$('#slideshow').removeClass("hide");
@@ -130,6 +135,8 @@ $(document).ready(function(){
 	    $('.loading-spinner-icon').addClass('hide');
 	
 	});
+
+
 
   $container.imagesLoaded( function() {
     $container.isotope({

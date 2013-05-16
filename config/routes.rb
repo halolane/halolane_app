@@ -6,7 +6,7 @@ HalolaneApp::Application.routes.draw do
   resources :profiles
   resources :memories
   resources :sessions, only: [:new, :create, :destroy]
-  resources :memories, only: [:create, :destroy]
+  resources :memories, only: [:create, :destroy, :edit]
   resources :invitations
   resources :password_resets
 
@@ -28,6 +28,7 @@ HalolaneApp::Application.routes.draw do
   match '/auth/failure', :to => 'sessions#failure'
   match '/login/:verify_token', to: 'users#edit'
   match '/resetsent', to: 'password_resets#confirm'
+  match '/editstory', to: 'memories#edit'
 
   #This must be last of the match statements
   match '/:url', to: 'profiles#show'
