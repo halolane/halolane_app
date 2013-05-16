@@ -13,7 +13,17 @@
 		  <input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
 		  <div class="field">
 		  	<div class="memoryquestion">
-		  		<p><%= StorybookQuestion.find(rand(StorybookQuestion.count) + StorybookQuestion.first.id).question.gsub("@profile.first_name", @profile.first_name) %></p>
+		  		<p>
+		  			<% if current_user.memorycount == 0 %>
+		  				What I remember most about your arrival?
+		  			<% elsif current_user.memorycount == 1 %>
+		  				What were songs you like as a baby and which one was your favorite?
+		  			<% elsif current_user.memorycount == 2 %>
+		  				What are a few names we considered for you and why picked your name?
+		  			<% else %>
+		  			<%= StorybookQuestion.find(rand(StorybookQuestion.count) + StorybookQuestion.first.id).question.gsub("@profile.first_name", @profile.first_name) %>
+		  			<% end %>
+		  		</p>
 		  	</div>
 		  	<div class="skipquestion">
 		  		<a rel="tooltip" title="Skip this question"><i class="icon-forward"></i></a>
