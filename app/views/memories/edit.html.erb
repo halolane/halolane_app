@@ -15,11 +15,16 @@
 				</span>
 			<% end %>
 		  	</br>
-				<div class="composerBox expanded">
-				  	<%= f.text_area :content, rows:"1", cols:"10", maxlength:"250", :value => @memory.content %><br><br>
-				</div>
+			<div class="composerBox expanded">
+			  	<%= f.text_area :content, rows:"1", cols:"10", maxlength:"250", :value => @memory.content %><br><br>
 			</div>
 		</div>
+		<% if ! @memory.photo.file? %>
+			<div class="addphoto">
+				<p>Add a photo to your story:<br>
+				<%= f.file_field :photo, :title => "Add a photo"%></p>
+			</div>
+		<% end %>
 
 		<div class="btn-post">
 			<div class="actions">
