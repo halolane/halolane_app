@@ -16,6 +16,16 @@
     <script type="text/javascript">
       $(window).load(function(){
           $('#newuserstorybook').modal('show');
+          $('#newuserstorybook').on('hide', function () {
+              $('.coachmarks').addClass('hide');
+              $('#firstthreestories_backdrop').modal('show');
+              $('.firststories-coachmark').removeClass('hide');
+          });
+
+          $('#firstthreestories_backdrop').on('hide', function () {
+              $('.firststories-coachmark').addClass('hide');
+              $('#newmemorymodal').modal('show');
+          });
       });
     </script>
   <% end %>

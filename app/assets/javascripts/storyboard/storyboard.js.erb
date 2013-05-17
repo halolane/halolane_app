@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
 	$('a').tooltip({
   	placement : 'bottom'
   });
@@ -108,6 +109,10 @@ $(document).ready(function(){
 		$('.modal.in').modal('hide') 
 	});
 
+	$('.firststories-coachmark').click(function() {
+		$('.modal.in').modal('hide') 
+	});
+
 
 	$('#newuserstorybook').on('show', function () {
 	    $('.coachmarks').removeClass('hide');
@@ -115,17 +120,16 @@ $(document).ready(function(){
 
 	$('#newuserstorybook').on('hide', function () {
 	    $('.coachmarks').addClass('hide');
-	
 	});
 
 	var $container = $('#content');
 
 
 	// use this if you want to use the spinner
-	// $(".createstorybook_button").click(function(){
-	// $('#betadescmodal').modal('hide');
- 	// $('#loading_spinner').modal('show');
-	// });
+	$(".savestory_button").click(function(){
+		$('#newmemorymodal').modal('hide');
+	 	$('#loading_spinner').modal('show');
+	});
 
 	$('#loading_spinner').on('show', function () {
 	    $('.loading-spinner-icon').removeClass('hide');
@@ -138,7 +142,7 @@ $(document).ready(function(){
 
 
 
-  $container.imagesLoaded( function() {
+  $container.imagesLoaded(function() {
     $container.isotope({
       itemSelector : '.newbox', 
      /* filter: '*',*/

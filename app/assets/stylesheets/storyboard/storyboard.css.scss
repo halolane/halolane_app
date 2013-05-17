@@ -506,13 +506,49 @@ height: 600px;
 
 /* new storybook modal */
 .newuserstorybook {
-
 	padding-left: -300px;
 	margin-left: -700px;
 	margin-top: -375px;
 	background-color: transparent !important;
 	color: transparent !important;
 	border:none !important;
+	border: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	overflow: hidden !important;
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	background-clip: none !important;
+	outline: none !important;
+	width: 900px !important;
+}
+
+.loading_spinner {
+	padding-left: -300px;
+	margin-left: -700px;
+	margin-top: -375px;
+	background-color: transparent !important;
+	color: transparent !important;
+	border:none !important;
+	border: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	overflow: hidden !important;
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	background-clip: none !important;
+	outline: none !important;
+	width: 900px !important;
+}
+
+.firstthreestories_backdrop {
+	padding-left: -300px;
+	margin-left: -700px;
+	margin-top: -375px;
+	background-color: transparent !important;
+	color: transparent !important;
 	border: none !important;
 	-webkit-box-shadow: none !important;
 	-moz-box-shadow: none !important;
@@ -568,12 +604,20 @@ height: 600px;
 }
 
 .addmemory-coachmark {
-		position: relative;
-		float: left;
-		margin-top: -625px;
-		margin-left: 50px;
-		z-index: 1050;
-	}
+	position: relative;
+	float: left;
+	margin-top: -625px;
+	margin-left: 50px;
+	z-index: 1050;
+}
+
+.firststories-coachmark {
+	position: relative;
+	float: left;
+	margin-top: -625px;
+	margin-left: 50px;
+	z-index: 1050;
+}
 
 .modal-backdrop, .modal-backdrop.fade.in {
     filter: alpha(opacity=50);

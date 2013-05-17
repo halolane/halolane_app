@@ -3,6 +3,7 @@ $(document).ready(function(){
 		<% if params[:memory][:photo] == nil and params[:memory][:content] == "" %>
 			alert("Missing memory and photo!");
 		<% else %>  
+
 			<% if current_user.memorycount == 1 %>
 				var $newMemoryQuestion = "<p>What are songs you like as a baby and which one was your favorite?</p>";
 			<% elsif current_user.memorycount == 2 %>
@@ -52,9 +53,9 @@ $(document).ready(function(){
 			// var newItems = $('<div class="newbox" id="blank"></div><div class="newbox"><% if @memory.photo.file? %><span class="box-image"><%= image_tag @memory.photo, class: "storyimage" %></br></span><% end %><span class="box-text"><%= @memory.content %></span><span class="box-user"><!-- <%= link_to gravatar_for(@memory.user), @memory.user %> --><%= link_to @memory.user.first_name, @memory.user %></span><span class="box-timestamp">Posted <%= time_ago_in_words(@memory.created_at) %> ago.</span></div>');
 
 			//$('#content').prepend(newItems).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
-			<% if current_user.memorycount > 2 %>
-				$('#newmemorymodal').modal('hide');
-			<% end %>
+			$('#loading_spinner').modal('hide');
+
+			
 		<% end %>
 	<% end %>
 });
