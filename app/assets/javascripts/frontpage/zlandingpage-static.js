@@ -43,13 +43,44 @@ function c(){ var e,t=this,r=n(t),i=r,s=this.id;if(t.value==""){
 		)
 	}
 (this,document,jQuery),
-function(){this.ShopLocket={common:{init:function(){return $("input, textarea").placeholder()}}}}.call(this),
-(window.jQuery||window.Zepto)&&function(e){e.fn.Swipe=function(t){return this.each(function(){e(this).data
-	("Swipe",new Swipe(e(this)[0],t))})}}(window.jQuery||window.Zepto),
 function(){
-	this.ShopLocket.common.carousel={default_options:{startSlide:0,speed:400,auto:!1,continuous:!0,disableScroll:!1,stopPropagation:!1,
-	callback:function(e,t){return $(t).parent().children().removeClass("active"),$(t).addClass("active")}},"new":function(e){var t;return t=$(e).find(".swipe").Swipe(ShopLocket.common.carousel.default_options).data("Swipe"),
-	e.find(".nav .left").on("click",function(){return t.prev(),!1}),e.find(".nav .right").on("click",function(){return t.next(),!1}),t}}
+	this.FamilyTales={common:{init:function(){return $("input, textarea").placeholder()}}}
+}.call(this),
+(window.jQuery||window.Zepto)&&function(e){
+	e.fn.Swipe=function(t){
+		return this.each(function(){
+			e(this).data
+			("Swipe",new Swipe(e(this)[0],t))
+		})
+	}
+}
+(window.jQuery||window.Zepto),
+function(){
+	this.FamilyTales.common.carousel={
+		default_options:{
+			startSlide:0,
+			speed:400,
+			interval:4000,
+			pause:4000,
+			continuous:!0,
+			disableScroll:!0,
+			stopPropagation:!1,
+			auto:!1,
+			callback:function(e,t){
+				return $(t).parent().children().removeClass("active"),
+				$(t).addClass("active")
+			}},
+			"new":function(e){
+				var t;
+				return t=$(e).find(".swipe").Swipe(FamilyTales.common.carousel.default_options).data("Swipe"),
+				e.find(".nav .left").on("click",function(){
+					return t.prev(),!1
+				}),
+				e.find(".nav .right").on("click",function(){
+					return t.next(),!1
+				}),t;
+			}
+	}
 }.call(this),
 	!function(e){e(function(){"use strict";
 		e.support.transition=function(){
@@ -115,4 +146,4 @@ for(var e=e.split("/"),t="",n=0,r=e.length;n<r;n++){if(!(3>n))break;t+=e[n],2>n&
 				return r=n(e).data(g),r?(t=n.extend({},u.horizontal,u.vertical),n.map(r,function(e){return t[e]})):[]},e}(),p={init:function(e,t){var r;return t==null&&(t={}),(r=t.handler)==null&&(t.handler=e),this.each(function(){var e,r,i,u;
 					return e=n(this),i=(u=t.context)!=null?u:n.fn[y].defaults.context,n.isWindow(i)||(i=e.closest(i)),i=n(i),r=l[i.data(f)],r||(r=new s(i)),new o(e,r,t)}),n[b]("refresh"),this},disable:function(){return p._invoke(this,"disable")},enable:function(){return p._invoke(this,"enable")},destroy:function(){
 					return p._invoke(this,"destroy")},prev:function(e,t){return p._traverse.call(this,e,t,function(e,t,n){if(t>0)return e.push(n[t-1])})},next:function(e,t){return p._traverse.call(this,e,t,function(e,t,n){if(t<n.length-1)return e.push(n[t+1])})},_traverse:function(e,t,i){var s,o;
-						return e==null&&(e="vertical"),t==null&&(t=r),o=h.aggregate(t),s=[],this.each(function(){var t;return t=n.inArray(this,o[e]),i(s,t,o[e])}),this.pushStack(s)},_invoke:function(e,t){return e.each(function(){var e;return e=o.getWaypointsByElement(this),n.each(e,function(e,n){return n[t](),!0})}),this}},n.fn[y]=function(){var e,r;return r=arguments[0],e=2<=arguments.length?t.call(arguments,1):[],p[r]?p[r].apply(this,e):n.isFunction(r)?p.init.apply(this,arguments):n.isPlainObject(r)?p.init.apply(this,[null,r]):r?n.error("The "+r+" method does not exist in jQuery Waypoints."):n.error("jQuery Waypoints needs a callback function or handler option.")},n.fn[y].defaults={context:r,continuous:!0,enabled:!0,horizontal:!1,offset:0,triggerOnce:!1},h={refresh:function(){return n.each(l,function(e,t){return t.refresh()})},viewportHeight:function(){var e;return(e=r.innerHeight)!=null?e:i.height()},aggregate:function(e){var t,r,i;return t=u,e&&(t=(i=l[n(e).data(f)])!=null?i.waypoints:void 0),t?(r={horizontal:[],vertical:[]},n.each(r,function(e,i){return n.each(t[e],function(e,t){return i.push(t)}),i.sort(function(e,t){return e.offset-t.offset}),r[e]=n.map(i,function(e){return e.element}),r[e]=n.unique(r[e])}),r):[]},above:function(e){return e==null&&(e=r),h._filter(e,"vertical",function(e,t){return t.offset<=e.oldScroll.y})},below:function(e){return e==null&&(e=r),h._filter(e,"vertical",function(e,t){return t.offset>e.oldScroll.y})},left:function(e){return e==null&&(e=r),h._filter(e,"horizontal",function(e,t){return t.offset<=e.oldScroll.x})},right:function(e){return e==null&&(e=r),h._filter(e,"horizontal",function(e,t){return t.offset>e.oldScroll.x})},enable:function(){return h._invoke("enable")},disable:function(){return h._invoke("disable")},destroy:function(){return h._invoke("destroy")},extendFn:function(e,t){return p[e]=t},_invoke:function(e){var t;return t=n.extend({},u.vertical,u.horizontal),n.each(t,function(t,n){return n[e](),!0})},_filter:function(e,t,r){var i,s;return i=l[n(e).data(f)],i?(s=[],n.each(i.waypoints[t],function(e,t){if(r(i,t))return s.push(t)}),s.sort(function(e,t){return e.offset-t.offset}),n.map(s,function(e){return e.element})):[]}},n[b]=function(){var e,n;return n=arguments[0],e=2<=arguments.length?t.call(arguments,1):[],h[n]?h[n].apply(null,e):h.aggregate.call(null,n)},n[b].settings={resizeThrottle:100,scrollThrottle:30},i.load(function(){return n[b]("refresh")})})}).call(this),function(){this.UTIL={exec:function(e,t){var n;n=ShopLocket,t=t===undefined?"init":t;if(e!==""&&n[e]&&typeof n[e][t]=="function")return n[e][t]()},init:function(){var e,t,n;return t=document.body,n=t.getAttribute("data-controller"),e=t.getAttribute("data-action"),UTIL.exec("common"),UTIL.exec(n),UTIL.exec(n,e)}},$(function(){return UTIL.init()})}.call(this),function(){$(function(){var e,t,n,r,i,s=this;$("body.home").length>0&&(mixpanel.track("Viewed landing page",{page:"home"}),mixpanel.track_forms("#main_signup","Interacted with landing page",{page:"home",section:"signup_bar",action:"submitted signup"}),e=ShopLocket.common.carousel["new"]($("section.above_fold .carousel")),t=ShopLocket.common.carousel["new"]($("section.testimonials .carousel")),n=ShopLocket.common.carousel["new"]($("section.tour .carousel")),r=$("#video_explainer_video")[0],i=$f(r),$("#video_explainer.modal").on("show",function(){var e;return i.api("play"),mixpanel.track("Played video"),e={page:"home",action:"watched",section:"video"},mixpanel.track("Interacted with landing page",e)}),$("#video_explainer.modal").on("hide",function(){return i.api("unload")}),$("section").waypoint(function(){var e;return e={page:"home",action:"viewed",section:$(this).attr("class")},mixpanel.track("Interacted with landing page",e)},{offset:"5%",triggerOnce:!0}));if($("body.about").length>0)return mixpanel.track("Viewed landing page",{page:"about"})})}.call(this);
+						return e==null&&(e="vertical"),t==null&&(t=r),o=h.aggregate(t),s=[],this.each(function(){var t;return t=n.inArray(this,o[e]),i(s,t,o[e])}),this.pushStack(s)},_invoke:function(e,t){return e.each(function(){var e;return e=o.getWaypointsByElement(this),n.each(e,function(e,n){return n[t](),!0})}),this}},n.fn[y]=function(){var e,r;return r=arguments[0],e=2<=arguments.length?t.call(arguments,1):[],p[r]?p[r].apply(this,e):n.isFunction(r)?p.init.apply(this,arguments):n.isPlainObject(r)?p.init.apply(this,[null,r]):r?n.error("The "+r+" method does not exist in jQuery Waypoints."):n.error("jQuery Waypoints needs a callback function or handler option.")},n.fn[y].defaults={context:r,continuous:!0,enabled:!0,horizontal:!1,offset:0,triggerOnce:!1},h={refresh:function(){return n.each(l,function(e,t){return t.refresh()})},viewportHeight:function(){var e;return(e=r.innerHeight)!=null?e:i.height()},aggregate:function(e){var t,r,i;return t=u,e&&(t=(i=l[n(e).data(f)])!=null?i.waypoints:void 0),t?(r={horizontal:[],vertical:[]},n.each(r,function(e,i){return n.each(t[e],function(e,t){return i.push(t)}),i.sort(function(e,t){return e.offset-t.offset}),r[e]=n.map(i,function(e){return e.element}),r[e]=n.unique(r[e])}),r):[]},above:function(e){return e==null&&(e=r),h._filter(e,"vertical",function(e,t){return t.offset<=e.oldScroll.y})},below:function(e){return e==null&&(e=r),h._filter(e,"vertical",function(e,t){return t.offset>e.oldScroll.y})},left:function(e){return e==null&&(e=r),h._filter(e,"horizontal",function(e,t){return t.offset<=e.oldScroll.x})},right:function(e){return e==null&&(e=r),h._filter(e,"horizontal",function(e,t){return t.offset>e.oldScroll.x})},enable:function(){return h._invoke("enable")},disable:function(){return h._invoke("disable")},destroy:function(){return h._invoke("destroy")},extendFn:function(e,t){return p[e]=t},_invoke:function(e){var t;return t=n.extend({},u.vertical,u.horizontal),n.each(t,function(t,n){return n[e](),!0})},_filter:function(e,t,r){var i,s;return i=l[n(e).data(f)],i?(s=[],n.each(i.waypoints[t],function(e,t){if(r(i,t))return s.push(t)}),s.sort(function(e,t){return e.offset-t.offset}),n.map(s,function(e){return e.element})):[]}},n[b]=function(){var e,n;return n=arguments[0],e=2<=arguments.length?t.call(arguments,1):[],h[n]?h[n].apply(null,e):h.aggregate.call(null,n)},n[b].settings={resizeThrottle:100,scrollThrottle:30},i.load(function(){return n[b]("refresh")})})}).call(this),function(){this.UTIL={exec:function(e,t){var n;n=FamilyTales,t=t===undefined?"init":t;if(e!==""&&n[e]&&typeof n[e][t]=="function")return n[e][t]()},init:function(){var e,t,n;return t=document.body,n=t.getAttribute("data-controller"),e=t.getAttribute("data-action"),UTIL.exec("common"),UTIL.exec(n),UTIL.exec(n,e)}},$(function(){return UTIL.init()})}.call(this),function(){$(function(){var e,t,n,r,i,s=this;$("body.home").length>0&&(mixpanel.track("Viewed landing page",{page:"home"}),mixpanel.track_forms("#main_signup","Interacted with landing page",{page:"home",section:"signup_bar",action:"submitted signup"}),e=FamilyTales.common.carousel["new"]($("section.above_fold .carousel")),t=FamilyTales.common.carousel["new"]($("section.testimonials .carousel")),n=FamilyTales.common.carousel["new"]($("section.tour .carousel")),r=$("#video_explainer_video")[0],i=$f(r),$("#video_explainer.modal").on("show",function(){var e;return i.api("play"),mixpanel.track("Played video"),e={page:"home",action:"watched",section:"video"},mixpanel.track("Interacted with landing page",e)}),$("#video_explainer.modal").on("hide",function(){return i.api("unload")}),$("section").waypoint(function(){var e;return e={page:"home",action:"viewed",section:$(this).attr("class")},mixpanel.track("Interacted with landing page",e)},{offset:"5%",triggerOnce:!0}));if($("body.about").length>0)return mixpanel.track("Viewed landing page",{page:"about"})})}.call(this);

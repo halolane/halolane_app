@@ -1,14 +1,14 @@
 development:
-  :address: smtp.gmail.com
-  :port: 587
+  :address: oxmail.registrar-servers.com
+  :port: 25
   :authentication: plain
-  :user_name: FamilyTalesInc@gmail.com
+  :user_name: hello@famiytales.co
   :password: IVEYmba2013
   :enable_starttls_auto: true
 production:
-  :address: smtp.gmail.com
-  :port: 587
+  :address: oxmail.registrar-servers.com
+  :port: 25
   :authentication: plain
-  :user_name: FamilyTalesInc@gmail.com
+  :user_name: hello@famiytales.co
   :password: IVEYmba2013
   :enable_starttls_auto: true

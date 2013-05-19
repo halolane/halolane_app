@@ -1,5 +1,5 @@
 class Mailer < ActionMailer::Base
-  default from: "hello@familytales.co"
+  default from: "\"FamilyTales\" <hello@familytales.co>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -11,9 +11,9 @@ class Mailer < ActionMailer::Base
     @profile = profile
     @user = user
     full_name = @profile.first_name + " "  + @profile.last_name
-    subject = @user.first_name + " " + @user.last_name + " had invited you to the view life storybook of " + full_name
+    subject = @user.first_name + " " + @user.last_name + " invites you to view FamilyTales storybook of " + full_name
     @url = url
-    mail( :from => 'hello@familytales.co', 
+    mail( :from => "\"FamilyTales\" <hello@familytales.co>", 
           :to => @user.email, 
           :subject => subject )
     invitation.update_attribute(:sent_at, Time.now)
@@ -22,6 +22,6 @@ class Mailer < ActionMailer::Base
   def validate_account(user, url)
     @user = user
     @url = url
-    mail(:from => 'hello@familytales.co', :to => @user.email , :subject => 'Welcome to FamilyTales')
+    mail(:from => "\"FamilyTales\" <hello@familytales.co>", :to => @user.email , :subject => 'Welcome to FamilyTales')
   end
 end
