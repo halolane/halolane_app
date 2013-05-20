@@ -5,7 +5,12 @@
     <h3 id="confirmemail">Confirm your email</h3>
   </div>
   <div class="modal-body">
-  	Please confirm your email to invite your friends to view or contribute to the storybook of <%= @profile.first_name %>.
+  	<p>Please confirm your email to invite your friends to view or contribute to the storybook of <%= @profile.first_name %>.</p><br>
+
+    <p>We've sent account validation to <%= current_user.email %>. If this is not your email, <%= link_to "change your email here", edit_user_path(current_user) %>.</p><br>
+
+    <p>You can also <%= link_to "request to resend the confirmation email", confirmationsent_url %>
+    
   </div>
   <div class="modal-footer">
   	<button class="btn btn-primary" class="close" data-dismiss="modal" aria-hidden="true">Ok</button>

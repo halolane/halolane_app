@@ -1,0 +1,15 @@
+<% provide(:title, 'Validation Re-sent') %>
+
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs span2">
+    <li><%= render 'shared/user_info' %></li><br>
+    <li><%= link_to "Storybooks", root_url %></li>
+    <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+    <!-- <li><a href="#tab3" data-toggle="tab">Notification</a></li> -->
+  </ul>
+  <div class="tab-content span9" id="front-tab-content">
+    <h2>We've sent account validation. </h2>
+    <p>We've sent account validation to <%= current_user.email %>. If this is not your email, <%= link_to "change your email here", edit_user_path(current_user) %>. </p> 
+    <p>If you don't receive the validation within a few minutes, check your email's spam and junk filters.</p>
+  </div>
+</div>

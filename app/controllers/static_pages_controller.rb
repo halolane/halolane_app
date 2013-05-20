@@ -1,7 +1,16 @@
 class StaticPagesController < ApplicationController
   def home
+
   	
     if signed_in?
+      if not params[:verify_token] == nil
+        @user = User.find_by_token(params[:verify_token])
+        if @user.verified != true
+          flash[:notice] = "Your email has been verified."
+          @user.toggle!(:verified)
+        end
+        sign_in @user
+      end
       @user = current_user
       @profile = Profile.new
       @memories = @user.memories.paginate(page: params[:page])

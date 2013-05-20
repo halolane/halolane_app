@@ -26,8 +26,9 @@ HalolaneApp::Application.routes.draw do
   match '/signout', to: 'sessions#destroy', via: :delete
   match '/auth/:provider/callback', :to => 'authentications#create'
   match '/auth/failure', :to => 'sessions#failure'
-  match '/login/:verify_token', to: 'users#edit'
+  match '/login/:verify_token', to: 'static_pages#home'
   match '/resetsent', to: 'password_resets#confirm'
+  match '/confirmationsent', to: 'users#resend_validation'
   match '/editstory', to: 'memories#edit'
 
   #This must be last of the match statements

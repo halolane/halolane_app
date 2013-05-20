@@ -1,7 +1,7 @@
   <aside>
     <section class="user-info">
-        <%= @user.first_name %>
-        <%= @user.last_name %><br>
+        <%= current_user.first_name %>
+        <%= current_user.last_name %><br>
         <%= link_to "Edit settings", edit_user_path(current_user), :class=>"edit-settings"%>
     </section>
   </aside>
