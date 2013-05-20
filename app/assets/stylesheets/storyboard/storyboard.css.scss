@@ -373,6 +373,7 @@ height: 600px;
 	background: #eee;
 	border: 1px solid #ddd;
 	margin-bottom: 5px;
+	z-index: 900 !important;
 	box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
 }
 
@@ -412,6 +413,7 @@ height: 600px;
 
 .isotope,
 .isotope .isotope-item {
+
   -webkit-transition-duration: 0.8s;
      -moz-transition-duration: 0.8s;
       -ms-transition-duration: 0.8s;
@@ -428,6 +430,7 @@ height: 600px;
 }
 
 .isotope .isotope-item {
+	z-index: 1 !important;
   -webkit-transition-property: -webkit-transform, opacity;
      -moz-transition-property:    -moz-transform, opacity;
       -ms-transition-property:     -ms-transform, opacity;
@@ -657,13 +660,49 @@ height: 600px;
 }
 
 .story-edit-btn {
-	position: relative;
+	position: absolute;
 	opacity: 0;
-	float: right;
 	margin-top: -4%;
-	margin-left: 0%;
+	margin-left: 85%;
 	z-index: 100;
 	.btn {
 		font-size: 0.7em;
 	}
+	a.icon-chevron {
+		text-decoration: none;
+		color: #9a1b39;
+	}
+}
+
+.dropdown-menu
+{
+	position: absolute;
+    float:left !important;
+    padding-left: -95% !important;
+    z-index: 1040 !important;
+    margin-right: 100% !important;
+    border-radius: 6px 0px 6px 6px;
+}
+
+.dropdown-menu.pull-left {
+  left: 0;
+  z-index: 1040 !important;
+  right: auto;
+}
+
+.open > .dropdown-menu
+{
+	position: relative;
+    margin-left: -85%;
+    z-index: 1000 !important;
+    border-radius: 6px 0px 6px 6px;
+    -webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;width:100%;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;
+	-webkit-box-shadow:"inset 0 2px 5px rgba(0,0,0,0.1), 0 1px 0px 1px rgba(255,255,255,0.4)";
+	-moz-box-shadow:"inset 0 2px 5px rgba(0,0,0,0.1), 0 1px 0px 1px rgba(255,255,255,0.4)";
+	box-shadow:"inset 0 2px 5px rgba(0,0,0,0.1), 0 1px 0px 1px rgba(255,255,255,0.4)";
 }
