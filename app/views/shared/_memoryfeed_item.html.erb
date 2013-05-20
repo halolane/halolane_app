@@ -6,7 +6,7 @@
 		<a class="dropdown-toggle icon-chevron" data-toggle="dropdown" href="#"><i class="icon-chevron-down"></i></a>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 			
-			<% if current_user?(memoryfeed_item.user) %>
+			<% if current_user?(memoryfeed_item.user) or current_user.storybook_editor?(@profile) %>
 				<li><%= link_to "Delete", memoryfeed_item, method: :delete, data: { confirm: "Are you sure?" }, title: "Delete this story",  %></li>
 			<% end %>
 

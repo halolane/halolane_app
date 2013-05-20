@@ -360,11 +360,17 @@ section.above_fold .carousel .item.fourth img {
 	height: 500px;
 	margin-right: 40%;
 }
+section.above_fold .carousel .item.fifth img {
+	width: 822px;
+	height: 500px;
+	margin-right: 0%;
+}
 
 section.above_fold .carousel .item.first .bubble.imagine,
 section.above_fold .carousel .item.second .bubble.imagine,
 section.above_fold .carousel .item.third .bubble.simple,
 section.above_fold .carousel .item.fourth .bubble.social,
+section.above_fold .carousel .item.fifth .bubble.social,
 section.tour .carousel .item.first .bubble.advanced,
 section.above_fold .carousel .item.first .bubble.integrates,
 section.above_fold .carousel .item.second .bubble.integrates,
@@ -382,6 +388,7 @@ section.above_fold .carousel .item.first .bubble.imagine *,
 section.above_fold .carousel .item.second .bubble.imagine *,
 section.above_fold .carousel .item.third .bubble.simple *,
 section.above_fold .carousel .item.fourth .bubble.social *,
+section.above_fold .carousel .item.fifth .bubble.social *,
 section.tour .carousel .item.first .bubble.advanced *,
 section.above_fold .carousel .item.first .bubble.integrates *,
 section.above_fold .carousel .item.second .bubble.integrates *,
@@ -399,6 +406,7 @@ section.above_fold .carousel .item.first .bubble.imagine strong,
 section.above_fold .carousel .item.second .bubble.imagine strong,
 section.above_fold .carousel .item.third .bubble.simple strong,
 section.above_fold .carousel .item.fourth .bubble.social strong,
+section.above_fold .carousel .item.fifth .bubble.social strong,
 section.tour .carousel .item.first .bubble.advanced strong,
 section.above_fold .carousel .item.first .bubble.integrates strong, 
 section.above_fold .carousel .item.second .bubble.integrates strong,
@@ -414,6 +422,7 @@ section.above_fold .carousel .item.first .bubble.imagine:after,
 section.above_fold .carousel .item.second .bubble.imagine:after,
 section.above_fold .carousel .item.third .bubble.simple:after,
 section.above_fold .carousel .item.fourth .bubble.social:after,
+section.above_fold .carousel .item.fifth .bubble.social:after,
 section.tour .carousel .item.first .bubble.advanced:after,
 section.above_fold .carousel .item.first .bubble.integrates:after,
 section.above_fold .carousel .item.second .bubble.integrates:after,
@@ -435,6 +444,7 @@ section.above_fold .carousel .item.first .bubble.imagine:after,
 section.above_fold .carousel .item.second .bubble.imagine:after,
 section.above_fold .carousel .item.third .bubble.simple:after,
 section.above_fold .carousel .item.fourth .bubble.social:after,
+section.above_fold .carousel .item.fifth .bubble.social:after,
 section.tour .carousel .item.first .bubble.advanced:after{
 	border-color:transparent #69a100 transparent transparent;top:50%;right:100%;margin-top:-15px
 }
@@ -581,7 +591,7 @@ section.above_fold .carousel .item .bubble{
 
 section.above_fold .carousel .item.first .bubble.integrates{
 	left:3%;
-	top:3%;
+	top:5%;
 	color: #fff;
 	background-color:#fff;
 }
@@ -607,6 +617,7 @@ section.above_fold .carousel .item.second .bubble.imagine{right:0;top:50%;color:
 section.above_fold .carousel .item.third .bubble.simple{bottom:40%;right:5%;color: #fff;background-color:#fff;}
 
 section.above_fold .carousel .item.fourth .bubble.social{top:20%;right:0;color: #fff;background-color:#fff;}
+section.above_fold .carousel .item.fifth .bubble.social{top:20%;right:0;color: #fff;background-color:#fff;}
 
 section.above_fold .carousel .item.active .bubble{
 	-webkit-animation:fade_in 1s 0.5s ease both;

@@ -22,10 +22,10 @@
           </a>
 
         </h5>
-        <ol class="memories">
-          <%= render @profiles %>
-        </ol>
-        <%= will_paginate @profiles %>
+        <hr>
+        <% @profiles.each do |p| %>
+          <%= link_to  p.first_name + " " + p.last_name, root_url + p.url %><hr>
+        <% end %>
       <% else %>
         <p>You don't have any life storybooks. Why don't you create one?</p>
       <% end %>
