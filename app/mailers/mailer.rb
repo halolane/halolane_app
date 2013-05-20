@@ -24,4 +24,10 @@ class Mailer < ActionMailer::Base
     @url = url
     mail(:from => "\"FamilyTales\" <hello@familytales.co>", :to => @user.email , :subject => 'Welcome to FamilyTales')
   end
+
+  def resend_validation(user, url)
+    @user = user
+    @url = url
+    mail(:from => "\"FamilyTales\" <hello@familytales.co>", :to => @user.email , :subject => 'Confirm your FamilyTales account')
+  end
 end

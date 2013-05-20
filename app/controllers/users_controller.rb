@@ -54,41 +54,33 @@ class UsersController < ApplicationController
   end
 
   def resend_validation
-    Mailer.validate_account(current_user, root_url + "login/" + current_user.token).deliver
+    @user = current_user
+    if !@user.verified 
+      Mailer.resend_validation(current_user, root_url + "login/" + current_user.token).deliver
+    else
+      redirect_to root_url, :notice => "Your account has already been verified"
+    end
   end
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = "User destroyed."
+    flash[:success] = "Account deleted."
     redirect_to users_url
   end
 
   def edit
-    if not params[:verify_token] == nil
-      @user = User.find_by_token(params[:verify_token])
-      if @user.verified != true
-        flash[:notice] = "Your email has been verified."
-        @user.toggle!(:verified)
-      end
-    else
-      @user = User.find(params[:id])
-    end
+    @user = User.find(params[:id])
     @profile = Profile.new
-    
     @profiles = @user.profiles_with_relationships.paginate(page: params[:page])
-
     @memories = @user.memories.paginate(page: params[:page])
   end
 
   def update
+    @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile updated"
-      if @user.verified != true and params[:user][:password] != nil
-        @user.toggle!(:verified)
-        flash[:success] = "Account successfully validated"
-      end
       sign_in @user
-      redirect_back_or edit_user_path(current_user)
+      redirect_to root_url
     else
       redirect_to edit_user_path(current_user)
       flash[:error] = "Please enter the missing fields."
