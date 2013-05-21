@@ -34,7 +34,7 @@ HalolaneApp::Application.routes.draw do
 
   #This must be last of the match statements
   match '/:url', to: 'profiles#show'
-  match '/:url/:invitation_token', to: 'invitation#show'
+  match '/:url/:invitation_token', to: 'invitations#show'
 
 
   
