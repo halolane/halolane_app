@@ -9,6 +9,7 @@ HalolaneApp::Application.routes.draw do
   resources :memories, only: [:create, :destroy, :edit]
   resources :invitations
   resources :password_resets
+  resources :relationships
 
   get "password_resets/new"
   get "users/new"
@@ -31,6 +32,7 @@ HalolaneApp::Application.routes.draw do
   match '/resetsent', to: 'password_resets#confirm'
   match '/confirmationsent', to: 'users#resend_validation'
   match '/editstory', to: 'memories#edit'
+  match '/changerelationship', to: 'relationships#edit'
 
   #This must be last of the match statements
   match '/:url', to: 'profiles#show'

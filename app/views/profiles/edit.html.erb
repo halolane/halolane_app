@@ -33,17 +33,6 @@
   									Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
   		</p>
 
-    	<p>
-			  <%= f.label :privacy, "Privacy setting" %>
-			  <%= f.radio_button :privacy, '2', :checked => true %>
-			  <%= f.label :privacy, "Only selected friends and family can post memories and view the life storybook" %> 
-			  <%= f.radio_button :privacy, '1' %>
-			  <%= f.label :privacy, "Only selected friends and family can post memories" %> 
-			  <%= f.radio_button :privacy, '0' %> 
-			  <%= f.label :privacy, "Public" %> 
-		 	</p>
-		  
-
 
 		  <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
 		<% end %>

@@ -23,12 +23,11 @@ class ProfilesController < ApplicationController
 
   def show
 
-    if params[:url] != nil
+    if ! params[:url].blank?
       @profile = Profile.find_by_url(params[:url])
     else
       @profile = Profile.find(params[:id])
     end
-
 
     if params[:url] == "favicon"
       redirect_back_or root_url

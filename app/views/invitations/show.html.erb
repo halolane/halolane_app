@@ -18,7 +18,7 @@
 		  <%= f.label :password %>
 		  <%= f.password_field :password, :placeholder=>"Password"  %><br>
 
-		  <h5> Chloe is my <br><%= select "relationship","description", 
+		  <h5> <%= @profile.first_name %> is my <br><%= select "relationship","description", 
 				  				Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
 		  <%= render 'shared/error_messages', object: f.object %></h5>
 		

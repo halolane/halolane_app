@@ -25,8 +25,8 @@ module SessionsHelper
     Invitation.exists?(:token => token)
   end
 
-  def email_is_invited?(email)
-    Invitation.exists?(:recipient_email => email)
+  def email_is_invited?(email, profile_id)
+    Invitation.exists?(:recipient_email => email,:profile_id => profile_id)
   end
 
   def is_a_user_already?(email)

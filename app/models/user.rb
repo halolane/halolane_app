@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   has_many :profiles_with_relationships, :through => :relationships, :source => :profile
   has_many :authentications, dependent: :destroy
   
-  has_many :invitations, :class_name => 'Invitation', :foreign_key => 'sender_id'
+  has_many :invitations, :class_name => 'Invitation', :foreign_key => 'sender_id', dependent: :destroy
 
   before_save { |user| user.email = email.downcase }
 
