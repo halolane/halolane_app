@@ -20,6 +20,7 @@ HalolaneApp::Application.routes.draw do
   
   match '/about', to: 'static_pages#about'
   match '/pagenotfound', to: 'static_pages#pagenotfound'
+  match '/storybooknotfound', to: 'static_pages#pagenotfound'
   match '/createstorybook', to: 'profiles#new'
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'
@@ -33,7 +34,7 @@ HalolaneApp::Application.routes.draw do
 
   #This must be last of the match statements
   match '/:url', to: 'profiles#show'
-  match '/:url/:invitation_token', to: 'profiles#show'
+  match '/:url/:invitation_token', to: 'invitation#show'
 
 
   

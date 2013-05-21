@@ -34,4 +34,9 @@ class InvitationsController < ApplicationController
       redirect_to root_url + @profile.url
     end
   end
+
+  def show
+    @invitation = Invitation.find_by_token(params[:invitation_token])
+  end
+
 end

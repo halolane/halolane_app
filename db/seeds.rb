@@ -10,6 +10,8 @@
 	"Daughter", 
 	"Father", 
 	"Mother",
+	"Brother",
+	"Sister",
 	"Husband", 
 	"Wife", 
 	"Friend", 
@@ -22,7 +24,9 @@
 	"Girlfriend", 
 	"Boyfriend", 
 	"Spouse", 
-	"Partner"]. each do |r|
+	"Partner",
+	"Myself",
+	"Other"]. each do |r|
  	Relationshipdesc.find_or_create_by_description(r)
  end
 
