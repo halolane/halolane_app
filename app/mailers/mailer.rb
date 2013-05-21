@@ -6,17 +6,28 @@ class Mailer < ActionMailer::Base
   #
   #   en.mailer.invitation.subject
   #
+  def invitation_user_already(profile, user, url)
+    @profile = profile
+    @user = user
+    full_name = @profile.first_name + " "  + @profile.last_name
+    subject = @user.first_name + " " + @user.last_name + " invites you to view the FamilyTales storybook of " + full_name
+    @url = url
+    mail( :from => "\"FamilyTales\" <hello@familytales.co>", 
+          :to => @user.email, 
+          :subject => subject )
+  end
+
   def invitation(invitation, profile, user, url)
     @invitation = invitation
     @profile = profile
     @user = user
     full_name = @profile.first_name + " "  + @profile.last_name
-    subject = @user.first_name + " " + @user.last_name + " invites you to view FamilyTales storybook of " + full_name
+    subject = @user.first_name + " " + @user.last_name + " invites you to view the FamilyTales storybook of " + full_name
     @url = url
     mail( :from => "\"FamilyTales\" <hello@familytales.co>", 
           :to => @user.email, 
           :subject => subject )
-    invitation.update_attribute(:sent_at, Time.now)
+    @invitation.update_attribute(:sent_at, Time.now)
   end
 
   def validate_account(user, url)

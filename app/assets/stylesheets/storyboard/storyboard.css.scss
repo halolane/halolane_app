@@ -19,6 +19,15 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+.alert {
+	z-index: 11 !important;
+	margin-top: 40px;
+	margin-bottom: 10px !important;
+	position: relative;
+	width: 100%;
+	float: left;
+}
+
 body {
 background-color:#F7F5F5;
 background:#282828 url('/images/textured_paper.png');

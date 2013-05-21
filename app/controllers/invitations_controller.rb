@@ -15,23 +15,23 @@ class InvitationsController < ApplicationController
       
       @user = User.find_by_email(@invitation.recipient_email)
       if has_relationship?(@profile.id, @user.id)
-        flash[:error] = @invitation.recipient_email + " is already contributing to this FamilyTales storybook"
-        redirect_back_or root_url
+        redirect_to root_url + @profile.url, :notice => @invitation.recipient_email + " is already contributing to this FamilyTales storybook"
       else
-        @user.contribute!(@profile, "1", false)
+        @user.contribute!(@profile, 1, false)
+        Mailer.invitation_user_already(@profile, current_user, root_url + @profile.url).deliver
+        redirect_to root_url + @profile.url, :notice => "Your invitation has been sent to " + @invitation.recipient_email
       end
     elsif email_is_invited?(@invitation.recipient_email)
       flash[:notice] = "Resending invitation to " + @invitation.recipient_email
-      @invitation = Invitation.find_by_recipient_email(@invitation.recipient_email)
-      Mailer.invitation(@invitation, @profile, current_user, root_url + @profile.url + "/" + @invitation.token).deliver
-      redirect_back_or root_url    
+      @invitation_resent = Invitation.find_by_recipient_email(@invitation.recipient_email)
+      Mailer.invitation(@invitation_resent, @profile, current_user, root_url + @profile.url + "/" + @invitation_resent.token).deliver
+      redirect_to root_url + @profile.url, :notice => "Your invitation has been re-sent to " + @invitation.recipient_email
     elsif @invitation.save
       Mailer.invitation(@invitation, @profile, current_user, root_url + @profile.url + "/" + @invitation.token).deliver
-      flash[:success] = "Thank you, invitation sent"
-      redirect_back_or root_url
+      redirect_to root_url + @profile.url, :notice => "Your invitation has been sent to " + @invitation.recipient_email
     else
       flash[:error] = "Invalid Email"
-      redirect_back_or root_url + @profile.url
+      redirect_to root_url + @profile.url
     end
   end
 end
