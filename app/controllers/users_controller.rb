@@ -25,10 +25,8 @@ class UsersController < ApplicationController
       last_name: params[:user][:last_name],
       password: params[:user][:password], 
       password_confirmation: params[:user][:password] )
-    
-    @invitation = Invitation.find_by_token(params[:invitation][:token])
-
-    if !(@invitation).blank?
+    if !params[:invitation].nil?
+      @invitation = Invitation.find_by_token(params[:invitation][:token])
       @profile = Profile.find_by_id(@invitation.profile_id)
       @user.invited_by = @invitation.sender_id
     end
@@ -42,7 +40,7 @@ class UsersController < ApplicationController
       sign_in @user
       Mailer.validate_account(current_user, root_url + "login/" + current_user.token).deliver
       flash[:success] = "Welcome to the FamilyTales! Please check your email " + @user.email + " to validate your account."
-      if (@invitation).blank?
+      if params[:invitation].nil?
         redirect_to root_url
       else
         relationship = params[:relationship][:description]
