@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       last_name: params[:user][:last_name],
       password: params[:user][:password], 
       password_confirmation: params[:user][:password] )
-    if !params[:invitation].nil?
+    if !params[:invitation].nil? && !params[:invitation][:token].nil?
       @invitation = Invitation.find_by_token(params[:invitation][:token])
       @profile = Profile.find_by_id(@invitation.profile_id)
       @user.invited_by = @invitation.sender_id

@@ -89,6 +89,19 @@ $(document).ready(function(){
  		//$('.messageBox').toggleClass ("withphoto");
  	});
 
+ 	$('.suggest-icon').hover(function() {
+		$(this).fadeTo('fast',1);
+	}, function() {
+   	$(this).fadeTo("fast", 0.6);
+ 	});
+
+ 	$('.suggest-icon').click(function() {
+ 		$('.suggest-icon').fadeTo('fast',1);
+ 		$('.memoryquestion').toggleClass("hidden");
+ 		//$('.messageSection').toggleClass ("withphoto");
+ 		//$('.messageBox').toggleClass ("withphoto");
+ 	});
+
 	$('.skipquestion').click(function() {
 
 		skipQuestion();
