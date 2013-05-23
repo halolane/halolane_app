@@ -25,5 +25,7 @@ class StaticPagesController < ApplicationController
   end
 
   def about
+    @user = User.new
+    render :layout => "home_layout"
   end
 end
