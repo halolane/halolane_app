@@ -509,8 +509,17 @@ section.future{
 }
 
 .wrapper.header{
-	background:#282828 url(/images/background_grey_noise.png);
-	-moz-box-shadow:0 5px 20px rgba(0,0,0,0.2);-webkit-box-shadow:0 5px 20px rgba(0,0,0,0.2);box-shadow:0 5px 20px rgba(0,0,0,0.2)}header{color:#999;text-shadow:0 -1px 0px rgba(0,0,0,0.4);padding-top:1em;padding-bottom:1em}header h3,header a{color:#999;font-size:1em}header .branding{width:48.3871%;float:left;margin-right:3.22581%;display:inline}
+	  background-image:url(/images/themes/first_time/trim.png);
+  background-position:0 0;
+  background-repeat:repeat-x;
+  background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0.42,#e9e9e9),color-stop(0.71,#f6f6f6));
+  background-image:-moz-linear-gradient(center bottom,#e9e9e9 42%,#f6f6f6 71%);
+  background-color: #c9cccf;
+}
+
+	header{color:#999;text-shadow:0 -1px 0px rgba(0,0,0,0.4);padding-top:1em;padding-bottom:1em}header h3,header a{color:#999;font-size:1em}header .branding{width:48.3871%;float:left;margin-right:3.22581%;display:inline
+
+	}
 
 header .branding h1.logo {
 	margin:0;
@@ -528,11 +537,7 @@ header .branding h1.logo img{
 
 header .branding .sm{width:46.66667%;float:right;margin-right:0;*margin-left:-3em;display:inline}
 
-header .branding .sm a{margin-top:10px;width:20px;height:20px;display:block;overflow:hidden;white-space:no-wrap;text-indent:-999em;margin-right:0.5em;float:left;background-size:contain}
-
-header .branding .sm a.twitter{background-image:url(/images/icon-twitter.png)}
-
-header .branding .sm a.fb{background-image:url(/images/icon-fb.png)}
+header .branding .sm a {margin-top:10px;width:20px;height:20px;display:block;overflow:hidden;white-space:no-wrap;margin-right:0.5em;float:left;background-size:contain}
 
 header .branding .sm .phone{margin-left:1em;font-size:0.8em;float:left}
 
@@ -542,8 +547,44 @@ header nav{width:48.3871%;float:right;margin-right:0;*margin-left:-3em;display:i
 
 header nav ul{width:100%;float:right;padding:0;margin:0}header nav ul li{display:block;float:left;width:15%;text-align:center}
 
-header nav ul li a{display:block;padding:0.5em 0;color:#fff}
-header nav ul li a:hover{display:block;padding:0.5em 0;}
+header nav ul li a {
+	display:block;padding:0.5em 0;color:#474747
+}
+
+header {
+	.login, .signup {
+		a {
+			color:white
+		}
+	}
+
+	.header-links {
+		font-size: 1.2em;
+	}
+	.icon-twitter, .icon-facebook {
+		color:gray;
+		font-size: 19px;
+	}
+
+	.icon-twitter:hover, .icon-facebook:hover, .header-links:hover {
+		color:#9a1b39 !important;
+		text-decoration:none !important;
+	}
+
+	a:hover {
+		color:#9a1b39 !important;
+		text-decoration:none;
+	}
+
+}
+
+header nav ul li a h3:hover {
+	color:#9a1b39 !important;
+}
+
+
+
+header nav ul li a:hover{display:block;padding:0.5em 0;color:#9a1b39 !important;text-decoration: none;}
 
 header nav ul li.signup{width:20%}
 

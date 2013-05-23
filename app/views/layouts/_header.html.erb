@@ -5,8 +5,8 @@
         <a href="/" class="home"><%= image_tag("/images/fulllogo1.png") %></a>
       </h1>
       <div class='sm'>
-        <a href="http://twitter.com/myFamilyTales" class="twitter" title="Follow us on Twitter" target="_blank">Follow us on Twitter</a>
-        <a href="http://facebook.com/myFamilyTales/" class="fb" title="Become a fan on Facebook" target="_blank">Become a fan on Facebook</a>
+        <a href="http://twitter.com/myFamilyTales" title="Follow us on Twitter" target="_blank"><i class="icon-twitter"></i></a>
+        <a href="http://www.facebook.com/myFamilyTales" title="Become a fan on Facebook" target="_blank"><i class="icon-facebook"></i></a>
         <div class='phone'>
             Need help?
           <span class='number'>
@@ -18,27 +18,28 @@
     <% if signed_in? %>
       <nav>
         <ul>
-          <li>
-            <%= link_to "Profile", current_user, :class=>"home selected" %>
-          <li>
-            <%= link_to "Settings", edit_user_path(current_user), :class=>"" %>
+          <li class="header-links">
+            <h3><%= link_to "Profile", current_user, :class=>"home selected" %></h3>
           </li>
-          <li>
-            <%= link_to "Sign out", signout_path, method: "delete" %>
+          <li class="header-links">
+            <h3><%= link_to "Settings", edit_user_path(current_user), :class=>"" %></h3>
+          </li>
+          <li class="header-links">
+            <h3><%= link_to "Sign out", signout_path, method: "delete" %></h3>
           </li>
         </ul>
       </nav>
     <% else %>
       <nav>
         <ul>
-          <li>
-            <a href="/" class="home selected">Home</a>
+          <li class="header-links">
+            <a href="/" class="home selected"><h3>Home</h3></a>
           </li>
-          <li>
-            <a href="/#" class="">About</a>
+          <li class="header-links">
+            <a href="/about" class=""><h3>About</h3></a>
           </li>
-          <li>
-            <a href="/#" class="">Blog</a>
+          <li class="header-links">
+            <a href="http://blog.familytales.co" class=""><h3>Blog</h3></a>
           </li>
           <!-- use this when the website goes live 
           <li class='login'>
