@@ -857,10 +857,15 @@ section.future{background:#000 url('/images/background_grey_light_noise.png')}
 section.future h3{margin-bottom:2em}
 section.future .item{width:31.1828%;float:left;margin-right:3.22581%;display:inline;text-align:center}
 section.future .item:last-child{float:right;margin-right:0;*margin-left:-3em;display:inline}
-section.future .item .illustration{height:0;padding-bottom:90%}section.future .item img{width:100%}
+section.future .item .illustration{height:0;padding-bottom:90%}
+
+section.future .item img{width:100%}
+section.future .item .team-pic img{width:200px}
 section.signup_bar_simple{
 		background:#111 url(/images/background_grey_dark_noise.png)
 }
+
+
 section.signup_bar_simple h3{font-size:2em}section.signup_bar_simple p{text-align:center}
 section.signup_bar_simple .signup_button{
 	position:relative;padding:0.9em 2em;
@@ -937,6 +942,35 @@ body.terms article.wrapper,body.privacy article.wrapper,body.jobs article.wrappe
 	top: 50% !important;
 	left: 50% !important;
 }
+
+section.fees{
+	background:#eee url('/images/background_grey_light_noise.png')
+}
+
+section.fees .half{
+	width:48.3871%;
+	float:left;
+	margin-right:3.22581%;
+	display:inline
+}
+
+section.fees .half h3{
+	text-align:left
+}
+
+section.fees .half:last-child{
+	float:right;
+	margin-right:0;
+	*margin-left:-3em;
+	display:inline
+}
+
+section.fees p.logos{
+	text-align:left;
+	margin-top:2em
+}
+
+section.fees p.logos img { width:50% }
 
 /* line 8, ../../../../../../../usr/local/lib/ruby/gems/1.9.1/gems/bootstrap-sass-2.1.0.0/vendor/assets/stylesheets/bootstrap/_modals.scss */
 .modal-open .dropdown-menu {

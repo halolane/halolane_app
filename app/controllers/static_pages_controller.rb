@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
 
-  	if not params[:verify_token] == nil
+    if not params[:verify_token] == nil
       @user = User.find_by_token(params[:verify_token])
       flash[:notice] = "Your email has been verified."
       if !@user.verified
@@ -21,7 +21,7 @@ class StaticPagesController < ApplicationController
       @user = User.new
       render :layout => "home_layout"
     end
-  	
+    
   end
 
   def about
