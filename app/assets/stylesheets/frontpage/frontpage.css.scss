@@ -497,10 +497,14 @@ section.team .content *,section.media .content *,header *,footer *{
 body,html{margin:0;padding:0;display:block}
 @media screen and (max-device-width: 480px){.carousel .nav{display:none}}
 
-section.above_fold,section.video,section.testimonials,section.cred,section.tour,section.fees,section.pricing,
+section.video,section.testimonials,section.cred,section.tour,section.fees,section.pricing,
 section.grow,section.future,section.signup_bar,section.signup_bar_simple,section.about_above_fold,
 section.tagline2,section.difference,section.team,section.media{
 	padding:5em 0;text-shadow:0 1px 0px rgba(255,255,255,0.8);border-top:3px solid rgba(0,0,0,0.2)}
+
+section.above_fold{
+	padding:5em 0;text-shadow:0 1px 0px rgba(255,255,255,0.8);
+}
 section.signup_bar,section.video,section.cred,section.pricing,section.signup_bar_simple,section.difference{
 	color:#fff;text-shadow:0 -1px 0px rgba(0,0,0,0.4)
 }
