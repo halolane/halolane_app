@@ -67,8 +67,7 @@ class ProfilesController < ApplicationController
     relationship = params[:relationship][:description]
 
   	if @profile.save
-      current_user.contribute!(@profile, relationship, true)
-  		flash[:success] = "Welcome to the FamilyTales! We sent you an email to validate your account."
+      current_user.contribute!(@profile, relationship, true, "edit")
   		redirect_to root_url + @profile.url
   	else
   		render 'new'
