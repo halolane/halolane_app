@@ -3,7 +3,7 @@
 
 <div class="row">
 	<div class="span6 offset3">
-		<h1>Signup</h1>
+		<h1>Sign up</h1>
 		<%= form_for(@user) do |f| %>
 		  <%= render 'shared/error_messages', object: f.object %>
 		  <%= f.label :first_name %>
@@ -18,7 +18,31 @@
 		  <%= f.label :password %>
 		  <%= f.password_field :password, :placeholder=>"Password"  %><br>
 
-		  <%= f.submit "Create my account", class: "green_button" %>
-		<% end %>
+		  <a href="#betadescmodal" data-toggle="modal" data-dismiss="modal" aria-hidden="true"><button class="green_button" style="width:200px !important;">Start my storybook</button></a>
+	</div>
+</div>
+
+
+<div id="betadescmodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="startModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+		<h3 id="betadescmodalLabel">FamilyTales is in beta</h3>
+	</div>
+	<div class="modal-body">
+		<p>We would love to hear from you! Please notify us of any issues or improvements you would like to see made.
+			<ul>
+				<li>Send an email <a href="mailto:hello@familytales.co">hello@familytales.co</a></li>
+				<li>Call our toll-free number <strong>1-877-753-9166</strong> </li>
+				<li>Click on the <strong>feedback form</strong> on the bottom-right of our website</li>
+			</ul>
+		</p>
+		<p><strong>Are you willing to give us feedback?</strong></p>
+	</div>
+	<div class="modal-footer">
+		<div class="storybook-choice">
+			<%= f.submit "Create my storybook!", class: "green_button", width:"40px" %> - or -
+			<a href="http://www.familytales.co"><button class="green_button" width="40px">No, bring me back.</button></a>
+			<% end %>
+		</div>
 	</div>
 </div>

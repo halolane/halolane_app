@@ -35,6 +35,7 @@ class User < ActiveRecord::Base
                     uniqueness: true
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true
+  
 
   def contribute!(profile, description = "", admin = false)
     @relationship = relationships.create!(profile_id: profile.id, description: description, profile_admin: false)

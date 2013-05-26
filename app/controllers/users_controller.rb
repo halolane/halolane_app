@@ -37,8 +37,17 @@ class UsersController < ApplicationController
       flash[:error] = "It looks like you already have an account on FamilyTales. Please enter your email and password here to login"
       redirect_to login_url
     elsif  @user.save 
+      
+      begin
+        Mailer.validate_account(@user, root_url + "login/" + @user.token).deliver
+      rescue
+        flash[:error] = "The email you have provided is not valid. Please provide a valid email."
+        @user.destroy
+        redirect_to signup_url
+        return
+      end
+
       sign_in @user
-      Mailer.validate_account(current_user, root_url + "login/" + current_user.token).deliver
       flash[:success] = "Welcome to the FamilyTales! Please check your email " + @user.email + " to validate your account."
       if params[:invitation].nil?
         redirect_to root_url
