@@ -11,8 +11,7 @@
   <meta property="og:title"       content="FamilyTales | Start celebrating your family stories today." /> 
   <meta property="og:description" content="FamilyTales enables families to capture and share their precious memories (stories, pictures, videos and audio clips) in a digital storybook that can be passed on for generations to come! You can also print off your personalized storybook as a keepsakes, or as a gift others." /> 
   <meta property="og:image"       content="https://www.familytales.co/images/FamilyTalesLogo.png" /> 
-
-  <% if current_user.memorycount == 0 %>
+  <% if current_user.getPermission(@profile) != "view" && current_user.memorycount == 0 %>
     <script type="text/javascript">
       $(window).load(function(){
           $('#newuserstorybook').modal('show');

@@ -4,44 +4,48 @@
     <div class="container">
       <nav>
         <ul class="nav btn-topbar-left">
-          <li class="newmemorybtn">
-            <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal" rel="tooltip" title="Add a new story">
-              <i class="icon-plus"></i><span class="addnewstorytext">Add a new story</span>
-            </a>
-          </li>
+          <% if current_user.getPermission(@profile) != "view" %>
+            <li class="newmemorybtn">
+              <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal" rel="tooltip" title="Add a new story">
+                <i class="icon-plus"></i><span class="addnewstorytext">Add a new story</span>
+              </a>
+            </li>
+          <% end %>
           <li><div class="topbarname"><h4>
             <%= link_to  @profile.first_name + " " + @profile.last_name, edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
           </h4></div></li>
         </ul>
         <ul class="nav pull-right">
-          <li class="iconaddcontributor _showAddCollaborator">
-              <% if current_user.verified != true %>
-                <a href="#confirmemail" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
-                  <%= image_tag("/assets/static/icons/addcollaborator.png", width: "28px", height: "28px") %>
-                </a>
+          <% if current_user.getPermission(@profile) != "view" %>
+            <li class="iconaddcontributor _showAddCollaborator">
+                <% if current_user.verified != true %>
+                  <a href="#confirmemail" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
+                    <i class="icon-share"></i>
+                  </a>
 
-              <% else %>
-                <a href="#addcontributor" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
-                  <%= image_tag("/assets/static/icons/addcollaborator.png", width: "28px", height: "28px") %>
-                </a>
-              <% end %>
-          </li>
+                <% else %>
+                  <a href="#addcontributor" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
+                    <i class="icon-share"></i>
+                  </a>
+                <% end %>
+            </li>
+          <% end %>
           <li class="iconfamtree">
             <%= link_to root_path, rel:"tooltip", title:"View your family tree" do %>
               <i class="icon-sitemap"></i>
             <% end %>
           </li>
-          <li class="iconsignout">
+          
+          <li class="storyboardlogo">
+            <%= link_to image_tag("/images/logo.png"), root_path, id: "logo" %> 
+          </li>
+           <li class="iconsignout">
             <%= link_to signout_path, method: "delete", rel:"tooltip", title:"Sign out of this account" do %>
               <i class="icon-signout"></i>
             <% end %>
           </li>
           <li class="iconhelp">
             <a href="#newuserstorybook" data-toggle="modal" data-dismiss="modal" aria-hidden="true" rel="tooltip" title="Show the help guides"><i class="icon-question-sign"></i></a>
-          </li>
-          
-          <li class="storyboardlogo">
-            <%= link_to image_tag("/images/logo.png"), root_path, id: "logo" %> 
           </li>
           
         </ul>

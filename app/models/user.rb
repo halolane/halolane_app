@@ -12,13 +12,12 @@
 class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
   has_secure_password
+  has_many :invitations, dependent: :destroy, :class_name => 'Invitation', :foreign_key => 'sender_id'
   has_many :memories, dependent: :destroy
   has_many :relationships, dependent: :destroy
   has_many :profiles, through: :relationships
   has_many :profiles_with_relationships, :through => :relationships, :source => :profile
   has_many :authentications, dependent: :destroy
-  
-  has_many :invitations, :class_name => 'Invitation', :foreign_key => 'sender_id', dependent: :destroy
 
   before_save { |user| user.email = email.downcase }
 
@@ -45,6 +44,10 @@ class User < ActiveRecord::Base
   def updateRelationship!(profile, description = "")
     @relationship = Relationship.find_by_profile_id(profile.id)
     @relationship.description = description
+  end
+
+  def getPermission(profile)
+    relationships.find_by_profile_id(profile.id).permission
   end
 
   def contributing?(profile)

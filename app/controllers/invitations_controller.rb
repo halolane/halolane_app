@@ -44,7 +44,7 @@ class InvitationsController < ApplicationController
       if ! has_relationship?(@profile.id, @user_check.id)
         relationship = 1
         sign_in @user_check
-        current_user.contribute!(@profile, relationship, false, @invitation.permission)
+        current_user.contribute!(@profile, relationship, current_user.getPermission(@profile) == "edit", @invitation.permission)
         @relationship = Relationship.find_by_user_id_and_profile_id(current_user.id, @profile.id)
         redirect_to edit_relationship_path(@relationship)
       else

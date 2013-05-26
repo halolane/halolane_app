@@ -1,18 +1,21 @@
 <div class="coachmarks hide">
-	<div class="edit-coachmark">
-		<%= image_tag("/images/coachmarks/edit.png") %>
-	</div>
-	<div class="invite-coachmark">
-		<%= image_tag("/images/coachmarks/invite.png") %>
-	</div>
-	<div class="addmemory-coachmark">
-		<%= image_tag("/images/coachmarks/memory.png") %>
-	</div>
+	<% if current_user.getPermission(@profile) != "view" %>
+		<div class="edit-coachmark">
+			<%= image_tag("/images/coachmarks/edit.png") %>
+		</div>
+		<div class="invite-coachmark">
+			<%= image_tag("/images/coachmarks/invite.png") %>
+		</div>
+		<div class="addmemory-coachmark">
+			<%= image_tag("/images/coachmarks/memory.png") %>
+		</div>
+	<% end %>
 	<div class="welcome-coachmark">
 		<%= image_tag("/images/coachmarks/welcomestorybook.png") %>
 	</div>  
 </div>
+<% if current_user.getPermission(@profile) != "view" %>
 <div class="firststories-coachmark hide">
 	<%= image_tag("/images/coachmarks/firstthreestories.png") %>
 </div>
-	
+<% end %>

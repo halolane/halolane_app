@@ -53,7 +53,7 @@ class UsersController < ApplicationController
         redirect_to root_url
       else
         relationship = params[:relationship][:description]
-        current_user.contribute!(@profile, relationship, false)
+        current_user.contribute!(@profile, relationship, @invitation.permission == "edit", @invitation.permission)
         if @invitation.active
           @invitation.toggle!(:active)
         end

@@ -100,6 +100,8 @@ table {
 .topbarname {
 	margin: 8px -2px;
 	margin-right: 50px;
+	margin-left: 30px;
+	width: 300px;
 	font-size: 12px;
 	text-align: middle;
 	vertical-align: middle;
@@ -128,11 +130,11 @@ li.playslideshow {
 
 
 li.iconaddcontributor {
-	padding-top: 7px;
+	padding-top: 3px;
 	padding-right: 10px;
 }
 
-.icon-signout, .icon-question-sign, .icon-sitemap {	
+.icon-signout, .icon-question-sign, .icon-sitemap, .icon-share, {	
 	opacity: 0.6;
     text-shadow: 1px 1px 1px #ccc;
     font-size: 27px;
@@ -141,13 +143,18 @@ li.iconaddcontributor {
 	position: relative;
 }
 
+.icon-share, .icon-sitemap {
+	opacity: 0.8;
+	color: #69a100;
+}
+
 .newmemorybtn {
 	
 	.icon-plus {
 		top: 7px;
 		font-size: 27px;
 		position: relative;
-		color: #9a1b39;
+		color: #5f8f05;
 	}
 
 	a {
@@ -156,7 +163,7 @@ li.iconaddcontributor {
 			padding-top: 10px;
 			padding-left: 10px;
 			font-size: 18px;
-			color: #9a1b39;
+			color: #5f8f05;
 		}
 	}	
 }

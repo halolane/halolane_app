@@ -1,5 +1,6 @@
 class RelationshipsController < ApplicationController
-   before_filter :signed_in_user, only: [:index, :destroy, :edit, :create]
+  before_filter :signed_in_user, only: [:index, :destroy, :edit, :create]
+  before_filter :correct_user,   only: :edit
 
   def new
     @relationship = Relationship.new
@@ -30,4 +31,12 @@ class RelationshipsController < ApplicationController
     @relationship.destroy
     redirect_back_or root_url
   end
+
+  private
+
+    def correct_user
+      @relationship = Relationship.find(params[:id])
+      @user = User.find(@relationship.user_id)
+      redirect_to(root_path) unless current_user?(@user)
+    end
 end
