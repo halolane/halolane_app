@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130522233811) do
+ActiveRecord::Schema.define(:version => 20130526142650) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(:version => 20130522233811) do
     t.boolean  "profile_admin"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+    t.string   "permission"
   end
 
   add_index "relationships", ["profile_id"], :name => "index_relationships_on_profile_id"
