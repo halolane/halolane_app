@@ -4,11 +4,11 @@ class InvitationsController < ApplicationController
   end
 
   def create
-    
     @profile = Profile.find_by_id(params[:invitation][:profile_id])
     @invitation = current_user.invitations.build(:profile_id => @profile.id )
     @invitation.recipient_email = params[:invitation][:recipient_email]
     @invitation.active = true
+    @invitation.permission = params[:permission]
     @user_invited = User.find_by_email(params[:invitation][:recipient_email])
 
     # Need to verify account first
@@ -44,7 +44,7 @@ class InvitationsController < ApplicationController
       if ! has_relationship?(@profile.id, @user_check.id)
         relationship = 1
         sign_in @user_check
-        current_user.contribute!(@profile, relationship, false)
+        current_user.contribute!(@profile, relationship, false, @invitation.permission)
         @relationship = Relationship.find_by_user_id_and_profile_id(current_user.id, @profile.id)
         redirect_to edit_relationship_path(@relationship)
       else

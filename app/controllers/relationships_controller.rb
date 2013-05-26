@@ -19,7 +19,7 @@ class RelationshipsController < ApplicationController
     @profile = Profile.find_by_id(@relationship.profile_id)
     @relationship.description = params[:relationship][:description]
     if @relationship.save
-      redirect_to root_url + @profile.url, notice: "Your relationship to " + @profile.first_name + "has been updated"
+      redirect_to root_url + @profile.url, notice: "Your relationship to " + @profile.first_name + " has been updated"
     else
       flash[:error] = "Please enter the missing fields."
       redirect_to edit_relationship_path(@relationship)
