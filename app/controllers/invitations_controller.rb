@@ -30,9 +30,11 @@ class InvitationsController < ApplicationController
 
   def show
     @invitation = Invitation.find_by_token(params[:invitation_token])
-    @user_check = User.find_by_email(@invitation.recipient_email)
-    @profile = Profile.find_by_id(@invitation.profile_id)
-    @sender = User.find_by_id(@invitation.sender_id)
+    if ! @invitation.blank?
+      @user_check = User.find_by_email(@invitation.recipient_email)
+      @profile = Profile.find_by_id(@invitation.profile_id)
+      @sender = User.find_by_id(@invitation.sender_id)
+    end
 
     if @invitation.blank? or ! @invitation.active
       redirect_to root_url, :notice => "That invitation has expired."
