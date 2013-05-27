@@ -12,8 +12,7 @@
 class Memory < ActiveRecord::Base
   
   attr_accessible :content, :profile_id, :photo
-  has_attached_file :photo,
-                    :default_url => ':rails_root/assets/:class/:id_partition/:style/:filename'
+  has_attached_file :photo
 
   belongs_to :user
   belongs_to :profile
