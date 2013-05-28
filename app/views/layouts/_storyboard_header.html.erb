@@ -31,10 +31,19 @@
             </li>
           <% end %>
           <li class="iconsettings">
-            <%= link_to root_path, rel:"tooltip", title:"Edit your settings" do %>
-              <i class="icon-cog"></i>
-            <% end %>
+            
+            <div class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-cog"></i></a>
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><%= link_to "Edit this storybook settings", root_path, rel:"tooltip", title:"Edit your settings" %></li>
+                  <li><%= link_to "Change your relationship", root_path, rel:"tooltip", title:"Edit your settings" %></li>
+                    <li><%= link_to "Privacy Settings", root_path, rel:"tooltip", title:"Edit your settings" %></li>
+              </ul>
+            </div>
           </li>
+
+
+
           <li class="iconfamtree">
             <%= link_to root_path, rel:"tooltip", title:"View your family tree" do %>
               <i class="icon-sitemap"></i>
