@@ -23,6 +23,7 @@ gem 'rails-gallery'
 gem "remotipart", "~> 1.0.5"
 gem "font-awesome-rails"
 gem 'delayed_job_active_record'
+gem 'aws-sdk', '~> 1.5.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

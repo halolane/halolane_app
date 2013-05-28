@@ -1,22 +1,25 @@
 class ProfilesController < ApplicationController
   before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :set_page_name
   
   def new
   	@profile = Profile.new
   end
 
   def edit
-    @profile = Profile.find(params[:id])
+    get_profile
   end
 
   def update
-    @profile = Profile.find(params[:id])
+    get_profile
     relationship = params[:relationship][:description]
     if @profile.update_attributes(params[:profile])
-      flash[:success] = "Storybook updated"
+      flash[:success] = "Storybook setting updated"
       current_user.updateRelationship!(@profile, relationship)
-      redirect_back_or @profile
+      current_user.actionlog!(@profile.id, @page_name, "update")
+      redirect_to root_url + @profile.url
     else
+      flash[:error] = "There was an error saving your changes"
       redirect_to edit_profile_path(@profile)
     end
   end
@@ -37,6 +40,7 @@ class ProfilesController < ApplicationController
         if is_invited?(params[:invitation_token]) and @invitation.active == true
           createnewuser
           showprofile
+          current_user.actionlog!(@profile.id, @page_name, "show")
           render :layout => "storyboard_layout"
         elsif is_invited?(params[:invitation_token]) and @invitation.active == false
           flash[:error] = "The invitation link has expired."
@@ -48,6 +52,7 @@ class ProfilesController < ApplicationController
       elsif (( @profile.privacy != 2 ) or 
          ( @profile.privacy == 2 and signed_in? and has_relationship?(@profile.id, current_user.id) ))
         showprofile
+        current_user.actionlog!(@profile.id, @page_name, "show")
         render :layout => "storyboard_layout"
       else
         flash[:error] = "You are not authorized to view that profile"
@@ -68,6 +73,7 @@ class ProfilesController < ApplicationController
 
   	if @profile.save
       current_user.contribute!(@profile, relationship, true, "edit")
+      current_user.actionlog!(@profile.id, @page_name, "create")
   		redirect_to root_url + @profile.url
   	else
   		render 'new'
@@ -76,6 +82,23 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+    def get_profile
+      begin
+        @profile = Profile.find(params[:id])
+      rescue
+        begin
+          @profile = Profile.find_by_url(params[:id])
+        rescue
+          flash[:error] = "That storybook doesn't exists"
+          redirect_to root_url
+        end
+      end
+    end
+
+    def set_page_name
+      @page_name = "storybook_controller"
+    end
 
     def showprofile
       store_location

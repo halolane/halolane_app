@@ -32,6 +32,11 @@ GEM
       rake
     arel (3.0.2)
     authbuttons-rails (0.1.2)
+    aws-sdk (1.5.8)
+      httparty (~> 0.7)
+      json (~> 1.4)
+      nokogiri (>= 1.4.4)
+      uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
     bootstrap-sass (2.1.0.0)
     bootstrap-will_paginate (0.0.6)
@@ -105,6 +110,9 @@ GEM
       sys-proctable
     hashie (2.0.5)
     hike (1.2.2)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     httpauth (0.2.0)
     i18n (0.6.4)
     journey (1.0.4)
@@ -135,6 +143,7 @@ GEM
       daemons (~> 1.0.10)
       gem_plugin (~> 0.2.3)
     multi_json (1.7.3)
+    multi_xml (0.5.3)
     multipart-post (1.2.0)
     nifty-generators (0.4.6)
     nokogiri (1.5.9)
@@ -249,6 +258,7 @@ GEM
     uglifier (2.1.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    uuidtools (2.1.4)
     validates_timeliness (3.0.14)
       timeliness (~> 0.3.6)
     websocket (1.0.7)
@@ -262,6 +272,7 @@ PLATFORMS
 DEPENDENCIES
   annotate (= 2.5.0)
   authbuttons-rails
+  aws-sdk (~> 1.5.7)
   bcrypt-ruby (= 3.0.1)
   bootstrap-sass (= 2.1)
   bootstrap-will_paginate (= 0.0.6)

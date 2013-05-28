@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
   before_filter :correct_user,   only: [:edit, :update]
   before_filter :admin_user,     only: :destroy
+  before_filter :set_page_name
 
   def show
     @profile = Profile.new
@@ -56,6 +57,7 @@ class UsersController < ApplicationController
         current_user.contribute!(@profile, relationship, @invitation.permission == "edit", @invitation.permission)
         if @invitation.active
           @invitation.toggle!(:active)
+          current_user.actionlog!(@profile.id, @page_name, "New user accepts invitation to storybook" )
         end
         redirect_to root_url + @profile.url
       end
@@ -105,6 +107,10 @@ class UsersController < ApplicationController
 
 
   private
+
+    def set_page_name
+      @page_name = "user_controller"
+    end
 
     def correct_user
       if params[:id] == nil

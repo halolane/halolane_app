@@ -1,4 +1,7 @@
 class InvitationsController < ApplicationController
+  before_filter :set_page_name
+  before_filter :signed_in_user, only: [:create]
+
   def new
     @invitation = Invitation.new
   end
@@ -21,6 +24,7 @@ class InvitationsController < ApplicationController
       redirect_to root_url + @profile.url, :notice => "Your invitation has been re-sent to " + @invitation_resent.recipient_email
     elsif @invitation.save
       Mailer.invitation(@invitation, @profile, current_user, root_url + @profile.url + "/" + @invitation.token).deliver
+      current_user.actionlog!(@profile.id, @page_name, "Invite sent to " + @invitation.recipient_email )
       redirect_to root_url + @profile.url, :notice => "Your invitation has been sent to " + @invitation.recipient_email
     else
       flash[:error] = "Invalid Email"
@@ -43,8 +47,9 @@ class InvitationsController < ApplicationController
     elsif ! @user_check.blank? 
       if ! has_relationship?(@profile.id, @user_check.id)
         relationship = 1
-        sign_in @user_check
+        sign_in @user_check 
         current_user.contribute!(@profile, relationship, @invitation.permission == "edit", @invitation.permission)
+        current_user.actionlog!(@profile.id, @page_name, "Existing user accepts invitation to storybook" )
         @relationship = Relationship.find_by_user_id_and_profile_id(current_user.id, @profile.id)
         redirect_to edit_relationship_path(@relationship)
       else
@@ -54,5 +59,11 @@ class InvitationsController < ApplicationController
       @user = User.new
     end
   end
+
+  private 
+
+    def set_page_name
+      @page_name = "invitation_controller"
+    end
 
 end
