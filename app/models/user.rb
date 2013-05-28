@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     @relationship.description = description
   end
 
+  def getRelationship(profile)
+    relationships.find_by_profile_id(profile.id)
+  end
+
   def actionlog!(profile_id = "", page = "", action = "")
     @useractionlog = useractionlogs.create!(profile_id: profile_id, pages: page, action: action)
   end

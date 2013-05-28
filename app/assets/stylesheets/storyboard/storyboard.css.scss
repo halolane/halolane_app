@@ -137,7 +137,12 @@ li.iconaddcontributor{
 li.iconsettings {
 	padding-top: 1px;
 	padding-right: 10px;
+
+	a:hover {
+		text-decoration: none !important;
+	}
 }
+
 .icon-off, .icon-question-sign, .icon-sitemap, .icon-share, .icon-cog {	
 	opacity: 0.6;
     text-shadow: 1px 1px 1px #ccc;
@@ -722,7 +727,7 @@ height: 600px;
   right: auto;
 }
 
-.open > .dropdown-menu
+.open > .dropdown-menu.memory
 {
 	position: relative;
     margin-left: -85%;

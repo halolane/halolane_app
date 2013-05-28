@@ -28,10 +28,20 @@ class ProfilesController < ApplicationController
 
     if ! params[:url].blank?
       @profile = Profile.find_by_url(params[:url])
+      if @profile.nil?
+        show_error
+        return
+      end
     else
-      @profile = Profile.find(params[:id])
+      begin
+        @profile = Profile.find(params[:id])
+      rescue
+        show_error
+        return
+      end
     end
 
+    @relationship = current_user.getRelationship(@profile)
     if params[:url] == "favicon"
       redirect_back_or root_url
     else
@@ -69,7 +79,7 @@ class ProfilesController < ApplicationController
     	@profile = Profile.new(params[:profile])
     end
 
-    relationship = params[:relationship][:description]
+    @relationship = params[:relationship][:description]
 
   	if @profile.save
       current_user.contribute!(@profile, relationship, true, "edit")
@@ -90,10 +100,14 @@ class ProfilesController < ApplicationController
         begin
           @profile = Profile.find_by_url(params[:id])
         rescue
-          flash[:error] = "That storybook doesn't exists"
-          redirect_to root_url
+         show_error
         end
       end
+    end
+
+    def show_error
+      flash[:error] = "That storybook doesn't exists"
+      redirect_to root_url
     end
 
     def set_page_name

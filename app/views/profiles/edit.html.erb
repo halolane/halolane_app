@@ -1,4 +1,4 @@
-<% provide(:title, "edit the storybook of" + @profile.first_name + " " + @profile.last_name) %> 
+<% provide(:title, "Edit the storybook of" + @profile.first_name + " " + @profile.last_name) %> 
 <h1>Update the storybook of <%= @profile.first_name + " " + @profile.last_name %> </h1>
 
 
@@ -26,12 +26,6 @@
                     	      :end_year => Date.today.year,
                     	      :default => Date.new(1950, 01, 01) } %>
       </p>
-    	
-  		<p>
-  			<label for="relationship_description">This person is my</label>
-  			<%= select "relationship","description", 
-  									Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
-  		</p>
 
 
 		  <%= f.submit "Save changes", class: "green_button" %>
