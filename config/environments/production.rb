@@ -67,13 +67,5 @@ HalolaneApp::Application.configure do
 
   config.action_mailer.default_url_options = { :host => "www.familytales.co" }
 
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_protocol => 'http',
-    :s3_credentials => {
-      :bucket => ENV['familytales'],
-      :access_key_id => ENV['AKIAJ3AJTP2LJGWA6YPQ'],
-      :secret_access_key => ENV['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']
-    }
-  }
+  
 end
