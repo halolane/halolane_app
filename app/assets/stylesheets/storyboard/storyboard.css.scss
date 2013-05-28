@@ -129,12 +129,16 @@ li.playslideshow {
 
 
 
-li.iconaddcontributor {
+li.iconaddcontributor{
 	padding-top: 3px;
 	padding-right: 10px;
 }
 
-.icon-signout, .icon-question-sign, .icon-sitemap, .icon-share, {	
+li.iconsettings {
+	padding-top: 1px;
+	padding-right: 10px;
+}
+.icon-off, .icon-question-sign, .icon-sitemap, .icon-share, .icon-cog {	
 	opacity: 0.6;
     text-shadow: 1px 1px 1px #ccc;
     font-size: 27px;
@@ -143,7 +147,7 @@ li.iconaddcontributor {
 	position: relative;
 }
 
-.icon-share, .icon-sitemap {
+.icon-share, .icon-sitemap, .icon-cog {
 	opacity: 0.8;
 	color: #69a100;
 }

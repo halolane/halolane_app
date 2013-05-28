@@ -30,6 +30,11 @@
                 <% end %>
             </li>
           <% end %>
+          <li class="iconsettings">
+            <%= link_to root_path, rel:"tooltip", title:"Edit your settings" do %>
+              <i class="icon-cog"></i>
+            <% end %>
+          </li>
           <li class="iconfamtree">
             <%= link_to root_path, rel:"tooltip", title:"View your family tree" do %>
               <i class="icon-sitemap"></i>
@@ -41,7 +46,7 @@
           </li>
            <li class="iconsignout">
             <%= link_to signout_path, method: "delete", rel:"tooltip", title:"Sign out of this account" do %>
-              <i class="icon-signout"></i>
+              <i class="icon-off"></i>
             <% end %>
           </li>
           <li class="iconhelp">
