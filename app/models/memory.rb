@@ -12,10 +12,7 @@
 class Memory < ActiveRecord::Base
   
   attr_accessible :content, :profile_id, :photo
-  has_attached_file :photo, 
-        :storage => :s3, 
-        :s3_credentials => "config/s3.yml"
-
+  has_attached_file :photo
 
   belongs_to :user
   belongs_to :profile
