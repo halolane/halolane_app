@@ -272,7 +272,7 @@ PLATFORMS
 DEPENDENCIES
   annotate (= 2.5.0)
   authbuttons-rails
-  aws-sdk (~> 1.5.7)
+  aws-sdk
   bcrypt-ruby (= 3.0.1)
   bootstrap-sass (= 2.1)
   bootstrap-will_paginate (= 0.0.6)
