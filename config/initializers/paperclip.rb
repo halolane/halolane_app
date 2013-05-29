@@ -9,3 +9,5 @@ Paperclip::Attachment.default_options.merge!(
 	    :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
 	  }
 )
+
+Paperclip::Attachment.default_options[:url] = 'familytales-prod.s3.amazonaws.com'
