@@ -1,7 +1,7 @@
 Paperclip::Attachment.default_options.merge!(
 	:storage => :s3,
 	:s3_protocol => 'http',
-	:url => 'familytales-prod.s3.amazonaws.com',
+	:url => ":s3_domain_url",
 	:path => '/:class/:attachment/:id_partition/:style/:filename',
 	:s3_credentials => {
 	    :bucket => ENV['AWS_BUCKET'],
@@ -10,4 +10,4 @@ Paperclip::Attachment.default_options.merge!(
 	  }
 )
 
-Paperclip::Attachment.default_options[:url] = 'familytales-prod.s3.amazonaws.com'
+Paperclip::Attachment.default_options[:url] = ':s3_domain_url'
