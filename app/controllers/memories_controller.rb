@@ -70,4 +70,10 @@ class MemoriesController < ApplicationController
     def set_page_name
       @page_name = "memories_controller"
     end
+
+    def correct_user
+      @memory = current_user.memories.find(params[:id])
+    rescue
+        redirect_to root_url
+    end
 end
