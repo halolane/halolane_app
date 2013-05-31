@@ -56,10 +56,12 @@ class MemoriesController < ApplicationController
       begin 
          @memory = current_user.memories.find_by_id(params[:id])
          @memory.destroy
-      else
-        redirect_back_or root_url, notice: 'You do not have rights to delete this memory'
+      rescue
+        flash[:error] = "You don't have permission to delete this"
+        redirect_back_or root_url
+        return
       end
-    else
+    end
     redirect_back_or root_url
   end
 

@@ -59,8 +59,8 @@ class User < ActiveRecord::Base
     relationships.find_by_profile_id(profile.id).permission
   end
 
-   def isEditor?(profile_id = "")
-    relationships.find_by_profile_id(profile.id).permission == "edit"
+  def isEditor?(profile_id = "")
+    relationships.find_by_profile_id(profile_id).permission == "edit"
   end
 
   def contributing?(profile)
