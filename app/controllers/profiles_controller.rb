@@ -82,7 +82,7 @@ class ProfilesController < ApplicationController
     @relationship = params[:relationship][:description]
 
   	if @profile.save
-      current_user.contribute!(@profile, relationship, true, "edit")
+      current_user.contribute!(@profile, @relationship, true, "edit")
       current_user.actionlog!(@profile.id, @page_name, "create")
   		redirect_to root_url + @profile.url
   	else
