@@ -28,6 +28,8 @@ $(document).ready(function(){
 	}, function() {
    	$(this).fadeTo("fast", 0.8);
  	});
+
+ 	
 	$(".iconaddcontributor, .playslideshow").click(function() {
 		$(this).fadeTo('fast',1);
 	});
@@ -97,9 +99,9 @@ $(document).ready(function(){
    	$(this).fadeTo("fast", 0.6);
  	});
 
- 	$('.suggest-icon').click(function() {
- 		$('.suggest-icon').fadeTo('fast',1);
- 		$('.memoryquestion').toggleClass("hidden");
+ 	$('.suggeststory').click(function() {
+ 		$('.suggeststory').fadeTo('fast',0);
+ 		$('.memoryquestion').toggle("hidden");
  		//$('.messageSection').toggleClass ("withphoto");
  		//$('.messageBox').toggleClass ("withphoto");
  	});

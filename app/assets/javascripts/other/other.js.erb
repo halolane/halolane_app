@@ -43,6 +43,9 @@ $(document).ready(function(){
 	$('#newuserstorybook').on('hide', function () {
 	    $('.coachmarks').addClass('hide');
 	    $('#newstorybook').modal('show');
-	
+	});
+
+	$('.firststorybook-coachmark').click(function() {
+		$('.modal.in').modal('hide');
 	});
 });

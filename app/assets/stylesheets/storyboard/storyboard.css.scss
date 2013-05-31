@@ -177,6 +177,21 @@ li.iconsettings {
 	}	
 }
 
+.suggeststory {
+	color: #5f8f05;
+	font-size: 1.2em;
+	.icon-lightbulb {
+		font-size: 1.5em;
+		font-weight: bold;
+		color: #5f8f05;
+	}
+	a {
+		color: #5f8f05;
+	}
+	a:hover {
+		text-decoration: none !important;
+	}
+}
 li.storyboardlogo {
 	margin: 0px 0px;
 	width: 150px;

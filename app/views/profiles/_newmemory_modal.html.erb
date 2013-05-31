@@ -12,14 +12,19 @@
 		  <input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
 		  <input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
 		  <div class="field">
+		  	<div class="suggeststory">
+		  		<a href="#" title="Are you stuck? Click here." rel="tooptip">
+		  		<i class="icon-lightbulb"></i> Suggest a story
+			  	</a>
+		  	</div>
 		  	<div class="memoryquestion hidden">
 		  		<p>
 		  			<% if current_user.memorycount == 0 %>
-		  				What I remember most about your arrival?
-		  			<% elsif current_user.memorycount == 1 %>
-		  				What were songs you like as a baby and which one was your favorite?
-		  			<% elsif current_user.memorycount == 2 %>
 		  				What are a few names we considered for you and why picked your name?
+		  			<% elsif current_user.memorycount == 1 %>
+		  				What I remember most about your arrival?
+		  			<% elsif current_user.memorycount == 2 %>
+		  				What were songs you like as a baby and which one was your favorite?
 		  			<% else %>
 		  			<%= StorybookQuestion.find(rand(StorybookQuestion.count) + StorybookQuestion.first.id).question.gsub("@profile.first_name", @profile.first_name) %>
 		  			<% end %>
@@ -58,9 +63,6 @@
 				</span>
 				<span class="addphoto-icon">		
 					<a href="#" title="Add an image" rel="tooptip"><i class="icon-camera"></i></a>
-				</span>
-				<span class ="suggest-icon">
-					<a href="#" title="Suggest a story" rel="tooptip"><i class="icon-question"></i></a>
 				</span>
 				<span class="btn-post">
 					<div class="actions">
