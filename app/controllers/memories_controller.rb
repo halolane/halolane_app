@@ -1,6 +1,5 @@
 class MemoriesController < ApplicationController
   before_filter :signed_in_user, only: [:create, :destroy, :edit]
-  before_filter :correct_user,   only: :destroy
   before_filter :correct_user,   only: :edit
   before_filter :set_page_name
 
@@ -24,6 +23,7 @@ class MemoriesController < ApplicationController
   end
 
   def edit
+
     @memory = current_user.memories.find_by_id(params[:id])
     @profile = Profile.find_by_id(@memory.profile_id)
   end
@@ -43,8 +43,23 @@ class MemoriesController < ApplicationController
 
   
   def destroy
-    @memory = current_user.memories.find_by_id(params[:id])
-    @memory.destroy
+    begin 
+      @memory = Memory.find_by_id(params[:id])
+    rescue
+      redirect_to root_url, notice: 'That story was not found.'
+      return
+    end
+
+    if current_user.isEditor?(@memory.profile_id)
+      @memory.destroy
+    else
+      begin 
+         @memory = current_user.memories.find_by_id(params[:id])
+         @memory.destroy
+      else
+        redirect_back_or root_url, notice: 'You do not have rights to delete this memory'
+      end
+    else
     redirect_back_or root_url
   end
 
@@ -52,11 +67,5 @@ class MemoriesController < ApplicationController
 
     def set_page_name
       @page_name = "memories_controller"
-    end
-
-    def correct_user
-     
-      rescue
-        redirect_to root_url
     end
 end
