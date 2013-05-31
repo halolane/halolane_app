@@ -12,10 +12,8 @@ class ProfilesController < ApplicationController
 
   def update
     get_profile
-    relationship = params[:relationship][:description]
     if @profile.update_attributes(params[:profile])
       flash[:success] = "Storybook setting updated"
-      current_user.updateRelationship!(@profile, relationship)
       current_user.actionlog!(@profile.id, @page_name, "update")
       redirect_to root_url + @profile.url
     else

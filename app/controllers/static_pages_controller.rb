@@ -19,9 +19,11 @@ class StaticPagesController < ApplicationController
       @memory = current_user.memories.build 
       current_user.actionlog!("", @page_name, "Logged-in user views family tree home" )
       render :layout => "application"
+      redirect_to root_url
     else
       @user = User.new
       render :layout => "home_layout"
+      redirect_to root_url
     end
     
   end
