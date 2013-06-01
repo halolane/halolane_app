@@ -42,7 +42,7 @@ class UsersController < ApplicationController
       begin
         Mailer.validate_account(@user, root_url + "login/" + @user.token).deliver
       rescue
-        flash[:error] = "The email you have provided is not valid. Please provide a valid email."
+        flash[:error] = "We had issues sending an email to " + @user.email + " Please provide a valid email."
         @user.destroy
         redirect_to signup_url
         return

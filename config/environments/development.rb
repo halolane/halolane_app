@@ -40,12 +40,13 @@ HalolaneApp::Application.configure do
 
   config.action_mailer.smtp_settings = {  
     :enable_starttls_auto => true,
-  :address              => "oxmail.registrar-servers.com",  
-  :port                 => 26,  
-  :authentication       => "plain",
-  :user_name            => "hello@familytales.co",  
-  :password             =>  "IVEYmba2013"
-  }   
+    :address              => "smtp.gmail.com",
+    :port                 => 587,
+    :domain               => 'familytales.co',
+    :authentication       => "plain",
+    :user_name            => "hello@familytales.co",  
+    :password             => "IVEYmba2013"
+  }  
 end
 
 
