@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :destroy, :show]
+  before_filter :signed_in_user, only: [:create, :destroy]
   before_filter :set_page_name
   
   def new
@@ -39,7 +39,12 @@ class ProfilesController < ApplicationController
       end
     end
 
-    @relationship = current_user.getRelationship(@profile)
+    if signed_in?
+      @relationship = current_user.getRelationship(@profile)
+    else
+      @relationship = Relationship.new
+    end
+
     if params[:url] == "favicon"
       redirect_back_or root_url
     else
@@ -60,7 +65,9 @@ class ProfilesController < ApplicationController
       elsif (( @profile.privacy != 2 ) or 
          ( @profile.privacy == 2 and signed_in? and has_relationship?(@profile.id, current_user.id) ))
         showprofile
-        current_user.actionlog!(@profile.id, @page_name, "show")
+        if signed_in?
+          current_user.actionlog!(@profile.id, @page_name, "show")
+        end
         render :layout => "storyboard_layout"
       else
         flash[:error] = "You are not authorized to view that profile"
