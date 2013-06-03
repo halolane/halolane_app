@@ -14,7 +14,7 @@ gem 'omniauth-facebook'
 gem 'omnicontacts'
 gem 'mongrel', '1.2.0.pre2'
 gem "authbuttons-rails"
-gem "paperclip", "= 3.0.4" 
+gem "paperclip"
 gem "cocaine", "= 0.3.2"
 gem 'masonry-rails'
 gem 'modernizr-rails'
@@ -24,6 +24,7 @@ gem "remotipart", "~> 1.0.5"
 gem "font-awesome-rails"
 gem 'delayed_job_active_record'
 gem 'aws-sdk'
+gem 'mailman', require: false
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

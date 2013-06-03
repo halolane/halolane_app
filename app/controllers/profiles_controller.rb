@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :signed_in_user, only: [:create, :destroy, :show]
   before_filter :set_page_name
   
   def new

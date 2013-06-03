@@ -131,6 +131,13 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    maildir (2.1.0)
+    mailman (0.6.0)
+      activesupport (>= 2.3.4)
+      i18n (>= 0.4.1)
+      listen (>= 0.4.1)
+      mail (>= 2.0.3)
+      maildir (>= 0.5.0)
     masonry-rails (0.2.0)
       rails
     metaclass (0.0.1)
@@ -288,6 +295,7 @@ DEPENDENCIES
   friendly_id (~> 4.0.9)
   guard-spork (= 1.2.0)
   jquery-rails (= 2.0.2)
+  mailman
   masonry-rails
   mocha
   modernizr-rails
@@ -296,7 +304,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   omnicontacts
-  paperclip (= 3.0.4)
+  paperclip
   pg (~> 0.14.1)
   rails (= 3.2.11)
   rails-gallery

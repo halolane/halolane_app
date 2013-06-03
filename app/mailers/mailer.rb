@@ -31,6 +31,30 @@ class Mailer < ActionMailer::Base
     @invitation.update_attribute(:sent_at, Time.now)
   end
 
+  def receive_email_not_user(email,storybook_email)
+    @email = email
+    @storybook_email = storybook_email
+    mail(:from => "\"FamilyTales\" <hello@familytales.co>", :to => @email , :subject => "Start celebrating your family's stories today" )
+  end
+
+  def receive_email_storybook_error(email,storybook_email)
+    @email = email
+    @storybook_email = storybook_email
+    mail(:from => "\"FamilyTales\" <hello@familytales.co>", :to => @email , :subject => "Start celebrating your family's stories today" )
+  end
+
+  def receive_email_confirm(email,storybook_email)
+    @email = email
+    @storybook_email = storybook_email
+    mail(:from => "\"FamilyTales\" <hello@familytales.co>", :to => @email , :subject => "Your story has been saved" )
+  end
+
+  def receive_email_save_error(email,storybook_email)
+    @email = email
+    @storybook_email = storybook_email
+    mail(:from => "\"FamilyTales\" <hello@familytales.co>", :to => @email , :subject => "Unable to save your story" )
+  end
+
   def validate_account(user, url)
     @user = user
     @url = url

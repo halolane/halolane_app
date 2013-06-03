@@ -64,7 +64,15 @@ class User < ActiveRecord::Base
   end
 
   def contributing?(profile)
-    relationships.find_by_profile_id(profile.id)
+    relationships.exists?(profile.id)
+  end
+
+  def canContribute?(profile_id = "")
+    if relationships.exists?(profile_id)
+      relationships.find_by_profile_id(profile_id).permission == "edit" or relationships.find_by_profile_id(profile_id).permission == "contribute"
+    else
+      false
+    end
   end
 
   def uncontribute!(profile)

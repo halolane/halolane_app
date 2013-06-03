@@ -10,7 +10,7 @@ class MemoriesController < ApplicationController
     @memory = current_user.memories.build(:profile_id => @profile.id, 
         :photo => params[:memory][:photo],
         :content => params[:memory][:content]) 
-    
+
     respond_to do | format |   
       if @memory.save
         format.html { redirect_to root_url + @profile.url, notice: 'Post was successfully updated.' } 
