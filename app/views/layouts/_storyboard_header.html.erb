@@ -16,9 +16,9 @@
           </h4></div></li>
         </ul>
         <ul class="nav pull-right">
-          <% if current_user.getPermission(@profile) != "view" %>
+          <% if current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute"  %>
             <li class="iconaddcontributor _showAddCollaborator">
-                <% if current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute"  %>
+                <% if ! current_user.verified == true %>
                   <a href="#confirmemail" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
                     <i class="icon-share"></i>
                   </a>
