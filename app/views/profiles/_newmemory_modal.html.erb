@@ -20,11 +20,11 @@
 		  	<div class="memoryquestion hidden">
 		  		<p>
 		  			<% if current_user.memorycount == 0 %>
-		  				What are a few names we considered for you and why picked your name?
+		  				What are a few names you considered for <%= @profile.first_name %> and why did you choose the name <%= @profile.first_name %>?
 		  			<% elsif current_user.memorycount == 1 %>
-		  				What I remember most about your arrival?
+		  				What I remember most about the arrival of <%= @profile.first_name %>?
 		  			<% elsif current_user.memorycount == 2 %>
-		  				What were songs you like as a baby and which one was your favorite?
+		  				What were songs that <%= @profile.first_name %> liked as a baby and which one was their favorite?
 		  			<% else %>
 		  			<%= StorybookQuestion.find(rand(StorybookQuestion.count) + StorybookQuestion.first.id).question.gsub("@profile.first_name", @profile.first_name) %>
 		  			<% end %>
