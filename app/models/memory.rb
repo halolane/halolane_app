@@ -55,7 +55,7 @@ class Memory < ActiveRecord::Base
           # end
           
           if @memory.save
-            Mailer.receive_email_confirm(message.from.first, message.to.first).deliver
+            Mailer.receive_email_confirm(message.from.first, message.to.first, root_url + @profile.url).deliver
           else
             Mailer.receive_email_save_error(message.from.first, message.to.first).deliver
           end
