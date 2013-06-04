@@ -88,11 +88,12 @@ class ProfilesController < ApplicationController
 
   	if @profile.save
       current_user.contribute!(@profile, @relationship, true, "edit")
+      Mailer.new_storybook(current_user, @profile, root_url + @profile.url).deliver
       current_user.actionlog!(@profile.id, @page_name, "create")
   		redirect_to root_url + @profile.url
   	else
-  		render 'new'
-      edit_memory_path(@profile)
+      flash[:error] = "Sorry, we're not able to create your storybook."
+      redirect_to root_url
   	end
   end
 
@@ -111,7 +112,7 @@ class ProfilesController < ApplicationController
     end
 
     def show_error
-      flash[:error] = "That storybook doesn't exists"
+      
       redirect_to root_url
     end
 

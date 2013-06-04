@@ -31,6 +31,19 @@ class Mailer < ActionMailer::Base
     @invitation.update_attribute(:sent_at, Time.now)
   end
 
+  def new_storybook(user, profile, url)
+    @profile = profile
+    @user = user
+    @url = url
+    @email = "story+" + @profile.url + "@familytales.co"
+    full_name = @profile.first_name + " "  + @profile.last_name
+    subject =  full_name + "'s FamilyTales storybook has been created!"
+    mail( :from => "\"FamilyTales\" <hello@familytales.co>", 
+          :to => @user.email, 
+          :subject => subject )
+  end
+
+
   def receive_email_not_user(email,storybook_email)
     @email = email
     @storybook_email = storybook_email
