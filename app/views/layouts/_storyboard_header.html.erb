@@ -4,7 +4,7 @@
     <div class="container">
       <nav>
         <ul class="nav btn-topbar-left">
-          <% if current_user.getPermission(@profile) != "view" %>
+          <% if current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute" %>
             <li class="newmemorybtn">
               <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal" rel="tooltip" title="Add a new story">
                 <i class="icon-plus"></i><span class="addnewstorytext">Add a new story</span>
@@ -18,7 +18,7 @@
         <ul class="nav pull-right">
           <% if current_user.getPermission(@profile) != "view" %>
             <li class="iconaddcontributor _showAddCollaborator">
-                <% if current_user.verified != true %>
+                <% if current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute"  %>
                   <a href="#confirmemail" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
                     <i class="icon-share"></i>
                   </a>
@@ -30,40 +30,31 @@
                 <% end %>
             </li>
           <% end %>
+           <li class="iconfamtree">
+            <%= link_to root_path, rel:"tooltip", title:"View your family tree" do %>
+              <i class="icon-sitemap"></i>
+            <% end %>
+          </li>
           <li class="iconsettings">
-            
             <div class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#" rel="tooltip" title="Edit this storybook settings"> <i class="icon-cog"></i></a>
-              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+              <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
                 <li><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
                 <% if has_relationship?(@profile.id, current_user.id) %>
                   <li><%= link_to "Change your relationship", edit_relationship_path(@relationship) %></li>
                 <% end %>
+                <li class="divider"></li>
+                <li><%= link_to "Log out", signout_path, method: "delete" %></li>
+                <li><a href="#newuserstorybook" data-toggle="modal" data-dismiss="modal" aria-hidden="true" rel="tooltip" title="Show the help guides">Help</a></li>
                 <!-- 
                 <li><%= link_to "Privacy Settings" %></li>
               -->
               </ul>
             </div>
           </li>
-
-
-
-          <li class="iconfamtree">
-            <%= link_to root_path, rel:"tooltip", title:"View your family tree" do %>
-              <i class="icon-sitemap"></i>
-            <% end %>
-          </li>
           
           <li class="storyboardlogo">
             <%= link_to image_tag("/images/logo.png"), root_path, id: "logo" %> 
-          </li>
-           <li class="iconsignout">
-            <%= link_to signout_path, method: "delete", rel:"tooltip", title:"Sign out of this account" do %>
-              <i class="icon-off"></i>
-            <% end %>
-          </li>
-          <li class="iconhelp">
-            <a href="#newuserstorybook" data-toggle="modal" data-dismiss="modal" aria-hidden="true" rel="tooltip" title="Show the help guides"><i class="icon-question-sign"></i></a>
           </li>
           
         </ul>

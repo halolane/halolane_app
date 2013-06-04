@@ -124,24 +124,30 @@ table {
 
 li.playslideshow {
 	padding-top: 10px;
-	padding-right: 10px;
+	padding-right: 5px;
 }
 
 
 
 li.iconaddcontributor{
 	padding-top: 3px;
-	padding-right: 10px;
+	padding-right: 5px;
 }
 
 li.iconsettings {
 	padding-top: 1px;
-	padding-right: 10px;
+	padding-right: 5px;
+	padding-left: 5px;
 
 	a:hover {
 		text-decoration: none !important;
 	}
 }
+
+.open > .dropdown-menu.settingsdropdown {
+	margin-top: 10px;
+}
+
 
 .icon-off, .icon-question-sign, .icon-sitemap, .icon-share, .icon-cog {	
 	opacity: 0.6;
