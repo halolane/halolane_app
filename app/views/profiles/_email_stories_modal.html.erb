@@ -1,0 +1,16 @@
+<!-- Modal -->
+<div id="emailstories" class="modal hide fade emailstories" tabindex="-1" role="dialog" aria-labelledby="newconfirmemail" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="emailstories">Add Stories by Email</h3>
+  </div>
+  <div class="modal-body">
+  	<p>You can add a story to this storybook by sending an email to:</p>
+    <h2 id="storyemail"><%= link_to "story+"+@profile.url+"@familytales.co", "mailto:story+"+@profile.url+"@familytales.co", target: "blank" %></h2>
+    <ul style="list-style:disc inside;"><li>Subject will be ignored</li>
+      <li>Body will become a written story</li>
+      <li>Attachments will be added to the storybook</li>
+    </ul>
+  </div>
+
+</div>

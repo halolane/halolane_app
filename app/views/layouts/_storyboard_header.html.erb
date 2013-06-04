@@ -37,8 +37,9 @@
           </li>
           <li class="iconsettings">
             <div class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#" rel="tooltip" title="Edit this storybook settings"> <i class="icon-cog"></i></a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-cog"></i></a>
               <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
+                <li><a href="#emailstories" data-toggle="modal" data-dismiss="modal" aria-hidden="true">Add Stories by Email</a></li>
                 <li><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
                 <% if has_relationship?(@profile.id, current_user.id) %>
                   <li><%= link_to "Change your relationship", edit_relationship_path(@relationship) %></li>
