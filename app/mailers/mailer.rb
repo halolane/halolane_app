@@ -56,7 +56,7 @@ class Mailer < ActionMailer::Base
     mail(:from => "\"FamilyTales\" <hello@familytales.co>", :to => @email , :subject => "Start celebrating your family's stories today url" )
   end
 
-  def receive_email_confirm(email,storybook_email, url)
+  def receive_email_confirm(email,storybook_email,url)
     @email = email
     @storybook_email = storybook_email
     @url = url

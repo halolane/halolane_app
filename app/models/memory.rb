@@ -35,9 +35,15 @@ class Memory < ActiveRecord::Base
     if ! @user.nil?
       url = (message.to.first).split('@').first.split('+').last
       if Profile.exists?(:url => url)
+
         @profile = Profile.find_by_url(url)
         if @user.contributing?(@profile) && @user.canContribute?(@profile)
-          content = message.text_part.body.decoded
+
+          if message.multipart?
+            content = message.text_part.body.decoded
+          else
+            content = message.body.decoded
+          end
           @memory = @user.memories.build(:profile_id => @profile.id, :content => content)
           # email_attachments = []   # an array which can be used to store object records of the attachments..
 
@@ -55,7 +61,7 @@ class Memory < ActiveRecord::Base
           # end
           
           if @memory.save
-            Mailer.receive_email_confirm(message.from.first, message.to.first, root_url + @profile.url).deliver
+            Mailer.receive_email_confirm(message.from.first, message.to.first, "https://www.familytales.co/" + @profile.url).deliver
           else
             Mailer.receive_email_save_error(message.from.first, message.to.first).deliver
           end
