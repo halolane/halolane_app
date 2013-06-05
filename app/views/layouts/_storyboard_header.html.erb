@@ -11,9 +11,15 @@
               </a>
             </li>
           <% end %>
-          <li><div class="topbarname"><h4>
-            <%= link_to  @profile.first_name + " " + @profile.last_name, edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
-          </h4></div></li>
+          <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+            <li><div class="topbarname"><h4>
+              <%= @profile.first_name + " " + @profile.last_name %>
+            </h4></div></li>
+          <% else %>
+            <li><div class="topbarname"><h4>
+              <%= link_to  @profile.first_name + " " + @profile.last_name, edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
+            </h4></div></li>
+          <% end %>
         </ul>
         <ul class="nav pull-right">
           <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
@@ -30,34 +36,58 @@
                 <% end %>
             </li>
           <% end %>
-           <li class="iconfamtree">
-            <%= link_to root_path, rel:"tooltip", title:"View your family storybooks" do %>
-              <i class="icon-sitemap"></i>
-            <% end %>
-          </li>
-          <li class="iconsettings">
-            <div class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-cog"></i></a>
-              <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
-                <li><a href="#emailstories" data-toggle="modal" data-dismiss="modal" aria-hidden="true">Add Stories by Email</a></li>
-                <li><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
-                <% if has_relationship?(@profile.id, current_user.id) %>
-                  <li><%= link_to "Change your relationship", edit_relationship_path(@relationship) %></li>
-                <% end %>
-                <li class="divider"></li>
-                <li><%= link_to "Log out", signout_path, method: "delete" %></li>
-                <li><a href="#newuserstorybook" data-toggle="modal" data-dismiss="modal" aria-hidden="true" rel="tooltip" title="Show the help guides">Help</a></li>
-                <!-- 
-                <li><%= link_to "Privacy Settings" %></li>
-              -->
-              </ul>
-            </div>
-          </li>
-          
-          <li class="storyboardlogo">
-            <%= link_to image_tag("/images/logo.png"), root_path, id: "logo" %> 
-          </li>
-          
+          <% if signed_in? && current_user.email != ('familytalesuser2@gmail.com') and @profile.url != "alexdunphy" %>
+            <li class="iconfamtree">
+              <%= link_to root_path, rel:"tooltip", title:"View your family storybooks" do %>
+                <i class="icon-sitemap"></i>
+              <% end %>
+            </li>
+            <li class="iconsettings">
+              <div class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-cog"></i></a>
+                <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
+                  <li><a href="#emailstories" data-toggle="modal" data-dismiss="modal" aria-hidden="true">Add Stories by Email</a></li>
+                  <li><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
+                  <% if has_relationship?(@profile.id, current_user.id) %>
+                    <li><%= link_to "Change your relationship", edit_relationship_path(@relationship) %></li>
+                  <% end %>
+                  <li class="divider"></li>
+                  <li><%= link_to "Log out", signout_path, method: "delete" %></li>
+                  <li><a href="#newuserstorybook" data-toggle="modal" data-dismiss="modal" aria-hidden="true" rel="tooltip" title="Show the help guides">Help</a></li>
+                  <!-- 
+                  <li><%= link_to "Privacy Settings" %></li>
+                -->
+                </ul>
+              </div>
+            </li>
+          <% else %>
+            <li class="iconfamtree">
+              <a href="#exploreraccount" data-toggle="modal" data-dismiss="modal" aria-hidden="true" rel="tooltip" title="View your family storybooks"><i class="icon-sitemap"></i></a>
+            </li>
+            <li class="iconsettings">
+              <a href="#exploreraccount" data-toggle="modal" data-dismiss="modal" aria-hidden="true" rel="tooltip" title="Edit settings"><i class="icon-cog"></i></a>
+            </li>
+          <% end %>
+
+          <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+            <li class="storyboardlogo">
+              <%= link_to image_tag("/images/logo.png"), signout_path, method: "delete", id: "logo" %> 
+            </li>
+            <li class="signupbutton">
+              <a class="green_button signup_button" href="/signup">Start your storybook</a>
+            </li>
+          <% elsif signed_in? && @profile.url == "alexdunphy"  %>
+            <li class="storyboardlogo">
+              <%= link_to image_tag("/images/logo.png"), root_path, id: "logo" %> 
+            </li>
+            <li class="signupbutton">
+              <a class="green_button signup_button" href="/">Start your storybook</a>
+            </li>
+          <% else %>
+            <li class="storyboardlogo">
+              <%= link_to image_tag("/images/logo.png"), root_path, id: "logo" %> 
+            </li>
+          <% end %>
         </ul>
       </nav>
     </div>

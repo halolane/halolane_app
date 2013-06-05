@@ -44,7 +44,12 @@
 		  	
 		  	</br>
 				<div class="composerBox expanded">
+					<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+						<textarea rows="4" cols="50" readonly>You cannot add new stories to this sample storybook as an Explorer.
+						 </textarea>
+					<% else %>
 				  	<%= f.text_area :content, placeholder: "Write a new story about " + @profile.first_name + "...", rows:"1", cols:"10", maxlength:"250"%>
+			  	<% end %>
 				</div>
 			
 				<div class="addphoto hidden">
@@ -65,9 +70,13 @@
 					<a href="#" title="Add an image" rel="tooptip"><i class="icon-camera"></i></a>
 				</span>
 				<span class="btn-post">
-					<div class="actions">
-						<%= f.submit "Save this story", class: "green_button savestory_button"%>
-					</div>
+					<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+						<a class="green_button" href="/signup" style="width:70%;text-decoration:none !important">Start your storybook</a>
+					<% else %>
+						<div class="actions">
+							<%= f.submit "Save this story", class: "green_button savestory_button"%>
+						</div>
+					<% end %>
 				</span>
 			</div>
 			<% end %>

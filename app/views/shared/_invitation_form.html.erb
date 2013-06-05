@@ -6,7 +6,11 @@
 
   <p>
     <h5><%= f.label :recipient_email, "Friend's email address" %></h5>
-    <%= f.text_field :recipient_email %>
+    <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+    	<textarea rows="1" cols="30" readonly>You cannot invite friends to this sample storybook as an Explorer.</textarea>
+		<% else %>
+		  <%= f.text_field :recipient_email %>
+	  <% end %>
   </p>
 
   <p>
@@ -21,5 +25,9 @@
 
   
 <br>
-  <p><%= f.submit "Send", class: "green_button" %></p>
+	<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+		<a class="green_button" href="/signup" style:"text-decoration:none !important;">Start your storybook</a>
+	<% else %>
+	  <p><%= f.submit "Send", class: "green_button" %></p>
+  <% end %>
 <% end %>

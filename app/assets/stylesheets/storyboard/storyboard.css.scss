@@ -143,6 +143,9 @@ li.iconsettings {
 		text-decoration: none !important;
 	}
 }
+li.signupbutton {
+	padding-top: 5px;
+}
 
 .open > .dropdown-menu.settingsdropdown {
 	margin-top: 10px;
@@ -156,6 +159,17 @@ li.iconsettings {
     top: 7px;
 	padding-right: 10px;
 	position: relative;
+}
+
+.signup_button {
+	padding-top:0.2em !important;
+	height:25px !important;
+	width:120% !important;
+	text-decoration:none !important;
+	font-color:white;
+	color: white !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
 }
 
 .icon-share, .icon-sitemap, .icon-cog {
