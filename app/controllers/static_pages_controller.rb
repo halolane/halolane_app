@@ -11,7 +11,11 @@ class StaticPagesController < ApplicationController
       sign_in @user
     end
 
-    if signed_in?
+    if signed_in? and current_user.email == ('familytalesuser2@gmail.com')
+      sign_out
+      @user = User.new
+      render :layout => "home_layout"
+    elsif signed_in?
       @user = current_user
       @profile = Profile.new
       @memories = @user.memories.paginate(page: params[:page])
