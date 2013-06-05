@@ -53,8 +53,10 @@ class ProfilesController < ApplicationController
         @user = User.find_by_email('familytalesuser2@gmail.com')
         if ! @user.nil?
           sign_in @user
+          redirect_to root_url + @profile.url
+        else
+          redirect_to root_url
         end
-        redirect_to root_url + @profile.url
       elsif ! signed_in?
         flash[:error] = "You can only view that storybook if you are logged in."
         redirect_to login_url

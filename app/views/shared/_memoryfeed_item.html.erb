@@ -2,7 +2,7 @@
 <div class="newbox" id="blank"></div>
 <div class="newbox">
 	<span class="story-edit-btn">
-		<% if signed_in? and ( current_user?(memoryfeed_item.user) or current_user.storybook_editor?(@profile) ) %>
+		<% if signed_in? and current_user.contributing? and ( current_user?(memoryfeed_item.user) or current_user.storybook_editor?(@profile) ) %>
 			<div class="dropdown">
 				<a class="dropdown-toggle icon-chevron" data-toggle="dropdown" href="#"><i class="icon-chevron-down"></i></a>
 				
