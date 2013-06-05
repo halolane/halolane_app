@@ -14,8 +14,8 @@ gem 'omniauth-facebook'
 gem 'omnicontacts'
 gem 'mongrel', '1.2.0.pre2'
 gem "authbuttons-rails"
-gem "paperclip"
-gem "cocaine", "= 0.3.2"
+gem "paperclip", "=3.4.2"
+gem "cocaine"
 gem 'masonry-rails'
 gem 'modernizr-rails'
 gem 'sanitize-rails', :require => 'sanitize/rails'

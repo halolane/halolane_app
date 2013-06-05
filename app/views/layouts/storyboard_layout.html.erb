@@ -79,8 +79,6 @@ window.usabilla_live = lightningjs.require("usabilla_live", "//w.usabilla.com/96
 <!-- end usabilla live embed code -->
 <%= render 'shared/new_user_storybook_modal' %>
 <%= render 'shared/loading_spinner' %>
-<% if current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-  <%= render 'explorer_acct_modal' %>
-<% end %>
+<%= render 'explorer_acct_modal' %>
 </body>
 </html>
