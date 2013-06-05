@@ -31,6 +31,16 @@
     </script>
   <% end %>
 
+  <!--Mouse wheel horizontal scroll -->
+  <script>
+    $(function() {
+      $("body").mousewheel(function(event, delta) {
+        this.scrollLeft -= (delta * 30);
+        event.preventDefault();
+      });
+    });
+  </script>
+
   <!-- Google analytics start -->
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
