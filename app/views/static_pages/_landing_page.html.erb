@@ -14,6 +14,7 @@
       Collect your family's precious moments
       <br>
       in a storybook to pass on for generations
+
     </h2>
     <div class='carousel'>
       <div class='nav'>
@@ -24,12 +25,15 @@
         <div class='swipe-wrap'>
           <div class='item first active'>
             <div class='team-pic'>
-              <%= image_tag("/images/frontpage/carousel/Slide1.png", :alt => "Slide1" ) %>
+              <%= link_to root_url + "alexdunphy", style:"color:white !important;" do%>
+              <%= image_tag("/images/frontpage/carousel/Slide1.png", :alt => "Slide1", rel:"tooltip", title:"Click here for a sneak peek") %>
+              <% end %>
             </div>
-            <div class='bubble integrates'>
-              Easily capture your family's <br><strong>stories, 
-              pictures, videos, <br>and audio </strong>moments
+            <%= link_to root_url + "alexdunphy", style:"color:white !important;" do%>
+            <div class='bubble integrates' id='sneak_peek'>
+              <%= image_tag("/images/frontpage/sneak_peek.png", :alt => "Sneak Peak", :class => "sneak_peek_button", rel:"tooltip", title:"Click here for a sneak peek") %>
             </div>
+            <% end %>
             <div class='bubble imagine'>
              Start your <strong>baby's private <br>
              FamilyTales storybook </strong> <br>

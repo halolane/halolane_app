@@ -382,7 +382,11 @@ section.tour .carousel .item.second .bubble.style,
 section.tour .carousel .item.third .bubble.marketing,
 section.tour .carousel .item.fourth .bubble.great,
 section.media .media_assets a{
-	z-index:1000;position:absolute;text-align:center;color:#fff;color:rgba(255,255,255,0.8);padding:2em 2em;background:#69a100;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;background-position:center center;background-size:contain;background-repeat:no-repeat;text-shadow:none;display:block
+	z-index:1000;position:absolute;
+	text-align:center;color:#fff;
+	color:rgba(255,255,255,0.8);
+	padding:2em 2em;background:#69a100;
+	-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;background-position:center center;background-size:contain;background-repeat:no-repeat;text-shadow:none;display:block
 }
 
 section.above_fold .carousel .item.first .bubble.imagine *,
@@ -460,6 +464,10 @@ section.tour .carousel .item.third .bubble.marketing:after,
 section.tour .carousel .item.fourth .bubble.great:after{
 	border-color:transparent transparent transparent #69a100;top:50%;left:100%;margin-top:-15px
 }
+
+section.above_fold .carousel .item.first .bubble.integrates:after{
+	border-color:transparent transparent transparent transparent;top:50%;left:100%;margin-top:-15px
+}
 section.media .media_assets a:after{border-color:#69a100 transparent transparent transparent;top:100%;left:50%;margin-left:-15px}
 body{line-height:1.4;font-family:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;font-weight:300}
 p{margin-top:0}@font-face{font-family:"Varela Round";font-style:normal;font-weight:normal;src:url("/assets/VarelaRound-Regular.eot.eot");
@@ -510,6 +518,11 @@ section.signup_bar,section.video,section.cred,section.pricing,section.signup_bar
 }
 section.future{
 	color:#000;text-shadow:0 -1px 0px rgba(0,0,0,0.4)
+}
+
+.sneak_peek_button {
+	width: 100% !important;
+	height: 100% !important;
 }
 
 .wrapper.header{
@@ -637,10 +650,10 @@ section.above_fold .carousel .item .bubble{
 }
 
 section.above_fold .carousel .item.first .bubble.integrates{
-	left:3%;
-	top:5%;
+	left:7%;
+	top:-10%;
 	color: #fff;
-	background-color:#fff;
+	background-color: transparent !important;
 }
 
 section.above_fold .carousel .item.second .bubble.integrates{
