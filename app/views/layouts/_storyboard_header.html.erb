@@ -71,7 +71,7 @@
 
           <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
             <li class="storyboardlogo">
-              <%= link_to image_tag("/images/logo.png"), signout_path, method: "delete", id: "logo" %> 
+              <%= link_to image_tag("/images/logo.png"), signout_path, method: "delete", id: "logo", rel:"tooltip", title:"Go to the FamilyTales home page" %> 
             </li>
             <li class="signupbutton">
               <a class="green_button signup_button" href="/signup">Start your storybook</a>
