@@ -114,12 +114,11 @@ $(document).ready(function(){
  	});
 
  	$('#memorycounter').text('250');
-	$('#memory_content').keypress(function (e) {
+	$('#memory_content').keyup(function (e) {
 		if((e.which == 13)) {
 	      e.preventDefault();
 	      return false;
 	    }
-	    
 	    var left = 250 - $(this).val().length;
 	    if (left < 0) {
 	        $('#memorycounter').addClass("text-error");

@@ -7,8 +7,10 @@
   <div class="modal-body">
   	<p>You can add a story to this storybook by sending an email to:</p>
     <h2 id="storyemail"><%= link_to "story+"+@profile.url+"@familytales.co", "mailto:story+"+@profile.url+"@familytales.co", target: "blank" %></h2>
-    <ul style="list-style:disc inside;"><li>Subject will be ignored</li>
-      <li>Body will become a written story</li>
+    <ul style="list-style:disc inside;">
+      <li>Send the email from your registered email <%= current_user.email %> </li>
+      <li>Subject will be ignored</li>
+      <li>Body will become your written story</li>
       <li>Attachments will be added to the storybook</li>
     </ul>
   </div>
