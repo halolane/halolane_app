@@ -115,7 +115,7 @@ $(document).ready(function(){
 
  	$('#memorycounter').text('250');
 	$('#memory_content').keypress(function (e) {
-		if((e.which == 13) || (e.which < 0x20)) {
+		if((e.which == 13)) {
 	      e.preventDefault();
 	      return false;
 	    }
