@@ -53,6 +53,7 @@ class ProfilesController < ApplicationController
         @user = User.find_by_email('familytalesuser2@gmail.com')
         if ! @user.nil?
           sign_in @user
+          showprofile
           redirect_to root_url + @profile.url
         else
           redirect_to root_url
