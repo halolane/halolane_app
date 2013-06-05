@@ -4,7 +4,7 @@
     <div class="container">
       <nav>
         <ul class="nav btn-topbar-left">
-          <% if current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute" %>
+          <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
             <li class="newmemorybtn">
               <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal" rel="tooltip" title="Add a new story">
                 <i class="icon-plus"></i><span class="addnewstorytext">Add a new story</span>
@@ -16,7 +16,7 @@
           </h4></div></li>
         </ul>
         <ul class="nav pull-right">
-          <% if current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute"  %>
+          <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
             <li class="iconaddcontributor _showAddCollaborator">
                 <% if ! current_user.verified == true %>
                   <a href="#confirmemail" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">

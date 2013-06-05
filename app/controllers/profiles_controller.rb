@@ -46,16 +46,28 @@ class ProfilesController < ApplicationController
     end
 
     if params[:url] == "favicon"
-      redirect_back_or root_url
+      redirect_back root_url
     else
-      if params[:invitation_token] != nil
+
+      if ! signed_in? and @profile.url == "alexdunphy"
+        @user = User.find_by_email('familytalesuser2@gmail.com')
+        if ! @user.nil?
+          sign_in @user
+          redirect_to root_url + @profile.url
+        else
+          redirect_to root_url
+        end
+      elsif ! signed_in?
+        flash[:error] = "You can only view that storybook if you are logged in."
+        redirect_to login_url
+      elsif params[:invitation_token] != nil
         @invitation = Invitation.find_by_token(params[:invitation_token])
-        if is_invited?(params[:invitation_token]) and @invitation.active == true
+        if ! @invitation.nil? and is_invited?(params[:invitation_token]) and @invitation.active == true
           createnewuser
           showprofile
           current_user.actionlog!(@profile.id, @page_name, "show")
           render :layout => "storyboard_layout"
-        elsif is_invited?(params[:invitation_token]) and @invitation.active == false
+        elsif ! @invitation.nil? and is_invited?(params[:invitation_token]) and @invitation.active == false
           flash[:error] = "The invitation link has expired."
           redirect_to root_url
         else

@@ -1,5 +1,5 @@
 <div class="coachmarks hide">
-	<% if signed_in? && current_user.getPermission(@profile) != "view" %>
+	<% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
 		<div class="edit-coachmark">
 			<%= image_tag("/images/coachmarks/edit.png") %>
 		</div>
@@ -14,7 +14,7 @@
 		<%= image_tag("/images/coachmarks/welcomestorybook.png") %>
 	</div>  
 </div>
-<% if signed_in? && current_user.getPermission(@profile) != "view" %>
+<% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
 <div class="firststories-coachmark hide">
 	<%= image_tag("/images/coachmarks/firststory.png") %>
 </div>

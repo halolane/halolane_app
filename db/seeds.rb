@@ -30,6 +30,12 @@
  	Relationshipdesc.find_or_create_by_description(r)
  end
 
+User.find_or_create_by_email(
+	:email => "familytalesuser2@gmail.com",
+	:password => "explorer123",
+	:password_confirmation => "explorer123",
+  	:first_name => "Explorer",
+  	:last_name => "User")
 
 [	
 	"What do you remember most about the arrival of @profile.first_name?",
