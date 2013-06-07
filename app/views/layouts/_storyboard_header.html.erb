@@ -6,9 +6,16 @@
         <ul class="nav btn-topbar-left">
           <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
             <li class="newmemorybtn">
-              <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal" rel="tooltip" title="Add a new story">
-                <i class="icon-plus"></i><span class="addnewstorytext">Add a new story</span>
-              </a>
+              <div class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-plus"></i><span class="addnewstorytext">Add a new story</span></a>
+                <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
+                  <li><a href="#newmemorymodal" data-toggle="modal" data-dismiss="modal" aria-hidden="true"><i class="icon-pencil"></i> Now</a></li>
+                  <li><a href="#emailstories" data-toggle="modal" data-dismiss="modal" aria-hidden="true"><i class="icon-envelope-alt"></i> By email</a></li>
+                  
+                </ul>
+
+              <!--<a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal" rel="tooltip" title="Add a new story">-->
+                
             </li>
           <% end %>
           <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>

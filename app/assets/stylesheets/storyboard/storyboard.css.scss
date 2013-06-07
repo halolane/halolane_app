@@ -159,6 +159,7 @@ li.signupbutton {
     top: 7px;
 	padding-right: 10px;
 	position: relative;
+	text-decoration: none;
 }
 
 .signup_button {
@@ -194,6 +195,9 @@ li.signupbutton {
 			font-size: 18px;
 			color: #5f8f05;
 		}
+	}
+	a:hover {
+		text-decoration: none !important;
 	}	
 }
 
