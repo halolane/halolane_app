@@ -151,6 +151,17 @@ li.signupbutton {
 	margin-top: 10px;
 }
 
+div.dropdown:hover > ul.dropdown-menu.settingsdropdown {
+	margin-top: 5px;
+    display: block;    
+}
+
+div.dropdown:hover > ul.dropdown-menu.addnewstory {
+	margin-top: 2px;
+    display: block;    
+}
+
+
 
 .icon-off, .icon-question-sign, .icon-sitemap, .icon-share, .icon-cog {	
 	opacity: 0.6;
