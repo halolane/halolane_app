@@ -47,6 +47,18 @@ class Profile < ActiveRecord::Base
   def changeprivacy(p)
     privacy = p
   end
+
+  def get_vcf_file
+    output = ['BEGIN:VCARD']
+    output << 'VERSION:3.0'
+    output << 'N:' + self.first_name + " " + self.last_name + ';FamilyTales;;;'
+    output << 'FN:FamilyTales ' + self.first_name + " " + self.last_name 
+    output << 'EMAIL;type=INTERNET;type=HOME;type=pref:story+' + self.url + '@familytales.co'
+    output << 'item1.URL;type=pref:www.familytales.co/' + self.url
+    output << 'item1.X-ABLabel:_$!<HomePage>!$_'
+    output << 'END:VCARD'
+    output.join("\n")
+  end
   
   private 
 

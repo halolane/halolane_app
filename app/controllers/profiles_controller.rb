@@ -22,8 +22,15 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show
+  def getvcf 
+    @profile = Profile.find(params[:id])
+    full_name = @profile.first_name + "_" + @profile.last_name + "_add_new_story_by_email"
+    send_data @profile.get_vcf_file,
+      :filename => "#{full_name}.vcf",
+      :type => "text/plain"
+  end
 
+  def show
     if ! params[:url].blank?
       @profile = Profile.find_by_url(params[:url])
       if @profile.nil?

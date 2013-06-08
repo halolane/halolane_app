@@ -11,6 +11,10 @@ HalolaneApp::Application.routes.draw do
   resources :password_resets
   resources :relationships
 
+  resources :profiles do
+    member {get "getvcf"}
+  end
+
   get "password_resets/new"
   get "users/new"
   get "profiles/new"
@@ -18,6 +22,7 @@ HalolaneApp::Application.routes.draw do
 
   root to: 'static_pages#home'
   resources :password_resets
+
   
   match '/about', to: 'static_pages#about'
   match '/pagenotfound', to: 'static_pages#pagenotfound'
