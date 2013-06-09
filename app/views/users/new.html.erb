@@ -18,7 +18,9 @@
 		  <%= f.label :password %>
 		  <%= f.password_field :password, :placeholder=>"Password"  %><br>
 
-		  <a href="#betadescmodal" data-toggle="modal" data-dismiss="modal" aria-hidden="true"><button class="green_button" style="width:200px !important;">Start my storybook</button></a>
+		  <%= f.submit "Create my storybook!", class: "green_button", width:"width:200px !important;" %>
+
+		  <!-- <a href="#betadescmodal" data-toggle="modal" data-dismiss="modal" aria-hidden="true"><button class="green_button" style="width:200px !important;">Start my storybook</button></a> -->
 		  <br><br>
 	</div>
 </div>
@@ -41,7 +43,7 @@
 	</div>
 	<div class="modal-footer">
 		<div class="storybook-choice">
-			<%= f.submit "Create my storybook!", class: "green_button", width:"40px" %> - or -
+			<!-- <%= f.submit "Create my storybook!", class: "green_button", width:"40px" %> - or - -->
 			<a href="http://www.familytales.co"><button class="green_button" width="40px">No, bring me back.</button></a>
 			<% end %>
 		</div>
