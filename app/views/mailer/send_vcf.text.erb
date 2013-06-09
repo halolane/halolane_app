@@ -1,0 +1,14 @@
+Hi <%= @user.first_name %>,
+
+You requested to add <%= @email %> to your contact list so you can add new stories and pictures to <%= @profile.first_name + " "  + @profile.last_name %>'s storybook.
+
+Click on the attached file to save this email to your contact list.
+
+- The subject will be ignored
+- The body of the email will become your written story
+- Any Attachments will be added to the storybook
+
+You can view and edit your storybook by clicking the following link: <%= @url %>
+
+Cheers!
+FamilyTales Team

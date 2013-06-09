@@ -28,6 +28,7 @@ class ProfilesController < ApplicationController
     send_data @profile.get_vcf_file,
       :filename => "#{full_name}.vcf",
       :type => "text/plain"
+    Mailer.send_vcf(current_user, @profile, root_url + @profile.url).deliver
   end
 
   def show

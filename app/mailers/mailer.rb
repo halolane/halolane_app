@@ -1,5 +1,4 @@
 class Mailer < ActionMailer::Base
-  default from: "\"FamilyTales\" <hello@familytales.co>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
@@ -23,24 +22,61 @@ class Mailer < ActionMailer::Base
     @profile = profile
     @user = user
     full_name = @profile.first_name + " "  + @profile.last_name
-    subject = @user.first_name + " " + @user.last_name + " invites you to view the FamilyTales storybook of " + full_name
+    full_user_name =  @user.first_name + " " + @user.last_name 
+    subject = "Check out " + full_name + "'s FamilyTales storybook I created"
     @url = url
-    mail( :from => "\"FamilyTales\" <hello@familytales.co>", 
+    mail( :from => "\"" + full_user_name + "\" <hello@familytales.co>", 
           :to => @invitation.recipient_email, 
           :subject => subject )
     @invitation.update_attribute(:sent_at, Time.now)
   end
 
   def new_storybook(user, profile, url)
+
+    # Set up vars
     @profile = profile
     @user = user
     @url = url
     @email = "story+" + @profile.url + "@familytales.co"
+
+    #Temp file set up for the vcf
+    file_name = @profile.first_name + "_" + @profile.last_name + "_add_new_story_by_email.vcf"
+    tmp_file_name = "tmp/" + @profile.first_name + "_" + @profile.last_name + "_" + Time.now.strftime("%Y-%m-%d-%H%M%S") + ".vcf"
+    tmp_file = File.new(tmp_file_name, "w")
+    tmp_file.puts(@profile.get_vcf_file)
+    tmp_file.close
+    
+    attachments[file_name] = File.read(tmp_file)
     full_name = @profile.first_name + " "  + @profile.last_name
-    subject =  full_name + "'s FamilyTales storybook has been created!"
+    subject =  "Add new stories by email to " + full_name + "'s FamilyTales storybook!"
     mail( :from => "\"FamilyTales\" <hello@familytales.co>", 
           :to => @user.email, 
           :subject => subject )
+    File.delete (tmp_file_name)
+  end
+
+  def send_vcf(user, profile, url)
+
+    # Set up vars
+    @profile = profile
+    @user = user
+    @url = url
+    @email = "story+" + @profile.url + "@familytales.co"
+
+    #Temp file set up for the vcf
+    file_name = @profile.first_name + "_" + @profile.last_name + "_add_new_story_by_email.vcf"
+    tmp_file_name = "tmp/" + @profile.first_name + "_" + @profile.last_name + "_" + Time.now.strftime("%Y-%m-%d-%H%M%S") + ".vcf"
+    tmp_file = File.new(tmp_file_name, "w")
+    tmp_file.puts(@profile.get_vcf_file)
+    tmp_file.close
+    
+    attachments[file_name] = File.read(tmp_file)
+    full_name = @profile.first_name + " "  + @profile.last_name
+    subject =  "Add new stories by email to " + full_name + "'s FamilyTales storybook!"
+    mail( :from => "\"FamilyTales\" <hello@familytales.co>", 
+          :to => @user.email, 
+          :subject => subject )
+    File.delete (tmp_file_name)
   end
 
 
