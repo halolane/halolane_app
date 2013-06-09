@@ -14,8 +14,9 @@
 		<%= image_tag("/images/coachmarks/welcomestorybook.png") %>
 	</div>  
 </div>
-<% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
 <div class="firststories-coachmark hide">
 	<%= image_tag("/images/coachmarks/firststory.png") %>
 </div>
-<% end %>
+<div class="firstaddbyemail-coachmark hide">
+	<%= image_tag("/images/coachmarks/AddByEmail.png") %>
+</div>

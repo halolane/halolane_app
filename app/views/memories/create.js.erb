@@ -55,7 +55,10 @@ $(document).ready(function(){
 			//$('#content').prepend(newItems).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
 			$('#loading_spinner').modal('hide');
 
-			
+			<% if current_user.memorycount == 1 %>
+				$('#emailstories').modal('show');
+             	$('.firstaddbyemail-coachmark').removeClass('hide');
+     	 	<% end %>
 		<% end %>
 	<% end %>
 	var $container = $('#content');

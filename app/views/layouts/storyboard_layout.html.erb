@@ -14,19 +14,21 @@
   <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") && current_user.memorycount == 0 %>
     <script type="text/javascript">
       $(window).load(function(){
-          $('#newuserstorybook').modal('show');
-          $('#newuserstorybook').on('hide', function () {
-              $('.coachmarks').addClass('hide');
-              $('#firstthreestories_backdrop').modal('show');
-              $('.firststories-coachmark').removeClass('hide');
-          });
+        $('#newuserstorybook').modal('show');
+        $('#newuserstorybook').on('hide', function () {
+          $('.coachmarks').addClass('hide');
+          $('#firstthreestories_backdrop').modal('show');
+          $('.firststories-coachmark').removeClass('hide');
+        });
 
-          $('#firstthreestories_backdrop').on('hide', function () {
-              $('.firststories-coachmark').addClass('hide');
-              $('#newmemorymodal').modal('show');
-              $('.suggeststory').fadeTo('fast',0);
-              $('.memoryquestion').toggle("hidden");
-          });
+        $('#firstthreestories_backdrop').on('hide', function () {
+          $('.firststories-coachmark').addClass('hide');
+          $('#newmemorymodal').modal('show');
+        });    
+
+        $('#emailstories').on('hide', function () {
+          $('.firstaddbyemail-coachmark').addClass('hide');
+        });  
       });
     </script>
   <% end %>
