@@ -109,11 +109,11 @@ table {
 	h4 { 
 		font-size: 18px; 
 		line-height: 20px; 
-		color: #474747;
+		color: #696969;
 	}
 
 	a {
-		color: #474747;
+		color: #696969;
 		text-decoration: none;
 	}
 
@@ -145,15 +145,6 @@ li.iconsettings {
 }
 li.signupbutton {
 	padding-top: 5px;
-}
-
-.open > .dropdown-menu.settingsdropdown {
-	margin-top: 10px;
-}
-
-div.dropdown:hover > ul.dropdown-menu.settingsdropdown {
-	margin-top: 5px;
-    display: block;    
 }
 
 div.dropdown:hover > ul.dropdown-menu.addnewstory {
@@ -212,6 +203,12 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 	}	
 }
 
+.green {
+	color: #5f8f05;
+}
+
+.icon
+
 .suggeststory {
 	color: #5f8f05;
 	font-size: 1.2em;
@@ -233,6 +230,16 @@ li.storyboardlogo {
 	height: 38px;
 }
 
+.dropdown-toggle {
+	text-decoration: none !important;
+}
+h4.storybook-user {
+	margin-top: -10px;
+	display: inline !important;
+	text-decoration: none !important;
+	color: #999;
+	
+}
 /* Message box */
 
 .newmemorybtn {
@@ -310,7 +317,6 @@ li.storyboardlogo {
 	-moz-box-shadow: 10px 2px 50px rgba(0,0,0,0.5);
 	-webkit-box-shadow:10px 2px 50px rgba(0,0,0,0.5);
 	box-shadow:10px 2px 50px rgba(0,0,0,0.5);
-			
 }
 
 
@@ -328,6 +334,12 @@ li.storyboardlogo {
 	width: 540px;
 	text-color: gray;
 
+}
+
+.gray {
+	color: #999;
+	text-decoration: none !important;
+	display: inline !important;
 }
 
 #memorycounter {
@@ -770,6 +782,9 @@ height: 600px;
 	}
 }
 
+.red {
+	color: #9a1b39;
+}
 .dropdown-menu
 {
 	position: absolute;
@@ -784,6 +799,13 @@ height: 600px;
   left: 0;
   z-index: 1040 !important;
   right: auto;
+}
+
+.dividerline {
+	font-size: 1.5em;
+	color: #999;
+	margin-top: 7px;
+	margin-right: 13px;
 }
 
 .open > .dropdown-menu.memory

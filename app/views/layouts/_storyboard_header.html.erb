@@ -43,37 +43,6 @@
                 <% end %>
             </li>
           <% end %>
-          <% if signed_in? && current_user.email != ('familytalesuser2@gmail.com') and @profile.url != "alexdunphy" %>
-            <li class="iconfamtree">
-              <%= link_to root_path, rel:"tooltip", title:"View your family storybooks" do %>
-                <i class="icon-sitemap"></i>
-              <% end %>
-            </li>
-            <li class="iconsettings">
-              <div class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"> <i class="icon-cog"></i></a>
-                <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
-                  <li><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
-                  <% if has_relationship?(@profile.id, current_user.id) %>
-                    <li><%= link_to "Change your relationship", edit_relationship_path(@relationship) %></li>
-                  <% end %>
-                  <li class="divider"></li>
-                  <li><%= link_to "Log out", signout_path, method: "delete" %></li>
-                  <li><a href="#newuserstorybook" data-toggle="modal" data-dismiss="modal" aria-hidden="true" rel="tooltip" title="Show the help guides">Help</a></li>
-                  <!-- 
-                  <li><%= link_to "Privacy Settings" %></li>
-                -->
-                </ul>
-              </div>
-            </li>
-          <% else %>
-            <li class="iconfamtree">
-              <a href="#exploreraccount" data-toggle="modal" data-dismiss="modal" aria-hidden="true" rel="tooltip" title="View your family storybooks"><i class="icon-sitemap"></i></a>
-            </li>
-            <li class="iconsettings">
-              <a href="#exploreraccount" data-toggle="modal" data-dismiss="modal" aria-hidden="true" rel="tooltip" title="Edit settings"><i class="icon-cog"></i></a>
-            </li>
-          <% end %>
 
           <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
             <li class="storyboardlogo">
@@ -92,6 +61,35 @@
           <% else %>
             <li class="storyboardlogo">
               <%= link_to image_tag("/images/logo.png"), root_path, id: "logo" %> 
+            </li>
+          <% end %>
+          <% if signed_in? and current_user.email != ('familytalesuser2@gmail.com') and @profile.url != "alexdunphy" %>
+            <li class="divider"><div class="dividerline">|</h4></li>
+            <li class="loggedinuser">
+              <div class="graycolor" style="font-size:0.7em;">Logged in as</div> 
+              
+
+                <div class="dropdown">
+              
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><h4 class="storybook-user"><%= current_user.first_name + " " + current_user.last_name %></h4> <i class="icon-chevron-sign-down gray"></i></a>
+                  <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
+                    <li><%= link_to "Edit your user settings", edit_user_path(current_user) %></li>
+                    <li class="divider"></li>
+                    <li><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
+                    <li><%= link_to "View your other storybooks", root_path %></li>
+                    <% if has_relationship?(@profile.id, current_user.id) %>
+                      <li><%= link_to "Change your relationship to " + @profile.first_name, edit_relationship_path(@relationship) %></li>
+                    <% end %>
+
+                    <li class="divider"></li>
+
+                    <li><%= link_to "Log out", signout_path, method: "delete" %></li>
+                    <li><a href="#newuserstorybook" data-toggle="modal" data-dismiss="modal" aria-hidden="true">Help</a></li>
+                    <!-- 
+                    <li><%= link_to "Privacy Settings" %></li>
+                  -->
+                  </ul>
+                </div>
             </li>
           <% end %>
         </ul>
