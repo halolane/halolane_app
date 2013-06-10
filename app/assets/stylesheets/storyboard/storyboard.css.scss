@@ -647,7 +647,7 @@ height: 600px;
 	width: 900px !important;
 }
 
-.firstthreestories_backdrop, .addbyemail_backdrop {
+.firstthreestories_backdrop, .addbyemail_backdrop, .sneakpeakmodal, .comingsoonfeatures {
 	padding-left: -300px;
 	margin-left: -700px;
 	margin-top: -375px;
@@ -688,6 +688,22 @@ height: 600px;
 	position: absolute;
 	float: left;
 	margin-top: -375px;
+	margin-left: 400px;
+	z-index: 1050;
+}
+
+.newfeatures-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: -500px;
+	margin-left: 400px;
+	z-index: 1050;
+}
+
+.welcomesneakpeek-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: -375px;
 	margin-left: 300px;
 	z-index: 1050;
 }
@@ -712,6 +728,14 @@ height: 600px;
 	float: left;
 	margin-top: -625px;
 	margin-left: 50px;
+	z-index: 1050;
+}
+
+.thistory-coachmark {
+	position: relative;
+	float: left;
+	margin-top: -600px;
+	margin-left: 420px;
 	z-index: 1050;
 }
 

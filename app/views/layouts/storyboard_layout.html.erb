@@ -35,7 +35,22 @@
   <% if current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
     <script type="text/javascript">
       $(window).load(function(){
-          $('#exploreraccount').modal('show');
+          $('#sneakpeakmodal').modal('show');
+          $('.sneakpeakcoachmarks').removeClass('hide');
+
+          $('#sneakpeakmodal').on('hide', function () {
+            $('.sneakpeakcoachmarks').removeClass('hide');
+          });
+
+          $('#sneakpeakmodal').on('hide', function () {
+            $('.sneakpeakcoachmarks').addClass('hide');
+            $('#comingsoonfeatures').modal('show');
+            $('.newfeatures-coachmark').removeClass('hide');
+          });
+
+          $('#comingsoonfeatures').on('hide', function () {
+            $('.newfeatures-coachmark').addClass('hide');
+          });
       });
     </script>
 
