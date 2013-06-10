@@ -656,7 +656,8 @@ height: 600px;
 	width: 900px !important;
 }
 
-.firstthreestories_backdrop, .addbyemail_backdrop, .sneakpeakmodal, .comingsoonfeatures {
+.firstthreestories_backdrop, .addbyemail_backdrop, .sneakpeakmodal1, 
+.sneakpeakmodal2, .sneakpeakmodal3, .sneakpeakmodal4, .comingsoonfeatures {
 	padding-left: -300px;
 	margin-left: -700px;
 	margin-top: -375px;
@@ -692,14 +693,8 @@ height: 600px;
 	}
 }
 
+/* coachmarks for sneak peek storybook */
 
-.welcome-coachmark {
-	position: absolute;
-	float: left;
-	margin-top: -375px;
-	margin-left: 400px;
-	z-index: 1050;
-}
 
 .newfeatures-coachmark {
 	position: absolute;
@@ -714,6 +709,32 @@ height: 600px;
 	float: left;
 	margin-top: -375px;
 	margin-left: 300px;
+	z-index: 1050;
+}
+
+.thistory-coachmark {
+	position: relative;
+	float: left;
+	margin-top: -600px;
+	margin-left: 410px;
+	z-index: 1050;
+}
+
+.startstorybook-coachmark {
+	position: relative;
+	float: left;
+	margin-top: -665px;
+	margin-left: 70%;
+	z-index: 1050;
+}
+
+/* coachmarks for storybook */
+
+.welcome-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: -375px;
+	margin-left: 400px;
 	z-index: 1050;
 }
 
@@ -735,16 +756,8 @@ height: 600px;
 .addmemory-coachmark {
 	position: relative;
 	float: left;
-	margin-top: -625px;
+	margin-top: -605px;
 	margin-left: 50px;
-	z-index: 1050;
-}
-
-.thistory-coachmark {
-	position: relative;
-	float: left;
-	margin-top: -600px;
-	margin-left: 420px;
 	z-index: 1050;
 }
 

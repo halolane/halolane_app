@@ -35,21 +35,39 @@
   <% if current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
     <script type="text/javascript">
       $(window).load(function(){
-          $('#sneakpeakmodal').modal('show');
-          $('.sneakpeakcoachmarks').removeClass('hide');
+          $('#sneakpeakmodal1').modal('show');
+          $('.welcomesneakpeek-coachmark').removeClass('hide');
 
-          $('#sneakpeakmodal').on('hide', function () {
-            $('.sneakpeakcoachmarks').removeClass('hide');
+          $('#sneakpeakmodal1').on('show', function () {
+            $('.welcomesneakpeek-coachmark').removeClass('hide');
           });
 
-          $('#sneakpeakmodal').on('hide', function () {
-            $('.sneakpeakcoachmarks').addClass('hide');
+          $('#sneakpeakmodal1').on('hide', function () {
+            $('.welcomesneakpeek-coachmark').addClass('hide');
+            $('#sneakpeakmodal2').modal('show');
+            $('.thistory-coachmark').removeClass('hide');
+          });
+
+          $('#sneakpeakmodal2').on('hide', function () {
+            $('.thistory-coachmark').addClass('hide');
+            $('#sneakpeakmodal3').modal('show');
+            $('.addmemory-coachmark').removeClass('hide');
+          });
+
+          $('#sneakpeakmodal3').on('hide', function () {
+            $('.addmemory-coachmark').addClass('hide');
             $('#comingsoonfeatures').modal('show');
             $('.newfeatures-coachmark').removeClass('hide');
           });
 
           $('#comingsoonfeatures').on('hide', function () {
             $('.newfeatures-coachmark').addClass('hide');
+            $('#sneakpeakmodal4').modal('show');
+            $('.startstorybook-coachmark').removeClass('hide');
+          });
+
+          $('#sneakpeakmodal4').on('hide', function () {
+            $('.startstorybook-coachmark').addClass('hide');
           });
       });
     </script>
