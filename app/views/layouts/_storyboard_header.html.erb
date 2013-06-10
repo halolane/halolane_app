@@ -30,16 +30,9 @@
         <ul class="nav pull-right">
           <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
             <li class="iconaddcontributor _showAddCollaborator">
-                <% if ! current_user.verified == true %>
-                  <a href="#confirmemail" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
-                    <i class="icon-share"></i>
-                  </a>
-
-                <% else %>
-                  <a href="#addcontributor" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
-                    <i class="icon-share"></i>
-                  </a>
-                <% end %>
+              <a href="#addcontributor" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
+                <i class="icon-share"></i>
+              </a>
             </li>
           <% end %>
 
