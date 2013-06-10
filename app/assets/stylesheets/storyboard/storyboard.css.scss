@@ -19,6 +19,10 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+body {
+	padding-top: 40px;
+}
+
 .alert {
 	z-index: 11 !important;
 	margin-top: 40px;
@@ -52,6 +56,11 @@ blockquote:before, blockquote:after,
 q:before, q:after {
 	content: '';
 	content: none;
+}
+
+.sneakpeekheader-text {
+	padding-top: 7px !important;
+	padding-left: 20px !important;
 }
 
 table {
@@ -165,8 +174,8 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 }
 
 .signup_button {
-	padding-top:0.2em !important;
-	height:25px !important;
+	padding: 0.4em 0.1em !important;
+	height: 15px !important;
 	width:120% !important;
 	text-decoration:none !important;
 	font-color:white;
@@ -439,7 +448,7 @@ h4.storybook-user {
 #content {
 width: 0;
 margin: 0 10%;
-margin-top: 5%;
+margin-top: 3.5%;
 height: 600px;
 }
  

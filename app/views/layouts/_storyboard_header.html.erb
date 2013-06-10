@@ -1,4 +1,3 @@
-<header class="navbar navbar-fixed-top">
 
   <div class="navbar-inner">
     <div class="container">
@@ -48,16 +47,6 @@
             <li class="storyboardlogo">
               <%= link_to image_tag("/images/logo.png"), signout_path, method: "delete", id: "logo", rel:"tooltip", title:"Go to the FamilyTales home page" %> 
             </li>
-            <li class="signupbutton">
-              <a class="green_button signup_button" href="/signup">Start your own storybook</a>
-            </li>
-          <% elsif signed_in? && @profile.url == "alexdunphy"  %>
-            <li class="storyboardlogo">
-              <%= link_to image_tag("/images/logo.png"), root_path, id: "logo" %> 
-            </li>
-            <li class="signupbutton">
-              <a class="green_button signup_button" href="/">Start your own storybook</a>
-            </li>
           <% else %>
             <li class="storyboardlogo">
               <%= link_to image_tag("/images/logo.png"), root_path, id: "logo" %> 
@@ -91,9 +80,16 @@
                   </ul>
                 </div>
             </li>
+          <% else %>
+            <li class="divider"><div class="dividerline">|</h4></li>
+    
+            <li class="loggedinuser">
+              <div class="graycolor" style="font-size:0.7em;">Logged in as</div> 
+              <h4 class="storybook-user">Explorer Account</h4>
+            </li>
           <% end %>
+
         </ul>
       </nav>
     </div>
   </div>
-</header>
