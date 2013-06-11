@@ -89,7 +89,7 @@ class Mailer < ActionMailer::Base
   def receive_email_storybook_error(email,storybook_email)
     @email = email
     @storybook_email = storybook_email
-    mail(:from => "\"FamilyTales\" <hello@familytales.co>", :to => @email , :subject => "Start celebrating your family's stories today url" )
+    mail(:from => "\"FamilyTales\" <hello@familytales.co>", :to => @email , :subject => "Start celebrating your family's stories today" )
   end
 
   def receive_email_confirm(email,storybook_email,url)
