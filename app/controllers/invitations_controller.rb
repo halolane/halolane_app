@@ -13,6 +13,7 @@ class InvitationsController < ApplicationController
     @invitation.active = true
     @invitation.permission = params[:permission]
     @user_invited = User.find_by_email(params[:invitation][:recipient_email])
+    msg = (params[:invitation][:message])
 
     # Need to verify account first
     if ! @user_invited.blank? and has_relationship?(@profile.id, @user_invited.id)
@@ -20,10 +21,10 @@ class InvitationsController < ApplicationController
     elsif Invitation.exists?(:recipient_email => params[:invitation][:recipient_email],:profile_id => @profile.id)
       @invitation_resent = Invitation.find_by_recipient_email_and_profile_id(params[:invitation][:recipient_email], @profile.id)
       flash[:notice] = "Resending invitation to " + @invitation_resent.recipient_email
-      Mailer.invitation(@invitation_resent, @profile, current_user, root_url + @profile.url + "/" + @invitation_resent.token).deliver
+      Mailer.invitation(@invitation_resent, @profile, current_user, root_url + @profile.url + "/" + @invitation_resent.token, msg).deliver
       redirect_to root_url + @profile.url, :notice => "Your invitation has been re-sent to " + @invitation_resent.recipient_email
     elsif @invitation.save
-      Mailer.invitation(@invitation, @profile, current_user, root_url + @profile.url + "/" + @invitation.token).deliver
+      Mailer.invitation(@invitation, @profile, current_user, root_url + @profile.url + "/" + @invitation.token, msg).deliver
       current_user.actionlog!(@profile.id, @page_name, "Invite sent to " + @invitation.recipient_email )
       redirect_to root_url + @profile.url, :notice => "Your invitation has been sent to " + @invitation.recipient_email
     else

@@ -25,7 +25,6 @@ body {
 
 .alert {
 	z-index: 11 !important;
-	margin-top: 40px;
 	margin-bottom: 10px !important;
 	position: relative;
 	width: 100%;
@@ -163,11 +162,21 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 
 
 
-.icon-off, .icon-question-sign, .icon-sitemap, .icon-share, .icon-cog {	
+.icon-off, .icon-sitemap, .icon-share, .icon-cog {	
 	opacity: 0.6;
     text-shadow: 1px 1px 1px #ccc;
     font-size: 27px;
     top: 7px;
+	padding-right: 10px;
+	position: relative;
+	text-decoration: none;
+}
+
+.invite-permission-help  {	
+	opacity: 0.8;
+  text-shadow: 1px 1px 1px #ccc;
+  font-size: 20px;
+  top: 3px;
 	padding-right: 10px;
 	position: relative;
 	text-decoration: none;
@@ -852,6 +861,14 @@ height: 600px;
 	color: #999;
 	margin-top: 7px;
 	margin-right: 13px;
+}
+
+.inline {
+	display: inline !important;
+}
+
+.icon-small {
+	font-size: 1.0em;
 }
 
 .open > .dropdown-menu.memory

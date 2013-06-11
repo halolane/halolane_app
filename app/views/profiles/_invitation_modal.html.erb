@@ -5,6 +5,37 @@
     <h3 id="addcontributorLabel">Invite your family and friends</h3>
   </div>
   <div class="modal-body">
-    <%= render 'shared/invitation_form' %>
+    <%= form_for @invitation do |f| %>
+
+		  <%= render 'shared/error_messages', object: f.object %>
+
+		  <input type="hidden" id="invitation_profile_id" name="invitation[profile_id]" value="<%= @profile.id %>" />
+
+		  
+		    <h5><%= f.label :recipient_email, "Friend's email address" %></h5>
+		    <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+		    	<textarea rows="1" cols="30" readonly>You cannot invite friends to this sample storybook as an Explorer.</textarea>
+				<% elsif signed_in? %>
+				  <%= f.text_field :recipient_email %>
+
+				  <textarea rows="8" id="invitation_message" name="invitation[message]"  cols="30"><%= (File.open("public/invitation/invitation_template.txt", "rb") {|io| io.read}).gsub('full_storybook_name', @profile.first_name + " " + @profile.last_name) %>
+				  </textarea>
+			  <% end %>
+
+		  <h5>Permissions:</h5>
+			<div class="center">
+			<input type="radio" name="permission" value="view">  Viewer <i class="icon-question-sign tooltip invite-permission-help" title="Viewer can only view this storybook."></i> 
+				 &nbsp;  &nbsp;  &nbsp;   &nbsp; 
+			<input type="radio" name="permission" value="contribute" checked>  Contributor <i class="icon-question-sign tooltip invite-permission-help" title="Contributor can view and add new stories about <%= @profile.first_name %>."></i>
+			 &nbsp;  &nbsp;  &nbsp;   &nbsp; 
+			<input type="radio" name="permission" value="edit">  Editor <i class="icon-question-sign tooltip invite-permission-help" title="Editor can edit this storybook. They can help you customize this storybook, invite other friends and family, and delete stories that are not appropriate."></i>
+			</div>
+<br>
+			<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+				<a class="green_button" href="/signup" style:"text-decoration:none !important;">Start your storybook</a>
+			<% else %>
+			  <p><%= f.submit "Send", class: "green_button" %></p>
+		  <% end %>
+	<% end %>
   </div>
 </div>

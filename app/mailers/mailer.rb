@@ -17,15 +17,16 @@ class Mailer < ActionMailer::Base
           :subject => subject )
   end
 
-  def invitation(invitation, profile, user, url)
+  def invitation(invitation, profile, user, url, msg)
     @invitation = invitation
     @profile = profile
     @user = user
-    full_name = @profile.first_name + " "  + @profile.last_name
-    full_user_name =  @user.first_name + " " + @user.last_name 
-    subject = "Check out " + full_name + "'s FamilyTales storybook I created"
+    @msg = msg
+    @full_name = @profile.first_name + " "  + @profile.last_name
+    @full_user_name =  @user.first_name + " " + @user.last_name 
+    subject = "Check out " + @full_name + "'s FamilyTales storybook that I created"
     @url = url
-    mail( :from => "\"" + full_user_name + "\" <hello@familytales.co>", 
+    mail( :from => "\"" + @full_user_name + "\" <hello@familytales.co>", 
           :to => @invitation.recipient_email, 
           :subject => subject )
     @invitation.update_attribute(:sent_at, Time.now)
