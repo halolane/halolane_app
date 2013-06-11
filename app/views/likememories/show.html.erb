@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @likememory.user_id %>
+</p>
+
+<p>
+  <b>Memory:</b>
+  <%= @likememory.memory_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_likememory_path(@likememory) %> |
+<%= link_to 'Back', likememories_path %>

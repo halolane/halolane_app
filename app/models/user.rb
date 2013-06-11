@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   has_many :profiles, through: :relationships
   has_many :profiles_with_relationships, :through => :relationships, :source => :profile
   has_many :authentications, dependent: :destroy
-  has_many :useractionlogs
+  has_many :likememories, dependent: :destroy
+  has_many :useractionlogs, dependent: :destroy
 
   before_save { |user| user.email = email.downcase }
 

@@ -17,6 +17,8 @@ class Memory < ActiveRecord::Base
   belongs_to :user
   belongs_to :profile
 
+  has_many :likememories, dependent: :destroy
+
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true

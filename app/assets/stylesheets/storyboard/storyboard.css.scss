@@ -823,11 +823,7 @@ height: 600px;
 }
 
 .story-edit-btn {
-	position: absolute;
-	opacity: 0;
-	margin-top: -4%;
-	margin-left: 85%;
-	z-index: 100;
+	position: relative;float:right;opacity: 0;margin-top: -4%;margin-left: -5%;
 	.btn {
 		font-size: 0.7em;
 	}
