@@ -64,6 +64,7 @@ class Memory < ActiveRecord::Base
           
           if @memory.save
             Mailer.receive_email_confirm(message.from.first, message.to.first, "https://www.familytales.co/" + @profile.url).deliver
+            @user.actionlog!(@profile.id, "Memory model", "New story created by email" )
           else
             Mailer.receive_email_save_error(message.from.first, message.to.first).deliver
           end

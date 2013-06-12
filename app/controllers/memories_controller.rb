@@ -15,7 +15,7 @@ class MemoriesController < ApplicationController
       if @memory.save
         format.html { render :layout => false } 
         format.js 
-        current_user.actionlog!(@profile.id, @page_name, "New memory created" )
+        current_user.actionlog!(@profile.id, @page_name, "New story created" )
       else
         format.html { render :layout => false} 
       end
