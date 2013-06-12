@@ -838,11 +838,11 @@ height: 600px;
 }
 
 .like-btn{
-	position: absolute;
-	opacity: 0;
+	position: absolute  !important;
+	opacity: 0  !important;
 	margin-top: -4%;
-	margin-left: 35%;
-	z-index: 1;
+	margin-left: 35% !important;
+	z-index: 1  !important;
 	.btn {
 		font-size: 0.7em;
 	}
