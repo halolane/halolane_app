@@ -40,4 +40,17 @@
 		Posted <%= time_ago_in_words(memoryfeed_item.created_at) %> ago.
 	</span>
 
+	<span class="like-btn">
+		<div class="likebutton">
+			<% if current_user.like?(memoryfeed_item) %>
+				<%= link_to unlike_memory_path(memoryfeed_item), :remote => true, :class => "btn" do %>
+					Unlike
+				<% end %>
+			<% else %>
+				<%= link_to like_memory_path(memoryfeed_item), :remote => true, :class => "btn" do %>
+					<i class="icon-heart red"></i> Like
+				<% end %>
+			<% end %> 
+		</div>
+	</span>
 </div>

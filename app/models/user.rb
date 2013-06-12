@@ -56,6 +56,22 @@ class User < ActiveRecord::Base
     @useractionlog = useractionlogs.create!(profile_id: profile_id, pages: page, action: action)
   end
 
+  def like?(memory)
+    not likememories.blank? and likememories.exists?(memory_id: memory.id)
+  end
+
+  def likememory!(memory)
+    if likememories.blank? or not likememories.exists?(memory_id: memory.id)
+      @likememory = likememories.create!(memory_id: memory.id)
+    end
+  end
+
+  def unlikememory!(memory)
+    if not likememories.blank? and likememories.exists?(memory_id: memory.id)
+      likememories.find_by_memory_id(memory.id).destroy 
+    end
+  end
+
   def getPermission(profile)
     relationships.find_by_profile_id(profile.id).permission
   end

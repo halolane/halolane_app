@@ -18,6 +18,11 @@ HalolaneApp::Application.routes.draw do
     member {get "getvcf"}
   end
 
+  resources :memories do
+    member {get "like"}
+    member {get "unlike"}
+  end
+
   get "password_resets/new"
   get "users/new"
   get "profiles/new"

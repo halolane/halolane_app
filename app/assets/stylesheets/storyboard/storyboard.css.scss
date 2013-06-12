@@ -823,13 +823,28 @@ height: 600px;
 }
 
 .story-edit-btn {
-	position: relative;float:right;opacity: 0;margin-top: -4%;margin-left: -5%;
+	position: absolute;
+	opacity: 0;
+	margin-top: -4%;
+	margin-left: 85%;
+	z-index: 100;
 	.btn {
 		font-size: 0.7em;
 	}
 	a.icon-chevron {
 		text-decoration: none;
 		color: #9a1b39;
+	}
+}
+
+.like-btn{
+	position: absolute;
+	opacity: 0;
+	margin-top: -4%;
+	margin-left: 35%;
+	z-index: 1;
+	.btn {
+		font-size: 0.7em;
 	}
 }
 
