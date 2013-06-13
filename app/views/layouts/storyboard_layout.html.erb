@@ -83,11 +83,18 @@
 
    <!--Mouse wheel horizontal scroll -->
   <script>
-  
+
     $(function() {
       $("body").mousewheel(function(event, delta) {
         this.scrollLeft -= (delta * 30);
         event.preventDefault();
+      });
+
+      $('#zoomstory').on('hide', function () {
+        $("body").mousewheel(function(event, delta) {
+          this.scrollLeft -= (delta * 30);
+          event.preventDefault();
+        });
       });
     });
   </script>
