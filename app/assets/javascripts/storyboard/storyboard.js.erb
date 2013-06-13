@@ -1,5 +1,8 @@
 $(document).ready(function(){
 
+
+
+
 	$('a').tooltip({
   	placement : 'bottom'
   });
@@ -145,6 +148,15 @@ $(document).ready(function(){
 
 	$('#newuserstorybook').on('hide', function () {
 	    $('.coachmarks').addClass('hide');
+	});
+
+
+	$('#zoomstory').on('show', function () {
+	   $('body, html').css('cssText' , 'overflow-x: hidden !important;');
+	});
+
+	$('#zoomstory').on('hide', function () {
+    $('body, html').css('cssText' , 'overflow-x: visible !important;');
 	});
 
 	var $container = $('#content');

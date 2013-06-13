@@ -892,7 +892,12 @@ height: 600px;
 	font-size: 1.0em;
 }
 
-.modal {position: absolute; max-height: none; overflow: visible;}
+#zoomstory.modal {
+	position: absolute; 
+	max-height: none; 
+	overflow-y: visible;
+	overflow-x: hidden;
+}
 
 .open > .dropdown-menu.memory
 {
