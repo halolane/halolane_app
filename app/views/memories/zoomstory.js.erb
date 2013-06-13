@@ -1,0 +1,6 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+	  $('#zoomstory').html("<%= escape_javascript render('shared/zoomstory_modal') %>");
+   	$('#zoomstory').modal('show');
+	<% end %>
+});

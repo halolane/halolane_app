@@ -52,6 +52,16 @@ class MemoriesController < ApplicationController
     end
   end
 
+  def zoomstory
+    @memory = Memory.find(params[:id])
+    @profile = Profile.find(@memory.profile_id)
+
+    respond_to do | format |   
+      format.html { redirect_to root_url + @profile.url } 
+      format.js 
+    end
+  end
+
   def edit
 
     @memory = current_user.memories.find_by_id(params[:id])

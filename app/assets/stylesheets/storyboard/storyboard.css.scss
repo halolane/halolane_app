@@ -259,6 +259,9 @@ h4.storybook-user {
 	
 }
 /* Message box */
+.notextdecoration {
+	text-decoration: none !important
+}
 
 .newmemorybtn {
 	margin-left: 20px;
@@ -495,10 +498,13 @@ height: 600px;
 }
 
 .box-text {
+	cursor: -webkit-zoom-in; cursor: -moz-zoom-in;
 	font-size: 15px;
+	color: #212121 !important;
 }
 
 .box-user {
+	cursor: -webkit-zoom-in; cursor: -moz-zoom-in;
 	border-top: 1px solid #ccc;
 	padding-top: 10px;
 	margin-top: 10px;
@@ -508,12 +514,14 @@ height: 600px;
 }
 
 .box-timestamp {
+	cursor: -webkit-zoom-in; cursor: -moz-zoom-in;
 	display: inline-block;
 	font-size: 10px;
 	color: gray;
 }
 
 .storyimage {
+	cursor: -webkit-zoom-in; cursor: -moz-zoom-in;
 	max-width: 100%;
 }
 
@@ -822,29 +830,31 @@ height: 600px;
 	border-width:1px;border-style:solid
 }
 
-.story-edit-btn {
-	position: absolute;
-	opacity: 0;
-	margin-top: -4%;
-	margin-left: 85%;
-	z-index: 100;
-	.btn {
-		font-size: 0.7em;
+.newbox { 
+	.like-btn{
+		position: absolute  !important;
+		opacity: 0;
+		margin-top: -4%;
+		margin-left: 35% !important;
+		z-index: 1  !important;
+		.btn {
+			font-size: 0.7em;
+		}
 	}
-	a.icon-chevron {
-		text-decoration: none;
-		color: #9a1b39;
-	}
-}
 
-.like-btn{
-	position: absolute  !important;
-	opacity: 0;
-	margin-top: -4%;
-	margin-left: 35% !important;
-	z-index: 1  !important;
-	.btn {
-		font-size: 0.7em;
+	.story-edit-btn {
+		position: absolute;
+		opacity: 0;
+		margin-top: -4%;
+		margin-left: 85%;
+		z-index: 100;
+		.btn {
+			font-size: 0.7em;
+		}
+		a.icon-chevron {
+			text-decoration: none;
+			color: #9a1b39;
+		}
 	}
 }
 

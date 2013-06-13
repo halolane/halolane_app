@@ -21,6 +21,7 @@ HalolaneApp::Application.routes.draw do
   resources :memories do
     member {get "like"}
     member {get "unlike"}
+    member {get "zoomstory"}
   end
 
   get "password_resets/new"

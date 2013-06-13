@@ -1,0 +1,41 @@
+<!-- Modal -->
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+
+    <span class="like-btn">
+			<div class="likebutton">
+				<% if current_user.like?(@memory) %>
+					<%= link_to unlike_memory_path(@memory), :remote => true, :class => "btn" do %>
+						Unlike
+					<% end %>
+				<% else %>
+					<%= link_to like_memory_path(@memory), :remote => true, :class => "btn" do %>
+						<i class="icon-heart red"></i> Like
+					<% end %>
+				<% end %> 
+			</div>
+		</span>
+  </div>
+  <div class="modal-body">
+  	<% if @memory.photo.file? %>
+			<span class="box-image">
+				<%= image_tag @memory.photo, class: "storyimage" %>
+				</br>
+			</span>
+		<% end %>
+		<span class='box-text'>
+			<%= raw(@memory.content) %>
+		</span>
+
+		<span class='box-user'>
+			<!-- <%= link_to gravatar_for(@memory.user), @memory.user %> -->
+			<%= @memory.user.first_name + " " + @memory.user.last_name %>
+			<!-- <%= link_to @memory.user.first_name + " " + @memory.user.last_name, @memory.user %> -->
+		</span>
+		<span class="box-timestamp">
+			Posted <%= time_ago_in_words(@memory.created_at) %> ago.
+		</span>
+  </div>
+  <div class="modal-footer">
+		<button class="green_button" data-dismiss="modal" aria-hidden="true">Close</button>
+	</div>
