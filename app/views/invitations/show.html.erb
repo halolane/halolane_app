@@ -10,13 +10,13 @@
 			<input type="hidden" id="user_email" name="user[email]" value="<%= @invitation.recipient_email %>" />
 			<input type="hidden" id="invitation_token" name="invitation[token]" value="<%= @invitation.token %>" />
 		  <%= f.label :first_name %>
-		  <%= f.text_field :first_name, :placeholder=>"First name"%>
+		  <%= f.text_field :first_name %>
 
 		  <%= f.label :last_name %>
-		  <%= f.text_field :last_name, :placeholder=>"Last name" %>
+		  <%= f.text_field :last_name %>
 
 		  <%= f.label :password %>
-		  <%= f.password_field :password, :placeholder=>"Password"  %><br>
+		  <%= f.password_field :password  %><br>
 
 		  <h5> <%= @profile.first_name %> is my <br><%= select "relationship","description", 
 				  				Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>

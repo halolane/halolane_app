@@ -62,8 +62,13 @@ class UsersController < ApplicationController
         redirect_to root_url + @profile.url
       end
     else
-      flash[:error] = "Please fill out these fields"
-      redirect_to signup_url
+      if params[:invitation].nil?
+        flash[:error] = "Please fill out these fields"
+        redirect_to signup_url
+      else
+        flash[:error] = "Please fill in all the fields"
+        redirect_to root_url + @profile.url + "/" + @invitation.token
+      end
     end
   end
 
