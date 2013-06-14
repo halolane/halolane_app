@@ -1,6 +1,6 @@
 
 <div class="newbox" id="blank"></div>
-<div class="newbox">
+<div class="newbox story">
 	<span class="story-edit-btn">
 		<% if signed_in? and current_user.contributing?(@profile) and ( current_user?(memoryfeed_item.user) or current_user.storybook_editor?(@profile) ) %>
 			<div class="dropdown">

@@ -471,6 +471,10 @@ margin: 0 10%;
 margin-top: 3.5%;
 height: 600px;
 }
+
+.overmodal {
+	z-index: 1050 !important;
+}
  
 #blank {
 	display: block;
