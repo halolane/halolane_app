@@ -732,8 +732,16 @@ height: 600px;
 .welcomesneakpeek-coachmark {
 	position: absolute;
 	float: left;
-	margin-top: -475px;
+	margin-top: -555px;
 	margin-left: 30%;
+	z-index: 1050;
+}
+
+.alwaysfree-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: -475px;
+	margin-left: 20%;
 	z-index: 1050;
 }
 
@@ -786,10 +794,33 @@ height: 600px;
 	z-index: 1050;
 }
 
-.addmemory-coachmark, .sneakpeekaddmemory-coachmark {
+.sneakpeekinvite-coachmark {
 	position: relative;
 	float: left;
 	margin-top: -605px;
+	margin-left: 48%;
+	z-index: 1050;
+}
+
+.scrollsideways-coachmark {
+	position: relative;
+	float: left;
+	margin-top: -505px;
+	margin-left: 65%;
+	z-index: 1050;
+}
+
+.addmemory-coachmark {
+	position: relative;
+	float: left;
+	margin-top: -605px;
+	margin-left: 50px;
+	z-index: 1050;
+}
+.sneakpeekaddmemory-coachmark {
+	position: relative;
+	float: left;
+	margin-top: -555px;
 	margin-left: 50px;
 	z-index: 1050;
 }

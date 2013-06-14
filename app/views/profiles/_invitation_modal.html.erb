@@ -32,7 +32,7 @@
 			</div>
 <br>
 			<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-				<a class="green_button" href="/signup" style:"text-decoration:none !important;">Start your storybook</a>
+				<a class="green_button" href="/signup" style="text-decoration:none !important;">Start your storybook</a>
 			<% else %>
 			  <p><%= f.submit "Send", class: "green_button" %></p>
 		  <% end %>

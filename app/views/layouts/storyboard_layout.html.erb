@@ -26,10 +26,12 @@
         $('#sneakpeakmodal1').on('hide', function () {
           $('.welcomesneakpeek-coachmark').addClass('hide');
           $('.thistory-coachmark').addClass('hide');
-          $('.addmemory-coachmark').addClass('hide');
+          $('.sneakpeekaddmemory-coachmark').addClass('hide');
           $('.newfeatures-coachmark').addClass('hide');
           $('.startstorybook-coachmark').addClass('hide');
+          $('.sneakpeekinvite-coachmark').addClass('hide');
           $('.skipthisguide-coachmark').addClass('hide');
+          $('.alwaysfree-coachmark').addClass('hide');
         });
 
         $('.skipthisguide-coachmark').click(function() {
@@ -44,22 +46,35 @@
           else  if (!$('.thistory-coachmark').hasClass("hide")) {
             $('.thistory-coachmark').addClass('hide');
             $('.sneakpeekaddmemory-coachmark').removeClass('hide');
+            $('ul.dropdown-menu.addnewstory').css('cssText' , 'display: block !important;');
           }
           else  if (!$('.sneakpeekaddmemory-coachmark').hasClass("hide")) {
             $('.sneakpeekaddmemory-coachmark').addClass('hide');
+            $('ul.dropdown-menu.addnewstory').css('cssText' , 'display: none !important;');
+            $('.scrollsideways-coachmark').removeClass('hide');
+          }
+           else  if (!$('.scrollsideways-coachmark').hasClass("hide")) {
+            $('.scrollsideways-coachmark').addClass('hide');
+            $('.sneakpeekinvite-coachmark').removeClass('hide');
+          }
+          else  if (!$('.sneakpeekinvite-coachmark').hasClass("hide")) {
+            $('.sneakpeekinvite-coachmark').addClass('hide');
             $('.newfeatures-coachmark').removeClass('hide');
           }
           else if (!$('.newfeatures-coachmark').hasClass("hide")) { 
             $('.newfeatures-coachmark').addClass('hide');
             $('.startstorybook-coachmark').removeClass('hide');
+            $('.alwaysfree-coachmark').removeClass('hide');
           } else{
             $('.startstorybook-coachmark').addClass('hide');
+            $('.alwaysfree-coachmark').addClass('hide');
             $('#sneakpeakmodal1').modal('hide');
           } 
         });
 
         $('#sneakpeakmodal1').modal({
           backdrop:'static',
+          keyboard: true,
           show: true
         });      
       });
