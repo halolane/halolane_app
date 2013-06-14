@@ -6,7 +6,7 @@
 
 			<p>Enter your email address to reset your password</p> 
 		  <div class="field">
-		    <%= text_field_tag :email, params[:email], :placeholder => "Email" %>
+		    <%= text_field_tag :email, params[:email], type: "email", :required => true %>
 		  </div>
 		  <div class="actions"><%= submit_tag "Reset", :class => "green_button" %></div>
 		<% end %>
