@@ -36,6 +36,10 @@ class Profile < ActiveRecord::Base
     Memory.where("profile_id = ?", id)
   end
 
+  def memorycount
+    Memory.where("profile_id = ?", id).count
+  end
+
   def photofeed
     Photomemory.where("profile_id = ?", id)
   end

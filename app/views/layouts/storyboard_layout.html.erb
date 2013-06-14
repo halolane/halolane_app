@@ -13,7 +13,7 @@
   <meta property="og:image"       content="https://www.familytales.co/images/FamilyTalesLogo.png" /> 
 
    <% if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) or 
-          (signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit") && current_user.memorycount == 0 ) %>
+          (signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") && current_user.memorycount == 0 && @profile.memorycount > 0 ) %>
     <script type="text/javascript">
       $(window).load(function(){
           
@@ -88,7 +88,7 @@
     a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
     </script>
   <% end %>
-  <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit") && current_user.memorycount == 0 %>
+  <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") && current_user.memorycount == 0  && @profile.memorycount == 0 %>
     <script type="text/javascript">
       $(window).load(function(){
         $('#newuserstorybook').modal('show');
