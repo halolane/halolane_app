@@ -55,10 +55,13 @@ $(document).ready(function(){
 
 
 	$('.nav_controls.right').live('click', function(){
-	   $('html, body').animate({scrollLeft:300}, 'slow');
+		var scrollVal = $('body').scrollLeft() + 300;
+	  $('body').animate({scrollLeft:scrollVal}, 'slow');
 	});
+
 	$('.nav_controls.left').live('click' , function(){
-	  $('html, body').animate({scrollLeft:-300}, 'slow');
+		var scrollVal = $('body').scrollLeft() - 300;
+	  $('body').animate({scrollLeft:scrollVal}, 'slow');
 	});
 
 	$(".iconaddcontributor, .playslideshow").click(function() {
