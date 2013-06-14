@@ -20,8 +20,8 @@ class Profile < ActiveRecord::Base
 
   validates_date :birthday, :after => "1700-01-01",
   							:after_message => 'must be a correct date',
-  							:before => Date.today,
-  							:before_message => 'must be a correct date'
+  							:on_or_before => Date.today,
+  							:on_or_before_message => 'must be a correct date'
 
   validates_date :deathday, :after => "1700-01-01",
   							:after_message => 'must be a correct date',

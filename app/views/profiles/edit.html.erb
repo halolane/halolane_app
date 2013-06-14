@@ -20,11 +20,7 @@
 
 		  <p>
 		  	<%= f.label :birthday %>
-		  	<%= f.date_select :birthday,
-		                    { :order => [:month, :day, :year], 
-		                      :start_year => 1900,
-                    	      :end_year => Date.today.year,
-                    	      :default => Date.new(1950, 01, 01) } %>
+		  	<%= f.text_field :birthday %>
       </p>
 
 

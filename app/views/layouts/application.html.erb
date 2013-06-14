@@ -23,6 +23,8 @@
   
   <%= stylesheet_link_tag "application-other", media: "all" %>
   <%= javascript_include_tag "application-other" %>
+  
+
 
   <% if full_title(yield(:title)) == "FamilyTales" && signed_in? && current_user.storybookcount == 0 %>
     <script type="text/javascript">
