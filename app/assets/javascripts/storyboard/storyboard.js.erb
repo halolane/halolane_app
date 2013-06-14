@@ -54,12 +54,12 @@ $(document).ready(function(){
  	});
 
 
-	$('.nav_controls.right').live('click', function(){
+	$('.nav_controls.right').click(function() {
 		var scrollVal = $('body').scrollLeft() + 300;
 	  $('body').animate({scrollLeft:scrollVal}, 'slow');
 	});
 
-	$('.nav_controls.left').live('click' , function(){
+	$('.nav_controls.left').click(function() {
 		var scrollVal = $('body').scrollLeft() - 300;
 	  $('body').animate({scrollLeft:scrollVal}, 'slow');
 	});
