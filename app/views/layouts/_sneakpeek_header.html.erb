@@ -2,18 +2,25 @@
   <div class="navbar-inner">
     <div class="container">
       <nav>
-        <ul class="nav btn-topbar-left" style="left:0;">
+        <ul class="nav btn-topbar-left" style="left:0;width: 700px">
           
-          <li class="sneakpeekheader-text">Here is a sneak peek of <strong style="font-weight:bold;">Alex Dunphy</strong>'s storybook. You're logged in as <strong style="font-weight:bold;">Explorer</strong>.</li>
+          <li class="sneakpeekheader-text">Here is a sneak peek of <strong style="font-weight:bold;">Alex Dunphy</strong>'s storybook. You're logged in as <strong style="font-weight:bold;">Explorer</strong>.
+          
+          </li>
+
         </ul>
-        <ul class="nav pull-right">
+        <ul class="nav pull-right" style="display:inline">
+          <li  style="display: inline !important" >
+              <a href="#sneakpeakmodal1" data-keyboard="false" data-backdrop="static" data-toggle="modal" data-dismiss="modal" aria-hidden="true" style="display: inline" rel="tooltip" title="Show guides again" style="display: inline !important" ><i class='icon-question-sign green'></i></a>
+            </li>
           <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-            <li class="signupbutton">
-              <a class="green_button signup_button" href="/signup">Start your own storybook</a>
+            <li class="signupbutton" style="display: inline !important;" >
+              <a class="green_button signup_button" href="/signup" style="display: inline !important" >Start your own storybook</a>
             </li>
           <% else %>
+            
             <li class="signupbutton">
-              <a class="green_button signup_button" href="/">Start your own storybook</a>
+              <a class="green_button signup_button" href="/" style="display: inline !important" >Start your own storybook</a>
             </li>
           <% end %>
         </ul>

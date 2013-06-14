@@ -162,7 +162,7 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 
 
 
-.icon-off, .icon-sitemap, .icon-share, .icon-cog {	
+.icon-off, .icon-sitemap, .icon-share, .icon-cog, , .icon-question-sign {	
 	opacity: 0.6;
     text-shadow: 1px 1px 1px #ccc;
     font-size: 27px;
@@ -172,6 +172,14 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 	text-decoration: none;
 }
 
+.icon-question-sign {	
+	opacity: 0.6;
+    font-size: 27px;
+    top: 3px;
+	padding-right: 10px;
+	position: relative;
+	text-decoration: none;
+}
 .invite-permission-help  {	
 	opacity: 0.8;
   text-shadow: 1px 1px 1px #ccc;
@@ -183,7 +191,7 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 }
 
 .signup_button {
-	padding: 0.4em 0.1em !important;
+	padding: 0.4em 0.7em !important;
 	height: 15px !important;
 	width:120% !important;
 	text-decoration:none !important;
@@ -716,16 +724,16 @@ height: 600px;
 .newfeatures-coachmark {
 	position: absolute;
 	float: left;
-	margin-top: -500px;
-	margin-left: 400px;
+	margin-top: -600px;
+	margin-left: 30%;
 	z-index: 1050;
 }
 
 .welcomesneakpeek-coachmark {
 	position: absolute;
 	float: left;
-	margin-top: -375px;
-	margin-left: 300px;
+	margin-top: -475px;
+	margin-left: 30%;
 	z-index: 1050;
 }
 
@@ -742,6 +750,14 @@ height: 600px;
 	float: left;
 	margin-top: -665px;
 	margin-left: 70%;
+	z-index: 1050;
+}
+
+.skipthisguide-coachmark {
+	position: relative;
+	float: left;
+	margin-top: -575px;
+	margin-left: 90%;
 	z-index: 1050;
 }
 
@@ -770,7 +786,7 @@ height: 600px;
 	z-index: 1050;
 }
 
-.addmemory-coachmark {
+.addmemory-coachmark, .sneakpeekaddmemory-coachmark {
 	position: relative;
 	float: left;
 	margin-top: -605px;
@@ -892,11 +908,17 @@ height: 600px;
 	font-size: 1.0em;
 }
 
-#zoomstory.modal {
+#zoomstory.modal, #sneakpeakmodal1.modal, #sneakpeakmodal2.modal, 
+#sneakpeakmodal3.modal, #sneakpeakmodal4.modal, #comingsoonfeatures.modal, 
+#addbyemail_backdrop.modal {
 	position: absolute; 
 	max-height: none; 
 	overflow-y: visible;
 	overflow-x: hidden;
+}
+
+.skipguide {
+	float: right;
 }
 
 .open > .dropdown-menu.memory
