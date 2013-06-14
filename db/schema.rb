@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611231005) do
+ActiveRecord::Schema.define(:version => 20130614232041) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(:version => 20130611231005) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.date     "date"
   end
 
   add_index "memories", ["profile_id", "created_at"], :name => "index_memories_on_profile_id_and_created_at"
