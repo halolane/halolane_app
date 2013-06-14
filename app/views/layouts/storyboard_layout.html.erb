@@ -21,6 +21,9 @@
         $('#sneakpeakmodal1').on('show', function () {
           $('.welcomesneakpeek-coachmark').removeClass('hide');
           $('.skipthisguide-coachmark').removeClass('hide');
+          $("body").mousewheel(function(event) {
+            $(this).unbind('mousewheel').mousewheel();
+          });
         });
 
         $('#sneakpeakmodal1').on('hide', function () {
@@ -129,7 +132,7 @@
           $('#newmemorymodal').modal('show');
         });    
 
-        $('#emailstories').on('hide', function () {
+        $('#sneakpeakmodal1').on('hide', function () {
           $('.firstaddbyemail-coachmark').addClass('hide');
         });  
       });
@@ -144,6 +147,13 @@
       $("body").mousewheel(function(event, delta) {
         this.scrollLeft -= (delta * 30);
         event.preventDefault();
+      });
+
+      $('#zoomstory').on('hide', function () {
+        $("body").mousewheel(function(event, delta) {
+          this.scrollLeft -= (delta * 30);
+          event.preventDefault();
+        });
       });
 
       $('#zoomstory').on('hide', function () {
