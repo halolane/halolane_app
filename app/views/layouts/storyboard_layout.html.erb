@@ -37,6 +37,7 @@
           $('.navbar-inner').removeClass('overmodal');
           $(".nav_controls.right, .nav_controls.left").removeClass('overmodal');
           $('.navbar-inner').removeClass('overmodal');
+          $('div#content').removeClass('shiftright200');
           $('header.navbar-inverse').removeClass('overmodal');
         });
 
@@ -49,6 +50,8 @@
             $('.welcomesneakpeek-coachmark').addClass('hide');
             $('.thistory-coachmark').removeClass('hide');
             $('div#content').addClass('overmodal');
+            $('div#content').addClass('shiftright200');
+             $('body').scrollLeft(0);
             $('div#content').closest('div.newbox.story').addClass('overmodal');
           } 
           else  if (!$('.thistory-coachmark').hasClass("hide")) {
@@ -56,6 +59,7 @@
             $('.sneakpeekaddmemory-coachmark').removeClass('hide');
             $('ul.dropdown-menu.addnewstory').css('cssText' , 'display: block !important;');
             $('div#content').removeClass('overmodal');
+            $('div#content').removeClass('shiftright200');
             $('div#content').closest('div.newbox.story').removeClass('overmodal'); 
             $('.navbar-inner').addClass('overmodal');
           }
@@ -65,7 +69,6 @@
             $('.navbar-inner').removeClass('overmodal');
             $('.scrollsideways-coachmark').removeClass('hide');
             var scrollVal = $('body').scrollLeft() + 300;
-            $('body').animate({scrollLeft:scrollVal}, 'slow');
             $(".nav_controls.right, .nav_controls.left").fadeTo("fast",0.8);
             $(".nav_controls.right, .nav_controls.left").addClass('overmodal');
           }
