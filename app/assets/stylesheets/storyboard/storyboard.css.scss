@@ -608,38 +608,57 @@ height: 600px;
 }
 
 .flexslider .slides {width: 100%; }
-#slideshow { 
-	position:fixed;
-	top: 250px; 
-	left: 280px;
-	overflow:hidden; 
-	height:100%; 
-	width:100%;
 
-	.flexslider {
+.nav_controls.right {
+	position: fixed;
+	opacity: 0;
+	top: 40px;
+	right: 0;
+	left: 85%;
+	margin-top: 15%;
+	margin-right: 20px;
+	margin-left: 20px;
+	z-index: 700;
+}
 
-	}
-	li {
-		position: relative;
-		float: none;
-	}
+.nav_right.hotspot {
+	position: fixed;
+	opacity: 1;
+	top:40px;
+	right:0;
+	left: 85%;
+	height: 690px;
+	width:250px;
+	z-index: 600;
+}
 
+.nav_left.hotspot {
+	position: fixed;
+	opacity: 1;
+	top:40px;
+	left:0;
+	height: 690px;
+	width:250px;
+	z-index: 600;
+}
 
-	.slides {
-		position:relative;
-	}
-	.slideshow-content {
+.nav_controls.left {
+	position: fixed;
+	opacity: 0;
+	top: 40px;
+	left: 0;
+	margin-top: 15%;
+	margin-right: 20px;
+	margin-left: 20px;
+	z-index: 700;
+}
 
-		font-style:italic;
-	}
+.icon-4 {
+	font-size: 7em;
+}
 
-	.slideshow-user {
-		display: block;
-		font-style:italic;
-		float: right;
-		padding-right: 10px;
-	}
-
+.icon-3 {
+	font-size: 4em;
 }
 
 /* new storybook modal */
@@ -746,7 +765,7 @@ height: 600px;
 }
 
 .thistory-coachmark {
-	position: relative;
+	position: absolute;
 	float: left;
 	margin-top: -600px;
 	margin-left: 390px;
@@ -754,18 +773,18 @@ height: 600px;
 }
 
 .startstorybook-coachmark {
-	position: relative;
+	position: absolute;
 	float: left;
 	margin-top: -665px;
-	margin-left: 70%;
+	margin-left: 65%;
 	z-index: 1050;
 }
 
 .skipthisguide-coachmark {
 	position: relative;
 	float: left;
-	margin-top: -575px;
-	margin-left: 90%;
+	margin-top: -555px;
+	margin-left: 87%;
 	z-index: 1050;
 }
 
@@ -795,7 +814,7 @@ height: 600px;
 }
 
 .sneakpeekinvite-coachmark {
-	position: relative;
+	position: absolute;
 	float: left;
 	margin-top: -605px;
 	margin-left: 48%;
@@ -803,10 +822,10 @@ height: 600px;
 }
 
 .scrollsideways-coachmark {
-	position: relative;
+	position: absolute;
 	float: left;
 	margin-top: -505px;
-	margin-left: 65%;
+	margin-left: 55%;
 	z-index: 1050;
 }
 
@@ -818,7 +837,7 @@ height: 600px;
 	z-index: 1050;
 }
 .sneakpeekaddmemory-coachmark {
-	position: relative;
+	position: absolute;
 	float: left;
 	margin-top: -555px;
 	margin-left: 50px;

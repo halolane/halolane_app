@@ -35,6 +35,32 @@ $(document).ready(function(){
    	$(this).fadeTo("fast", 0.8);
  	});
 
+ 	$(".nav_right.hotspot").hover(function() {
+		$('.nav_controls.right').fadeTo("fast",0.5);
+	}, function() {
+	  $('.nav_controls.right').fadeTo("fast", 0);
+ 	});
+
+ 	$(".nav_left.hotspot").hover(function() {
+		$('.nav_controls.left').fadeTo("fast",0.5);
+	}, function() {
+	  $('.nav_controls.left').fadeTo("fast", 0);
+ 	});
+
+ 	$(".nav_controls.right, .nav_controls.left").hover(function() {
+ 		$(this).fadeTo("fast",0.8);
+ 	}, function() {
+	  $(this).fadeTo("fast", 0.5);
+ 	});
+
+
+	$('.nav_controls.right').live('click', function(){
+	   $('html, body').animate({scrollLeft:300}, 'slow');
+	});
+	$('.nav_controls.left').live('click' , function(){
+	  $('html, body').animate({scrollLeft:-300}, 'slow');
+	});
+
 	$(".iconaddcontributor, .playslideshow").click(function() {
 		$(this).fadeTo('fast',1);
 	});
