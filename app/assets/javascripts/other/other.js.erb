@@ -1,4 +1,42 @@
-$(document).ready(function(){
+$().ready(function(){
+	
+	// validate signup form on keyup and submit.
+	// COMMENTING THIS OUT UNTIL FUTURE NEED. NOW OPTING TO USE HTML5 VALIDATION INSTEAD
+
+	/*$('form').validate({
+		rules: {
+			user_first_name: "required",
+			user_last_name: "required",
+			user_password: {
+				required: true,
+				minlength: 6
+			},
+			confirm_password: {
+				required: true,
+				minlength: 5,
+				equalTo: "#password"
+			},
+			user_email: {
+				required: true,
+				email: true
+			},
+		},
+		messages: {
+			user_first_name: "Please enter your firstname",
+			user_last_name: "Please enter your lastname",
+			user_password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 6 characters long"
+			},
+			confirm_password: {
+				required: "Please provide a password",
+				minlength: "Your password must be at least 5 characters long",
+				equalTo: "Please enter the same password as above"
+			},
+			user_email: "Please enter a valid email address",
+		}
+	});*/
+
 	$('[placeholder]').focus(function() {
 	  var input = $(this);
 	  if (input.val() == input.attr('placeholder')) {
