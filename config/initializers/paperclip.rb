@@ -1,7 +1,7 @@
 if Rails.env.production?
 	Paperclip::Attachment.default_options.merge!(
 		:storage => :s3,
-		:s3_protocol => 'http',
+		:s3_protocol => 'https',
 		:url => ":s3_domain_url",
 		:path => '/:class/:attachment/:id_partition/:style/:filename',
 		:s3_credentials => {
