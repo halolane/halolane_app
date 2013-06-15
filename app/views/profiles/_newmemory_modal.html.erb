@@ -44,7 +44,9 @@
 				</div>
 
 				<div class="adddate hidden">
-					<%= f.text_field :date, rel: "tooltip", title: "Click here to select date", rows: "1", value: Date.today %>
+					<div class="datefield">
+						<h4>When did this story happen?</h4><%= f.text_field :date, rows: "1", type:"date", value: Date.today %>
+					</div>
 				</div>
 			
 				<div class="addphoto hidden">

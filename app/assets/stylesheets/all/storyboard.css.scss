@@ -168,6 +168,40 @@ li.storyboardlogo {
 	padding-top: 7px;
 }
 
+#memory_date {
+	margin-top: 5px;
+	width: 40%;
+	font-size: 1.25em;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px;
+}
+
+.datefield{
+	position: relative;
+	text-align: center;
+	display: inline-block !important;
+	background-color: #ddd;
+	width: 100%;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	border: 1px solid #999;
+
+	h4 {
+		margin-top: -10px;
+		display: inline !important;
+		text-decoration: none !important;
+		color: #626363;
+		font-weight: normal;
+
+	}
+}
+
+#memory_date_calendar {
+	display: inline-block !important;
+}
+
 /* Adding Photo */
 .addphoto {
 	position: relative;
