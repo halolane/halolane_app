@@ -14,11 +14,11 @@ class MemoriesController < ApplicationController
 
     respond_to do | format |   
       if @memory.save
-        format.html { render :layout => false } 
+        format.html { redirect_to root_url + @profile.url } 
         format.js 
         current_user.actionlog!(@profile.id, @page_name, "New story created" )
       else
-        format.html { render :layout => false} 
+        format.html { redirect_to root_url + @profile.url } 
       end
     end    
   end
