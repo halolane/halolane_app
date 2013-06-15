@@ -9,8 +9,7 @@ class MemoriesController < ApplicationController
     authorized = Relationship.exists?(:profile_id => @profile.id , :user_id => current_user.id)
     @memory = current_user.memories.build(:profile_id => @profile.id, 
         :photo => params[:memory][:photo],
-        :content => params[:memory][:content],
-        :date => params[:memory][:date]) 
+        :content => params[:memory][:content]) 
 
     respond_to do | format |   
       if @memory.save
