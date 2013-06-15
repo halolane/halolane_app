@@ -47,6 +47,7 @@ class Memory < ActiveRecord::Base
             content = message.body.decoded
           end
           @memory = @user.memories.build(:profile_id => @profile.id, :content => content)
+          @memory.date = Date.today
           # email_attachments = []   # an array which can be used to store object records of the attachments..
 
           # Un comment if you expect multiple pictures here

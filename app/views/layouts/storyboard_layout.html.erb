@@ -5,13 +5,15 @@
     type="image/png" 
     href="/images/favicon1.png">
   <title><%= full_title(yield(:title)) %></title>
-  <%= stylesheet_link_tag    "application-storyboard", media: "all" %>
-  <%= javascript_include_tag "application-storyboard" %>
+  
   <meta property="og:url"         content="https://www.familytales.co/" /> 
   <meta property="og:title"       content="FamilyTales | Start celebrating your family stories today." /> 
   <meta property="og:description" content="FamilyTales enables families to capture and share their precious memories (stories, pictures, videos and audio clips) in a digital storybook that can be passed on for generations to come! You can also print off your personalized storybook as a keepsakes, or as a gift others." /> 
   <meta property="og:image"       content="https://www.familytales.co/images/FamilyTalesLogo.png" /> 
 
+  <%= stylesheet_link_tag    "application-storyboard", media: "all" %>
+  <%= javascript_include_tag "application-storyboard" %>
+  
    <% if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) or 
           (signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") && current_user.memorycount == 0 && @profile.memorycount > 0 ) %>
     <script type="text/javascript">

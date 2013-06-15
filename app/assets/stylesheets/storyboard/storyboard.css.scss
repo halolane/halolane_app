@@ -400,15 +400,15 @@ h4.storybook-user {
 }
 
 
-.addphoto.hidden, .btn-post.hidden, .addphoto-icon.hidden, #messageTools.hidden, .skipquestion.hidden, .memoryquestion.hidden {
-	display: none;
+.addphoto.hidden, .btn-post.hidden, .addphoto-icon.hidden, .adddate-icon.hidden, .adddate.hidden, #messageTools.hidden, .skipquestion.hidden, .memoryquestion.hidden {
+	display: none !important;
 }
 
-.addphoto, .btn-post, .addphoto-icon, #messageTools, .memoryquestion {
-	display: inline;
+.addphoto, .btn-post, .addphoto-icon, #messageTools, .adddate-icon, .adddate,.memoryquestion {
+	display: inline !important;
 }
 
-.addphoto-icon, .suggest-icon {
+.addphoto-icon, .suggest-icon, .adddate-icon {
 	float: left;
 	opacity: 0.6;
 	font-size: 20px;

@@ -1,9 +1,10 @@
 $(document).ready(function(){
-
-
-
-
+	$( "#memory_date" ).datepicker();
 	$('a').tooltip({
+  	placement : 'bottom'
+  });
+
+  $('input').tooltip({
   	placement : 'bottom'
   });
   $('button').tooltip({
@@ -117,17 +118,21 @@ $(document).ready(function(){
 	  })
 	});
 	
-	$('.addphoto-icon ').hover(function() {
+	$('.addphoto-icon, .adddate-icon ').hover(function() {
 		$(this).fadeTo('fast',1);
 	}, function() {
    	$(this).fadeTo("fast", 0.6);
  	});
 
+
  	$('.addphoto-icon').click(function() {
  		$('.addphoto-icon').fadeTo('fast',1);
- 		$('.addphoto').toggleClass("hidden");
- 		//$('.messageSection').toggleClass ("withphoto");
- 		//$('.messageBox').toggleClass ("withphoto");
+ 		$('.addphoto').toggleClass("hidden"); });
+
+ 	$('.adddate-icon').click(function() {
+
+ 		$('.adddate-icon').fadeTo('fast',1);
+ 		$('.adddate').toggleClass("hidden");
  	});
 
  	$('.suggest-icon').hover(function() {

@@ -32,16 +32,7 @@
 		  		<div class="skipquestion">
 			  		<a rel="tooltip" title="Skip this question"><i class="icon-forward"></i></a>
 			  	</div>
-				  	<!--
-			  		<div class="questionwarning">
-				  		<p>The questions are here to guide you write stories about <%= @profile.first_name %>. Feel free to write your own or skip the questions!</p>
-				  	
-				  	</div>
-				  	-->
 		  	</div>
-
-		  	
-		  	
 		  	</br>
 				<div class="composerBox expanded">
 					<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
@@ -50,6 +41,10 @@
 					<% else %>
 				  	<%= f.text_area :content, placeholder: "Write a new story about " + @profile.first_name + "...", rows:"1", cols:"10", maxlength:"250"%>
 			  	<% end %>
+				</div>
+
+				<div class="adddate hidden">
+					<%= f.text_field :date, rel: "tooltip", title: "Click here to select date", rows: "1", value: Date.today %>
 				</div>
 			
 				<div class="addphoto hidden">
@@ -68,6 +63,9 @@
 				</span>
 				<span class="addphoto-icon">		
 					<a href="#" title="Add an image" rel="tooptip"><i class="icon-camera"></i></a>
+				</span>
+				<span class="adddate-icon">		
+					<a href="#" title="Date this story" rel="tooptip"><i class="icon-calendar"></i></a>
 				</span>
 				<span class="btn-post">
 					<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
