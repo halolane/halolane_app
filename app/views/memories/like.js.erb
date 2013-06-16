@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	<%= remotipart_response do %>
-		$(".likebutton").live('ajax:success', function(evt, data, status, xhr){
+		$(".likebutton").bind("ajax:success", function() { 
 	    $(this).closest('div').html("<%= escape_javascript render('shared/like_form') %>");
 	  });
 	<% end %>
