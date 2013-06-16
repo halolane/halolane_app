@@ -10,7 +10,7 @@ class MemoriesController < ApplicationController
     @memory = current_user.memories.build(:profile_id => @profile.id, 
         :photo => params[:memory][:photo],
         :content => params[:memory][:content],
-        :date => params[:memory][:date]) 
+        :date => (params[:memory][:date]).to_date) 
 
     respond_to do | format |   
       if @memory.save
