@@ -1,3 +1,4 @@
+
 /* storybook */
 html, body, div, span, applet, object, iframe, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -29,6 +30,31 @@ body {
 	position: relative;
 	width: 100%;
 	float: left;
+}
+
+
+.ui-datepicker-prev {
+	position: relative;
+}
+.ui-datepicker-prev:before {
+	position:absolute;
+        font-family: FontAwesome;
+        top:4px;
+        left:7px;
+        content: "\F0A8";
+    
+}
+
+.ui-datepicker-next {
+	position: relative;
+}
+.ui-datepicker-next:before {
+	position:absolute;
+        font-family: FontAwesome;
+        top:4px;
+        left:7px;
+        content: "\F0A9";
+    
 }
 
 body {
