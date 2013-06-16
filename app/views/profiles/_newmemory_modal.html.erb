@@ -44,8 +44,10 @@
 				</div>
 
 				<div class="adddate hidden">
+					<div class="adddate-prompt"><h4>When did this story happen?</h4></div>
+					<div id="memory_date_cal"></div>
 					<div class="datefield">
-						<h4>When did this story happen?</h4><%= f.text_field :date, rows: "1", value: Date.today %>
+						<%= f.text_field :date, rows: "1", type: "date", :required => true, title: "Enter a valid date formatted to YYYY-MM-DD", value: Date.today%>
 					</div>
 				</div>
 			

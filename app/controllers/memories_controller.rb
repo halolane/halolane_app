@@ -7,10 +7,17 @@ class MemoriesController < ApplicationController
     
     @profile = Profile.find(params[:memory][:profile_id])
     authorized = Relationship.exists?(:profile_id => @profile.id , :user_id => current_user.id)
-    @memory = current_user.memories.build(:profile_id => @profile.id, 
+    begin
+      @memory = current_user.memories.build(:profile_id => @profile.id, 
         :photo => params[:memory][:photo],
         :content => params[:memory][:content],
         :date => (params[:memory][:date]).to_date) 
+    rescue 
+      @memory = current_user.memories.build(:profile_id => @profile.id, 
+          :photo => params[:memory][:photo],
+          :content => params[:memory][:content],
+          :date => Date.today) 
+    end
 
     respond_to do | format |   
       if @memory.save

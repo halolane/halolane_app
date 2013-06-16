@@ -206,12 +206,40 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 	color: #69a100;
 }
 
+.adddate-prompt {
+	width: 100%;
+	h4 {
+    margin-top: -10px;
+    display: inline !important;
+    text-decoration: none !important;
+    color: #626363;
+    font-weight: normal;
+
+  }
+}
+
 #memory_date {
 	margin-top: 5px;
 	font-size: 1.25em;
 	-moz-border-radius:2px;
 	-webkit-border-radius:2px;
 	border-radius:2px;
+	border: 1px solid #999;
+}
+
+.datefield {
+  position: relative;
+  width: 230px;
+  text-align: center;
+  display: inline-block !important;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+  border-radius:4px;
+  
+}
+
+#memory_date_cal {
+  display: inline-block !important;
 }
 
 .newmemorybtn {
