@@ -1,6 +1,9 @@
 HalolaneApp::Application.routes.draw do 
 
 
+  resources :chapters
+
+
   resources :likememories
 
 

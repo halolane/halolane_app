@@ -8,6 +8,7 @@ class Profile < ActiveRecord::Base
   has_many :memories, dependent: :destroy
   has_many :users, through: :relationships
   has_many :invitations, dependent: :destroy
+  has_many :chapters, dependent: :destroy
 
   before_create :setprettyurl
 

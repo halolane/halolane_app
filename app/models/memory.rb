@@ -16,6 +16,7 @@ class Memory < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :profile
+  belongs_to :chapter
 
   has_many :likememories, dependent: :destroy
 
