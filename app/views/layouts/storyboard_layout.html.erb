@@ -17,12 +17,13 @@
    <% if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) or 
           (signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") && current_user.memorycount == 0 && @profile.memorycount > 0 ) %>
     <script type="text/javascript">
-      $(document).ready(function(){
+      $(window).load(function(){
           
         $('body, html').scrollLeft(0);
         $('#sneakpeakmodal1').on('show', function () {
           $('.welcomesneakpeek-coachmark').removeClass('hide');
           $('.skipthisguide-coachmark').removeClass('hide');
+          $('body').scrollLeft(0);
           $("body").mousewheel(function(event) {
             $(this).unbind('mousewheel').mousewheel();
           });
