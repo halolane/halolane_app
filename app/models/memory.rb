@@ -22,6 +22,7 @@ class Memory < ActiveRecord::Base
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true
+  validates :date, presence: true
   validates :content, :length => { :maximum => 250 }
   
   validates_attachment :photo,
@@ -30,7 +31,7 @@ class Memory < ActiveRecord::Base
 
 
   # Sorts it by created_at descending
-  default_scope order: 'memories.created_at DESC'
+  default_scope order: 'memories.date DESC'
 
   def self.receive_mail(message)
     @user = User.find_by_email(message.from.first)
