@@ -11,12 +11,14 @@ class MemoriesController < ApplicationController
       @memory = current_user.memories.build(:profile_id => @profile.id, 
         :photo => params[:memory][:photo],
         :content => params[:memory][:content],
-        :date => (params[:memory][:date]).to_date) 
+        :date => (params[:memory][:date]).to_date,
+        :chapter_id => params[:memory][:chapter]) 
     rescue 
       @memory = current_user.memories.build(:profile_id => @profile.id, 
           :photo => params[:memory][:photo],
           :content => params[:memory][:content],
-          :date => Date.today) 
+          :date => Date.today, 
+          :chapter_id => params[:memory][:chapter]) 
     end
 
     respond_to do | format |   

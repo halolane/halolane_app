@@ -1,0 +1,26 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		$('.chapterPickerInnerWrapper').removeClass('visible');
+		$('div').remove('.chapterPickerMask');
+		$('.chapterPickerItem').removeClass('active');
+		$('.createChapter_form').removeClass('visible');
+		var $new_chapter = 'Chapter ' + <%= raw (@chapter.chapter_num).to_json %> + " - " + <%= raw (@chapter.chapter_name).to_json %>;
+		var $chapter_id = <%= raw (@chapter.id).to_json %>;
+		var $hidden_input = '<input id="memory_chapter" name="memory[chapter]" type="hidden" value="' + $chapter_id + '">';
+		var $new_chapter_item ='<li class="chapterPickerItem active" id="'+ $chapter_id + '">' + $new_chapter + '</li>';
+		$(".chapterPicker_list").prepend($new_chapter_item);
+		$('.currentChapterName').html($new_chapter + $hidden_input);
+		$('.createChapterName').val('');
+		$('.chapterPickerItem').click(function() {
+	  	$('.chapterPickerItem').removeClass('active');
+	  	$(this).closest('li').addClass('active');
+	  	$('.chapterPickerInnerWrapper').removeClass('visible');
+	  	$('.createChapter_form').removeClass('visible');
+			$('div').remove('.chapterPickerMask')
+			var new_chapter = $(this).closest('li').text();
+			var chapter_id = $(this).attr('id');
+			var hidden_input = '<input id="memory_chapter" name="memory[chapter]" type="hidden" value="' + chapter_id + '">';
+			$('.currentChapterName').html(new_chapter + hidden_input);
+	  });
+	<% end %>
+});

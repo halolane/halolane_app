@@ -46,7 +46,7 @@ class ProfilesController < ApplicationController
         return
       end
     end
-
+    @chapter = Chapter.new
     if signed_in?
       @relationship = current_user.getRelationship(@profile)
     else
@@ -110,6 +110,7 @@ class ProfilesController < ApplicationController
   	if @profile.save
       current_user.contribute!(@profile, @relationship, true, "edit")
       Mailer.new_storybook(current_user, @profile, root_url + @profile.url).deliver
+      @profile.createchapter!('The beginning')
       current_user.actionlog!(@profile.id, @page_name, "create")
   		redirect_to root_url + @profile.url
   	else
