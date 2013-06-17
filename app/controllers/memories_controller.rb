@@ -7,17 +7,25 @@ class MemoriesController < ApplicationController
     
     @profile = Profile.find(params[:memory][:profile_id])
     authorized = Relationship.exists?(:profile_id => @profile.id , :user_id => current_user.id)
-    @memory = current_user.memories.build(:profile_id => @profile.id, 
+    begin
+      @memory = current_user.memories.build(:profile_id => @profile.id, 
         :photo => params[:memory][:photo],
-        :content => params[:memory][:content]) 
+        :content => params[:memory][:content],
+        :date => (params[:memory][:date]).to_date) 
+    rescue 
+      @memory = current_user.memories.build(:profile_id => @profile.id, 
+          :photo => params[:memory][:photo],
+          :content => params[:memory][:content],
+          :date => Date.today) 
+    end
 
     respond_to do | format |   
       if @memory.save
-        format.html { render :layout => false } 
+        format.html { redirect_to root_url + @profile.url } 
         format.js 
         current_user.actionlog!(@profile.id, @page_name, "New story created" )
       else
-        format.html { render :layout => false} 
+        format.html { redirect_to root_url + @profile.url } 
       end
     end    
   end

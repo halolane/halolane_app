@@ -1,3 +1,4 @@
+
 /* storybook */
 html, body, div, span, applet, object, iframe, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -29,6 +30,33 @@ body {
 	position: relative;
 	width: 100%;
 	float: left;
+}
+
+
+.ui-datepicker-prev {
+	position: relative;
+}
+.ui-datepicker-prev:before {
+	position:absolute;
+        font-family: FontAwesome;
+        top:4px;
+        left:7px;
+        content: "\F0A8";
+    
+}
+
+.ui-datepicker {font-size:14px;}
+
+.ui-datepicker-next {
+	position: relative;
+}
+.ui-datepicker-next:before {
+	position:absolute;
+        font-family: FontAwesome;
+        top:4px;
+        left:7px;
+        content: "\F0A9";
+    
 }
 
 body {
@@ -206,6 +234,39 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 	color: #69a100;
 }
 
+.adddate-prompt {
+	top:10px;
+	width: 100%;
+	h4 {
+    margin-top: -10px;
+    display: inline !important;
+    text-decoration: none !important;
+    color: #626363;
+    font-weight: normal;
+
+  }
+}
+
+#memory_date {
+	margin-top: 5px;
+	font-size: 1.25em;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+	border-radius:2px;
+	border: 1px solid #999;
+}
+
+.datefield {
+  position: relative;
+  width: 278px;
+  text-align: center;
+  display: inline-block !important;
+  -moz-border-radius:4px;
+  -webkit-border-radius:4px;
+  border-radius:4px;
+  
+}
+
 .newmemorybtn {
 	
 	.icon-plus {
@@ -233,23 +294,22 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 	color: #5f8f05;
 }
 
-.icon
-
 .suggeststory {
-	color: #5f8f05;
-	font-size: 1.2em;
+	color: #5f8f05 !important;
+	font-size: 1.2em !important;
 	.icon-lightbulb {
-		font-size: 1.5em;
-		font-weight: bold;
-		color: #5f8f05;
+		font-size: 1.5em !important;
+		font-weight: bold !important;
+		color: #5f8f05 !important;
 	}
 	a {
-		color: #5f8f05;
+		color: #5f8f05 !important;
 	}
 	a:hover {
 		text-decoration: none !important;
 	}
 }
+
 li.storyboardlogo {
 	margin: 0px 0px;
 	width: 150px;
@@ -386,29 +446,44 @@ h4.storybook-user {
 
 /* Adding Photo */
 .addphoto {
-	position: relative;
-	background-color: #d9dbdd;
-	display: block;
-	float: left;
+	background-color: white;
+	text-align: center;
 
-	width: 530px;
-	outline: 1px solid gray;
+	display: block !important;
+	text-align: center;
+	padding: 15px;
+
+	width: 500px;
 
 	input {
 		margin: 5px 5px;
 	}
 }
 
-
-.addphoto.hidden, .btn-post.hidden, .addphoto-icon.hidden, #messageTools.hidden, .skipquestion.hidden, .memoryquestion.hidden {
-	display: none;
+.adddate {
+	display: block !important;
+	text-align: center;
+	padding: 15px;
+	background-color: white;
+	#memory_date_cal {
+		display: inline-block !important;
+		padding-bottom: 15px;
+		padding-top: 15px;
+	}
 }
 
-.addphoto, .btn-post, .addphoto-icon, #messageTools, .memoryquestion {
-	display: inline;
+.addphoto.hidden, .btn-post.hidden, .addphoto-icon.hidden, .adddate-icon.hidden, .adddate.hidden, #messageTools.hidden, .skipquestion.hidden, .memoryquestion.hidden {
+	display: none !important;
+	border: none !important;
 }
 
-.addphoto-icon, .suggest-icon {
+.btn-post, .addphoto-icon, #messageTools, .adddate-icon, .adddate,.memoryquestion {
+	display: inline !important;
+}
+
+
+
+.addphoto-icon, .suggest-icon, .adddate-icon {
 	float: left;
 	opacity: 0.6;
 	font-size: 20px;
@@ -474,6 +549,10 @@ height: 600px;
 
 .overmodal {
 	z-index: 1050 !important;
+}
+
+.modal-body {
+	border-bottom: 1px solid #eee;
 }
  
 #blank {
@@ -968,7 +1047,7 @@ height: 600px;
 
 #zoomstory.modal, #sneakpeakmodal1.modal, #sneakpeakmodal2.modal, 
 #sneakpeakmodal3.modal, #sneakpeakmodal4.modal, #comingsoonfeatures.modal, 
-#addbyemail_backdrop.modal {
+#addbyemail_backdrop.modal, #newmemorymodal.modal {
 	position: absolute; 
 	max-height: none; 
 	overflow-y: visible;

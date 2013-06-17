@@ -8,6 +8,7 @@ class Profile < ActiveRecord::Base
   has_many :memories, dependent: :destroy
   has_many :users, through: :relationships
   has_many :invitations, dependent: :destroy
+  has_many :chapters, dependent: :destroy
 
   before_create :setprettyurl
 
@@ -20,8 +21,8 @@ class Profile < ActiveRecord::Base
 
   validates_date :birthday, :after => "1700-01-01",
   							:after_message => 'must be a correct date',
-  							:before => Date.today,
-  							:before_message => 'must be a correct date'
+  							:on_or_before => Date.today,
+  							:on_or_before_message => 'must be a correct date'
 
   validates_date :deathday, :after => "1700-01-01",
   							:after_message => 'must be a correct date',
@@ -30,7 +31,23 @@ class Profile < ActiveRecord::Base
 
   validates_numericality_of :privacy, :greater_than_or_equal_to => 0,
                             :only_integer => true, :allows_nil => false
- 
+
+  def chapterlist(chap_num = nil)
+    if chap_num.nil? or chap_num < 1 or chap_num > chaptercount
+      Chapter.where("profile_id = ?", id).order(:chapter_num)
+    else
+      Chapter.where("profile_id = ?", id).where("chapter_num > ?", chap_num).order(:chapter_num)
+    end
+  end
+
+  def chaptercount
+    Chapter.where("profile_id = ?", id).count
+  end
+
+  def createchapter! (chapter_name = "New chapter")
+    new_chapter_num = chaptercount + 1
+    @chapter = chapters.create!(profile_id: id, chapter_name: chapter_name, chapter_num: new_chapter_num)
+  end
 
   def memoryfeed
     Memory.where("profile_id = ?", id)

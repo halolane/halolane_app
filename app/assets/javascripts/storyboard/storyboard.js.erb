@@ -1,8 +1,24 @@
 $(document).ready(function(){
 
+	$( "#memory_date_cal" ).datepicker({ dateFormat: 'yy-mm-dd', altField: "#memory_date" });
 
-
-
+	$("#memory_date").keydown(function(event) {
+      // Allow: backspace, delete, tab, escape, and enter
+      if ( event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 || 
+           // Allow: Ctrl+A
+          (event.keyCode == 65 && event.ctrlKey === true) || 
+           // Allow: home, end, left, right
+          (event.keyCode >= 35 && event.keyCode <= 39)) {
+               // let it happen, don't do anything
+               return;
+      }
+      else {
+          // Ensure that it is a number and stop the keypress
+          if (event.shiftKey || (event.keyCode < 48 || event.keyCode > 57) && (event.keyCode < 96 || event.keyCode > 105 )) {
+              event.preventDefault(); 
+          }   
+      }
+  });
 	$('a').tooltip({
   	placement : 'bottom'
   });
@@ -54,14 +70,14 @@ $(document).ready(function(){
  	});
 
 
-	$('.nav_controls.right').live('click', function(){
-		var scrollVal = $('body').scrollLeft() + 300;
-	  $('body').animate({scrollLeft:scrollVal}, 'slow');
+	$('.nav_controls.right').click(function() {
+		var scrollVal = $('html').scrollLeft() + $('body').scrollLeft() + 300;
+	  $('body, html').animate({scrollLeft:scrollVal}, 'slow');
 	});
 
-	$('.nav_controls.left').live('click' , function(){
-		var scrollVal = $('body').scrollLeft() - 300;
-	  $('body').animate({scrollLeft:scrollVal}, 'slow');
+	$('.nav_controls.left').click(function() {
+		var scrollVal = $('html').scrollLeft() + $('body').scrollLeft() - 300;
+	  $('body, html').animate({scrollLeft:scrollVal}, 'slow');
 	});
 
 	$(".iconaddcontributor, .playslideshow").click(function() {
@@ -117,17 +133,28 @@ $(document).ready(function(){
 	  })
 	});
 	
-	$('.addphoto-icon ').hover(function() {
+	$('.addphoto-icon, .adddate-icon ').hover(function() {
 		$(this).fadeTo('fast',1);
 	}, function() {
    	$(this).fadeTo("fast", 0.6);
  	});
 
+
  	$('.addphoto-icon').click(function() {
  		$('.addphoto-icon').fadeTo('fast',1);
- 		$('.addphoto').toggleClass("hidden");
- 		//$('.messageSection').toggleClass ("withphoto");
- 		//$('.messageBox').toggleClass ("withphoto");
+ 		$('.addphoto').toggleClass("hidden"); 
+ 		if (! $('.adddate').hasClass("hidden")){ 
+ 			$('.adddate').addClass("hidden");
+ 		}
+ 	});
+
+ 	$('.adddate-icon').click(function() {
+
+ 		$('.adddate-icon').fadeTo('fast',1);
+ 		$('.adddate').toggleClass("hidden");
+ 		if (! $('.addphoto').hasClass("hidden")){ 
+ 			$('.addphoto').addClass("hidden");
+ 		}
  	});
 
  	$('.suggest-icon').hover(function() {
@@ -161,6 +188,20 @@ $(document).ready(function(){
 	    $('#memorycounter').text(left);
 		    
 	});
+
+	$('#newmemorymodal, #addcontributor').on('show', function () {
+		$('body, html').scrollLeft(0);
+		$("body").mousewheel(function(event) {
+      $(this).unbind('mousewheel').mousewheel();
+    });
+  });
+
+  $('#newmemorymodal, #addcontributor').on('hide', function () {
+		$("body").mousewheel(function(event, delta) {
+      this.scrollLeft -= (delta * 30);
+      event.preventDefault();
+    });
+  });
 
 	$('.coachmarks').click(function() {
 		$('.modal.in').modal('hide') 

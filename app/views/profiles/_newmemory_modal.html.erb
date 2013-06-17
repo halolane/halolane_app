@@ -5,6 +5,7 @@
     <h3 id="newMemoryLabel">Write a new story about <%= @profile.first_name %>!</h3>
   </div>
   <div class="modal-body">
+
     <div class="messageBox"> 
 			<%= form_for @memory, :html => { :multipart => true }, :remote => true do |f| %>
 		  <%= render 'shared/error_messages', object: f.object %>
@@ -32,16 +33,7 @@
 		  		<div class="skipquestion">
 			  		<a rel="tooltip" title="Skip this question"><i class="icon-forward"></i></a>
 			  	</div>
-				  	<!--
-			  		<div class="questionwarning">
-				  		<p>The questions are here to guide you write stories about <%= @profile.first_name %>. Feel free to write your own or skip the questions!</p>
-				  	
-				  	</div>
-				  	-->
 		  	</div>
-
-		  	
-		  	
 		  	</br>
 				<div class="composerBox expanded">
 					<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
@@ -51,15 +43,23 @@
 				  	<%= f.text_area :content, placeholder: "Write a new story about " + @profile.first_name + "...", rows:"1", cols:"10", maxlength:"250"%>
 			  	<% end %>
 				</div>
-			
-				<div class="addphoto hidden">
-					<%= f.file_field :photo%>
-				</div>
 			</div>
 		</div>
+		<div class="addphoto hidden">
+			<%= f.file_field :photo %>
+		</div>
+		
 	</div>
 
-		
+	<div class="adddate hidden">
+		<div id="memory_date_cal"></div>
+		<div class="datefield">
+			<%= f.text_field :date, rows: "1", type: "date", :required => true, title: "Enter a valid date formatted to YYYY-MM-DD", value: Date.today%>
+		</div>
+	</div>
+			
+	
+	
   <div class="modal-footer">
 		<div id="messageTools" class="_addLinkBlock messageTools" >
 
@@ -68,6 +68,9 @@
 				</span>
 				<span class="addphoto-icon">		
 					<a href="#" title="Add an image" rel="tooptip"><i class="icon-camera"></i></a>
+				</span>
+				<span class="adddate-icon">		
+					<a href="#" title="When did this story happen?" rel="tooptip"><i class="icon-calendar"></i></a>
 				</span>
 				<span class="btn-post">
 					<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>

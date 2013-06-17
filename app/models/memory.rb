@@ -11,17 +11,19 @@
 
 class Memory < ActiveRecord::Base
   
-  attr_accessible :content, :profile_id, :photo
+  attr_accessible :content, :profile_id, :photo, :date
   has_attached_file :photo
 
   belongs_to :user
   belongs_to :profile
+  belongs_to :chapter
 
   has_many :likememories, dependent: :destroy
 
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true
+  validates :date, presence: true
   validates :content, :length => { :maximum => 250 }
   
   validates_attachment :photo,
@@ -30,7 +32,7 @@ class Memory < ActiveRecord::Base
 
 
   # Sorts it by created_at descending
-  default_scope order: 'memories.created_at DESC'
+  default_scope order: 'memories.date DESC'
 
   def self.receive_mail(message)
     @user = User.find_by_email(message.from.first)
@@ -47,6 +49,7 @@ class Memory < ActiveRecord::Base
             content = message.body.decoded
           end
           @memory = @user.memories.build(:profile_id => @profile.id, :content => content)
+          @memory.date = Date.today
           # email_attachments = []   # an array which can be used to store object records of the attachments..
 
           # Un comment if you expect multiple pictures here
