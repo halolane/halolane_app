@@ -1,14 +1,4 @@
 class ChaptersController < ApplicationController
-  # GET /chapters
-  # GET /chapters.json
-  def index
-    @chapters = Chapter.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @chapters }
-    end
-  end
 
   # GET /chapters/1
   # GET /chapters/1.json
@@ -72,12 +62,24 @@ class ChaptersController < ApplicationController
   # DELETE /chapters/1
   # DELETE /chapters/1.json
   def destroy
-    @chapter = Chapter.find(params[:id])
-    @chapter.destroy
-
-    respond_to do |format|
-      format.html { redirect_to chapters_url }
-      format.json { head :no_content }
+    begin 
+      @chapter = Chapter.find(params[:id])
+    rescue
+      redirect_to root_url, notice: 'That chapter was not found.'
+      return
     end
+
+    @profile = Profile.find(@chapter.profile_id)
+    if current_user.isEditor?(@memory.profile_id)
+      @chapter.destroy
+    else
+      flash[:error] = "You don't have permission to delete this"
+      redirect_to root_url + @profile.url, :notice "You don't have the permission to delete this chapter."
+    end
+    
+    # respond_to do |format|
+    #   format.html { redirect_to chapters_url }
+    #   format.json { head :no_content }
+    # end
   end
 end
