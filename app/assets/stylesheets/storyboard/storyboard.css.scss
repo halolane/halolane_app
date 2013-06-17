@@ -267,10 +267,6 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
   
 }
 
-#memory_date_cal {
-  display: inline-block !important;
-}
-
 .newmemorybtn {
 	
 	.icon-plus {
@@ -450,37 +446,42 @@ h4.storybook-user {
 
 /* Adding Photo */
 .addphoto {
-	position: relative;
-	background-color: #d9dbdd;
-	display: block;
-	float: left;
+	background-color: white;
+	text-align: center;
 
-	width: 530px;
-	outline: 1px solid gray;
+	display: block !important;
+	text-align: center;
+	padding: 15px;
+
+	width: 500px;
 
 	input {
 		margin: 5px 5px;
 	}
 }
 
+.adddate {
+	display: block !important;
+	text-align: center;
+	padding: 15px;
+	background-color: white;
+	#memory_date_cal {
+		display: inline-block !important;
+		padding-bottom: 15px;
+		padding-top: 15px;
+	}
+}
 
 .addphoto.hidden, .btn-post.hidden, .addphoto-icon.hidden, .adddate-icon.hidden, .adddate.hidden, #messageTools.hidden, .skipquestion.hidden, .memoryquestion.hidden {
 	display: none !important;
+	border: none !important;
 }
 
-.addphoto, .btn-post, .addphoto-icon, #messageTools, .adddate-icon, .adddate,.memoryquestion {
+.btn-post, .addphoto-icon, #messageTools, .adddate-icon, .adddate,.memoryquestion {
 	display: inline !important;
 }
 
-.addphoto {
-	padding-top: 10px;
-}
 
-.adddate {
-	border-top: 1px solid #eee;
-	position: relative;
-	top: 10px;
-}
 
 .addphoto-icon, .suggest-icon, .adddate-icon {
 	float: left;
@@ -548,6 +549,10 @@ height: 600px;
 
 .overmodal {
 	z-index: 1050 !important;
+}
+
+.modal-body {
+	border-bottom: 1px solid #eee;
 }
  
 #blank {

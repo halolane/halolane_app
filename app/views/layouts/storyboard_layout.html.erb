@@ -13,6 +13,15 @@
 
   <%= stylesheet_link_tag    "application-storyboard", media: "all" %>
   <%= javascript_include_tag "application-storyboard" %>
+
+  <script type="text/javascript">
+    $(window).load(function(){
+        
+      $("html,body").animate({scrollTop: 0}, 1000);
+      $("html,body").animate({scrollLeft: 0}, 1000);
+
+    });
+  </script>
   
    <% if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) or 
           (signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") && current_user.memorycount == 0 && @profile.memorycount > 0 ) %>
