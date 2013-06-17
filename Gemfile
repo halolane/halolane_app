@@ -26,9 +26,8 @@ gem 'delayed_job_active_record'
 gem 'aws-sdk'
 gem 'mailman', require: false
 gem 'jquery-ui-rails'
-gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-gem "twitter-bootstrap-rails"
+
+gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -67,6 +66,8 @@ end
 
 group :production do
   gem "pg", "~> 0.14.1"
+  gem "therubyracer"
+  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 end
 
 # To use ActiveModel has_secure_password

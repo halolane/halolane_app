@@ -341,29 +341,24 @@ section.above_fold .carousel .nav .nav_control.right,section.testimonials .carou
 
 section.above_fold .carousel .item.first img {
 	width: 822px;
-	height: 500px;
 }
 
 section.above_fold .carousel .item.second img {
 	width: 759px;
-	height: 500px;
 }
 
 section.above_fold .carousel .item.third img {
 	width: 822px;
-	height: 500px;
-}
-
-section.above_fold .carousel .item.fifth img {
-	width: 822px;
-	height: 500px;
-	margin-right: 0%;
 }
 
 section.above_fold .carousel .item.fourth img {
 	width: 822px;
-	height: 500px;
-	margin-right: 40%;
+	margin-right: 15%;
+}
+
+section.above_fold .carousel .item.fifth img {
+	width: 822px;
+	margin-right: 0%;
 }
 
 
@@ -642,7 +637,7 @@ footer nav .menu_group{width:13.97849%;float:left;margin-right:3.22581%;display:
 footer nav .menu_group:last-child{width:31.1828%;float:left;margin-right:3.22581%;display:inline;float:right;margin-right:0;*margin-left:-3em;display:inline}
 footer nav h3{padding-bottom:0.5em;border-bottom:1px solid #999;color:#fff;text-transform:uppercase;margin-bottom:1em;letter-spacing:1px;font-weight:normal;text-align:left}
 footer nav ul{margin:0;padding:0}footer .logo{margin-top:5em;clear:both;text-align:center}footer .logo img{width:140px}
-section.above_fold{background:#eee url('/images/texture_waves.png');text-align:center;padding:1em 0;padding-bottom:0}
+section.above_fold{background:#eee url('/images/texture_waves.png');text-align:center;padding:1em 0;padding-bottom:0;margin-bottom:-3%}
 section.above_fold .carousel .nav{opacity:0}section.above_fold .carousel:hover .nav{opacity:1}
 section.above_fold .carousel .item .bubble{
 	opacity:0;
