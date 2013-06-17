@@ -142,12 +142,19 @@ $(document).ready(function(){
 
  	$('.addphoto-icon').click(function() {
  		$('.addphoto-icon').fadeTo('fast',1);
- 		$('.addphoto').toggleClass("hidden"); });
+ 		$('.addphoto').toggleClass("hidden"); 
+ 		if (! $('.adddate').hasClass("hidden")){ 
+ 			$('.adddate').addClass("hidden");
+ 		}
+ 	});
 
  	$('.adddate-icon').click(function() {
 
  		$('.adddate-icon').fadeTo('fast',1);
  		$('.adddate').toggleClass("hidden");
+ 		if (! $('.addphoto').hasClass("hidden")){ 
+ 			$('.addphoto').addClass("hidden");
+ 		}
  	});
 
  	$('.suggest-icon').hover(function() {
@@ -181,6 +188,20 @@ $(document).ready(function(){
 	    $('#memorycounter').text(left);
 		    
 	});
+
+	$('#newmemorymodal, #addcontributor').on('show', function () {
+		$('body, html').scrollLeft(0);
+		$("body").mousewheel(function(event) {
+      $(this).unbind('mousewheel').mousewheel();
+    });
+  });
+
+  $('#newmemorymodal, #addcontributor').on('hide', function () {
+		$("body").mousewheel(function(event, delta) {
+      this.scrollLeft -= (delta * 30);
+      event.preventDefault();
+    });
+  });
 
 	$('.coachmarks').click(function() {
 		$('.modal.in').modal('hide') 

@@ -45,6 +45,8 @@ body {
     
 }
 
+.ui-datepicker {font-size:14px;}
+
 .ui-datepicker-next {
 	position: relative;
 }
@@ -233,6 +235,7 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 }
 
 .adddate-prompt {
+	top:10px;
 	width: 100%;
 	h4 {
     margin-top: -10px;
@@ -255,7 +258,7 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 
 .datefield {
   position: relative;
-  width: 230px;
+  width: 278px;
   text-align: center;
   display: inline-block !important;
   -moz-border-radius:4px;
@@ -295,23 +298,22 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 	color: #5f8f05;
 }
 
-.icon
-
 .suggeststory {
-	color: #5f8f05;
-	font-size: 1.2em;
+	color: #5f8f05 !important;
+	font-size: 1.2em !important;
 	.icon-lightbulb {
-		font-size: 1.5em;
-		font-weight: bold;
-		color: #5f8f05;
+		font-size: 1.5em !important;
+		font-weight: bold !important;
+		color: #5f8f05 !important;
 	}
 	a {
-		color: #5f8f05;
+		color: #5f8f05 !important;
 	}
 	a:hover {
 		text-decoration: none !important;
 	}
 }
+
 li.storyboardlogo {
 	margin: 0px 0px;
 	width: 150px;
@@ -468,6 +470,16 @@ h4.storybook-user {
 
 .addphoto, .btn-post, .addphoto-icon, #messageTools, .adddate-icon, .adddate,.memoryquestion {
 	display: inline !important;
+}
+
+.addphoto {
+	padding-top: 10px;
+}
+
+.adddate {
+	border-top: 1px solid #eee;
+	position: relative;
+	top: 10px;
 }
 
 .addphoto-icon, .suggest-icon, .adddate-icon {
@@ -1030,7 +1042,7 @@ height: 600px;
 
 #zoomstory.modal, #sneakpeakmodal1.modal, #sneakpeakmodal2.modal, 
 #sneakpeakmodal3.modal, #sneakpeakmodal4.modal, #comingsoonfeatures.modal, 
-#addbyemail_backdrop.modal {
+#addbyemail_backdrop.modal, #newmemorymodal.modal {
 	position: absolute; 
 	max-height: none; 
 	overflow-y: visible;

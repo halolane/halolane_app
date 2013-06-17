@@ -44,7 +44,6 @@
 				</div>
 
 				<div class="adddate hidden">
-					<div class="adddate-prompt"><h4>When did this story happen?</h4></div>
 					<div id="memory_date_cal"></div>
 					<div class="datefield">
 						<%= f.text_field :date, rows: "1", type: "date", :required => true, title: "Enter a valid date formatted to YYYY-MM-DD", value: Date.today%>
@@ -69,7 +68,7 @@
 					<a href="#" title="Add an image" rel="tooptip"><i class="icon-camera"></i></a>
 				</span>
 				<span class="adddate-icon">		
-					<a href="#" title="Date this story" rel="tooptip"><i class="icon-calendar"></i></a>
+					<a href="#" title="When did this story happen?" rel="tooptip"><i class="icon-calendar"></i></a>
 				</span>
 				<span class="btn-post">
 					<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
