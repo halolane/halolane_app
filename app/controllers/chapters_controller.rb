@@ -72,9 +72,10 @@ class ChaptersController < ApplicationController
     @profile = Profile.find(@chapter.profile_id)
     if current_user.isEditor?(@memory.profile_id)
       @chapter.destroy
+      redirect_to root_url + @profile.url
     else
       flash[:error] = "You don't have permission to delete this"
-      redirect_to root_url + @profile.url, :notice "You don't have the permission to delete this chapter."
+      redirect_to root_url + @profile.url
     end
     
     # respond_to do |format|
