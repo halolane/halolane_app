@@ -34,6 +34,18 @@ $(document).ready(function(){
 	$(".tooltip").tooltip();
   $("a[rel=tooltip]").tooltip();
 
+  $('.chapterPickerItem').click(function() {
+  	$('.chapterPickerItem').removeClass('active');
+  	$(this).closest('li').addClass('active');
+  	$('.chapterPickerInnerWrapper').removeClass('visible');
+  	$('.createChapter_form').removeClass('visible');
+		$('div').remove('.chapterPickerMask')
+		var new_chapter = $(this).closest('li').text();
+		var chapter_id = $(this).attr('id');
+		var hidden_input = '<input id="memory_chapter" name="memory[chapter]" type="hidden" value="' + chapter_id + '">';
+		$('.currentChapterName').html(new_chapter + hidden_input);
+  });
+
 	$(".icon-off, .icon-cog, .iconaddcontributor, .playslideshow, .skipquestion, .iconsignout, .iconhelp, .iconfamtree").fadeTo("fast", 0.6);
 	$(".icon-off, .icon-cog, .iconaddcontributor, .playslideshow, .skipquestion, .iconsignout, .iconhelp, .iconfamtree").hover(function() {
 		$(this).fadeTo('fast',1);
@@ -43,6 +55,19 @@ $(document).ready(function(){
 	$(".iconaddcontributor, .playslideshow").click(function() {
 		$(this).fadeTo('fast',1);
 	});
+
+	$(".currentChapter").click(function() {
+		$('.chapterPickerInnerWrapper').addClass('visible');
+		$('.createChapter_form').addClass('visible');
+		$('.chapterPicker').append('<div class="chapterPickerMask"></div>')
+		$(".chapterPickerMask").bind('click',function() {
+			$('.createChapter_form').removeClass('visible');
+			$('.chapterPickerInnerWrapper').removeClass('visible');
+			$('div').remove('.chapterPickerMask')
+		});
+	});
+
+	
 
 	$(".newmemorybtn").fadeTo("fast", 0.8);
 	$(".newmemorybtn").hover(function() {

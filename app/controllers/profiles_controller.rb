@@ -46,7 +46,7 @@ class ProfilesController < ApplicationController
         return
       end
     end
-
+    @chapter = Chapter.new
     if signed_in?
       @relationship = current_user.getRelationship(@profile)
     else

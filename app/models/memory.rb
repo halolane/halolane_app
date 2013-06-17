@@ -11,7 +11,7 @@
 
 class Memory < ActiveRecord::Base
   
-  attr_accessible :content, :profile_id, :photo, :date
+  attr_accessible :content, :profile_id, :photo, :date, :chapter_id
   has_attached_file :photo
 
   belongs_to :user

@@ -2,64 +2,110 @@
 <div id="newmemorymodal" class="modal hide fade newmemorymodal" tabindex="-1" role="dialog" aria-labelledby="newMemoryLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="newMemoryLabel">Write a new story about <%= @profile.first_name %>!</h3>
+    <h3 id="newMemoryLabel">Write a new story about <%= @profile.first_name %></h3>
   </div>
   <div class="modal-body">
+  	<div class="createChapter_form">
+	  	<%= render 'new_chapter_form' %>
+	  </div>
+		<%= form_for @memory, :html => { :multipart => true }, :remote => true do |f| %>
+	  <%= render 'shared/error_messages', object: f.object %>
 
-    <div class="messageBox"> 
-			<%= form_for @memory, :html => { :multipart => true }, :remote => true do |f| %>
-		  <%= render 'shared/error_messages', object: f.object %>
-	  
-		  <input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
-		  <input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
-		  <div class="field">
-		  	<div class="suggeststory">
-		  		<a href="#" title="Are you stuck? Click here." rel="tooptip">
-		  		<i class="icon-lightbulb"></i> Suggest a story
-			  	</a>
+	  <input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
+	  <input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
+	  <div class="field">
+	  				<div class="addchapter">
+				<h4>Chapter</h4>
+				<!-- <%= select "memory","chapter", 
+				  				@profile.chapterlist.reverse.collect {|p| [ "Chapter " + p.chapter_num.to_s + " - " + p.chapter_name, p.id ] }%> -->
+
+				<div class="chapterPicker">
+				  <div class="chapterPickerInnerWrapper">
+				    <div class="createChapter">
+					    
+				    </div>
+
+				    <div class="chapterPickerInner">
+				      <ul class="chapterPicker_list">
+				      	<% @profile.chapterlist.reverse.each do |chp| %>
+				      		<% if chp.chapter_num == @profile.chaptercount %>
+									  <li class="chapterPickerItem active" id="<%= chp.id %>">
+									    <%= "Chapter " + chp.chapter_num.to_s + " - " + chp.chapter_name %>
+									  </li>
+									<% else %>
+									  <li class="chapterPickerItem" id="<%= chp.id %>">
+									    <%= "Chapter " + chp.chapter_num.to_s + " - " + chp.chapter_name %>
+									  </li>
+									<% end %>
+				      	<% end %>
+				      </ul>
+				    </div>
+				  </div>
+				  <div class="chapterPickerOuter">
+				    <div class="currentChapter">
+				            
+				      <div class="iconWrapper">        
+				        <i class="icon-sort-down"></i>
+				        
+				      </div>
+
+				        <span class="currentChapterName"><%= "Chapter " + @profile.chapterlist.last.chapter_num.to_s + " - " + @profile.chapterlist.last.chapter_name %>
+				        	<input id="memory_chapter" name="memory[chapter]" type="hidden" value="<%= @profile.chapterlist.last.id %>">
+				        </span>
+				    </div>
+				  </div>
+				</div>
+
+			</div>
+	  	<!-- <div class="suggeststory">
+	  		<a href="#" title="Are you stuck? Click here." rel="tooptip">
+	  		<i class="icon-lightbulb"></i> Suggest a story
+		  	</a>
+	  	</div>
+	  	<div class="memoryquestion hidden">
+	  		<p>
+	  			<% if current_user.memorycount == 0 %>
+	  				What are a few names you considered for <%= @profile.first_name %> and why did you choose the name <%= @profile.first_name %>?
+	  			<% elsif current_user.memorycount == 1 %>
+	  				What I remember most about the arrival of <%= @profile.first_name %>?
+	  			<% elsif current_user.memorycount == 2 %>
+	  				What were songs that <%= @profile.first_name %> liked as a baby and which one was their favorite?
+	  			<% else %>
+	  			<%= StorybookQuestion.find(rand(StorybookQuestion.count) + StorybookQuestion.first.id).question.gsub("@profile.first_name", @profile.first_name) %>
+	  			<% end %>
+	  		</p>
+	  		<div class="skipquestion">
+		  		<a rel="tooltip" title="Skip this question"><i class="icon-forward"></i></a>
 		  	</div>
-		  	<div class="memoryquestion hidden">
-		  		<p>
-		  			<% if current_user.memorycount == 0 %>
-		  				What are a few names you considered for <%= @profile.first_name %> and why did you choose the name <%= @profile.first_name %>?
-		  			<% elsif current_user.memorycount == 1 %>
-		  				What I remember most about the arrival of <%= @profile.first_name %>?
-		  			<% elsif current_user.memorycount == 2 %>
-		  				What were songs that <%= @profile.first_name %> liked as a baby and which one was their favorite?
-		  			<% else %>
-		  			<%= StorybookQuestion.find(rand(StorybookQuestion.count) + StorybookQuestion.first.id).question.gsub("@profile.first_name", @profile.first_name) %>
-		  			<% end %>
-		  		</p>
-		  		<div class="skipquestion">
-			  		<a rel="tooltip" title="Skip this question"><i class="icon-forward"></i></a>
-			  	</div>
-		  	</div>
-		  	</br>
-				<div class="composerBox expanded">
-					<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-						<textarea rows="4" cols="50" readonly>You cannot add new stories to this sample storybook as an Explorer.
-						 </textarea>
-					<% else %>
-				  	<%= f.text_area :content, placeholder: "Write a new story about " + @profile.first_name + "...", rows:"1", cols:"10", maxlength:"250"%>
-			  	<% end %>
+	  	</div> -->
+			<div class="composerBox expanded">
+				<h4>Story</h4>
+				<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+					<textarea rows="4" cols="50" readonly>You cannot add new stories to this sample storybook as an Explorer.
+					 </textarea>
+				<% else %>
+			  	<%= f.text_area :content, placeholder: "Write a new story about " + @profile.first_name + "...", rows:"1", cols:"10", maxlength:"250"%>
+		  	<% end %>
+			</div>
+
+			<div class="adddate hidden">
+				<h4>Date</h4>
+				<div class="memory_datepicker">
+					<div id="memory_date_cal"></div>
+					<div class="datefield">
+						<%= f.text_field :date, rows: "1", type: "date", :required => true, title: "Enter a valid date formatted to YYYY-MM-DD", value: Date.today%>
+					</div>
 				</div>
 			</div>
+
+			<div class="addphoto hidden">
+				<h4>Photo</h4>
+				<%= f.file_field :photo%>
+			</div>
 		</div>
-		<div class="addphoto hidden">
-			<%= f.file_field :photo %>
-		</div>
-		
 	</div>
 
-	<div class="adddate hidden">
-		<div id="memory_date_cal"></div>
-		<div class="datefield">
-			<%= f.text_field :date, rows: "1", type: "date", :required => true, title: "Enter a valid date formatted to YYYY-MM-DD", value: Date.today%>
-		</div>
-	</div>
-			
-	
-	
+
   <div class="modal-footer">
 		<div id="messageTools" class="_addLinkBlock messageTools" >
 
@@ -70,7 +116,7 @@
 					<a href="#" title="Add an image" rel="tooptip"><i class="icon-camera"></i></a>
 				</span>
 				<span class="adddate-icon">		
-					<a href="#" title="When did this story happen?" rel="tooptip"><i class="icon-calendar"></i></a>
+					<a href="#" title="Date this story" rel="tooptip"><i class="icon-calendar"></i></a>
 				</span>
 				<span class="btn-post">
 					<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
