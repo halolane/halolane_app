@@ -12,14 +12,14 @@
 		  <p><%= select "relationship","description", 
 				  				Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%></p>
 		  <p>
-				<%= p.text_field :first_name, :placeholder => "Their first name" %>
+				<%= p.text_field :first_name, :placeholder => "Their first name", :required => true %>
 		  </p>
 		  <p>
-				<%= p.text_field :last_name, :placeholder => "Their last name" %>
+				<%= p.text_field :last_name, :placeholder => "Their last name", :required => true %>
 		  </p>
     <p>
       <label for="profile_birthday">Their birthday</label>
-      <%= p.text_field :birthday, :placeholder => "MM/DD/YYYY" %>
+      <%= p.text_field :birthday, :type => "date", :required => true, :value => Date.today %>
     </p>
 
 		  	
