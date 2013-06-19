@@ -1076,6 +1076,7 @@ height: 600px;
 
 
 .newfeatures-coachmark {
+	color: white;
 	position: absolute;
 	float: left;
 	margin-top: -600px;
@@ -1084,6 +1085,7 @@ height: 600px;
 }
 
 .welcomesneakpeek-coachmark {
+	color: white;
 	position: absolute;
 	float: left;
 	margin-top: -555px;
@@ -1092,6 +1094,7 @@ height: 600px;
 }
 
 .alwaysfree-coachmark {
+	color: white;
 	position: absolute;
 	float: left;
 	margin-top: -475px;
@@ -1100,6 +1103,7 @@ height: 600px;
 }
 
 .thistory-coachmark {
+	color: white;
 	position: absolute;
 	float: left;
 	margin-top: -600px;
@@ -1108,6 +1112,7 @@ height: 600px;
 }
 
 .startstorybook-coachmark {
+	color: white;
 	position: absolute;
 	float: left;
 	margin-top: -665px;
@@ -1120,6 +1125,7 @@ height: 600px;
 }
 
 .skipthisguide-coachmark {
+	color: white;
 	position: relative;
 	float: left;
 	margin-top: -555px;
@@ -1130,6 +1136,7 @@ height: 600px;
 /* coachmarks for storybook */
 
 .welcome-coachmark {
+	color: white;
 	position: absolute;
 	float: left;
 	margin-top: -375px;
@@ -1138,6 +1145,7 @@ height: 600px;
 }
 
 .edit-coachmark {
+		color: white;
 		position: absolute;
 		float: left;
 		margin-top: -625px;
@@ -1145,6 +1153,7 @@ height: 600px;
 		z-index: 1050;
 	}
 .invite-coachmark {
+	color: white;
 	position: relative;
 	float: left;
 	margin-top: -645px;
@@ -1153,6 +1162,7 @@ height: 600px;
 }
 
 .sneakpeekinvite-coachmark {
+	color: white;
 	position: absolute;
 	float: left;
 	margin-top: -605px;
@@ -1161,14 +1171,16 @@ height: 600px;
 }
 
 .scrollsideways-coachmark {
+	color: white;
 	position: absolute;
 	float: left;
-	margin-top: -505px;
-	margin-left: 55%;
+	margin-top: -455px;
+	margin-left: 70%;
 	z-index: 1050;
 }
 
 .addmemory-coachmark {
+	color: white;
 	position: relative;
 	float: left;
 	margin-top: -605px;
@@ -1176,6 +1188,7 @@ height: 600px;
 	z-index: 1050;
 }
 .sneakpeekaddmemory-coachmark {
+	color: white;
 	position: absolute;
 	float: left;
 	margin-top: -555px;
@@ -1184,6 +1197,7 @@ height: 600px;
 }
 
 .firststories-coachmark {
+	color: white;
 	position: relative;
 	float: left;
 	margin-top: -625px;
@@ -1192,6 +1206,7 @@ height: 600px;
 }
 
 .firstaddbyemail-coachmark {
+	color: white;
 	position: relative;
 	float: left;
 	margin-top: -625px;
@@ -1307,8 +1322,16 @@ height: 600px;
 	overflow-x: hidden;
 }
 
-.skipguide {
-	float: right;
+.skipguide, .skipguide:hover {
+
+}
+
+.nextguide {
+	padding: 0.3em 1em !important;
+}
+
+.sneakpeek_buttons {
+	text-align: center;
 }
 
 .open > .dropdown-menu.memory

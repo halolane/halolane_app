@@ -22,54 +22,70 @@
 </div>
 
 <div class="newfeatures-coachmark hide">
-<button class="green_button nextguide" style="float: right;">Next</button>	
-<%= image_tag("/images/coachmarks/Print_storybook.png") %>
+	<div class="sneakpeek_buttons">
+		<a class="btn skipguide" >Done</a> &nbsp; or &nbsp;
+		<button class="green_button nextguide">Next</button>
+  </div>
+	<%= image_tag("/images/coachmarks/Print_storybook.png") %>
 </div>
 
 <div class="sneakpeekaddmemory-coachmark hide">
 	<%= image_tag("/images/coachmarks/sneakpeeknewstory.png") %>
-	<button class="green_button nextguide">Next</button>
+	<div class="sneakpeek_buttons">
+		<a class="btn skipguide" >Done</a> &nbsp; or &nbsp;
+		<button class="green_button nextguide">Next</button>
+  </div>
 </div>
 
 <div class="sneakpeekinvite-coachmark hide">
 	<%= image_tag("/images/coachmarks/sneakpeekinvite.png") %>
-	<button class="green_button nextguide">Next</button>
+	<div class="sneakpeek_buttons">
+		<a class="btn skipguide" >Done</a> &nbsp; or &nbsp;
+		<button class="green_button nextguide">Next</button>
+  </div>
 </div>
 
 <div class="thistory-coachmark hide">
 
 	<%= image_tag("/images/coachmarks/story.png") %>
-	<button class="green_button nextguide">Next</button>
-	
+	<div class="sneakpeek_buttons">
+		<a class="btn skipguide" >Done</a> &nbsp; or &nbsp;
+		<button class="green_button nextguide">Next</button>
+  </div>
 </div>
+
 <div class="welcomesneakpeek-coachmark hide">
 	<%	if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) %>
 		<%= image_tag("/images/coachmarks/sneakpeek.png") %>
 	<% else %>
 		<%= image_tag("/images/coachmarks/welcomestorybook.png") %>
 	<% end %>
-	<button class="green_button nextguide">Next</button>
+	<div class="sneakpeek_buttons">
+		<a class="btn skipguide" >Done</a> &nbsp; or &nbsp;
+		<button class="green_button nextguide">Next</button>
+  </div>
 </div>  
 
 <div class="alwaysfree-coachmark hide">
-	<button class="green_button nextguide" style="float: right;">Done</button>
+	<div class="sneakpeek_buttons">
+		<a class="btn skipguide" >Done</a> &nbsp; or &nbsp;
+		<button class="green_button nextguide">Next</button>
+  </div>
 	<%= image_tag("/images/coachmarks/AlwaysFree.png") %>
 </div> 
 
 <div class="scrollsideways-coachmark hide">
-	<button class="green_button nextguide" style="float: right;">Next</button>
 	<%= image_tag("/images/coachmarks/scrollsideways.png") %>
+	<div class="sneakpeek_buttons">
+		<a class="btn skipguide" >Done</a> &nbsp; or &nbsp;
+		<button class="green_button nextguide">Next</button>
+  </div>
 </div> 
 <%	if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) %>
 	<div class="startstorybook-coachmark hide">
 		<%= image_tag("/images/coachmarks/StartYourStorybook.png") %>
 	</div>
 <% end %>
-
-<div class="skipthisguide-coachmark hide">
-	<button class="btn skipguide" rel="tooltip" title="Skip this guide"><a type="button" class="close" >X</a></button>
-</div>
-
 
 
 
