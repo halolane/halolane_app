@@ -20,6 +20,11 @@ class ChaptersController < ApplicationController
   # GET /chapters/1/edit
   def edit
     @chapter = Chapter.find(params[:id])
+
+    respond_to do | format |
+      format.js 
+      format.html { redirect_to root_url + @profile.url } 
+    end
   end
 
   def create
@@ -38,13 +43,21 @@ class ChaptersController < ApplicationController
   end
 
   def update
-    @chapter = Chapter.find(params[:id])
+    begin 
+      @chapter = Chapter.find(params[:id])
+    rescue
+      redirect_to root_url, notice: 'That chapter was not found.'
+      return
+    end
+
+    @profile = Profile.find(@chapter.profile_id)
 
     respond_to do |format|
       if @chapter.update_attributes(params[:chapter])
-        format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
+        format.js 
+        format.html { redirect_to root_url + @profile.url, notice: 'Chapter was successfully updated.' }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to root_url + @profile.url, notice: 'Not able to edit the chapter' }
       end
     end
   end
@@ -58,7 +71,7 @@ class ChaptersController < ApplicationController
     end
 
     @profile = Profile.find(@chapter.profile_id)
-    if current_user.isEditor?(@memory.profile_id)
+    if current_user.isEditor?(@chapter.profile_id)
       @chapter.destroy
       redirect_to root_url + @profile.url
     else

@@ -1,0 +1,8 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		$(".edit_chapter").bind("ajax:success", function() { 
+	    $(this).closest('.chapterpicker_link').html("<%= escape_javascript render('chapters/form') %>");
+	  	$(this).closest('.chapterPickerItem').removeClass('active');
+	  });
+	<% end %>
+});

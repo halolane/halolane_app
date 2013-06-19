@@ -1,6 +1,6 @@
 
 <div class="newbox" id="blank"></div>
-<div class="newbox story">
+<div class="newbox story" id="<%= 'chp' + (Chapter.find(memoryfeed_item.chapter_id)).chapter_num.to_s %>">
 	<span class="story-edit-btn">
 		<% if signed_in? and current_user.contributing?(@profile) and ( current_user?(memoryfeed_item.user) or current_user.storybook_editor?(@profile) ) %>
 			<div class="dropdown">

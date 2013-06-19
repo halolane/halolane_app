@@ -102,7 +102,7 @@ class ProfilesController < ApplicationController
     if params[:profile][:birthday] == nil
       @profile = Profile.new(first_name: params[:profile][:first_name], last_name: params[:profile][:last_name], birthday: Date.today, deathday: Date.today, privacy: 2)
     else
-      @profile = Profile.new(first_name: params[:profile][:first_name], last_name: params[:profile][:last_name], birthday: params[:profile][:birthday] , deathday: Date.today, privacy: 2)
+      @profile = Profile.new(first_name: params[:profile][:first_name], last_name: params[:profile][:last_name], birthday: (params[:profile][:birthday]).to_date , deathday: Date.today, privacy: 2)
     end
 
     @relationship = params[:relationship][:description]

@@ -1,0 +1,41 @@
+$(document).ready(function(){
+
+	$('.chapterlist_btn').click(function() {
+		$('.storyboardSidebar').removeClass('collapsed').animate({
+      left: '0px'
+    }, 500);	
+		$('.nav_left.hotspot').removeClass('collapsed');
+		$('.nav_controls.left').removeClass('collapsed');
+		$('.storyboardSidebarMenu').removeClass('hidden');
+		$('.sidebarButtons').addClass('hidden');
+	});
+
+	$('.closeSidebar').click(function() {
+		$('.storyboardSidebar').addClass('collapsed').animate({
+      left: '-260px'
+    },500);
+		$('.nav_left.hotspot').addClass('collapsed');
+		$('.nav_controls.left').addClass('collapsed');
+		$('.storyboardSidebarMenu').addClass('hidden');
+		$('.sidebarButtons').removeClass('hidden');
+	});
+
+	$('.chapterpicker_link').hover(function() {
+		$(this).children('div.nubbin').css('cssText' , 'display: inline-block !important;');
+	}, function() {
+	  $(this).children('div.nubbin').css('cssText' , 'display: none !important;');
+ 	});
+
+ 	$('.chapterlist_link').click(function() {
+  	$('.chapterpicker_link').removeClass('active');
+  	$(this).closest('li').addClass('active');
+  	$('.chapterPickerInnerWrapper').removeClass('visible');
+  	$('.createChapter_form').removeClass('visible');
+		$('div').remove('.chapterPickerMask')
+  });
+	
+
+ 	$('.dropdown-menu a.removefromcart').click(function(e) {
+	    e.stopPropagation();
+	});
+});

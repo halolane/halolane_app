@@ -1,0 +1,302 @@
+/********************************************************************
+*
+* Storyboard Side bar CSS settings
+*
+*********************************************************************/
+
+.storyboardSidebar {
+	-moz-box-shadow: inset -4px 0 10px rgba(0,0,0,.4);
+	-webkit-box-shadow: inset -4px 0 10px rgba(0,0,0,.4);
+	box-shadow: inset -4px 0 10px rgba(0,0,0,.4);
+	background: #f0f0f0;
+	border: 1px solid #d1d1d1;
+	color: #717171;
+	background-position: 0 0;
+	min-height: 475px;
+	height: 100%;
+	z-index: 500;
+	float: left;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 300px;
+	padding-top: 43px;
+	left:-260px;
+}
+
+#chapterlist {
+	margin-left: 10px;
+}
+
+.storyboardSidebar.collapsed{
+	width: 300px;
+}
+
+.sidebarButtons.hidden {
+	display: none !important;
+}
+
+.sidebarButtons {
+	float:right;
+	top: 23px;
+	right: 7px;
+	button { 
+		width: 30px !important;
+		margin: 0 0 !important;
+		padding: 2px !important;
+		margin-left: 3px !important;
+	}
+}
+
+.storyboardSidebarMenu.hidden {
+	display: none;
+}
+
+.storyboardSidebarMenu {
+	text-align: left;
+	width: 290px;
+	margin-top: 5px;
+	z-index: 102;
+
+	.btn-group > .btn:first-child {
+		width: 250px;
+	}
+
+	.createChapterNameContainer {
+		width: 120px;
+	}
+
+	i.icon-trash {
+		margin-top: -18px !important;
+			position: relative !important;
+	}
+
+	i {
+		color: #999;
+		float: right;
+	}
+	.chapterpicker_link{
+		white-space:nowrap;overflow:hidden;-ms-text-overflow:ellipsis;-o-text-overflow:ellipsis;text-overflow:ellipsis;cursor:pointer;padding:6px 13px;
+		a, a:hover {
+			text-decoration: none !important;
+			font-size: 15px;
+			color: gray;
+		}
+
+		i {
+			margin-top: -18px !important;
+			position: relative;
+		}
+	}
+
+	.chapterpicker_link:hover, .chapterpicker_link:active, .chapterpicker_link.active{
+		-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;border-radius:3px
+
+	}
+
+	.chapterpicker_link:hover, .chapterpicker_link.active{-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;border-radius:3px}
+
+	.chapterPicker .chapterPickerInnerWrapper .chapterpicker_link:hover{
+		background-color:#ebe8e8
+	}
+
+	.chapterpicker_link.active{
+		-webkit-font-smoothing:antialiased;background:#5f8f05;color:#fff;
+
+		a {
+       -webkit-font-smoothing:antialiased;background:#5f8f05;color:#fff
+		}
+	}
+	.chapterpicker_link:hover{
+		background-color:#ebe8e8
+	}
+
+	.chapterpicker_link.active {
+		-webkit-font-smoothing: antialiased;
+		background: #5f8f05;
+		color: #fff;
+	}
+
+	.chapterpicker_link:hover, .chapterpicker_link:active, .chapterpicker_link.active {
+		-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		-ms-border-radius: 3px;
+		-o-border-radius: 3px;
+		border-radius: 3px;
+	}
+}
+
+.storyboardSidebar .menuOpen {
+	width: 200px;
+}
+
+.sidebarNavMenu {
+	margin-bottom: 0;
+	padding: 7px 0;
+	padding-left: 10px;
+	li {
+		list-style: none;
+		position: relative;
+	}
+
+	a{
+		display: block;
+		padding: 0 7px 5px;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+
+	a.active .trim {
+		-moz-box-shadow: inset 0 1px #f3f3f3,0 1px #202429;
+		-webkit-box-shadow: inset 0 1px #f3f3f3,0 1px #202429;
+		box-shadow: inset 0 1px #f3f3f3,0 1px #202429;
+		border: 0;
+		background-color: #fff;
+		background-position: 0 -2750px;
+		padding: 4px 5px;
+		-moz-box-shadow: inset 0 1px #f3f3f3,0 1px #202429;
+		-webkit-box-shadow: inset 0 1px #f3f3f3,0 1px #202429;
+		box-shadow: inset 0 1px #f3f3f3,0 1px #202429;
+	}
+
+	.icon-chapters {
+		float:right;
+	}
+
+	.icon {
+		float: right;
+	}
+
+	h4 {
+		margin: 0 0;
+		float: left;
+	}
+}
+
+#leftMenu .accordion-group {
+    margin-bottom: 0px;
+    border:0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}    
+
+#leftMenu .accordion-heading {
+    height: 34px;
+    border-top: 1px solid #717171; /* inner stroke */
+    border-bottom: 1px solid #5A5A5A; /* inner stroke */
+    background-color: #353535; /* layer fill content */
+    background-image: -moz-linear-gradient(90deg, #595b59 0%, #616161 100%); /* gradient overlay */
+    background-image: -o-linear-gradient(90deg, #595b59 0%, #616161 100%); /* gradient overlay */
+    background-image: -webkit-linear-gradient(90deg, #595b59 0%, #616161 100%); /* gradient overlay */
+    background-image: linear-gradient(90deg, #595b59 0%, #616161 100%); /* gradient overlay */
+    -webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	-ms-border-radius: 3px;
+	-o-border-radius: 3px;
+	border-radius: 3px;
+    list-style-type:none;
+}  
+
+#leftMenu .accordion-heading  a{  
+    color: #cbcbcb; /* text color */
+    text-shadow: 0 1px 0 #3b3b3b; /* drop shadow */
+    text-decoration:none;
+    font-weight:bold;  
+}
+
+#leftMenu .accordion-heading  a:hover{  
+    color:#ccc     
+}
+
+#leftMenu .accordion-heading .active {
+    width: 182px;
+    height: 34px;
+    border: 1px solid #5b5b5b; /* inner stroke */
+    background-color: #353535; /* layer fill content */
+    background-image: -moz-linear-gradient(90deg, #4b4b4b 0%, #555 100%); /* gradient overlay */
+    background-image: -o-linear-gradient(90deg, #4b4b4b 0%, #555 100%); /* gradient overlay */
+    background-image: -webkit-linear-gradient(90deg, #4b4b4b 0%, #555 100%); /* gradient overlay */
+    background-image: linear-gradient(90deg, #4b4b4b 0%, #555 100%); /* gradient overlay */
+}
+
+
+.chapterpicker_link{white-space:nowrap;overflow:hidden;-ms-text-overflow:ellipsis;-o-text-overflow:ellipsis;text-overflow:ellipsis;cursor:pointer;padding:6px 13px}
+
+.chapterpicker_link:hover, .chapterpicker_link:active, .chapterpicker_link.active{-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;border-radius:3px}
+
+.chapterpicker_link:hover{
+	background-color:#ebe8e8
+}
+
+.chapterPicker .chapterPickerInnerWrapper .chapterpicker_link.active{
+	-webkit-font-smoothing:antialiased;background:#5f8f05;color:#fff
+}
+
+
+.accordion-inner {
+padding: 9px 0px !important;
+border-top: 1px solid #e5e5e5  !important;
+}
+
+/* Nubbin */
+div.nubbin {
+	display: none;
+	position: absolute;
+	left: 0px;
+	font-size: 12px;
+	line-height: 20px;
+	text-align: left;
+	padding: 0 0 0 5px;
+	margin: -1px 0 0;
+	min-width: 40px;
+	background: #fff;
+	-webkit-border-top-left-radius: 20px;
+	-webkit-border-bottom-left-radius: 20px;
+	-moz-border-radius-topleft: 20px;
+	-moz-border-radius-bottomleft: 20px;
+	border-top-left-radius: 20px;
+	border-bottom-left-radius: 20px;
+	-webkit-box-shadow: -1px 0 1px rgba(0,0,0,0.2);
+	-moz-box-shadow: -1px 0 1px rgba(0,0,0,0.2);
+	box-shadow: -1px 0 1px rgba(0,0,0,0.2);
+}
+
+div.nubbin>div.spacer {
+	width: 10px;
+	display: inline-block;
+	margin: -1px 0;
+	height: 25px;
+	background: #fff;
+	float: right;
+}
+
+div.nubbin>a.image {
+	height: 0;
+	padding: 22px 4px 0;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-color: #fff;
+}
+
+div.nubbin>a {
+	background: #fff !important;
+	color: #717171 !important;
+	float: left;
+	vertical-align: top;
+	margin: 0 1px;
+	padding: 2px 2px 1px;
+	text-decoration: none;
+}
+
+.sidebar_new_chapter {
+	.createChapterNameContainer{
+		width: 200px !important;
+	}
+}
+/*
+* END Storyboard Side bar CSS settings
+*
+*********************************************************************/

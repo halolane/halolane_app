@@ -11,6 +11,10 @@ $(document).ready(function(){
 		$(".chapterPicker_list").prepend($new_chapter_item);
 		$('.currentChapterName').html($new_chapter + $hidden_input);
 		$('.createChapterName').val('');
+
+		$('.chapterpicker_link').removeClass('active');
+		var $new_chapter_link = '<li class="chapterpicker_link active" href="chp' + $chapter_id + '">' + "<%= escape_javascript render('chapters/new_chapter_form') %>" + '</li>';
+		$('.chapterPicker_links').prepend($new_chapter_link);
 		$('.chapterPickerItem').click(function() {
 	  	$('.chapterPickerItem').removeClass('active');
 	  	$(this).closest('li').addClass('active');

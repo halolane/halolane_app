@@ -1,0 +1,8 @@
+	<div class="nubbin" data-behavior="nubbin hover_content">
+	 	<div class="spacer"></div>
+	   <%= link_to @chapter, method: :delete, class: "image delete", data: { confirm: "Are you sure you want to delete this chapter? All the stories in this chapter will be deleted." }, title: "Delete this chapter" do %>
+		   <i class="icon-trash"></i>
+	   <% end %>
+	   <%= link_to "Edit", edit_chapter_path(@chapter), class: "edit_chapter", remote: true %>
+	</div>
+  <a class="chapterlist_link" href="<%= '#chp' + @chapter.chapter_num.to_s %>" data-placement="right" rel="tooltip" title="<%= @chapter.chapter_num.to_s + " - " + @chapter.chapter_name %>"><%= "Chapter " + @chapter.chapter_num.to_s + " - " + @chapter.chapter_name %></a>

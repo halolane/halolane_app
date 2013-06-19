@@ -205,7 +205,7 @@
   <% end %>
   <%= render 'shared/loading_spinner_icon' %> 
   <% flash.each do |key, value| %>
-     <div class="alert alert-<%= key %>"><%= value %></div>
+     <div class="alert alert-<%= key %>" style="left: 40px"><%= value %></div>
   <% end %>
 	<%= yield %>
   <%= debug(params) if Rails.env.development? %>
