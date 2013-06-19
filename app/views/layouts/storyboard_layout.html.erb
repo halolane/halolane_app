@@ -22,12 +22,21 @@
 
     });
   </script>
+  <% if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) %>
+    <script type="text/javascript">
+      $(window).load(function(){
+        $('.navbar-inner').css('cssText','z-index: 600;');
+        $('.storyboardSidebar').css('cssText','top: 43px;');
+        $('.nav_left.hotspot').css('cssText','margin-top: 43px;');
+      });
+    </script>
   
+  <% end %>
    <% if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) or 
           (signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") && current_user.memorycount == 0 && @profile.memorycount > 0 ) %>
     <script type="text/javascript">
       $(window).load(function(){
-          
+      
         $('body, html').scrollLeft(0);
         $('#sneakpeakmodal1').on('show', function () {
           $('.welcomesneakpeek-coachmark').removeClass('hide');
@@ -46,6 +55,7 @@
           $('.startstorybook-coachmark').addClass('hide');
           $('.sneakpeekinvite-coachmark').addClass('hide');
           $('.skipthisguide-coachmark').addClass('hide');
+          $('.scrollsideways-coachmark').addClass('hide');
           $('.alwaysfree-coachmark').addClass('hide');
           $('div#content').removeClass('overmodal');
           $('div#content').closest('div.newbox.story').removeClass('overmodal'); 
