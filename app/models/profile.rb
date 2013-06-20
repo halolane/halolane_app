@@ -4,6 +4,8 @@ class Profile < ActiveRecord::Base
 
 
   attr_accessible :birthday, :deathday, :first_name, :last_name, :privacy
+  belongs_to :bookshelf
+
   has_many :relationships, dependent: :destroy
   has_many :memories, dependent: :destroy
   has_many :users, through: :relationships

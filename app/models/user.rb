@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   has_many :relationships, dependent: :destroy
   has_many :profiles, through: :relationships
   has_many :profiles_with_relationships, :through => :relationships, :source => :profile
+  has_many :bookshelves, dependent: :destroy
   has_many :authentications, dependent: :destroy
   has_many :likememories, dependent: :destroy
   has_many :useractionlogs, dependent: :destroy
