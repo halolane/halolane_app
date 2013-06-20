@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @bookshelf.name %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @bookshelf.user_id %>
+</p>
+
+<p>
+  <b>Privacy:</b>
+  <%= @bookshelf.privacy %>
+</p>
+
+
+<%= link_to 'Edit', edit_bookshelf_path(@bookshelf) %> |
+<%= link_to 'Back', bookshelves_path %>

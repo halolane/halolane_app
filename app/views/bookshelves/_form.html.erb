@@ -1,0 +1,29 @@
+<%= form_for(@bookshelf) do |f| %>
+  <% if @bookshelf.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bookshelf.errors.count, "error") %> prohibited this bookshelf from being saved:</h2>
+
+      <ul>
+      <% @bookshelf.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :privacy %><br />
+    <%= f.number_field :privacy %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
