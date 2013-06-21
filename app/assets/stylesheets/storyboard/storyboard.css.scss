@@ -100,6 +100,7 @@ table {
 
 
 .topbarname {
+	padding-left: 45%;
 	margin: 8px -2px;
 	margin-right: 50px;
 	width: 300px;
@@ -128,13 +129,6 @@ li.playslideshow {
 	padding-right: 5px;
 }
 
-
-
-li.iconaddcontributor{
-	padding-top: 3px;
-	padding-right: 5px;
-	margin-right: 300px;
-}
 
 li.iconsettings {
 	padding-top: 1px;
@@ -310,8 +304,24 @@ h4.storybook-user {
 	
 }
 
-.loggedinuser{
-	margin-top: 10px;
+.loggedinuser {
+	padding: 10px;
+	border-right: 1px solid #cdcdcd;
+	border-left: 1px solid #cdcdcd;
+	h4 {
+		font-size: 18px;
+		line-height: 20px;
+	}
+}
+
+.loggedinuser:hover, .newmemorybtn:hover, .iconaddcontributor:hover  {
+	background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, white), color-stop(100%, #f4f4f4));
+	background: -webkit-linear-gradient(white, #f4f4f4);
+	background: -moz-linear-gradient(white, #f4f4f4);
+	background: -o-linear-gradient(white, #f4f4f4);
+	background: linear-gradient(white, #f4f4f4);
+	background-color: #fff;
+	color: #333333;
 }
 
 .gray {
@@ -330,9 +340,27 @@ h4.storybook-user {
 }
 
 .newmemorybtn {
-	margin-left: 10px;	
-	margin-right: 5px;
+	border-right: 1px solid #cdcdcd;
+border-left: 1px solid #cdcdcd;
+height: 40px;
+margin-left: 10px;
 
+padding-left: 10px;
+}
+
+
+.iconaddcontributor{
+	padding-top: 3px;
+padding-right: 5px;
+padding-left: 0px;
+border-right: 1px solid #cdcdcd;
+height: 35px;
+width: 30px;
+padding-left: 10px;
+a{
+	height: 38px;
+width: 30px;
+}
 }
 
 /******************* New memory modal /*******************/
