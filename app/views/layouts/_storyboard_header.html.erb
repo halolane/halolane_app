@@ -3,15 +3,35 @@
     <div class="container">
       <nav>
         <ul class="nav btn-topbar-left">
+ <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+            <li class="storyboardlogo">
+              <%= link_to image_tag("/images/small-logo.png"), signout_path, method: "delete", id: "logo", rel:"tooltip", title:"Go to the FamilyTales home page" %> 
+            </li>
+          <% else %>
+            <li class="storyboardlogo">
+              <%= link_to image_tag("/images/small-logo.png"), root_path, id: "logo" %> 
+            </li>
+          <% end %>
+          <% if signed_in? and current_user.email != ('familytalesuser2@gmail.com') and @profile.url != "alexdunphy" %>
+
           <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
             <li class="newmemorybtn">
               <div class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-plus"></i><span class="addnewstorytext">Add a new story</span></a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-plus"></i><span class="addnewstorytext"></span></a>
                 <ul class="dropdown-menu addnewstory" role="menu" aria-labelledby="dLabel">
                   <li><a href="#newmemorymodal" data-toggle="modal" data-dismiss="modal" aria-hidden="true"><i class="icon-pencil"></i> Right Now</a></li>
                   <li><a href="#emailstories" data-toggle="modal" data-dismiss="modal" aria-hidden="true"><i class="icon-envelope-alt"></i> By Email</a></li>
-                  
                 </ul>
+                 <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
+                  <li class="iconaddcontributor _showAddCollaborator">
+                    <a href="#addcontributor" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
+                      <span class="icon-stack">
+  <i class="icon-user icon-stack-base"></i>
+  <i class="icon-plus plus-user"></i>
+</span>
+                    </a>
+                  </li>
+                <% end %>
 
               <!--<a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal" rel="tooltip" title="Add a new story">-->
                 
@@ -19,36 +39,21 @@
           <% end %>
           <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
             <li><div class="topbarname"><h4>
-              <%= @profile.first_name + " " + @profile.last_name %>
+              <%= @profile.first_name + " " + @profile.last_name + "\'s storybook" %>
             </h4></div></li>
           <% else %>
             <li><div class="topbarname"><h4>
-              <%= link_to  @profile.first_name + " " + @profile.last_name, edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
+              <%= link_to  @profile.first_name + " " + @profile.last_name + "\'s storybook", edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
             </h4></div></li>
           <% end %>
         </ul>
         <ul class="nav pull-right">
-          <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
-            <li class="iconaddcontributor _showAddCollaborator">
-              <a href="#addcontributor" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
-                <i class="icon-share"></i>
-              </a>
-            </li>
-          <% end %>
+         
 
-          <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-            <li class="storyboardlogo">
-              <%= link_to image_tag("/images/logo.png"), signout_path, method: "delete", id: "logo", rel:"tooltip", title:"Go to the FamilyTales home page" %> 
-            </li>
-          <% else %>
-            <li class="storyboardlogo">
-              <%= link_to image_tag("/images/logo.png"), root_path, id: "logo" %> 
-            </li>
-          <% end %>
-          <% if signed_in? and current_user.email != ('familytalesuser2@gmail.com') and @profile.url != "alexdunphy" %>
+         
             <li class="divider"><div class="dividerline">|</h4></li>
             <li class="loggedinuser">
-              <div class="graycolor" style="font-size:0.7em;">Logged in as</div> 
+         
               
 
                 <div class="dropdown">
@@ -77,7 +82,7 @@
             <li class="divider"><div class="dividerline">|</div></li>
     
             <li class="loggedinuser">
-              <div class="graycolor" style="font-size:0.7em;">Logged in as</div> 
+
               <h4 class="storybook-user">Explorer User</h4>
             </li>
           <% end %>

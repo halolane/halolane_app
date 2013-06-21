@@ -102,7 +102,6 @@ table {
 .topbarname {
 	margin: 8px -2px;
 	margin-right: 50px;
-	margin-left: 30px;
 	width: 300px;
 	font-size: 12px;
 	text-align: middle;
@@ -134,6 +133,7 @@ li.playslideshow {
 li.iconaddcontributor{
 	padding-top: 3px;
 	padding-right: 5px;
+	margin-right: 300px;
 }
 
 li.iconsettings {
@@ -235,6 +235,18 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
   border-radius:4px;
   
 }
+.plus-user{
+	color: #5f8f05;
+	margin-left: 14px;
+	margin-bottom: 15px;
+
+}
+
+.icon-user{
+	color: #5f8f05;
+	font-size: 26px !important;
+	padding-top: 2px !important;
+}
 
 .newmemorybtn {
 	
@@ -281,6 +293,8 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 
 li.storyboardlogo {
 	margin: 0px 0px;
+	margin-top: -8px !important;
+	margin-left: 10px;
 	width: 150px;
 	height: 38px;
 }
@@ -296,6 +310,9 @@ h4.storybook-user {
 	
 }
 
+.loggedinuser{
+	margin-top: 10px;
+}
 
 .gray {
 	color: #999;
@@ -313,8 +330,9 @@ h4.storybook-user {
 }
 
 .newmemorybtn {
-	margin-left: 10px;
-	margin-right: 200px;
+	margin-left: 10px;	
+	margin-right: 5px;
+
 }
 
 /******************* New memory modal /*******************/
