@@ -3,7 +3,7 @@ class Profile < ActiveRecord::Base
   friendly_id :url, use: :slugged
 
 
-  attr_accessible :birthday, :deathday, :first_name, :last_name, :privacy
+  attr_accessible :birthday, :deathday, :first_name, :last_name, :privacy, :user_id, :bookshelf_id
   belongs_to :bookshelf
 
   has_many :relationships, dependent: :destroy
