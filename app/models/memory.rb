@@ -11,15 +11,14 @@
 
 class Memory < ActiveRecord::Base
   
-  attr_accessible :content, :profile_id, :photo, :date, :chapter_id
-  has_attached_file :photo
+  attr_accessible :content, :profile_id, :photo, :date, :chapter_id, :has_photo
+  has_attached_file :photo, :styles => { :thumb => "51x51#", :medium => "250x250>", :cover => "216x146#", :storybook => "250x400>" }
 
   belongs_to :user
   belongs_to :profile
   belongs_to :chapter
 
   has_many :likememories, dependent: :destroy
-
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true
@@ -32,7 +31,7 @@ class Memory < ActiveRecord::Base
 
 
   # Sorts it by created_at descending
-  default_scope order: 'memories.date DESC'
+  default_scope order: 'memories.date DESC, memories.created_at DESC'
 
   def self.receive_mail(message)
     @user = User.find_by_email(message.from.first)
