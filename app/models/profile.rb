@@ -3,7 +3,7 @@ class Profile < ActiveRecord::Base
   friendly_id :url, use: :slugged
 
 
-  attr_accessible :birthday, :deathday, :first_name, :last_name, :privacy, :user_id, :bookshelf_id
+  attr_accessible :birthday, :deathday, :first_name, :last_name, :privacy, :bookshelf_id
   belongs_to :bookshelf
 
   has_many :relationships, dependent: :destroy
@@ -42,6 +42,10 @@ class Profile < ActiveRecord::Base
     end
   end
 
+  def storycount 
+    Memory.where("profile_id = ?", id).count
+  end
+
   def chaptercount
     Chapter.where("profile_id = ?", id).count
   end
@@ -55,12 +59,12 @@ class Profile < ActiveRecord::Base
     Memory.where("profile_id = ?", id)
   end
 
-  def memorycount
-    Memory.where("profile_id = ?", id).count
+  def photofeed
+    Memory.where("profile_id = ?", id).where(:has_photo => true)
   end
 
-  def photofeed
-    Photomemory.where("profile_id = ?", id)
+  def memorycount
+    Memory.where("profile_id = ?", id).count
   end
   
   def contributor?(user)

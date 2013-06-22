@@ -100,9 +100,9 @@ class ProfilesController < ApplicationController
   def create
 
     if params[:profile][:birthday] == nil
-      @profile = Profile.new(first_name: params[:profile][:first_name], last_name: params[:profile][:last_name], birthday: Date.today, deathday: Date.today, privacy: 2)
+      @profile = Profile.new(first_name: params[:profile][:first_name], last_name: params[:profile][:last_name], birthday: Date.today, deathday: Date.today, privacy: 2, bookshelf_id: params[:profile][:bookshelf_id])
     else
-      @profile = Profile.new(first_name: params[:profile][:first_name], last_name: params[:profile][:last_name], birthday: (params[:profile][:birthday]).to_date , deathday: Date.today, privacy: 2)
+      @profile = Profile.new(first_name: params[:profile][:first_name], last_name: params[:profile][:last_name], birthday: (params[:profile][:birthday]).to_date , deathday: Date.today, privacy: 2, bookshelf_id: params[:profile][:bookshelf_id])
     end
 
     @relationship = params[:relationship][:description]
