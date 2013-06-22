@@ -47,8 +47,8 @@ class User < ActiveRecord::Base
     Bookshelf.where("user_id = ?", id)
   end
 
-  def contribute!(profile, description = "", admin = false, permission = "view")
-    @relationship = relationships.create!(profile_id: profile.id, description: description, profile_admin: false, permission: permission)
+  def contribute!(profile, description = "", admin = false, permission = "view", owner = false)
+    @relationship = relationships.create!(profile_id: profile.id, description: description, profile_admin: false, permission: permission, owner: owner)
     @relationship.toggle!(:profile_admin) if admin 
   end
 

@@ -108,7 +108,7 @@ class ProfilesController < ApplicationController
     @relationship = params[:relationship][:description]
 
   	if @profile.save
-      current_user.contribute!(@profile, @relationship, true, "edit")
+      current_user.contribute!(@profile, @relationship, true, "edit", true)
       Mailer.new_storybook(current_user, @profile, root_url + @profile.url).deliver
       @profile.createchapter!('The beginning')
       current_user.actionlog!(@profile.id, @page_name, "create")
