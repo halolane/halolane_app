@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     if is_a_user_already?((params[:user][:email]).downcase)
       flash[:error] = "It looks like you already have an account on FamilyTales. Please enter your email and password here to login"
       redirect_to login_url
-    elsif  @user.save 
+    elsif @user.save 
       
       begin
         Mailer.validate_account(@user, root_url + "login/" + @user.token).deliver
