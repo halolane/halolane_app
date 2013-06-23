@@ -1,29 +1,6 @@
-<%= form_for(@bookshelf) do |f| %>
-  <% if @bookshelf.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@bookshelf.errors.count, "error") %> prohibited this bookshelf from being saved:</h2>
-
-      <ul>
-      <% @bookshelf.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for @bookshelf, :html => { :multipart => true }, :remote => true do |f| %>
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :required => true, :style => "width: 200px;display: inline;font-size: 0.9em;padding: 0.3em 0.5em;margin-top: 10px;" %>
   </div>
-  <div class="field">
-    <%= f.label :user_id %><br />
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :privacy %><br />
-    <%= f.number_field :privacy %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit :class => "rounded createChapterButton Button btn", :value => "Save changes", :style => "padding: 0.3em 0.5em;display: inline;width: 100px;margin-top: -90px;font-size: 0.8em;margin-left: 320px;" %>
 <% end %>

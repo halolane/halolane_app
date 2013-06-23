@@ -1,5 +1,5 @@
 class ChaptersController < ApplicationController
-
+  before_filter :signed_in_user, only: [:create, :destroy]
   # GET /chapters/1
   # GET /chapters/1.json
   def show

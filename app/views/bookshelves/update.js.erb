@@ -1,0 +1,7 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		$(".edit_bookshelf").bind("ajax:success", function() { 
+	    $(this).closest('.bookshelfName').html("<%= escape_javascript render('bookshelves/new_bookshelf_form') %>");
+	  });
+	<% end %>
+});

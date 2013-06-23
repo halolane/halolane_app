@@ -1,4 +1,6 @@
 class BookshelvesController < ApplicationController
+  before_filter :signed_in_user, only: [:create, :edit, :update, :destroy]
+  before_filter :correct_user,   only: [:edit, :update]
   # GET /bookshelves
   # GET /bookshelves.json
   def index
@@ -35,6 +37,10 @@ class BookshelvesController < ApplicationController
   # GET /bookshelves/1/edit
   def edit
     @bookshelf = Bookshelf.find(params[:id])
+    respond_to do | format |
+      format.js 
+      format.html { redirect_to root_url } 
+    end
   end
 
   # POST /bookshelves
@@ -60,10 +66,10 @@ class BookshelvesController < ApplicationController
 
     respond_to do |format|
       if @bookshelf.update_attributes(params[:bookshelf])
-        format.html { redirect_to @bookshelf, notice: 'Bookshelf was successfully updated.' }
-        format.json { head :no_content }
+        format.js 
+        format.html { redirect_to root_url }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to root_url }
         format.json { render json: @bookshelf.errors, status: :unprocessable_entity }
       end
     end
@@ -80,4 +86,12 @@ class BookshelvesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private 
+
+    def correct_user
+      @bookshelf = current_user.bookshelves.find(params[:id])
+    rescue
+        redirect_to root_url
+    end
 end
