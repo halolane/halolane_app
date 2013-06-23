@@ -27,9 +27,15 @@ end
 @profiles = Profile.all
 
 @profiles.each do |p|
-	user = User.find(p.user_id)
+	user = User.find(Relationship.where(:profile_id => p.id, :owner => true).order(:id).first.user_id)
 	bookshelf = user.getbookshelves.first
 	p.update_attributes(:bookshelf_id => bookshelf.id)
+end
+
+@profiles = Profile.all
+
+@profiles.each do |p|
+	Relationship.where(:profile_id => p.id).order(:id).first.update_attributes(:owner => true)
 end
 
 @memories = Memory.all
@@ -37,6 +43,7 @@ end
 @memories.each do |m|
 	m.update_attributes(:has_photo => m.photo.file?)
 end
+
 
 @bookshelves = Bookshelf.all
 

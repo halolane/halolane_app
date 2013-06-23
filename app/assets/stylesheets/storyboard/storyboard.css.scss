@@ -98,6 +98,13 @@ table {
 	vertical-align: middle;
 }
 
+.icon-stack{
+	position:relative;
+	display:inline-block;
+	width: 0em !important;
+	height:2em;
+	line-height:2em;vertical-align:-35%
+}
 
 .topbarname {
 	padding-left: 45%;
