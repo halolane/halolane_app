@@ -17,10 +17,13 @@ class User < ActiveRecord::Base
   has_many :relationships, dependent: :destroy
   has_many :profiles, through: :relationships
   has_many :profiles_with_relationships, :through => :relationships, :source => :profile
-  has_many :bookshelves, dependent: :destroy
   has_many :authentications, dependent: :destroy
   has_many :likememories, dependent: :destroy
   has_many :useractionlogs, dependent: :destroy
+  has_many :bookshelfrelations, dependent: :destroy
+  has_many :bookshelves, through: :bookshelfrelations
+  has_many :bookshelves_with_bookshelfrelations, :through => :bookshelfrelations, :source => :bookshelf
+
 
   before_save { |user| user.email = email.downcase }
 
@@ -43,13 +46,17 @@ class User < ActiveRecord::Base
     @bookshelf = bookshelves.create!(name: bookshelfname, privacy: privacy)
   end
 
+  def contribute!(profile, description = "", admin = false, permission = "view", owner = false)
+    @relationship = relationships.create!(profile_id: profile.id, description: description, profile_admin: false, permission: permission, owner: owner)
+    @relationship.toggle!(:profile_admin) if admin 
+  end
+
   def getbookshelves
     Bookshelf.where("user_id = ?", id)
   end
 
-  def contribute!(profile, description = "", admin = false, permission = "view", owner = false)
-    @relationship = relationships.create!(profile_id: profile.id, description: description, profile_admin: false, permission: permission, owner: owner)
-    @relationship.toggle!(:profile_admin) if admin 
+  def createbookshelfrelation!(bookshelf, permission = "view", owner = false)
+    @bookshelfrelation = bookshelfrelations.create!(bookshelf_id: bookshelf.id, permission: permission, owner: owner)
   end
 
   def getinvitedbooks 
