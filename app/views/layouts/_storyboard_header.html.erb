@@ -35,17 +35,18 @@
               </a>
             </li>
           <% end %>
-          <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-            <li><div class="topbarname"><h4>
-              <%= @profile.first_name + " " + @profile.last_name + "\'s storybook" %>
-            </h4></div></li>
-          <% else %>
-            <li><div class="topbarname"><h4>
-              <%= link_to  @profile.first_name + " " + @profile.last_name + "\'s storybook", edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
-            </h4></div></li>
-          <% end %>
+         
         </ul>
         <ul class="nav pull-right">
+             <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+              <li><div class="topbarname"><h4>
+                <%= @profile.first_name + " " + @profile.last_name + "\'s storybook" %>
+              </h4></div></li>
+            <% else %>
+              <li><div class="topbarname"><h4>
+                <%= link_to  @profile.first_name + " " + @profile.last_name + "\'s storybook", edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
+              </h4></div></li>
+            <% end %>
             <li class="loggedinuser">
                 <div class="dropdown">
               
