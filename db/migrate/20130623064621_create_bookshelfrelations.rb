@@ -8,6 +8,7 @@ class CreateBookshelfrelations < ActiveRecord::Migration
 
       t.timestamps
     end
+    
     add_index :bookshelfrelations, :user_id
     add_index :bookshelfrelations, :bookshelf_id
     add_index :bookshelfrelations, [:user_id, :bookshelf_id], unique: true
