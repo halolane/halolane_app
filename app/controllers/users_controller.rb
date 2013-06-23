@@ -49,8 +49,10 @@ class UsersController < ApplicationController
       end
 
       sign_in @user
-      flash[:success] = "Welcome to the FamilyTales! Please check your email " + @user.email + " to validate your account."
+      flash[:success] = "Hi " + @user.first_name + "! Welcome to the FamilyTales! Please check your email " + @user.email + " to validate your account."
       if params[:invitation].nil?
+        new_bookshelf_name = @user.last_name + " Family Bookshelf"
+        @user.createbookshelf!(new_bookshelf_name)
         redirect_to root_url
       else
         relationship = params[:relationship][:description]

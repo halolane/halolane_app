@@ -6,7 +6,12 @@
             <li class="storyboardlogo">
               <%= link_to image_tag("/images/small-logo.png"), root_path, id: "logo" %> 
             </li>
-             
+            <li class="follow_twitter">
+              <a href="http://twitter.com/myFamilyTales" title="Follow us on Twitter" target="_blank"><i class="icon-twitter"></i></a>
+            </li>
+            <li class="follow_facebook">
+              <a href="http://www.facebook.com/myFamilyTales" title="Become a fan on Facebook" target="_blank"><i class="icon-facebook"></i></a>
+            </li>
         </ul>
        
        <% if signed_in? %>
@@ -31,6 +36,19 @@
               </div>
           </li>
         </ul>
+        <% else %>
+          <ul class="nav pull-right">
+            <li class="headertitle" style="margin-right: 300px;"><h4>
+              <%= yield(:title) %>
+            </h4></li>
+            
+            <li class="signup">
+              <a href="/signup" class="">Signup</a>
+            </li>
+            <li class="login">
+              <a href="/login" class="">Login</a>
+            </li>
+          </ul>
         <% end %>
       </nav>
     </div>

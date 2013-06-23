@@ -251,7 +251,13 @@ margin-top: -8px !important;
 margin-left: 10px;
 width: 150px;
 height: 38px;
+display: inline-block;
 }
+
+.sm {
+	display: inline;
+}
+
 
 li.headertitle {
 
@@ -498,6 +504,65 @@ float: right;
 	text-shadow:0 -1px 0 rgba(0,0,0,0.6);
 	cursor:pointer;margin:0em;font-size:16px;margin-right:0%
 }
+
+
+.login, .signup {
+	float: right;
+	padding: 9px;
+	width: 50px;
+	text-align: center;
+	h4 {
+		font-size: 18px;
+		line-height: 20px;
+	}
+	a, a:hover {
+		text-decoration: none !important;
+		background-color: transparent !important;
+		color: #696969;
+	}
+}
+.follow_facebook, .follow_twitter { 
+	display: inline-block;
+	text-decoration: none;
+
+ 	font-size: 25px;
+ 	width: 30px;
+	text-align: center;
+	padding-top: 9px;
+	padding-bottom: 6px;
+ 	a, a:hover {
+ 		text-decoration: none !important;
+		background-color: transparent !important;
+ 	}
+}
+
+.follow_facebook {
+	margin-left: -3px;
+}
+
+.icon-facebook, .icon-twitter {
+	 color: #5f8f05;
+}
+
+.login, .follow_twitter {
+	border-left: 1px solid #cdcdcd;
+}
+
+.signup, .follow_facebook{
+	border-left: 1px solid #cdcdcd;
+	border-right: 1px solid #cdcdcd;
+}
+
+.login:hover, .signup:hover, .follow_facebook:hover, .follow_twitter:hover   {
+	background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, white), color-stop(100%, #f4f4f4));
+	background: -webkit-linear-gradient(white, #f4f4f4);
+	background: -moz-linear-gradient(white, #f4f4f4);
+	background: -o-linear-gradient(white, #f4f4f4);
+	background: linear-gradient(white, #f4f4f4);
+	background-color: #fff;
+	color: #333333;
+}
+
 
 .green_button:hover {
 	background-image:-webkit-linear-gradient(#69a100, #95c53d, #5f8f05);
