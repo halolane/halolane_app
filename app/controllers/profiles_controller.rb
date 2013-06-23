@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_filter :signed_in_user, only: [:create, :destroy]
+  before_filter :correct_user, only: [:edit, :update, :show]
   before_filter :set_page_name
   
   def new
@@ -134,7 +135,6 @@ class ProfilesController < ApplicationController
     end
 
     def show_error
-      
       redirect_to root_url
     end
 
@@ -149,6 +149,24 @@ class ProfilesController < ApplicationController
         @invitation = @profile.invitations.build
       end
       @memoryfeed_items = @profile.memoryfeed.paginate(page: params[:page])
+    end
+
+    def correct_user
+      if ! params[:url].blank?
+        @profile = Profile.find_by_url(params[:url])
+        if @profile.nil?
+          show_error
+          return
+        end
+      else
+        begin
+          @profile = Profile.find(params[:id])
+        rescue
+          show_error
+          return
+        end
+      end
+      redirect_to(root_path) unless current_user.contributing?(@profile )
     end
 
     def createnewuser
