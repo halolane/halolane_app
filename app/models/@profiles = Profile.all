@@ -23,7 +23,6 @@ end
 	r.update_attributes(:owner => r.profile_admin)
 end
 
-
 @profiles = Profile.all
 
 @profiles.each do |p|

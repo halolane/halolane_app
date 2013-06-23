@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130622230611) do
+ActiveRecord::Schema.define(:version => 20130623064621) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -20,6 +20,19 @@ ActiveRecord::Schema.define(:version => 20130622230611) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "bookshelfrelations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "bookshelf_id"
+    t.string   "permission"
+    t.boolean  "owner"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "bookshelfrelations", ["bookshelf_id"], :name => "index_bookshelfrelations_on_bookshelf_id"
+  add_index "bookshelfrelations", ["user_id", "bookshelf_id"], :name => "index_bookshelfrelations_on_user_id_and_bookshelf_id", :unique => true
+  add_index "bookshelfrelations", ["user_id"], :name => "index_bookshelfrelations_on_user_id"
 
   create_table "bookshelves", :force => true do |t|
     t.string   "name"
