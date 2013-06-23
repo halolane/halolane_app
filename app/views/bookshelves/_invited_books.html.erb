@@ -1,0 +1,24 @@
+<div class="ajax UserInfoBar InfoBarBase Module centeredWithinWrapper">
+  <ul class="userStats">
+    <li>
+      <a href="#" class="active">
+        <%= @invited_books.count %> storybooks
+      </a>
+    </li>
+  </ul>
+  <div class="bookshelfName">
+    <a>
+    Storybooks You're Invited To
+    </a>
+  </div>
+</div>
+
+<div class="UserProfileContent Module">
+  <div class="UserBoards ajax ownProfile Module" style="display: block;"><div class="moduleMask"></div>
+    <div class="ajax Grid Module">
+      <div class="padItems Module centeredWithinWrapper fixedHeightLayout ajax GridItems ui-sortable">
+        <%= render partial: 'bookshelves/bookshelf_list_item', collection: @invited_books, :as => :book %>
+      </div>
+    </div>
+  </div>
+</div>

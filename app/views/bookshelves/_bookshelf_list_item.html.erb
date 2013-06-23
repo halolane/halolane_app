@@ -1,0 +1,54 @@
+<div class="item  gridSortable" style="z-index: 0;">
+  <div class="ajax noContext Board Module boardCoverImage" data-sort-id="429319845666926550">
+    <%= link_to root_url + book.url, class: "boardLinkWrapper" do %>
+      <h3 class="boardName">
+        <div class="icons"></div>
+        <%= book.first_name + " " + book.last_name  %>
+      </h3>
+
+      <div class="boardCoverWrapper">
+        <span class="hoverMask"></span>
+        <% if not(book.photofeed[0].blank?) and book.photofeed[0].photo.file? %>
+        <%= image_tag book.photofeed[0].photo.url(:cover), class: "boardCover" %>
+        <% end %>
+        </span>
+        <span class="boardPinCount">
+          <%= book.storycount %> stories
+        </span>
+      </div>
+      <ul class="boardThumbs">
+        <li>
+          <span class="hoverMask">
+            <% if not(book.photofeed[1].blank?) and book.photofeed[1].photo.file? %>
+            <%= image_tag book.photofeed[1].photo.url(:thumb), class: "thumb" %>
+            <% end %>
+          </span>
+        </li>
+        <li>
+            <span class="hoverMask">
+              <% if not(book.photofeed[2].blank?) and book.photofeed[2].photo.file? %>
+              <%= image_tag book.photofeed[2].photo.url(:thumb), class: "thumb" %>
+              <% end %>
+            </span>
+        </li>
+        <li>
+            <span class="hoverMask">
+              <% if not(book.photofeed[3].blank?) and book.photofeed[3].photo.file? %>
+              <%= image_tag book.photofeed[3].photo.url(:thumb), class: "thumb" %>
+              <% end %>
+            </span>
+        </li>
+        <li>
+            <span class="hoverMask">
+              <% if not(book.photofeed[4].blank?) and book.photofeed[4].photo.file? %>
+              <%= image_tag book.photofeed[4].photo.url(:thumb), class: "thumb" %>
+              <% end %>
+            </span>
+        </li>
+      </ul>
+      <button type="button" class="rounded ShowModalButton Button hasText Module ajax btn">
+        <span class="buttonText">Open book</span>
+      </button>
+    <% end %>
+  </div>
+</div>

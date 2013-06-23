@@ -1,0 +1,92 @@
+<div class="ajax UserInfoBar InfoBarBase Module centeredWithinWrapper">
+  <ul class="userStats">
+    <li>
+      <a href="#">
+        <%= bookshelf.getstorybooks.count %> storybooks
+      </a>
+    </li>
+    <!-- <li>
+      <a href="/ramlijohn/pins/" class="">
+        20 stories
+      </a>
+    </li>
+    <li>
+      <a href="/ramlijohn/likes/">
+        19 likes
+      </a>
+    </li> -->
+  </ul>
+  <div class="bookshelfName">
+        <a href="#">
+          <%= bookshelf.name %>
+        </a>
+  </div>
+  <!-- <ul class="viewerContributorEditorLinks">
+    <li>
+        <a href="/ramlijohn/followers/">
+          18 viewers
+        </a>
+    </li>
+    <li>
+        <a href="/ramlijohn/following/">
+          230 Contributors
+        </a>
+    </li>
+    <li>
+        <a href="/ramlijohn/following/">
+          40 editors
+        </a>
+    </li>
+  </ul> -->
+</div>
+
+<div class="UserProfileContent Module">
+  <div class="UserBoards ajax ownProfile Module" style="display: block;"><div class="moduleMask"></div>
+    <div class="ajax Grid Module">
+      <div class="padItems Module centeredWithinWrapper fixedHeightLayout ajax GridItems ui-sortable">
+        <div class="item ">
+          <a href="#newstorybook<%= bookshelf.id %>" class="newstorybooklink BoardCreateRep Module" rel="tooltip" data-placement="bottom" title="Create a new storybook" data-toggle="modal" data-keyboard="true">
+            <i class="icon-plus-sign icon-4"></i><span>Create a storybook</span>
+          </a>
+        </div>
+        <% @books = bookshelf.getstorybooks %>
+        <%= render partial: 'bookshelves/bookshelf_list_item', collection: @books, :as => :book %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div id="newstorybook<%= bookshelf.id %>"  class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="addcontributorLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="newstorybookLabel">Create a new storybook</h3>
+  </div>
+  <div class="modal-body">
+      
+    <h4>I want to start a storybook about my</h4>
+    <p>
+      <%= form_for(@profile) do |p| %>
+      <input id="profile_bookshelf_id" name="profile[bookshelf_id]"  value="<%= bookshelf.id %>" type="hidden">
+      <%= render 'shared/error_messages', object: p.object %>
+      <p><%= select "relationship","description", 
+                  Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%></p>
+      <p>
+        <%= p.text_field :first_name, :placeholder => "Their first name", :required => true %>
+      </p>
+      <p>
+        <%= p.text_field :last_name, :placeholder => "Their last name", :required => true %>
+      </p>
+    <p>
+      <label for="profile_birthday">Their birthday</label><br>
+      <%= p.text_field :birthday, :type => "date", :required => true, :value => Date.today %>
+    </p>
+
+        
+    </p>
+  </div>
+  <div class="modal-footer">
+    <%= p.submit "Start your storybook", class: "green_button startstorybook_button" %>
+    <% end %>
+  </div>
+</div>

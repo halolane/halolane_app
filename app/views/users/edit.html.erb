@@ -1,22 +1,13 @@
 <% provide(:title, "Edit user") %> 
 
-<div class="tabbable tabs-left">
-  <ul class="nav nav-tabs span2">
-    <li><%= render 'shared/user_info' %></li><br>
-    <li><%= link_to "Storybooks", root_url %></li>
-    <li class="active"><a href="#tab2" data-toggle="tab">Settings</a></li>
-    <!-- <li><a href="#tab3" data-toggle="tab">Notification</a></li> -->
-  </ul>
-    
-  <div class="tab-content span9" id="front-tab-content">
-    <div class="tab-pane active" id="tab2">
+<div class="row">
+  <div class="span6 offset3">
       <% if current_user.verified == false %>
         <h4>
           Please update your setting to save your storybooks.
         </h4>
       <% end %>
-      <%= render 'shared/user_edit_form' %>
+      <%= render 'shared/user_edit_form' %> 
     </div><!-- .tab-pane tab2 -->
   </div><!-- .tabcontent -->
-</div><!-- .tabbable -->
-<%= render 'shared/new_storybook_modal' %>
+

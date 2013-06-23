@@ -1,5 +1,4 @@
-<% provide(:title, "Edit the storybook of" + @profile.first_name + " " + @profile.last_name) %> 
-<h1>Update the storybook of <%= @profile.first_name + " " + @profile.last_name %> </h1>
+<% provide(:title, "Edit your storybook") %> 
 
 
 <div class="row">
@@ -20,11 +19,13 @@
 
 		  <p>
 		  	<%= f.label :birthday %>
-		  	<%= f.text_field :birthday %>
+		  	<%= f.text_field :birthday, :type => "date" %>
       </p>
 
 
-		  <%= f.submit "Save changes", class: "green_button" %>
+		  <%= f.submit "Save changes", class: "green_button" %> 
+		  or 
+		  <h4 style="display:inline-block;"><%= link_to "Cancel", root_url + @profile.url %></h4>
 		<% end %>
 	</div>
 </div>

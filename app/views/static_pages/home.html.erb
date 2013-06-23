@@ -1,9 +1,11 @@
 <% if signed_in? %>
+<% provide(:title, 'My Library') %>
 	<%= render 'shared/user_frontpage' %>
 	<%= render 'coachmarks' %>
 <%= render 'shared/new_storybook_modal' %>
 
 <% else %>
+<% provide(:title, 'Home') %>
 	<%= render 'landing_page' %>
 	<!-- <div class="container">
 		

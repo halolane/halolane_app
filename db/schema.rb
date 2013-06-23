@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130620005344) do
+ActiveRecord::Schema.define(:version => 20130622230611) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20130620005344) do
     t.datetime "photo_updated_at"
     t.date     "date"
     t.integer  "chapter_id"
+    t.boolean  "has_photo"
   end
 
   add_index "memories", ["profile_id", "created_at"], :name => "index_memories_on_profile_id_and_created_at"
@@ -97,10 +98,11 @@ ActiveRecord::Schema.define(:version => 20130620005344) do
     t.date     "birthday"
     t.date     "deathday"
     t.integer  "privacy"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "slug"
     t.string   "url"
+    t.integer  "bookshelf_id"
   end
 
   add_index "profiles", ["slug"], :name => "index_profiles_on_slug", :unique => true
@@ -120,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20130620005344) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "permission"
+    t.boolean  "owner"
   end
 
   add_index "relationships", ["profile_id"], :name => "index_relationships_on_profile_id"

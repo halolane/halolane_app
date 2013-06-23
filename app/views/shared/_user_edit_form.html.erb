@@ -17,8 +17,9 @@
 
   <%= f.label :password_confirmation, "Confirm Password" %>
   <%= f.password_field :password_confirmation, :placeholder=>"Password" %>
-  <br>
-  <%= f.submit "Save changes", class: "green_button" %>
+  <br><br>
+  <%= f.submit "Save changes", class: "green_button" %> or 
+      <h4 style="display:inline-block;"><%= link_to "Cancel", root_url  %></h4>
 <% end %>
 <!--
 <%= gravatar_for @user %>

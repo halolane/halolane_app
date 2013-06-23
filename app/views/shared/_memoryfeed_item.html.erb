@@ -25,7 +25,7 @@
 		<% if memoryfeed_item.photo.file? %>
 		
 			<span class="box-image">
-				<%= image_tag memoryfeed_item.photo, class: "storyimage" %>
+				<%= image_tag memoryfeed_item.photo.url(:storybook), class: "storyimage" %>
 				</br>
 			</span>
 		<% end %>

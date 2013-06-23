@@ -1,0 +1,46 @@
+@profiles = Profile.all
+
+@profiles.each do |p|
+
+
+@users = User.all
+
+@users.each do |u|
+	u.createbookshelf!(u.first_name + "\'s Bookshelf")
+end
+
+
+@users = User.all 
+
+@users.each do |u| 
+	@bookshelf = u.getbookshelves.first
+  @profiles = @user.profiles_with_relationships
+
+
+@relationships = Relationship.all
+
+@relationships.each do |r|
+	r.update_attributes(:owner => r.profile_admin)
+end
+
+
+@profiles = Profile.all
+
+@profiles.each do |p|
+	user = User.find(p.user_id)
+	bookshelf = user.getbookshelves.first
+	p.update_attributes(:bookshelf_id => bookshelf.id)
+end
+
+@memories = Memory.all
+
+@memories.each do |m|
+	m.update_attributes(:has_photo => m.photo.file?)
+end
+
+@bookshelves = Bookshelf.all
+
+@bookshelves.each do |b|
+	newname = User.find(b.user_id).last_name + " Family Bookshelf"
+	b.update_attributes(:name => newname)
+end

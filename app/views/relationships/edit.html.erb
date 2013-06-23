@@ -1,17 +1,14 @@
 <% provide(:title, 'Edit relationship') %>
 <div class="row">
-  <div class="span6 offset3">
-
-	  <h3>Edit your relationship with <%= @profile.first_name %></h3>
-
-	  
+  <div class="span6 offset3">	  
 			<%= form_for(@relationship) do |f| %>
 		  <%= render 'shared/error_messages', object: f.object %>
-		  <h5> <%= @profile.first_name %> is my <br><%= select "relationship","description", 
+		  <h4> <%= @profile.first_name %> is my <br><br><%= select "relationship","description", 
 				  				Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
-		  <%= render 'shared/error_messages', object: f.object %></h5>
-		  
-			<%= f.submit "Update your relationship", class: "green_button "%>
+		  <%= render 'shared/error_messages', object: f.object %></h4>
+		  <br>
+			<%= f.submit "Update your relationship", class: "green_button "%> or 
+		  <h4 style="display:inline-block;"><%= link_to "Cancel", root_url + Profile.find(@relationship.profile_id).url %></h4>
 
 		</div>
 

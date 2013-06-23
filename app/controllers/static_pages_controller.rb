@@ -19,10 +19,11 @@ class StaticPagesController < ApplicationController
       @user = current_user
       @profile = Profile.new
       @memories = @user.memories.paginate(page: params[:page])
-      @profiles = @user.profiles_with_relationships.paginate(page: params[:page])
+      @invited_books = @user.getinvitedbooks
+      @bookshelves = @user.getbookshelves.paginate(page: params[:page])
       @memory = current_user.memories.build 
       current_user.actionlog!("", @page_name, "Logged-in user views family tree home" )
-      render :layout => "application"
+      render :layout => "bookshelf_layout"
     else
       @user = User.new
       render :layout => "home_layout"
