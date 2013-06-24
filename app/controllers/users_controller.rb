@@ -28,7 +28,11 @@ class UsersController < ApplicationController
       password_confirmation: params[:user][:password] )
     if !params[:invitation].nil? && !params[:invitation][:token].nil?
       @invitation = Invitation.find_by_token(params[:invitation][:token])
-      @profile = Profile.find_by_id(@invitation.profile_id)
+      if @invitation.invite_type == "bookshelf"
+        @bookshelf = Bookshelf.find_by_id(@invitation.bookshelf_id)
+      else
+        @profile = Profile.find_by_id(@invitation.profile_id)
+      end
       @user.invited_by = @invitation.sender_id
     end
 
@@ -38,30 +42,37 @@ class UsersController < ApplicationController
       flash[:error] = "It looks like you already have an account on FamilyTales. Please enter your email and password here to login"
       redirect_to login_url
     elsif @user.save 
-      
-      begin
-        Mailer.validate_account(@user, root_url + "login/" + @user.token).deliver
-      rescue
-        flash[:error] = "We had issues sending an email to " + @user.email + " Please provide a valid email."
-        @user.destroy
-        redirect_to signup_url
-        return
-      end
 
       sign_in @user
-      flash[:success] = "Hi " + @user.first_name + "! Welcome to the FamilyTales! Please check your email " + @user.email + " to validate your account."
       if params[:invitation].nil?
+       
         new_bookshelf_name = @user.last_name + " Family Bookshelf"
-        @user.createbookshelf!(new_bookshelf_name)
+        new_bookshelf = current_user.createbookshelf!(new_bookshelf_name)        
+        flash[:success] = "Hi " + @user.first_name + "! Welcome to the FamilyTales! Please check your email " + @user.email + " to validate your account."
+        begin
+          Mailer.validate_account(@user, root_url + "login/" + @user.token).deliver
+        rescue
+          flash[:error] = "We had issues sending an email to " + @user.email + " Please provide a valid email."
+        end
+        
         redirect_to root_url
       else
-        relationship = params[:relationship][:description]
-        current_user.contribute!(@profile, relationship, @invitation.permission == "edit", @invitation.permission)
-        if @invitation.active
-          @invitation.toggle!(:active)
-          current_user.actionlog!(@profile.id, @page_name, "New user accepts invitation to storybook" )
+        if @invitation.invite_type == "bookshelf" 
+
+          new_bookshelf_name = @user.first_name + "\'s Bookshelf"
+          current_user.createbookshelf!(new_bookshelf_name)
+          current_user.createbookshelfrelation!(@bookshelf, @invitation.permission, false)
+          Mailer.validate_account(@user, root_url + "login/" + @user.token).deliver
+          redirect_to root_url
+        else
+          relationship = params[:relationship][:description]
+          current_user.contribute!(@profile, relationship, @invitation.permission == "edit", @invitation.permission)
+          if @invitation.active
+            @invitation.toggle!(:active)
+            current_user.actionlog!(@profile.id, @page_name, "New user accepts invitation to storybook" )
+          end
+          redirect_to root_url + @profile.url
         end
-        redirect_to root_url + @profile.url
       end
     else
       if params[:invitation].nil?

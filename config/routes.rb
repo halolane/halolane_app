@@ -53,6 +53,7 @@ HalolaneApp::Application.routes.draw do
   match '/confirmationsent', to: 'users#resend_validation'
   match '/editstory', to: 'memories#edit'
   match '/changerelationship', to: 'relationships#edit'
+  match '/bookshelf/:invitation_token', to: 'invitations#show'
 
   #This must be last of the match statements
   match '/:url', to: 'profiles#show'

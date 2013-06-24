@@ -15,13 +15,13 @@ class User < ActiveRecord::Base
   has_many :invitations, dependent: :destroy, :class_name => 'Invitation', :foreign_key => 'sender_id'
   has_many :memories, dependent: :destroy
   has_many :relationships, dependent: :destroy
-  has_many :profiles, through: :relationships
+  has_many :profiles, through: :relationships, dependent: :destroy
   has_many :profiles_with_relationships, :through => :relationships, :source => :profile
   has_many :authentications, dependent: :destroy
   has_many :likememories, dependent: :destroy
   has_many :useractionlogs, dependent: :destroy
   has_many :bookshelfrelations, dependent: :destroy
-  has_many :bookshelves, through: :bookshelfrelations
+  has_many :bookshelves, through: :bookshelfrelations, dependent: :destroy
   has_many :bookshelves_with_bookshelfrelations, :through => :bookshelfrelations, :source => :bookshelf
 
 
@@ -44,6 +44,8 @@ class User < ActiveRecord::Base
 
   def createbookshelf! (bookshelfname = "New Bookself", privacy = 2)
     @bookshelf = bookshelves.create!(name: bookshelfname, privacy: privacy)
+    @relations = Bookshelfrelation.where(:bookshelf_id => @bookshelf.id, :user_id => id).first
+    @relations.update_attributes( :permission => "edit", :owner => true)
   end
 
   def contribute!(profile, description = "", admin = false, permission = "view", owner = false)
@@ -57,6 +59,22 @@ class User < ActiveRecord::Base
 
   def createbookshelfrelation!(bookshelf, permission = "view", owner = false)
     @bookshelfrelation = bookshelfrelations.create!(bookshelf_id: bookshelf.id, permission: permission, owner: owner)
+  end
+
+  def bookshelfViewer?(bookshelf_id)
+    bookshelfrelations.find_by_bookshelf_id(bookshelf_id).permission == "view"
+  end
+
+  def bookshelfContributor?(bookshelf_id)
+    bookshelfrelations.find_by_bookshelf_id(bookshelf_id).permission == "contribute"
+  end
+
+  def bookshelfEditor?(bookshelf_id)
+    bookshelfrelations.find_by_bookshelf_id(bookshelf_id).permission == "edit"
+  end
+
+  def bookshelfContributing?(bookshelf_id)
+    bookshelfrelations.exists?(bookshelf_id: bookshelf_id)
   end
 
   def getinvitedbooks 
@@ -101,20 +119,31 @@ class User < ActiveRecord::Base
     relationships.find_by_profile_id(profile.id).permission
   end
 
-  def isEditor?(profile_id = "")
-    relationships.find_by_profile_id(profile_id).permission == "edit"
+  def isEditor?(profile)
+    
+    if bookshelfrelations.exists?(bookshelf_id: profile.bookshelf_id)
+      bookshelfrelations.find_by_bookshelf_id(profile.bookshelf_id).permission == "edit"
+    else
+      relationships.find_by_profile_id(profile.id).permission == "edit"
+    end
   end
 
   def contributing?(profile)
     relationships.exists?(profile_id: profile.id)
   end
 
-  def canContribute?(profile_id = "")
-    if relationships.exists?(profile_id: profile_id)
+  def canContribute?(profile)
+    if bookshelfrelations.exists?(bookshelf_id: profile.bookshelf_id)
+      bookshelfrelations.find_by_bookshelf_id(profile.bookshelf_id).permission == "edit" or bookshelfrelations.find_by_bookshelf_id(profile.bookshelf_id).permission == "contribute"
+    elsif relationships.exists?(profile_id: profile.id)
       relationships.find_by_profile_id(profile_id).permission == "edit" or relationships.find_by_profile_id(profile_id).permission == "contribute"
     else
       false
     end
+  end
+
+  def canView?(profile)
+    bookshelfrelations.exists?(bookshelf_id: profile.bookshelf_id) or relationships.exists?(profile_id: profile.id)
   end
 
   def uncontribute!(profile)

@@ -14,7 +14,7 @@
           <% end %>
           <% if signed_in? and current_user.email != ('familytalesuser2@gmail.com') and @profile.url != "alexdunphy" %>
 
-          <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
+          <% if signed_in? && current_user.canContribute?(@profile) %>
             <li class="newmemorybtn">
               <div class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-plus"></i><span class="addnewstorytext"></span></a>
@@ -25,7 +25,7 @@
               <!--<a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal" rel="tooltip" title="Add a new story">-->     
             </li>
           <% end %>
-           <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
+           <% if signed_in? && current_user.canContribute?(@profile) %>
             <li class="iconaddcontributor _showAddCollaborator">
               <a href="#addcontributor" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
                 <span class="icon-stack">
@@ -44,7 +44,11 @@
               </h4></div></li>
             <% else %>
               <li><div class="topbarname"><h4>
-                <%= link_to  @profile.first_name + " " + @profile.last_name + "\'s storybook", edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
+                <% if signed_in? && current_user.isEditor?(@profile) %>
+                  <%= link_to  @profile.first_name + " " + @profile.last_name + "\'s storybook", edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
+                <% else %>
+                  <%= @profile.first_name + " " + @profile.last_name + "\'s storybook" %>
+                <% end %>
               </h4></div></li>
             <% end %>
             <li class="loggedinuser">
@@ -54,7 +58,11 @@
                   <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
                     <li><%= link_to "Edit your user settings", edit_user_path(current_user) %></li>
                     <li class="divider"></li>
+
+                    <% if signed_in? && current_user.isEditor?(@profile) %>
                     <li><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
+                    <% end %>
+                    
                     <li><%= link_to "View your other storybooks", root_path %></li>
                     <% if has_relationship?(@profile.id, current_user.id) %>
                       <li><%= link_to "Change your relationship to " + @profile.first_name, edit_relationship_path(@relationship) %></li>

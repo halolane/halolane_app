@@ -21,6 +21,10 @@ module SessionsHelper
     Relationship.exists?(:profile_id => profile_id, :user_id => user_id)
   end
 
+  def has_bookshelfrelation?(bookshelf_id, user_id)
+    Bookshelfrelation.exists?(:bookshelf_id => bookshelf_id, :user_id => user_id)
+  end
+
   def is_invited?(token)
     Invitation.exists?(:token => token)
   end
@@ -40,7 +44,7 @@ module SessionsHelper
   def signed_in_user
     unless signed_in?
       store_location
-      redirect_to signin_url, notice: "Please sign in"
+      redirect_to signin_url, notice: "You can only view that page if you're signed in."
     end
   end
 

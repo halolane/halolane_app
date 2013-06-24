@@ -50,3 +50,16 @@ end
 	newname = User.find(b.user_id).last_name + " Family Bookshelf"
 	b.update_attributes(:name => newname)
 end
+
+u = User.find_by_email('ramli@ramlijohn.com')
+b = Bookshelf.find(2)
+u.createbookshelfrelation!(b, 'edit',true)
+
+
+@bookshelves = Bookshelf.all
+
+@bookshelves.each do |b|
+	u = User.find(b.user_id)
+	u.createbookshelfrelation!(b, 'edit',true)
+end
+

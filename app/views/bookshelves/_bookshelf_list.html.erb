@@ -1,52 +1,59 @@
-<div class="ajax UserInfoBar InfoBarBase Module centeredWithinWrapper">
+<div class="ajax UserInfoBar InfoBarBase Module centeredWithinWrapper" id="bookshelf<%= bookshelf.id %>">
   <ul class="userStats">
+    <% if current_user.bookshelfContributor?(bookshelf.id) or current_user.bookshelfEditor?(bookshelf.id) %>
+    <li style="width:50px;">
+      <a href="#addcontributor<%= bookshelf.id %>" class="newstorybooklink Module" rel="tooltip" data-placement="bottom" title="Invite family and friends to this bookshelf" data-toggle="modal" data-keyboard="true">
+      <span class="icon-stack">
+        <i class="icon-user icon-stack-base"></i>
+        <i class="icon-plus plus-user"></i>
+      </span>
+      </a>
+    </li>
+    <% end %>
+    <% if (bookshelf.bookshelfrelations.where(:permission => "view").count) > 0 %>
+    <li>
+      <a href="#">
+        <%= bookshelf.bookshelfrelations.where(:permission => "view").count %> viewers
+      </a>
+    </li>
+    <% end %>
+    <% if (bookshelf.bookshelfrelations.where(:permission => "contribute").count) > 0 %>
+    <li>
+      <a href="#">
+        <%= bookshelf.bookshelfrelations.where(:permission => "contribute").count %> Contributors
+      </a>
+    </li>
+    <% end %>
+    <li>
+      <a href="#">
+        <%= bookshelf.bookshelfrelations.where(:permission => "edit").count %> Editors
+      </a>
+    </li>
+  </ul>
+  <div class="bookshelfName">
+    <%= link_to bookshelf.name, edit_bookshelf_path(bookshelf), class: "edit_bookshelf", remote: true %>
+  </div>
+  <ul class="viewerContributorEditorLinks">
     <li>
       <a href="#">
         <%= bookshelf.getstorybooks.count %> storybooks
       </a>
     </li>
-    <!-- <li>
-      <a href="/ramlijohn/pins/" class="">
-        20 stories
-      </a>
-    </li>
-    <li>
-      <a href="/ramlijohn/likes/">
-        19 likes
-      </a>
-    </li> -->
   </ul>
-  <div class="bookshelfName">
-    <%= link_to bookshelf.name, edit_bookshelf_path(bookshelf), class: "edit_bookshelf", remote: true %>
-  </div>
-  <!-- <ul class="viewerContributorEditorLinks">
-    <li>
-        <a href="/ramlijohn/followers/">
-          18 viewers
-        </a>
-    </li>
-    <li>
-        <a href="/ramlijohn/following/">
-          230 Contributors
-        </a>
-    </li>
-    <li>
-        <a href="/ramlijohn/following/">
-          40 editors
-        </a>
-    </li>
-  </ul> -->
 </div>
 
 <div class="UserProfileContent Module">
   <div class="UserBoards ajax ownProfile Module" style="display: block;"><div class="moduleMask"></div>
     <div class="ajax Grid Module">
       <div class="padItems Module centeredWithinWrapper fixedHeightLayout ajax GridItems ui-sortable">
+        <% if current_user.bookshelfContributor?(bookshelf.id) or current_user.bookshelfEditor?(bookshelf.id) %>
         <div class="item ">
           <a href="#newstorybook<%= bookshelf.id %>" class="newstorybooklink BoardCreateRep Module" rel="tooltip" data-placement="bottom" title="Create a new storybook" data-toggle="modal" data-keyboard="true">
             <i class="icon-plus-sign icon-4"></i><span>Create a storybook</span>
           </a>
         </div>
+        <% end %>
+        
         <% @books = bookshelf.getstorybooks %>
         <%= render partial: 'bookshelves/bookshelf_list_item', collection: @books, :as => :book %>
       </div>
@@ -54,7 +61,7 @@
   </div>
 </div>
 
-<!-- Modal -->
+<!-- New Storybook Modal -->
 <div id="newstorybook<%= bookshelf.id %>"  class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="addcontributorLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
@@ -88,3 +95,43 @@
     <% end %>
   </div>
 </div>
+
+<!-- Modal -->
+<div id="addcontributor<%= bookshelf.id %>" class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="addcontributorLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="addcontributorLabel">Invite your family and friends</h3>
+  </div>
+  <div class="modal-body" style="text-align:left">
+    <%= form_for @invitation do |f| %>
+
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <input type="hidden" id="invitation_bookshelf_id" name="invitation[bookshelf_id]" value="<%= bookshelf.id %>" />
+
+      <input type="hidden" id="invitation_invite_type" name="invitation[invite_type]" value="bookshelf" />
+
+        <h5>Friend's email address</h5><br>
+        <%= f.text_field :recipient_email %>
+
+
+        <textarea rows="8" id="invitation_message" name="invitation[message]"  cols="30"><%= (File.open("public/invitation/bookshelf_invitation_template.txt", "rb") {|io| io.read}).gsub('full_bookshelf_name', bookshelf.name) %>
+        </textarea>
+
+      <h5>Permissions:</h5>
+      <div class="center" style="font-size:1.2em">
+      <input type="radio" name="permission" value="view">  Viewer <i class="icon-question-sign invite-permission-help" data-toggle="tooltip" rel="tooltip" title="Viewer can only view this storybooks in this bookshelf."></i> 
+         &nbsp;  &nbsp;  &nbsp;   &nbsp; 
+      <input type="radio" name="permission" value="contribute" checked>  Contributor <i class="icon-question-sign invite-permission-help" rel="tooltip" data-placement="bottom" title="Contributor can view and add new storybooks and stories"></i>
+       &nbsp;  &nbsp;  &nbsp;   &nbsp; 
+      <input type="radio" name="permission" value="edit">  Editor <i class="icon-question-sign invite-permission-help" rel="tooltip" title="Editor can edit this bookshelf. They can help you customize the storybooks in this bookshelf, invite other friends and family, and delete stories that are not appropriate."></i>
+      </div>
+      
+  </div>
+  <div class="modal-footer" style="text-align:left">
+    <%= f.submit "Send", class: "green_button" %>
+    <br>
+  </div>
+  <% end %>
+</div>
+

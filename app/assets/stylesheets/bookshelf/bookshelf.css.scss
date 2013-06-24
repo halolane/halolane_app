@@ -33,7 +33,7 @@
 	font-size: 2.6em;
 	}
 }
-h1{font-size:3.5em;margin-bottom:2em}h2{font-size:3em}h3{font-size:2.6em}h4{font-size:1.5em}
+h1{font-size:3.5em;margin-bottom:2em}h2{font-size:3em}h3{font-size:2.6em}h4{font-size:1.5em}h5{font-size:1.3em}
 
 button,input,select,textarea{font-family:inherit;font-size:100%;margin:0;vertical-align:baseline;*vertical-align:middle}
 button,input{line-height:normal}
@@ -152,6 +152,7 @@ width: 1250px;
 	color:#555;font-size:16px;font-weight:normal;padding:0 26px 0 13px
 }
 
+
 .mainContainer {
 	padding-top: 60px;
 }
@@ -258,13 +259,21 @@ display: inline-block;
 	display: inline;
 }
 
+.userinfonav {
+	float: right;
+	position: relative;
+	top: -18px;
+}
 
-li.headertitle {
 
-	float: left;
+.headertitle {
+
+	position: relative;
+	display: inline;
 	text-align: center;
-	margin-right: 265px;
-	margin-top: 10px;
+	top: 10px;
+	right: 5px;
+	text-align: center;
 	h4 { margin: 0 0;}
 	h4 { 
 		font-size: 18px; 
@@ -281,6 +290,7 @@ li.headertitle {
 		background-color: transparent;
 	}
 }
+
 .nav.btn-topbar-left {
 	display: inline-block;
 }
@@ -506,6 +516,25 @@ float: right;
 }
 
 
+.icon-question-sign {	
+	opacity: 0.6;
+    font-size: 27px;
+    top: 3px;
+	padding-right: 10px;
+	position: relative;
+	text-decoration: none;
+}
+.invite-permission-help  {	
+	opacity: 0.8 !important;
+  text-shadow: 1px 1px 1px #ccc !important;
+  font-size: 20px !important;
+  top: 3px !important;
+	padding-right: 10px !important;
+	position: relative !important;
+	text-decoration: none !important;
+
+}
+
 .login, .signup {
 	float: right;
 	padding: 9px;
@@ -536,24 +565,48 @@ float: right;
  	}
 }
 
+.icon-stack{
+	position:relative;
+	display:inline-block;
+	width: 0em !important;
+	height: 4em !important;
+	line-height: 2em;
+	vertical-align: -35%;
+	left: -35px;
+	top: 7px;
+}
+
+.icon-user{
+	color: #5f8f05;
+	font-size: 26px !important;
+	padding-top: 2px !important;
+}
+
+.plus-user{
+	color: #5f8f05;
+	margin-left: 14px;
+	margin-bottom: 15px;
+
+}
+
 .follow_facebook {
 	margin-left: -3px;
 }
 
 .icon-facebook, .icon-twitter {
-	 color: #5f8f05;
+	 color: #999;
 }
 
-.login, .follow_twitter {
+.login {
 	border-left: 1px solid #cdcdcd;
 }
 
-.signup, .follow_facebook{
+.signup {
 	border-left: 1px solid #cdcdcd;
 	border-right: 1px solid #cdcdcd;
 }
 
-.login:hover, .signup:hover, .follow_facebook:hover, .follow_twitter:hover   {
+.login:hover, .signup:hover  {
 	background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, white), color-stop(100%, #f4f4f4));
 	background: -webkit-linear-gradient(white, #f4f4f4);
 	background: -moz-linear-gradient(white, #f4f4f4);

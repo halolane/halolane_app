@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130623064621) do
+ActiveRecord::Schema.define(:version => 20130623175918) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(:version => 20130623064621) do
 
   create_table "bookshelves", :force => true do |t|
     t.string   "name"
-    t.integer  "user_id"
     t.integer  "privacy"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -77,6 +76,8 @@ ActiveRecord::Schema.define(:version => 20130623064621) do
     t.datetime "updated_at",      :null => false
     t.boolean  "active"
     t.string   "permission"
+    t.integer  "bookshelf_id"
+    t.string   "invite_type"
   end
 
   create_table "likememories", :force => true do |t|

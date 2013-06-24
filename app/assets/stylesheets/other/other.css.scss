@@ -258,13 +258,20 @@ display: inline-block;
 	display: inline;
 }
 
+.userinfonav {
+	float: right;
+	position: relative;
+	top: -20px;
+}
 
-li.headertitle {
+.headertitle {
 
-	float: left;
+	position: relative;
+	display: inline;
 	text-align: center;
-	margin-right: 265px;
-	margin-top: 10px;
+	top: 10px;
+	right: 5px;
+	text-align: center;
 	h4 { margin: 0 0;}
 	h4 { 
 		font-size: 18px; 
@@ -281,6 +288,7 @@ li.headertitle {
 		background-color: transparent;
 	}
 }
+
 .nav.btn-topbar-left {
 	display: inline-block;
 }

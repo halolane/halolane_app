@@ -33,7 +33,7 @@
   
   <% end %>
    <% if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) or 
-          (signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") && current_user.memorycount == 0 && @profile.memorycount > 0 ) %>
+          (signed_in? && current_user.canContribute?(@profile) && current_user.memorycount == 0 && @profile.memorycount > 0 ) %>
     <script type="text/javascript">
       $(window).load(function(){
       
@@ -128,6 +128,9 @@
           keyboard:true,
           show: true
         });      
+         $('#emailstories').on('hide', function () {
+          $('.firstaddbyemail-coachmark').addClass('hide');
+        });  
       });
     </script>
 
@@ -139,7 +142,7 @@
     a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
     </script>
   <% end %>
-  <% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") && current_user.memorycount == 0  && @profile.memorycount == 0 %>
+  <% if signed_in? && current_user.canContribute?(@profile) && current_user.memorycount == 0  && @profile.memorycount == 0 %>
     <script type="text/javascript">
       $(window).load(function(){
         $('#newuserstorybook').modal('show');

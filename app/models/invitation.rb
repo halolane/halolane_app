@@ -1,9 +1,10 @@
 class Invitation < ActiveRecord::Base
   # attr_accessible :sender_id, :profile_id, :recipient_email, :token, :sent_at
-  attr_accessible :profile_id 
+  attr_accessible :profile_id, :bookshelf_id, :invite_type
 
   belongs_to :profile
   belongs_to :user
+  belongs_to :bookshelf
 
   before_create :generate_token
 

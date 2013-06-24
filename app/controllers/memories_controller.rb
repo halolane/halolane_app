@@ -101,8 +101,8 @@ class MemoriesController < ApplicationController
       redirect_to root_url, notice: 'That story was not found.'
       return
     end
-
-    if current_user.isEditor?(@memory.profile_id)
+    @profile = Profile.find(@memory.profile_id)
+    if current_user.isEditor?(@profile)
       @memory.destroy
     else
       begin 

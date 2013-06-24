@@ -13,12 +13,12 @@
               <a href="http://www.facebook.com/myFamilyTales" title="Become a fan on Facebook" target="_blank"><i class="icon-facebook"></i></a>
             </li>
         </ul>
-       
-       <% if signed_in? %>
-        <ul class="nav pull-right">
-          <li class="headertitle"><h4>
+       <div class="headertitle"><h4>
               <%= yield(:title) %>
-            </h4></li>
+            </h4></div>
+       <% if signed_in? %>
+        <ul class="nav pull-right userinfonav">
+          
           <li class="loggedinuser">
               <div class="dropdown">
             
@@ -37,10 +37,7 @@
           </li>
         </ul>
         <% else %>
-          <ul class="nav pull-right">
-            <li class="headertitle" style="margin-right: 300px;"><h4>
-              <%= yield(:title) %>
-            </h4></li>
+          <ul class="nav pull-right userinfonav">
             
             <li class="signup">
               <a href="/signup" class="">Signup</a>

@@ -3,9 +3,17 @@
 
 <div class="row">
 	<div class="span6 offset3">
-		<h3>Just one more step to view the storybook of <%= @profile.first_name %></h3>
-		<h5 id="signupexplainLabel"><%= @sender.first_name %> would like to share <%= @profile.first_name %>’s FamilyTales storybook with you!</h5>
+
+		<% if @invitation.invite_type == "bookshelf" %>
+			<h3 style ="">Just one more step </h3>
+			<h5 id="signupexplainLabel"><%= @sender.first_name %> would like to share the life storybooks in the bookshelf <%= @bookshelf.name %>!</h5>
+		<% else %>
+			<h3>Just one more step </h3>
+			<h5 id="signupexplainLabel"><%= @sender.first_name %> would like to share <%= @profile.first_name %>’s FamilyTales storybook with you!</h5>
+		<% end %>
+		<br>
 		<%= form_for(@user) do |f| %>
+
 
 			<input type="hidden" id="user_email" name="user[email]" value="<%= @invitation.recipient_email %>" />
 			<input type="hidden" id="invitation_token" name="invitation[token]" value="<%= @invitation.token %>" />
@@ -18,29 +26,52 @@
 		  <%= f.label :password %>
 		  <%= f.password_field :password  %><br>
 
+		  <% if @invitation.invite_type != "bookshelf" %>
 		  <h5> <%= @profile.first_name %> is my <br><%= select "relationship","description", 
 				  				Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
 		  <%= render 'shared/error_messages', object: f.object %></h5>
 		
-
-		  <%= f.submit "See the storybook", class: "green_button" %><br><br>
+		  <% end %>
+		   <% if @invitation.invite_type == "bookshelf" %>
+		   <%= f.submit "See the storybooks", class: "green_button" %>
+		   <% else %>
+		   <%= f.submit "See the storybook", class: "green_button" %>
+		   <% end %>
+		  <br><br>
 		  <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#signupexplain">Why are you asking me to sign up?</a><br><br>
 		<% end %>
 	</div>
 </div>
 
 <!-- Modal -->
-<div id="signupexplain" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="signupexplainLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h4 id="signupexplainLabel"><%= @sender.first_name %> would like to share <%= @profile.first_name %>’s FamilyTales storybook with you!</h4>
-  </div>
-  <div class="modal-body center">
-  	
-  	 To preserve our commitment to keeping family storybooks private, only invited and confirmed members may view the FamilyTales storybook of <%= @profile.first_name %>. Sign up now to view the <%= @profile.first_name %>’s FamilyTales storybook right now!
-  </div>
-  <div class="modal-footer">
-	
-  	<a class="green_button" data-dismiss="modal">Sign up now</a>
+<% if @invitation.invite_type == "bookshelf" %>
+	<div id="signupexplain" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="signupexplainLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h4 id="signupexplainLabel"><%= @sender.first_name %> would like to share to you <%= @bookshelf.name %>!</h4>
+	  </div>
+	  <div class="modal-body center">
+	  	
+	  	 To preserve our commitment to keeping family storybooks private, only invited and confirmed members may view the life stories of family and friends. Sign up now to view the life storybooks that <%= @sender.first_name %> created!
+	  </div>
+	  <div class="modal-footer">
+		
+	  	<a class="green_button" data-dismiss="modal">Sign up now</a>
+		</div>
 	</div>
-</div>
+<% else %>
+	<div id="signupexplain" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="signupexplainLabel" aria-hidden="true">
+	  <div class="modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h4 id="signupexplainLabel"><%= @sender.first_name %> would like to share <%= @profile.first_name %>’s FamilyTales storybook with you!</h4>
+	  </div>
+	  <div class="modal-body center">
+	  	
+	  	 To preserve our commitment to keeping family storybooks private, only invited and confirmed members may view the FamilyTales storybook of <%= @profile.first_name %>. Sign up now to view the <%= @profile.first_name %>’s FamilyTales storybook right now!
+	  </div>
+	  <div class="modal-footer">
+		
+	  	<a class="green_button" data-dismiss="modal">Sign up now</a>
+		</div>
+	</div>
+<% end %>

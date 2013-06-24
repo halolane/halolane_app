@@ -1,5 +1,5 @@
 <div class="coachmarks hide">
-	<% if signed_in? && current_user.contributing?(@profile) && (current_user.getPermission(@profile) == "edit" or current_user.getPermission(@profile) == "contribute") %>
+	<% if signed_in? && current_user.canContribute?(@profile) %>
 		<div class="edit-coachmark">
 			<%= image_tag("/images/coachmarks/edit.png") %>
 		</div>

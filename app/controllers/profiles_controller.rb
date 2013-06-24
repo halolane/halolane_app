@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
   before_filter :signed_in_user, only: [:create, :destroy]
   before_filter :correct_user, only: [:edit, :update, :show]
+  before_filter :can_edit, only: [:edit, :update]
   before_filter :set_page_name
   
   def new
@@ -70,20 +71,6 @@ class ProfilesController < ApplicationController
       elsif ! signed_in?
         flash[:error] = "You can only view that storybook if you are logged in."
         redirect_to login_url
-      elsif params[:invitation_token] != nil
-        @invitation = Invitation.find_by_token(params[:invitation_token])
-        if ! @invitation.nil? and is_invited?(params[:invitation_token]) and @invitation.active == true
-          createnewuser
-          showprofile
-          current_user.actionlog!(@profile.id, @page_name, "show")
-          render :layout => "storyboard_layout"
-        elsif ! @invitation.nil? and is_invited?(params[:invitation_token]) and @invitation.active == false
-          flash[:error] = "The invitation link has expired."
-          redirect_to root_url
-        else
-          flash[:error] = "You are not authorized to view that profile"
-          redirect_to root_url
-        end
       elsif (( @profile.privacy != 2 ) or 
          ( @profile.privacy == 2 and signed_in? and has_relationship?(@profile.id, current_user.id) ))
         showprofile
@@ -166,7 +153,27 @@ class ProfilesController < ApplicationController
           return
         end
       end
-      redirect_to(root_path) unless current_user.contributing?(@profile )
+      
+      redirect_to(root_path) unless (current_user.canView?(@profile))
+    end
+
+    def can_edit
+      if ! params[:url].blank?
+        @profile = Profile.find_by_url(params[:url])
+        if @profile.nil?
+          show_error
+          return
+        end
+      else
+        begin
+          @profile = Profile.find(params[:id])
+        rescue
+          show_error
+          return
+        end
+      end
+      
+      redirect_to(root_path + @profile.url) unless (current_user.isEditor?(@profile))
     end
 
     def createnewuser

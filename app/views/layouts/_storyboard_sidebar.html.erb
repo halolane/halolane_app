@@ -13,9 +13,11 @@
         </div>
         <div id="chapterlist" class="accordion-body collapse in">
             <div class="accordion-inner">
+            	<% if signed_in? && current_user.canContribute?(@profile) %>
             	<div class="sidebar_new_chapter">
             		<%= render 'profiles/new_chapter_form' %>
             	</div>
+            	<% end %>
 				      <%= render 'shared/chapterpicker_links' %>
             </div>
         </div>

@@ -32,6 +32,19 @@ class Mailer < ActionMailer::Base
     @invitation.update_attribute(:sent_at, Time.now)
   end
 
+  def invitation_bookshelf(invitation, user, url, msg)
+    @invitation = invitation
+    @user = user
+    @msg = msg
+    @full_user_name =  @user.first_name + " " + @user.last_name 
+    subject = "Check out the FamilyTales bookshelf that I created"
+    @url = url
+    mail( :from => "\"" + @full_user_name + "\" <hello@familytales.co>", 
+          :to => @invitation.recipient_email, 
+          :subject => subject )
+    @invitation.update_attribute(:sent_at, Time.now)
+  end
+
   def new_storybook(user, profile, url)
 
     # Set up vars
