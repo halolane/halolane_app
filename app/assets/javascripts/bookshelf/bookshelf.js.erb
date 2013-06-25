@@ -53,13 +53,45 @@ $(document).ready(function(){
   });
 
   $('#newuserstorybook').on('show', function () {
-      $('.coachmarks').removeClass('hide');
+     $('.welcomefamilytales-coachmark').removeClass('hide');
   });
 
   $('#newuserstorybook').on('hide', function () {
-      $('.coachmarks').addClass('hide');
-      $('#newstorybook').modal('show');
+    $('.welcomefamilytales-coachmark').addClass('hide');
+    $('.bookshelf-coachmark').addClass('hide');
+    $('.bookshelfinvite-coachmark').addClass('hide');
+    $('.firststorybook-coachmark').addClass('hide');
+    $('.newstorybook').modal('show');
   });
+
+  $('.skipguide').click(function(){
+    $('.welcomefamilytales-coachmark').addClass('hide');
+    $('.bookshelf-coachmark').addClass('hide');
+    $('.bookshelfinvite-coachmark').addClass('hide');
+    $('.firststorybook-coachmark').removeClass('hide');
+  });
+
+  $('.nextguide').click(function(){
+     if (!$('.welcomefamilytales-coachmark').hasClass("hide")) {
+        $('.welcomefamilytales-coachmark').addClass('hide');
+        $('.bookshelf-coachmark').removeClass('hide');
+     }
+      else if (!$('.bookshelf-coachmark').hasClass("hide")) {
+        $('.bookshelf-coachmark').addClass('hide');
+        $('.bookshelfinvite-coachmark').removeClass('hide');
+     }
+
+     else if (!$('.bookshelfinvite-coachmark').hasClass("hide")) {
+        $('.bookshelfinvite-coachmark').addClass('hide');
+        $('.firststorybook-coachmark').removeClass('hide');
+     }
+     else if (!$('.firststorybook-coachmark').hasClass("hide")) {
+        $('.firststorybook-coachmark').addClass('hide');
+        $('#newuserstorybook').modal('hide');
+     }
+  });
+
+
 
   $('.firststorybook-coachmark').click(function() {
     $('.modal.in').modal('hide');

@@ -679,7 +679,32 @@ float: right;
 .welcomefamilytales-coachmark {
 	position: absolute;
 	float: left;
-	margin-top: 20px;
-	margin-left: 200px;
+	margin-top: -280px;
+	margin-left: 500px;
 	z-index: 1050;
+}
+
+.bookshelf-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: -330px;
+	margin-left: 700px;
+	z-index: 1050;
+}
+
+.bookshelfinvite-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: -390px;
+	margin-left: 0px;
+	z-index: 1050;
+}
+
+.nextguide {
+	padding: 0.3em 1em !important;
+}
+
+.sneakpeek_buttons {
+	text-align: center;
+	color: white;
 }
