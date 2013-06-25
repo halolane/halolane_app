@@ -3,7 +3,7 @@
     <div class="container">
       <nav>
         <ul class="nav btn-topbar-left">
-         <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+          <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
             <li class="storyboardlogo">
               <%= link_to image_tag("/images/small-logo.png"), signout_path, method: "delete", id: "logo", rel:"tooltip", title:"Go to the FamilyTales home page" %> 
             </li>
@@ -12,7 +12,6 @@
               <%= link_to image_tag("/images/small-logo.png"), root_path, id: "logo" %> 
             </li>
           <% end %>
-          <% if signed_in? and current_user.email != ('familytalesuser2@gmail.com') and @profile.url != "alexdunphy" %>
 
           <% if signed_in? && current_user.canContribute?(@profile) %>
             <li class="newmemorybtn">
@@ -25,7 +24,7 @@
               <!--<a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#newmemorymodal" rel="tooltip" title="Add a new story">-->     
             </li>
           <% end %>
-           <% if signed_in? && current_user.canContribute?(@profile) %>
+          <% if signed_in? && current_user.canContribute?(@profile) %>
             <li class="iconaddcontributor _showAddCollaborator">
               <a href="#addcontributor" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
                 <span class="icon-stack">
@@ -35,7 +34,6 @@
               </a>
             </li>
           <% end %>
-         
         </ul>
         <ul class="nav pull-right">
              <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
@@ -51,9 +49,10 @@
                 <% end %>
               </h4></div></li>
             <% end %>
-            <li class="loggedinuser">
+            <% if signed_in? and current_user.email != ('familytalesuser2@gmail.com') and @profile.url != "alexdunphy" %>
+
+              <li class="loggedinuser">
                 <div class="dropdown">
-              
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#"><h4 class="storybook-user"><%= current_user.first_name + " " + current_user.last_name %></h4> <i class="icon-chevron-sign-down gray"></i></a>
                   <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
                     <li><%= link_to "Edit your user settings", edit_user_path(current_user) %></li>
@@ -77,10 +76,9 @@
                   -->
                   </ul>
                 </div>
-            </li>
+              </li>
           <% else %>    
             <li class="loggedinuser">
-
               <h4 class="storybook-user">Explorer User</h4>
             </li>
           <% end %>

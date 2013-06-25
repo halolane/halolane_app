@@ -154,7 +154,9 @@ class ProfilesController < ApplicationController
         end
       end
       
-      redirect_to(root_path) unless (current_user.canView?(@profile))
+      if @profile.url != "alexdunphy"
+        redirect_to(root_path) unless (current_user.canView?(@profile))
+      end
     end
 
     def can_edit

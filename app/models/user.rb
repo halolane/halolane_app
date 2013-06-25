@@ -136,7 +136,7 @@ class User < ActiveRecord::Base
     if bookshelfrelations.exists?(bookshelf_id: profile.bookshelf_id)
       bookshelfrelations.find_by_bookshelf_id(profile.bookshelf_id).permission == "edit" or bookshelfrelations.find_by_bookshelf_id(profile.bookshelf_id).permission == "contribute"
     elsif relationships.exists?(profile_id: profile.id)
-      relationships.find_by_profile_id(profile_id).permission == "edit" or relationships.find_by_profile_id(profile_id).permission == "contribute"
+      relationships.find_by_profile_id(profile.id).permission == "edit" or relationships.find_by_profile_id(profile.id).permission == "contribute"
     else
       false
     end
