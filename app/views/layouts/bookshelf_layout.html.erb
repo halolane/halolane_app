@@ -26,7 +26,7 @@
   
 
 
-  <% if full_title(yield(:title)) == "FamilyTales" && signed_in? && current_user.storybookcount == 0 %>
+  <% if signed_in? && current_user.storybookcount == 0 %>
     <script type="text/javascript">
       $(window).load(function(){
           $('#newuserstorybook').modal('show');
