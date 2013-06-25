@@ -640,3 +640,46 @@ float: right;
   height: 35px;
   margin-bottom: 15px;
 }
+
+#newuserstorybook {
+	padding-left: -300px;
+	margin-left: -700px;
+	margin-top: -375px;
+	background-color: transparent !important;
+	color: transparent !important;
+	border: none !important;
+	-webkit-box-shadow: none !important;
+	-moz-box-shadow: none !important;
+	box-shadow: none !important;
+	overflow: hidden !important;
+	-webkit-border-radius: 0px !important;
+	-moz-border-radius: 0px !important;
+	background-clip: none !important;
+	outline: none !important;
+	width: 900px !important;
+}
+
+.welcomesneakpeek-coachmark {
+	color: white;
+	position: absolute;
+	float: left;
+	margin-top: -555px;
+	margin-left: 30%;
+	z-index: 1050;
+}
+
+.firststorybook-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: -120px;
+	margin-left: 300px;
+	z-index: 1050;
+}
+
+.welcomefamilytales-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: 20px;
+	margin-left: 200px;
+	z-index: 1050;
+}
