@@ -90,8 +90,11 @@ class BookshelvesController < ApplicationController
   private 
 
     def correct_user
-      @bookshelf = current_user.bookshelves.find(params[:id])
+    @bookshelf = current_user.bookshelves.find(params[:id])
     rescue
+      if Bookshelfrelation.find_by_bookshelf_id_and_user_id(@bookshelf.id, current_user.id).permission != "edit"
+        flash[:error] = "You are not allowed to delete that storybook"
         redirect_to root_url
+      end
     end
 end

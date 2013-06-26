@@ -64,4 +64,11 @@ $(document).ready(function(){
   $('.firststorybook-coachmark').click(function() {
     $('.modal.in').modal('hide');
   });
+
+  $(".bookitem").hover(function() {
+    $(this).find(".bookshelf-edit-btn").fadeTo(50,1);
+
+  }, function() {
+    $(this).find(".bookshelf-edit-btn").fadeTo(50,0);
+  });
 });

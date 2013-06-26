@@ -12,6 +12,18 @@ class ProfilesController < ApplicationController
     get_profile
   end
 
+  def destroy
+    get_profile
+
+    if current_user.isOwner?(@profile) or current_user.isEditor?(@profile)
+      @profile.destroy
+    else
+      flash[:error] = "You don't have permission to delete this"
+    end
+    redirect_to root_url
+  end
+
+
   def update
     get_profile
     if @profile.update_attributes(params[:profile])

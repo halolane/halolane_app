@@ -119,12 +119,24 @@ class User < ActiveRecord::Base
     relationships.find_by_profile_id(profile.id).permission
   end
 
+  def isOwner?(profile)
+    if bookshelfrelations.exists?(bookshelf_id: profile.bookshelf_id, owner: true)
+      bookshelfrelations.find_by_bookshelf_id_and_owner(profile.bookshelf_id, true).user_id == self.id
+    elsif relationships.exists?(profile_id: profile.id, owner: true)
+      relationships.find_by_profile_id_and_owner(profile.id, true).permission == "edit"
+    else
+      false
+    end
+  end
+
   def isEditor?(profile)
     
     if bookshelfrelations.exists?(bookshelf_id: profile.bookshelf_id)
       bookshelfrelations.find_by_bookshelf_id(profile.bookshelf_id).permission == "edit"
-    else
+    elsif relationships.exists?(profile_id: profile.id)
       relationships.find_by_profile_id(profile.id).permission == "edit"
+    else
+      false
     end
   end
 

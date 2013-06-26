@@ -1,5 +1,4 @@
-# == Schema Information
-#
+# == Schema Information #
 # Table name: memories
 #
 #  id         :integer          not null, primary key

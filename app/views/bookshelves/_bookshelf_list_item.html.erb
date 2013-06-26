@@ -1,4 +1,22 @@
-<div class="item  gridSortable" style="z-index: 0;">
+
+<div class="item  gridSortable bookitem" style="z-index: 0;">
+  <% if signed_in? and current_user.isOwner?(book) or current_user.isEditor?(book) %>
+  <div class="bookshelf-edit-btn">
+    <div class="dropdown">
+      <a class="dropdown-toggle icon-chevron" data-toggle="dropdown" href="#" title="Edit or delete this storybook" rel="tooltip"><i class="icon-chevron-down"></i></a>
+      
+        <ul class="dropdown-menu bookshelf" role="menu" aria-labelledby="dLabel" >
+          
+          <li><%= link_to "Edit", edit_profile_path(book), title: "Edit this storybook" %></li>
+          <li><%= link_to "Delete", book, method: :delete, data: { confirm: "Are you sure you want to delete this storybook? All the stories will be deleted permanently." }, title: "Delete this storybook",  %></li>
+          <!-- for future implementation
+          <li><a href="#">Comment</a></li>
+          <li><a href="#">Flag</a></li>
+          -->
+        </ul>
+    </div>
+  </div>
+<% end %>
   <div class="ajax noContext Board Module boardCoverImage" data-sort-id="429319845666926550">
     <%= link_to root_url + book.url, class: "boardLinkWrapper" do %>
       <h3 class="boardName">
