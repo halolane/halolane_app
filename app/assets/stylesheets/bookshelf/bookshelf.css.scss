@@ -685,9 +685,65 @@ float: right;
 .welcomefamilytales-coachmark {
 	position: absolute;
 	float: left;
-	margin-top: 20px;
-	margin-left: 200px;
+	margin-top: -280px;
+	margin-left: 500px;
 	z-index: 1050;
+}
+
+.open > .dropdown-menu.bookshelf
+{
+	position: relative;
+	opacity: 1 !important;
+  margin-left: -91%;
+  z-index: 1000 !important;
+  border-radius: 6px 0px 6px 6px;
+  -webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;width:100%;
+	-webkit-border-radius:4px;
+	-moz-border-radius:4px;
+	-ms-border-radius:4px;-o-border-radius:4px;border-radius:4px;
+	-webkit-box-shadow:"inset 0 2px 5px rgba(0,0,0,0.1), 0 1px 0px 1px rgba(255,255,255,0.4)";
+	-moz-box-shadow:"inset 0 2px 5px rgba(0,0,0,0.1), 0 1px 0px 1px rgba(255,255,255,0.4)";
+	box-shadow:"inset 0 2px 5px rgba(0,0,0,0.1), 0 1px 0px 1px rgba(255,255,255,0.4)";
+}
+
+.bookshelf-edit-btn {
+	position: absolute;
+	opacity: 0;
+	margin-top: 5%;
+	margin-left: 90%;
+	z-index: 100;
+	.btn {
+		font-size: 0.7em;
+	}
+	a.icon-chevron {
+		text-decoration: none;
+		color: #9a1b39;
+	}
+.bookshelf-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: -330px;
+	margin-left: 700px;
+	z-index: 1050;
+}
+
+.bookshelfinvite-coachmark {
+	position: absolute;
+	float: left;
+	margin-top: -390px;
+	margin-left: 0px;
+	z-index: 1050;
+}
+
+.nextguide {
+	padding: 0.3em 1em !important;
+}
+
+.sneakpeek_buttons {
+	text-align: center;
+	color: white;
 }
 
 .open > .dropdown-menu.bookshelf
