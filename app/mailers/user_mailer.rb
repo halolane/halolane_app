@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default from: "\"FamilyTales\" <hello@familytales.co>"
+  default from: "\"FamilyTales\" <hello@thefamilytales.com>"
 
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:

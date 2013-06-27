@@ -21,6 +21,7 @@ class Memory < ActiveRecord::Base
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true
+  validates :chapter_id, presence: true
   validates :date, presence: true
   validates :content, :length => { :maximum => 250 }
   
@@ -46,7 +47,8 @@ class Memory < ActiveRecord::Base
           else
             content = message.body.decoded
           end
-          @memory = @user.memories.build(:profile_id => @profile.id, :content => content)
+          chapter_id =  @profile.chapterlist.last.id
+          @memory = @user.memories.build(:profile_id => @profile.id, :content => content, :chapter_id => chapter_id)
           @memory.date = Date.today
           # email_attachments = []   # an array which can be used to store object records of the attachments..
 

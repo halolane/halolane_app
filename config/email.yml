@@ -2,15 +2,15 @@ development:
   :address: smtp.gmail.com
   :port: 587
   :authentication: plain
-  :domain: familytales.co
-  :user_name: hello@famiytales.co
+  :domain: thefamilytales.com
+  :user_name: hello@thefamilytales.com
   :password: IVEYmba2013
   :enable_starttls_auto: true
 production:
   :address: smtp.gmail.com
   :port: 587
   :authentication: plain
-  :domain: familytales.co
-  :user_name: hello@famiytales.co
+  :domain: thefamilytales.com
+  :user_name: hello@thefamilytales.com
   :password: IVEYmba2013
   :enable_starttls_auto: true
