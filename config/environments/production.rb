@@ -19,6 +19,8 @@ HalolaneApp::Application.configure do
 
   # Generate digests for assets URLs
   config.assets.digest = true
+  config.assets.enabled = true
+  config.assets.initialize_on_precompile = true
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
@@ -66,6 +68,7 @@ HalolaneApp::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.default_url_options = { :host => "www.thefamilytales.com" }
+  config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
 
   config.paperclip_defaults = {
     :storage => :s3,
