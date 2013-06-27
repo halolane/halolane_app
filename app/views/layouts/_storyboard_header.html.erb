@@ -5,11 +5,11 @@
         <ul class="nav btn-topbar-left">
           <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
             <li class="storyboardlogo">
-              <%= link_to image_tag("/images/small-logo.png"), signout_path, method: "delete", id: "logo", rel:"tooltip", title:"Go to the FamilyTales home page" %> 
+              <%= link_to image_tag("/assets/images/small-logo.png"), signout_path, method: "delete", id: "logo", rel:"tooltip", title:"Go to the FamilyTales home page" %> 
             </li>
           <% else %>
             <li class="storyboardlogo">
-              <%= link_to image_tag("/images/small-logo.png"), root_path, id: "logo" %> 
+              <%= link_to image_tag("/assets/images/small-logo.png"), root_path, id: "logo" %> 
             </li>
           <% end %>
 
