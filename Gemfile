@@ -27,6 +27,7 @@ gem 'aws-sdk'
 gem 'mailman', require: false
 gem 'jquery-ui-rails'
 gem 'asset_sync'
+gem 'unicorn'
 gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
