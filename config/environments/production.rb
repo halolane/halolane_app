@@ -21,6 +21,7 @@ HalolaneApp::Application.configure do
   config.assets.digest = true
   config.assets.enabled = true
   config.assets.initialize_on_precompile = true
+  config.assets.precompile += %w( application-bookshelf.css application-frontpage.css application-other.css application-storyboard.css)
 
   # Defaults to nil and saved in location specified by config.assets.prefix
   # config.assets.manifest = YOUR_PATH
