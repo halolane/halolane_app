@@ -85,7 +85,7 @@ input::-webkit-input-placeholder,textarea::-webkit-input-placeholder{color:#aaa}
 
 select{margin-top:1em}input.price{padding-left:1em;text-align:right}
 
-input.price.USD{background:#fff url("/assets/icon-price-DOLLAR.png") 5px center no-repeat}
+input.price.USD{background:#fff url(/assets/icon-price-DOLLAR.png) 5px center no-repeat}
 
 
 
@@ -303,7 +303,7 @@ section.above_fold .carousel .nav .nav_control.right,section.testimonials .carou
 .modal.fade{-ms-transition:opacity 0.4s ease;-moz-transition:opacity 0.4s ease;-o-transition:opacity 0.4s ease;-webkit-transition:opacity 0.4s ease;transition:opacity 0.4s ease}
 .modal.in{-webkit-transform:scale(1);opacity:1}
 .modal .modal_close.x{
-	background-image:url("/assets/sprites.png");
+	background-image:url(/assets/sprites.png);
 	background-position:0 -55px;
 	background-repeat:no-repeat;
 	display:block;overflow:hidden;
@@ -465,8 +465,8 @@ section.above_fold .carousel .item.first .bubble.integrates:after{
 }
 section.media .media_assets a:after{border-color:#69a100 transparent transparent transparent;top:100%;left:50%;margin-left:-15px}
 body{line-height:1.4;font-family:"HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;font-weight:300}
-p{margin-top:0}@font-face{font-family:"Varela Round";font-style:normal;font-weight:normal;src:url("/assets/VarelaRound-Regular.eot.eot");
-src:local("Varela"),local("Varela"),url("/assets/VarelaRound-Regular.ttf") format("truetype")}
+p{margin-top:0}@font-face{font-family:"Varela Round";font-style:normal;font-weight:normal;src:url(/assets/VarelaRound-Regular.eot.eot);
+src:local("Varela"),local("Varela"),url(/assets/VarelaRound-Regular.ttf) format("truetype")}
 
 h1,h2,h3,h4{font-family:"HelveticaNeue-UltraLight","Helvetica Neue UltraLight","Helvetica Neue",Helvetica,Arial,
 "Lucida Grande",sans-serif;font-weight:200;margin:0em;margin-bottom:0.5em;text-align:center;line-height:1.3;letter-spacing:1px}
@@ -637,7 +637,7 @@ footer nav .menu_group{width:13.97849%;float:left;margin-right:3.22581%;display:
 footer nav .menu_group:last-child{width:31.1828%;float:left;margin-right:3.22581%;display:inline;float:right;margin-right:0;*margin-left:-3em;display:inline}
 footer nav h3{padding-bottom:0.5em;border-bottom:1px solid #999;color:#fff;text-transform:uppercase;margin-bottom:1em;letter-spacing:1px;font-weight:normal;text-align:left}
 footer nav ul{margin:0;padding:0}footer .logo{margin-top:5em;clear:both;text-align:center}footer .logo img{width:140px}
-section.above_fold{background:#eee url('/assets/images/texture_waves.png');text-align:center;padding:1em 0;padding-bottom:0;margin-bottom:-3%}
+section.above_fold{background:#eee url(/assets/images/texture_waves.png);text-align:center;padding:1em 0;padding-bottom:0;margin-bottom:-3%}
 section.above_fold .carousel .nav{opacity:0}section.above_fold .carousel:hover .nav{opacity:1}
 section.above_fold .carousel .item .bubble{
 	opacity:0;
@@ -682,7 +682,7 @@ section.above_fold .carousel .item.active .bubble{
 	animation:fade_in 1s 0.5s ease both}section.above_fold img{width:100%}
 
 section.signup_bar{
-	background:#ed6c4d url('/assets/images/background-burgundy.png');
+	background:#ed6c4d url(/assets/images/background-burgundy.png);
 	padding:2em 0; padding-left: 7em
 
 }
@@ -862,7 +862,7 @@ section.pricing .fee_component.fee .minor{display:block;font-size:0.3em}
 section.pricing .fee_component.plus{font-size:3em;width:13.97849%;float:left;margin-right:3.22581%;display:inline}
 section.pricing .fee_component.other{font-size:1.2em;padding-top:2em;width:22.58065%;float:right;margin-right:0;*margin-left:-3em;display:inline;margin-right:17.2043%}section.pricing p{margin-top:2em;font-size:1.2em;clear:both;text-align:center;width:65.5914%;float:left;margin-right:3.22581%;display:inline;margin-left:17.2043%;margin-right:17.2043%}
 section.pricing p a{color:#ed6c4d}
-section.future{background:#000 url('/assets/images/background_grey_light_noise.png')}
+section.future{background:#000 url(/assets/images/background_grey_light_noise.png)}
 section.future h3{margin-bottom:2em}
 section.future .item{width:31.1828%;float:left;margin-right:3.22581%;display:inline;text-align:center}
 section.future .item:last-child{float:right;margin-right:0;*margin-left:-3em;display:inline}
@@ -959,7 +959,7 @@ body.terms article.wrapper,body.privacy article.wrapper,body.jobs article.wrappe
 }
 
 section.fees{
-	background:#eee url('/assets/images/background_grey_light_noise.png')
+	background:#eee url(/assets/images/background_grey_light_noise.png)
 }
 
 section.fees .half{
@@ -1213,7 +1213,7 @@ section.fees p.logos img { width:50% }
 
 /* line 42, ../../../app/assets/stylesheets/frontpage/frontpage.css.scss */
 .modal .modal_close.x {
-  background-image: url("/assets/sprites.png");
+  background-image: url(/assets/sprites.png);
   background-position: 0 -55px;
   background-repeat: no-repeat;
   display: block;
