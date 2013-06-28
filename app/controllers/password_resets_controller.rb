@@ -8,7 +8,7 @@ class PasswordResetsController < ApplicationController
     user = User.find_by_email(params[:email])
     if user
       user.send_password_reset 
-      UserMailer.password_reset(user, edit_password_reset_url(user.password_reset_token)).deliver
+      UserMailer.delay.assword_reset(user, edit_password_reset_url(user.password_reset_token)).deliver
     end
     redirect_to resetsent_url
   end
