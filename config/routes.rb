@@ -49,6 +49,7 @@ HalolaneApp::Application.routes.draw do
   match '/auth/:provider/callback', :to => 'authentications#create'
   match '/auth/failure', :to => 'sessions#failure'
   match '/login/:verify_token', to: 'static_pages#home'
+  match '/privacy', to: 'static_pages#privacy_policy'
   match '/resetsent', to: 'password_resets#confirm'
   match '/confirmationsent', to: 'users#resend_validation'
   match '/editstory', to: 'memories#edit'
