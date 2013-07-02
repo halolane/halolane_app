@@ -3,7 +3,22 @@
 
 <div class="row">
 	<div class="span6 offset3">
-		<%= form_for(@user) do |f| %>
+	<div class="social_signin center">
+      <p><a class="btn-auth btn-facebook large" href="/auth/facebook">Sign up with <b>Facebook</b></a></p>
+      <p><h4>or</h4></p>
+      <p><div><a class="btn-auth btn-email icon-envelope large"  data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#signin_form"></i>Sign up by <b>email</b></a></div></p>
+    </div>
+	</div>
+</div>
+
+
+<div id="signin_form" class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="addcontributorLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="forgetpasswordlabel">Sign up by email</h3>
+  </div>
+  <div class="modal-body" style="text-align:left">
+    <%= form_for(@user) do |f| %>
 		  <%= render 'shared/error_messages', object: f.object %>
 		  <%= f.label :first_name %>
 		  <%= f.text_field :first_name, :required => true %>
@@ -16,12 +31,9 @@
 
 		  <%= f.label :password %>
 		  <%= f.password_field :password, :required => true, :pattern => ".{6,}", :title => "6 characters minimum" %><br>
-
-		  <%= f.submit "Create my storybook!", class: "green_button", width:"width:200px !important;" %>
-
+  </div>
+  <div class="modal-footer">
+         <%= f.submit "Create my storybook!", class: "green_button", width:"width:200px !important;" %>
 		  <% end %>
-
-		  <!-- <a href="#betadescmodal" data-toggle="modal" data-dismiss="modal" aria-hidden="true"><button class="green_button" style="width:200px !important;">Start my storybook</button></a> -->
-		  <br><br>
-	</div>
+  </div>
 </div>

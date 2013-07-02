@@ -29,10 +29,10 @@ class InvitationsController < ApplicationController
       elsif Invitation.exists?(:recipient_email => params[:invitation][:recipient_email],:profile_id => bookshelf_id)
         @invitation_resent = Invitation.find_by_recipient_email_and_bookshelf_id(recipient_email, bookshelf_id)
         flash[:notice] = "Resending invitation to " + @invitation_resent.recipient_email
-        Mailer.delay.invitation_bookshelf(@invitation_resent, current_user, root_url + "bookshelf/" + @invitation_resent.token, msg).deliver
+        Mailer.delay.invitation_bookshelf(@invitation_resent, current_user, root_url + "bookshelf/" + @invitation_resent.token, msg)
         redirect_to root_url, :notice => "Your invitation has been re-sent to " + @invitation_resent.recipient_email
       elsif @invitation.save
-        Mailer.delay.invitation_bookshelf(@invitation, current_user, root_url + "bookshelf/" + @invitation.token, msg).deliver
+        Mailer.delay.invitation_bookshelf(@invitation, current_user, root_url + "bookshelf/" + @invitation.token, msg)
         redirect_to root_url, :notice => "Your invitation has been sent to " + @invitation.recipient_email
       else
         flash[:error] = "Invalid Email"
@@ -44,10 +44,10 @@ class InvitationsController < ApplicationController
       elsif Invitation.exists?(:recipient_email => params[:invitation][:recipient_email],:profile_id => @profile.id)
         @invitation_resent = Invitation.find_by_recipient_email_and_profile_id(params[:invitation][:recipient_email], @profile.id)
         flash[:notice] = "Resending invitation to " + @invitation_resent.recipient_email
-        Mailer.delay.invitation(@invitation_resent, @profile, current_user, root_url + @profile.url + "/" + @invitation_resent.token, msg).deliver
+        Mailer.delay.invitation(@invitation_resent, @profile, current_user, root_url + @profile.url + "/" + @invitation_resent.token, msg)
         redirect_to root_url + @profile.url, :notice => "Your invitation has been re-sent to " + @invitation_resent.recipient_email
       elsif @invitation.save
-        Mailer.delay.invitation(@invitation, @profile, current_user, root_url + @profile.url + "/" + @invitation.token, msg).deliver
+        Mailer.delay.invitation(@invitation, @profile, current_user, root_url + @profile.url + "/" + @invitation.token, msg)
         current_user.actionlog!(@profile.id, @page_name, "Invite sent to " + @invitation.recipient_email )
         redirect_to root_url + @profile.url, :notice => "Your invitation has been sent to " + @invitation.recipient_email
       else

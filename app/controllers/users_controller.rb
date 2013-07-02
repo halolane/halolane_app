@@ -50,7 +50,7 @@ class UsersController < ApplicationController
         new_bookshelf = current_user.createbookshelf!(new_bookshelf_name)        
         flash[:success] = "Hi " + @user.first_name + "! Welcome to the FamilyTales! Please check your email " + @user.email + " to validate your account."
         begin
-          Mailer.delay.validate_account(@user, root_url + "login/" + @user.token).deliver
+          Mailer.delay.validate_account(@user, root_url + "login/" + @user.token)
         rescue
           flash[:error] = "We had issues sending an email to " + @user.email + " Please provide a valid email."
         end
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
           new_bookshelf_name = @user.first_name + "\'s Bookshelf"
           current_user.createbookshelf!(new_bookshelf_name)
           current_user.createbookshelfrelation!(@bookshelf, @invitation.permission, false)
-          Mailer.delay.validate_account(@user, root_url + "login/" + @user.token).deliver
+          Mailer.delay.validate_account(@user, root_url + "login/" + @user.token)
           redirect_to root_url
         else
           relationship = params[:relationship][:description]
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
   def resend_validation
     @user = current_user
     if !@user.verified 
-      Mailer.delay.resend_validation(current_user, root_url + "login/" + current_user.token).deliver
+      Mailer.delay.resend_validation(current_user, root_url + "login/" + current_user.token)
     else
       redirect_to root_url, :notice => "Your account has already been verified"
     end

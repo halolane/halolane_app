@@ -42,7 +42,7 @@ class ProfilesController < ApplicationController
     send_data @profile.get_vcf_file,
       :filename => "#{full_name}.vcf",
       :type => "text/plain"
-    Mailer.delay.send_vcf(current_user, @profile, root_url + @profile.url).deliver
+    Mailer.delay.send_vcf(current_user, @profile, root_url + @profile.url)
   end
 
   def show
@@ -111,7 +111,7 @@ class ProfilesController < ApplicationController
       current_user.contribute!(@profile, @relationship, true, "edit", true)
       @profile.createchapter!('The beginning')
       current_user.actionlog!(@profile.id, @page_name, "create")
-      Mailer.delay.new_storybook(current_user, @profile, root_url + @profile.url).deliver
+      Mailer.delay.new_storybook(current_user, @profile, root_url + @profile.url)
   		redirect_to root_url + @profile.url
   	else
       flash[:error] = "Sorry, we're not able to create your storybook."
@@ -199,7 +199,7 @@ class ProfilesController < ApplicationController
       @user.save
       @invitation.toggle!(:active)
       sign_in @user
-      Mailer.delay.validate_account(current_user, root_url + "login/" + current_user.token).deliver
+      Mailer.delay.validate_account(current_user, root_url + "login/" + current_user.token)
       @user.contribute!(@profile, "1", false)
     end
 end
