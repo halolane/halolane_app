@@ -94,7 +94,7 @@
     
     <div class='facebook'>
       <!--<a href="/auth/facebook"><%= image_tag("/assets/images/connect-with-facebook.png", :alt => "Connect-with-FB", :width => "395" ) %></a>-->
-      <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="/signup" ><%= image_tag("/assets/images/connect-with-facebook.png", :alt => "Connect-with-FB", :width => "395" ) %> </a>
+      <a class="btn-auth btn-facebook large" href="/auth/facebook">Sign up with <b>Facebook</b></a>
     </div>
     <div class='signup_form'>
       <!--
@@ -103,7 +103,8 @@
         <input id='email' name='user[email]' placeholder='Email address' required='required' type='email'>
         <input id='password' name='user[password]' placeholder='Password' required='required' type='password'>
       -->
-          <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="/signup"><input class='signup_button' name='subscribe' type='submit' value='Sign up now for free'></a>
+
+          <a class="signup_button" data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#signup_modal"><i class="icon-envelope"></i> Sign up by <b>email</b></a>
       </form>
     </div>
   </div>
@@ -159,5 +160,3 @@ Start celebrating your family stories today.
 </p>
 </div>
 </section>
-
-
