@@ -2,11 +2,28 @@ class Chapter < ActiveRecord::Base
   attr_accessible :chapter_name, :chapter_num, :profile_id
 
   belongs_to :profile
-  has_many :memories, dependent: :destroy
+  has_many :pages, dependent: :destroy
 
   before_destroy :renum_chapter_num
 
   validates :profile_id, presence: true
+
+  def pagelist (page_num = nil)
+    if page_num.nil? or page_num < 1 or page_num > pagecount
+      Page.where("chapter_id = ?", id).order(:page_num)
+    else
+      Page.where("chapter_id = ?", id).where("page_num > ?", page_num).order(:page_num)
+    end
+  end
+
+  def pagecount
+    Page.where("chapter_id = ?", id).count
+  end
+
+  def createpage! (template_num = 1)
+    new_page_num = pagecount + 1
+    @page = pages.create!(chapter_id: id, page_num: new_page_num, template_num: template_num)
+  end
 
   private 
   	def renum_chapter_num 
