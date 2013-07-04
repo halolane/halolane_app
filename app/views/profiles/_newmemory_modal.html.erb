@@ -16,8 +16,7 @@
 	  <div class="field">
 	  				<div class="addchapter">
 				<h4>Chapter</h4>
-				<!-- <%= select "memory","chapter", 
-				  				@profile.chapterlist.reverse.collect {|p| [ "Chapter " + p.chapter_num.to_s + " - " + p.chapter_name, p.id ] }%> -->
+
 
 				<div class="chapterPicker">
 				  <div class="chapterPickerInnerWrapper">
@@ -39,6 +38,7 @@
 
 				        <span class="currentChapterName"><%= "Chapter " + @profile.chapterlist.last.chapter_num.to_s + " - " + @profile.chapterlist.last.chapter_name %>
 				        	<input id="memory_chapter" name="memory[chapter]" type="hidden" value="<%= @profile.chapterlist.last.id %>">
+
 				        </span>
 				    </div>
 				  </div>

@@ -10,18 +10,17 @@
 
 class Memory < ActiveRecord::Base
   
-  attr_accessible :content, :profile_id, :photo, :date, :chapter_id, :has_photo
+  attr_accessible :content, :profile_id, :photo, :date, :page_id, :has_photo
   has_attached_file :photo, :styles => { :thumb => "51x51#", :medium => "250x250>", :cover => "216x146#", :storybook => "250x400>" }
 
   belongs_to :user
   belongs_to :profile
-  belongs_to :chapter
+  belongs_to :page
 
   has_many :likememories, dependent: :destroy
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true
-  validates :chapter_id, presence: true
   validates :date, presence: true
   validates :content, :length => { :maximum => 250 }
   

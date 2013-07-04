@@ -7,19 +7,20 @@ class MemoriesController < ApplicationController
     
     @profile = Profile.find(params[:memory][:profile_id])
     authorized = Relationship.exists?(:profile_id => @profile.id , :user_id => current_user.id)
+    @page = Chapter.find(params[:memory][:chapter]).pagelist.last
     begin
       @memory = current_user.memories.build(:profile_id => @profile.id, 
         :photo => params[:memory][:photo],
         :content => params[:memory][:content],
         :date => (params[:memory][:date]).to_date,
-        :chapter_id => params[:memory][:chapter],
+        :page_id => @page.id,
         :has_photo => (params[:memory][:photo] != nil)) 
     rescue 
       @memory = current_user.memories.build(:profile_id => @profile.id, 
           :photo => params[:memory][:photo],
           :content => params[:memory][:content],
           :date => Date.today, 
-          :chapter_id => params[:memory][:chapter],
+          :page_id => @page.id,
           :has_photo => (params[:memory][:photo] != nil)) 
     end
 
