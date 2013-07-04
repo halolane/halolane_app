@@ -61,6 +61,7 @@ class ProfilesController < ApplicationController
       end
     end
     @chapter = Chapter.new
+
     if signed_in?
       @relationship = current_user.getRelationship(@profile)
     else
@@ -76,7 +77,6 @@ class ProfilesController < ApplicationController
         if ! @user.nil?
           sign_in @user
           showprofile
-          redirect_to root_url + @profile.url
         else
           redirect_to root_url
         end
@@ -89,7 +89,6 @@ class ProfilesController < ApplicationController
         if signed_in?
           current_user.actionlog!(@profile.id, @page_name, "show")
         end
-        render :layout => "storyboard_layout"
       else
         flash[:error] = "You are not authorized to view that profile"
         redirect_to root_url
@@ -109,7 +108,8 @@ class ProfilesController < ApplicationController
 
   	if @profile.save
       current_user.contribute!(@profile, @relationship, true, "edit", true)
-      @profile.createchapter!('The beginning')
+      @chapter = @profile.createchapter!('The beginning')
+      @chapter.createpage!
       current_user.actionlog!(@profile.id, @page_name, "create")
       Mailer.delay.new_storybook(current_user, @profile, root_url + @profile.url)
   		redirect_to root_url + @profile.url
@@ -147,7 +147,13 @@ class ProfilesController < ApplicationController
         @memory = @profile.memories.build 
         @invitation = @profile.invitations.build
       end
-      @memoryfeed_items = @profile.memoryfeed.paginate(page: params[:page])
+      if @profile.memoryfeed(params[:chapter_num],params[:page_num]).nil?
+        flash[:notice] = "That storybook page does not exists. We redirected you the first page of this storybook."
+        redirect_to root_url + @profile.url
+      else
+        @memoryfeed_items = @profile.memoryfeed(params[:chapter_num],params[:page_num]).paginate(page: params[:page])
+        render :layout => "storyboard_layout"
+      end      
     end
 
     def correct_user

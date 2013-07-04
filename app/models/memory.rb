@@ -17,6 +17,7 @@ class Memory < ActiveRecord::Base
   belongs_to :profile
   belongs_to :page
 
+  has_one :chapter, through: :pages
   has_many :likememories, dependent: :destroy
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  

@@ -60,6 +60,8 @@ HalolaneApp::Application.routes.draw do
   match '/bookshelf/:invitation_token', to: 'invitations#show'
 
   #This must be last of the match statements
+  match '/:url/chapter/:chapter_num/page/:page_num', to: 'profiles#show'
+  match '/:url/chapter/:chapter_num', to: 'profiles#show'
   match '/:url', to: 'profiles#show'
   match '/:url/:invitation_token', to: 'invitations#show'
 

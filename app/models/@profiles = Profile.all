@@ -63,3 +63,17 @@ u.createbookshelfrelation!(b, 'edit',true)
 	u.createbookshelfrelation!(b, 'edit',true)
 end
 
+@chapters = Chapter.all
+
+@chapters.each do |c|
+	c.createpage!
+end
+
+@memories = Memory.all
+
+@memories.each do |m|
+	p_id = Profile.find(m.profile_id).chapterlist.first.pages.first.id
+	m.update_attributes(:page_id => p_id)
+end
+
+

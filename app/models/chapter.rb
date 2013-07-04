@@ -3,7 +3,7 @@ class Chapter < ActiveRecord::Base
 
   belongs_to :profile
   has_many :pages, dependent: :destroy
-
+  has_many :memories, through: :pages
   before_destroy :renum_chapter_num
 
   validates :profile_id, presence: true

@@ -55,8 +55,14 @@ class Profile < ActiveRecord::Base
     @chapter = chapters.create!(profile_id: id, chapter_name: chapter_name, chapter_num: new_chapter_num)
   end
 
-  def memoryfeed
-    Memory.where("profile_id = ?", id)
+  def memoryfeed(chapter_num = nil, page_num = nil)
+    if chapter_num.nil? and page_num.nil?
+      self.chapters.first.pages.first.memories
+    elsif ! chapter_num.nil? and ! page_num.nil? and ! self.chapters.find_by_chapter_num(chapter_num).nil? and ! self.chapters.find_by_chapter_num(chapter_num).pages.find_by_page_num(page_num).nil?
+      self.chapters.find_by_chapter_num(chapter_num).pages.find_by_page_num(page_num).memories
+    elsif ! chapter_num.nil? and ! self.chapters.find_by_chapter_num(chapter_num).nil?
+      self.chapters.find_by_chapter_num(chapter_num).pages.first.memories
+    end
   end
 
   def photofeed
