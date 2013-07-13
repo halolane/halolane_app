@@ -275,7 +275,7 @@ $(document).ready(function(){
 	});
 
 	$('.firststories-coachmark, .addmemory-coachmark').click(function() {
-		$('.modal.in').modal('hide') 
+		$('.modal.in').modal('hide'); 
 	});
 
 
@@ -301,20 +301,10 @@ $(document).ready(function(){
 
 	// use this if you want to use the spinner
 	$(".savestory_button").click(function(){
-		$('.newmemorymodal').modal('hide');
-	 	$('#loading_spinner').modal('show');
+		$('.modal.in').modal('hide');
+	 	var $tile_num_class = '.tile' + $('#memory_tile_num').val();
+	 	$($tile_num_class).html('<div class="loading-spinner"><div class="loading-spinner-content"><i class="icon-spinner icon-spin icon-4x"></i><div class="loading-desc"><h2 >Loading... </h2></div></div></div>');
 	});
-
-	$('#loading_spinner').on('show', function () {
-	    $('.loading-spinner-icon').removeClass('hide');
-	});
-
-	$('#loading_spinner').on('hide', function () {
-	    $('.loading-spinner-icon').addClass('hide');
-	
-	});
-
-
 
   $container.imagesLoaded(function() {
     $container.isotope({

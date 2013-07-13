@@ -34,11 +34,11 @@ class MemoriesController < ApplicationController
     respond_to do | format |   
       if @memory.save
         format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + @page.page_num.to_s } 
-        format.json { render json: @memory, status: :created, location: @memory }
-        # format.js 
+        format.js 
         current_user.actionlog!(@profile.id, @page_name, "New story created" )
       else
         format.html { redirect_to root_url + @profile.url } 
+        format.json { render json: @memory, status: :created, location: @memory }
       end
     end    
   end

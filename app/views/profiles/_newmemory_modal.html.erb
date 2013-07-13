@@ -8,7 +8,7 @@
   	<div class="createTitle_form">
 	  	<%= render 'profiles/new_question_form' %>
 	  </div>
-		<%= form_for @memory do |f| %>
+		<%= form_for @memory, :html => { :multipart => true }, :remote => true do |f| %>
 	  <%= render 'shared/error_messages', object: f.object %>
 	  <div class="field">
 			

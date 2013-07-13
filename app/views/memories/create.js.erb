@@ -3,64 +3,9 @@ $(document).ready(function(){
 		<% if params[:memory][:photo] == nil and params[:memory][:content] == "" %>
 			alert("Missing memory and photo!");
 		<% else %>  
-
-			<% if current_user.memorycount == 1 %>
-				var $newMemoryQuestion = "<p>What are songs you like as a baby and which one was your favorite?</p>";
-			<% elsif current_user.memorycount == 2 %>
-		  	var $newMemoryQuestion = "<p>What are a few names we considered for you and why picked your name?</p>";
-			<% else %>
-				var $newMemoryQuestion = "<p>" + <%= raw (StorybookQuestion.find(rand(StorybookQuestion.count) + StorybookQuestion.first.id).question.gsub("@profile.first_name", @profile.first_name)).to_json %> + "</p>";
-			<% end %>
-			$('div.memoryquestion').html($newMemoryQuestion);
-		  	/* Old code saved when the memory box creation was on the upper left side
-		  	$('.messageBoxContainer').removeClass("expanded");
-			$('.messageBoxContainer').addClass("collapsed");
-			$('.btn-post').addClass("hidden");
-			$('.addphoto-icon').addClass("hidden");
-			$('.messageTools').addClass("hidden");
-			$('.addphoto').addClass("hidden"); */
-			$("#memory_content").val('');
-			$("#memory_photo").val('');
-			var left = 250; 	
-			$('#memorycounter').text('250');
-			$('#memory_content').keypress(function (e) {
-				if((e.which == 13) || (e.which < 0x20)) {
-			      e.preventDefault();
-			      return false;
-			    }
-			    
-			    var left = 250 - $(this).val().length;
-			    if (left < 0) {
-			        $('#memorycounter').addClass("text-error");
-			    }
-			    $('#memorycounter').text(left);
-				    
-			});
-
-			var $content = <%= raw @memory.content.to_json %>;
-
-			var $newItems = $('<div class="newbox" id="blank"></div><div class="newbox"><% if @memory.photo.file? %><span class="box-image"><%= image_tag @memory.photo, class: "storyimage" %></br></span><% end %><span class="box-text">' + $content + '</span><span class="box-user"><%= link_to @memory.user.first_name, @memory.user %></span><span class="box-timestamp">Posted <%= time_ago_in_words(@memory.created_at) %> ago.</span><span class="story-edit-btn" style="position: relative;float:right;opacity: 0;margin-top: -4%;margin-left: -5%;"><%= link_to "Delete", @memory, method: :delete, data: { confirm: "Are you sure?" }, title: "Delete this story", :class => "btn", :style => "font-size: 0.7em;" %><%= link_to "Edit", edit_memory_path(@memory), title: "Edit this story", :class => "btn" %></span></div>');
-			var $container = $('#content');
-			$container.imagesLoaded( function(){
-				$container.prepend( $newItems).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
-			});
-
-			$(".newbox").hover(function() {
-				$(this).find(".story-edit-btn").fadeTo("fast",1);
-			}, function() {
-			   	$(this).find(".story-edit-btn").fadeTo("fast",0);
-		 	});
-			// var newItems = $('<div class="newbox" id="blank"></div><div class="newbox"><% if @memory.photo.file? %><span class="box-image"><%= image_tag @memory.photo, class: "storyimage" %></br></span><% end %><span class="box-text"><%= @memory.content %></span><span class="box-user"><!-- <%= link_to gravatar_for(@memory.user), @memory.user %> --><%= link_to @memory.user.first_name, @memory.user %></span><span class="box-timestamp">Posted <%= time_ago_in_words(@memory.created_at) %> ago.</span></div>');
-
-			//$('#content').prepend(newItems).isotope( 'reloadItems' ).isotope({ sortBy: 'original-order' });
-			$('#loading_spinner').modal('hide');
-
-			<% if current_user.memorycount == 1 %>
-				$('#emailstories').modal('show');
-             	$('.firstaddbyemail-coachmark').removeClass('hide');
-     	 	<% end %>
+			var $tile_num_class = '.tile' + $('#memory_tile_num').val();
+			$($tile_num_class).removeClass('EmptyTile');
+		 	$($tile_num_class).html("<%= escape_javascript render('memories/new_story_form') %>"); 
 		<% end %>
 	<% end %>
-	var $container = $('#content');
-	$container.isotope( 'reLayout');
 });

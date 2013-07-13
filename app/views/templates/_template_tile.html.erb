@@ -1,10 +1,10 @@
 <% if @page.memories.find_by_tile_num(tile.tile_num).blank? %>
-<li data-row="<%= tile.datarow %>" data-col="<%= tile.datacol %>" data-sizex="<%= tile.datasizex %>" data-sizey="<%= tile.datasizey %>" class="gs_w EmptyTile storyWrapper">
+<li data-row="<%= tile.datarow %>" data-col="<%= tile.datacol %>" data-sizex="<%= tile.datasizex %>" data-sizey="<%= tile.datasizey %>" class="gs_w EmptyTile storyWrapper tile<%= tile.tile_num %>">
 	<%= (render "templates/empty_tile_content").gsub("insert_tile_num",tile.tile_num.to_s).html_safe %>
 </li>
 <% else %>
 	
-<li data-row="<%= tile.datarow %>" data-col="<%= tile.datacol %>" data-sizex="<%= tile.datasizex %>" data-sizey="<%= tile.datasizey %>" class="gs_w  storyWrapper">
+<li data-row="<%= tile.datarow %>" data-col="<%= tile.datacol %>" data-sizex="<%= tile.datasizex %>" data-sizey="<%= tile.datasizey %>" class="gs_w  storyWrapper tile<%= tile.tile_num %>">
 	<span class="story-edit-btn">
 		<% if signed_in? and current_user.canContribute?(@profile) %>
 			<div class="dropdown">
