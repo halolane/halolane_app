@@ -1,0 +1,49 @@
+.EmptyTile {
+	background: #dddddd !important;
+	-webkit-border-radius:3px;-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;border-radius:3px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;
+	 background:rgba(0,0,0,0.03);
+	 border:2px dashed #bbb;
+		color:#888 !important;
+		cursor:pointer;
+		display:block;
+		font-size:15px;
+		font-weight:bold;
+		position:relative;text-align:center;text-shadow:0 1px 1px #fff;width:236px;height:284px}
+
+.EmptyTile i {
+
+	font-size: 3em;
+	height:48px;width:48px;
+	bottom:50%;left:50%;
+	margin-left:-24px;
+	position:absolute}@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){
+		.EmptyTile i{background-image:url('images/main-sb146a6589d.ece6e124.png');background-position:-1644.5px 0;background-size:2878.5px 48px}
+}
+
+.EmptyTile span{
+	margin: 10px;
+	left:0;margin-top:10px;position:absolute;right:0;top:50%
+}
+.ie7 .EmptyTile{background:#d5d5d5 !important;border:0}
+.EmptyTile:hover{background:#d4d4d4 !important;background:rgba(0,0,0,0.07);border-color:#888 !important;color:#5f5f5f !important;text-shadow:none}
+.EmptyTile:hover i{height:48px;width:48px;background:url('images/main-s6c424f932d.eee41d73.png') -1752px 0 no-repeat;background-position:-1752px 0}@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){.BoardCreateRep:hover i{background-image:url('images/main-sb146a6589d.ece6e124.png');background-position:-1742.5px 0;background-size:2878.5px 48px}}
+.EmptyTile:active{background:rgba(0,0,0,0.09);border-color:#888;color:#4d4d4d;text-shadow:none}
+.EmptyTile:active i{height:48px;width:48px;background:url('images/main-s6c424f932d.eee41d73.png') -1703px 0 no-repeat;background-position:-1703px 0}@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5){.BoardCreateRep:active i{background-image:url('images/main-sb146a6589d.ece6e124.png');background-position:-1693.5px 0;background-size:2878.5px 48px}}
+
+.hoverMask{
+	margin: 0 0 !important;
+	-webkit-border-radius:3px;
+	-moz-border-radius:3px;-ms-border-radius:3px;-o-border-radius:3px;border-radius:3px;-webkit-box-shadow:0 0 3px rgba(0,0,0,0.33) inset;
+	-moz-box-shadow:0 0 3px rgba(0,0,0,0.33) inset;
+	bottom:0  !important;
+	left:0  !important;
+	position:absolute ;
+	right:0  !important;
+	top:0  !important;
+	z-index:99}
+
+	.ielt10 .hoverMask{display:none !important}
+
+	.storyWrapper:hover .hoverMask{background:rgba(255,255,255,0.1)}
+
+	.storyWrapper:active .hoverMask{background:rgba(0,0,0,0.1)}.Board:before{-webkit-box-shadow:0 1px 3px 3px rgba(0,0,0,0.33);-moz-box-shadow:0 1px 3px 3px rgba(0,0,0,0.33);box-shadow:0 1px 3px 3px rgba(0,0,0,0.33);bottom:3px;content:'';left:3px;position:absolute;right:3px;top:3px;z-index:-1}

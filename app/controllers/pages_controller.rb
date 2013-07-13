@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_filter :signed_in_user, only: [:create, :destroy]
   # GET /pages
   # GET /pages.json
   def index
@@ -25,11 +26,7 @@ class PagesController < ApplicationController
   # GET /pages/new.json
   def new
     @page = Page.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @page }
-    end
+    
   end
 
   # GET /pages/1/edit
@@ -40,14 +37,16 @@ class PagesController < ApplicationController
   # POST /pages
   # POST /pages.json
   def create
-    @page = Page.new(params[:page])
+    @chapter = Chapter.find(params[:page][:chapter_id])
+    @profile = Profile.find(@chapter.profile_id)
+    template_num = params[:page][:template_num]
 
     respond_to do |format|
-      if @page.save
-        format.html { redirect_to @page, notice: 'Page was successfully created.' }
+      if @chapter.createpage!(template_num)
+        format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + @chapter.pagecount.to_s }
         format.json { render json: @page, status: :created, location: @page }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s  }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
     end
@@ -73,10 +72,12 @@ class PagesController < ApplicationController
   # DELETE /pages/1.json
   def destroy
     @page = Page.find(params[:id])
+    @chapter = Chapter.find(@page.chapter_id)
+    @profile = Profile.find(@chapter.profile_id)
     @page.destroy
 
     respond_to do |format|
-      format.html { redirect_to pages_url }
+      format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s, notice: "Page deleted"  }
       format.json { head :no_content }
     end
   end

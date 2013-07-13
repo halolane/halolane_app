@@ -1,13 +1,15 @@
 <% if current_user.like?(@memory) %>
-	<div class="button">
-	<%= link_to unlike_memory_path(@memory), :remote => true, :class => "btn" do %>
-		Unlike
+	<%= link_to unlike_memory_path(@memory), :class => "liked", :rel => "tooltip", :placeholder => "Like this story", :remote => true do %>
+		<i class="icon-heart"></i> 
+		<% if @memory.numlikes > 0 %>
+			<span class="likecount"><%= @memory.numlikes %></span>
+		<% end %>
 	<% end %>
-	</div>
 <% else %>
-	<div class="button">
-	<%= link_to like_memory_path(@memory), :remote => true, :class => "btn" do %>
-		<i class="icon-heart red"></i> Like
+	<%= link_to like_memory_path(@memory), :class => "unliked", :rel => "tooltip", :placeholder => "Unlike this story", :remote => true  do %>
+		<i class="icon-heart"></i> 
+		<% if @memory.numlikes > 0 %>
+			<span class="likecount"><%= @memory.numlikes %></span>
+		<% end %>
 	<% end %>
-	</div>
 <% end %> 

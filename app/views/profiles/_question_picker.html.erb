@@ -1,0 +1,5 @@
+<ul class="titlePicker_list">
+	<% @questions.each do |q| %>
+		  <li class="titlePickerItem"><%= q.question.gsub("@profile.first_name",@profile.first_name) %></li>
+	<% end %>
+</ul>

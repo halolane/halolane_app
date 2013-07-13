@@ -1,0 +1,155 @@
+/********************************************************************
+*
+* Storyboard footer CSS settings
+*
+*********************************************************************/
+
+.add_page_panel {
+	z-index: 1000;
+	padding-bottom: 20px;
+	position:absolute;
+	right:0;
+	bottom:0;
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.add_page_panel a {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	display:block;
+	height:20px;
+	width:auto;
+	text-align:center;
+	background:#476B04;
+	border-top:2px solid #476B04;
+	border-left:2px solid #476B04;
+	border-right:2px solid #476B04;
+	padding:5px;
+	padding-bottom: 5px;
+	float:right;
+	cursor:pointer;
+	/*Font*/
+	color:#FFF;
+	font-size:15px;
+	margin-right: 8%;
+	text-decoration: none !important;
+}
+
+.add_page_panel .panel {
+	overflow: hidden;
+	clear:both;
+	height:220px;
+	border-top:2px solid #476B04;
+	background:#fff;
+	padding:15px;
+	display: none;
+}
+
+.templates {
+	overflow: hidden;
+	border-top: 1px solid #555;
+	border-bottom: 1px solid #555;
+	background: #E7E7E7;
+}
+
+.template_thumb, .new_page {
+	position: relative;
+	float: left;
+	display: inline-block;
+	margin: 2%;
+	opacity:0.4;
+	filter:alpha(opacity=40); /* For IE8 and earlier */
+}
+
+.template_thumb:hover {
+	opacity:1.0;
+	filter:alpha(opacity=100); /* For IE8 and earlier */
+}
+
+.footerstripe {
+	display: inline;
+	z-index: 1100;
+	position: absolute;
+	bottom:0;
+	height: 20px;
+	width: 100%;
+	border-top:2px solid #476B04;
+	background-color:rgba(95,143,5,0.7) !important;
+	padding: 0.25% 0;
+}
+
+.currentChapter {
+	display: inline;
+	margin-left: 2%;
+	color: white;
+	.showchapterlist {
+		color:rgba(0,0,0,0.5) !important;
+	}
+}
+
+.pagenums {
+	display: inline;
+	float: right;
+	color: white;
+	margin-right: 10%;
+	a {
+		text-decoration: none !important;
+	}
+}
+
+.pagenum {
+	height: 15px;
+	width: 15px;
+	display: inline;
+	background-color:rgba(0,0,0,0.4) !important;
+	border: 1px gray solid;
+	line-height: 15px;
+	text-align: center;
+	border-radius: 15px;
+	font-weight: 600;
+	color: #fff;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.pagenum:hover {
+	background-color:rgba(0,0,0,0.7) !important;
+}
+
+.pagenum.active {
+	background-color:rgba(0,0,0,0.7) !important;
+}
+
+a.pagenav {
+	color: white;
+	text-decoration: none !important;
+	margin: 5px;
+}
+
+.showChapterList {
+	cursor: pointer;
+}
+
+.delete-page {
+	position: absolute;
+	display:inline;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 1.5em;
+	margin-left: 0px;
+	border: 1px solid #5a8f00;
+	color: #333;
+	background: #fff;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	bottom: 0;
+	font-size:15px;
+	opacity: 0;
+}
+
+a.deletepage {
+	text-decoration: none !important;
+	color: #717171 !important;
+}

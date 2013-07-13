@@ -60,7 +60,7 @@ class ProfilesController < ApplicationController
         return
       end
     end
-    @chapter = Chapter.new
+    @newchapter = Chapter.new
 
     if signed_in?
       @relationship = current_user.getRelationship(@profile)
@@ -143,17 +143,41 @@ class ProfilesController < ApplicationController
 
     def showprofile
       store_location
+      @newpage = Page.new
+      @template_types = Template.all
+      @questions = StorybookQuestion.all
       if signed_in? or is_invited?(params[:invitation_token])
         @memory = @profile.memories.build 
         @invitation = @profile.invitations.build
       end
       if @profile.memoryfeed(params[:chapter_num],params[:page_num]).nil?
         flash[:notice] = "That storybook page does not exists. We redirected you the first page of this storybook."
-        redirect_to root_url + @profile.url
+        @chapter = @profile.chapterlist.first
+        @page = @chapter.pagelist.first
+        @template = Template.find_by_id(@page.template_id)
+        @tiles = @template.tilelist
+        redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s
       else
         @memoryfeed_items = @profile.memoryfeed(params[:chapter_num],params[:page_num]).paginate(page: params[:page])
+        if ! @profile.chapters.find_by_chapter_num(params[:chapter_num]).nil?
+          @chapter = @profile.chapters.find_by_chapter_num(params[:chapter_num])
+          if params[:page_num] != nil and ! @chapter.pages.find_by_page_num(params[:page_num]).nil?
+            @page = @chapter.pages.find_by_page_num(params[:page_num])
+          else
+            @page = @chapter.pagelist.first
+            if params[:page_num] != nil and @chapter.pages.find_by_page_num(params[:page_num]).nil?
+              flash[:notice] = "That storybook page does not exists. We redirected you the first page of this storybook."
+            end
+          end
+        else
+          @chapter = @profile.chapterlist.last
+          @page = @chapter.pagelist.first
+        end
+        @template = Template.find_by_id(@page.template_id)
+
+        @tiles = @template.tilelist
         render :layout => "storyboard_layout"
-      end      
+      end 
     end
 
     def correct_user

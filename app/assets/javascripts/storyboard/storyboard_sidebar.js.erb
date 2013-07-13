@@ -1,23 +1,25 @@
 $(document).ready(function(){
 
-	$('.chapterlist_btn').click(function() {
-		$('.storyboardSidebar').removeClass('collapsed').animate({
-      left: '0px'
-    }, 500);	
-		$('.nav_left.hotspot').removeClass('collapsed');
-		$('.nav_controls.left').removeClass('collapsed');
-		$('.storyboardSidebarMenu').removeClass('hidden');
-		$('.sidebarButtons').addClass('hidden');
+	$('.showChapterList').click(function() {
+
+		if ($('.storyboardSidebar').hasClass("collapsed")){ 
+			$('.storyboardSidebar').fadeIn(1).removeClass('collapsed').animate({
+	      top: '0px'
+	    }, 500);
+			$('.nav_left.hotspot').removeClass('collapsed');
+			$('.nav_controls.left').removeClass('collapsed');
+			$('.storyboardSidebarMenu').removeClass('hidden');		}
+		else {
+			$('.storyboardSidebar').addClass('collapsed').animate({
+      top: '800px'
+	    },500).delay(500).fadeOut(400);
+		}
 	});
 
 	$('.closeSidebar').click(function() {
 		$('.storyboardSidebar').addClass('collapsed').animate({
-      left: '-260px'
-    },500);
-		$('.nav_left.hotspot').addClass('collapsed');
-		$('.nav_controls.left').addClass('collapsed');
-		$('.storyboardSidebarMenu').addClass('hidden');
-		$('.sidebarButtons').removeClass('hidden');
+      top: '800px'
+    },500).delay(500).fadeOut(400);
 	});
 
 	$('.chapterpicker_link').hover(function() {

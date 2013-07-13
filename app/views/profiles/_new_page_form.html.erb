@@ -1,0 +1,6 @@
+<%= form_for @newpage do |f| %>
+	<input type="hidden" id="page_chapter_id" name="page[chapter_id]" value="<%= @chapter.id %>" />
+	<input type="hidden" id="page_template_num" name="page[template_num]" value="<%= template_type.id %>" />
+
+	<%= image_submit_tag("/assets/images/templatethumbs/template"+template_type.template_num.to_s + ".png", :rel => "tooltip", :class => "template_thumb", :alt => "Template "+ template_type.template_num.to_s, :title => "Template "+ template_type.template_num.to_s) %>
+<% end %>

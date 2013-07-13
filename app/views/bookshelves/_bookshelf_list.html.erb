@@ -1,7 +1,7 @@
-<div class="ajax UserInfoBar InfoBarBase Module centeredWithinWrapper" id="bookshelf<%= bookshelf.id %>">
+<div class="ajax UserInfoBar InfoBarBase Module centeredWithinWrapper" id="bookshelf<%= bookshelf.id %>" data-step="2" data-intro="A bookshelf is a collection of storybooks." data-position="bottom">
   <ul class="userStats">
     <% if current_user.bookshelfContributor?(bookshelf.id) or current_user.bookshelfEditor?(bookshelf.id) %>
-    <li style="width:50px;">
+    <li style="width:50px;" data-step="3" data-intro="You can invite family and friends to each bookshelf to view or create family storybooks with you." data-position="bottom">
       <a href="#addcontributor<%= bookshelf.id %>" class="newstorybooklink Module" rel="tooltip" data-placement="bottom" title="Invite family and friends to this bookshelf" data-toggle="modal" data-keyboard="true">
       <span class="icon-stack">
         <i class="icon-user icon-stack-base"></i>
@@ -45,9 +45,9 @@
 <div class="UserProfileContent Module">
   <div class="UserBoards ajax ownProfile Module" style="display: block;"><div class="moduleMask"></div>
     <div class="ajax Grid Module">
-      <div class="padItems Module centeredWithinWrapper fixedHeightLayout ajax GridItems ui-sortable">
+      <div class="padItems Module centeredWithinWrapper fixedHeightLayout ajax GridItems ui-sortable" data-step="4" data-intro="Start your first storybook now!" data-position="bottom">
         <% if current_user.bookshelfContributor?(bookshelf.id) or current_user.bookshelfEditor?(bookshelf.id) %>
-        <div class="item ">
+        <div class="item">
           <a href="#newstorybook<%= bookshelf.id %>" class="newstorybooklink BoardCreateRep Module" rel="tooltip" data-placement="bottom" title="Create a new storybook" data-toggle="modal" data-keyboard="true">
             <i class="icon-plus-sign icon-4"></i><span>Create a storybook</span>
           </a>

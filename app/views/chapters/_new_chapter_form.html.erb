@@ -5,4 +5,4 @@
 	   <% end %>
 	   <%= link_to "Edit", edit_chapter_path(@chapter), class: "edit_chapter", remote: true %>
 	</div>
-  <a class="chapterlist_link" href="<%= '#chp' + @chapter.chapter_num.to_s %>" data-placement="right" rel="tooltip" title="<%= @chapter.chapter_num.to_s + " - " + @chapter.chapter_name %>"><%= "Chapter " + @chapter.chapter_num.to_s + " - " + @chapter.chapter_name %></a>
+  <a class="chapterlist_link" href="<%= root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s %>" data-placement="right" rel="tooltip" title="<%= @chapter.chapter_num.to_s + " - " + @chapter.chapter_name %>"><%= "Chapter " + @chapter.chapter_num.to_s + " - " + @chapter.chapter_name %></a>

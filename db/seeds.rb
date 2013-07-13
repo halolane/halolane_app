@@ -30,6 +30,39 @@
  	Relationshipdesc.find_or_create_by_description(r)
  end
 
+template_list = [
+	[1, "Six tiles, two oversized", 1297, 680],
+	[2, "title page", 1297, 680],
+	[3, "Four tiles", 1297, 680]
+]
+template_list. each do |template_num, description, width, height|
+ 	Template.find_or_create_by_template_num(template_num: template_num, description: description, width: width, height: height )
+end
+
+tile_list = [
+	[1, 1, 1, 1, 3, 2, 460, 300],
+	[1, 2, 1, 4, 2, 2, 300, 300],
+	[1, 3, 1, 6, 2, 2, 300, 300],
+	[1, 4, 3, 1, 2, 2, 300, 300],
+	[1, 5, 3, 3, 3, 2, 460, 300],
+	[1, 6, 3, 5, 2, 2, 300, 300],
+	[2, 1, 1, 1, 3, 3, 460, 460],
+	[2, 2, 1, 4, 4, 1, 620, 140],
+	[2, 3, 2, 4, 2, 3, 300, 460],
+	[2, 4, 4, 1, 3, 1, 460, 140],
+	[2, 5, 2, 6, 2, 3, 300, 460],
+	[3, 1, 1, 1, 3, 2, 620, 300],
+	[3, 2, 1, 4, 4, 2, 620, 300],
+	[3, 3, 3, 3, 5, 2, 780, 300],
+	[3, 4, 3, 1, 2, 2, 300, 300]
+]
+
+tile_list. each do |template_num, tile_num, datarow, datacol, datasizex, datasizey, width, height|
+	t = Template.find_by_template_num(template_num)
+ 	t.createtile!(tile_num, datarow, datacol, datasizex, datasizey, width, height )
+end
+
+
 User.find_or_create_by_email(
 	:email => "familytalesuser2@gmail.com",
 	:password => "explorer123",

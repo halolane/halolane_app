@@ -30,14 +30,17 @@ class ChaptersController < ApplicationController
   def create
     @profile = Profile.find_by_id(params[:chapter][:profile_id])
     @chapter = @profile.createchapter!(params[:chapter][:chapter_name])
+    @chapter.createpage!(1)
     puts @chapter.id
     puts "Chapter name: " + @chapter.chapter_name
     respond_to do | format |
       if not @chapter.nil?
-        format.js 
-        format.html { redirect_to root_url + @profile.url } 
+        # format.js 
+        format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s } 
+        format.json { render json: @chapter, status: :created, location: @chapter }
       else
         format.html { redirect_to root_url + @profile.url } 
+        format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -71,7 +74,7 @@ class ChaptersController < ApplicationController
     end
 
     @profile = Profile.find(@chapter.profile_id)
-    if current_user.isEditor?(@chapter.profile_id)
+    if current_user.isEditor?(@profile)
       @chapter.destroy
       redirect_to root_url + @profile.url
     else

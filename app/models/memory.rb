@@ -10,8 +10,8 @@
 
 class Memory < ActiveRecord::Base
   
-  attr_accessible :content, :profile_id, :photo, :date, :page_id, :has_photo
-  has_attached_file :photo, :styles => { :thumb => "51x51#", :medium => "250x250>", :cover => "216x146#", :storybook => "250x400>" }
+  attr_accessible :content, :title, :profile_id, :photo, :date, :page_id, :has_photo, :tile_num
+  has_attached_file :photo, :styles => Proc.new { |photo| photo.instance.styles }
 
   belongs_to :user
   belongs_to :profile
@@ -24,6 +24,7 @@ class Memory < ActiveRecord::Base
   validates :profile_id, presence: true
   validates :date, presence: true
   validates :content, :length => { :maximum => 250 }
+  validates :title, :length => { :maximum => 140 }
   
   validates_attachment :photo,
   :content_type => { :content_type => /image/ },
@@ -32,6 +33,10 @@ class Memory < ActiveRecord::Base
 
   # Sorts it by created_at descending
   default_scope order: 'memories.date DESC, memories.created_at DESC'
+
+  def numlikes
+    self.likememories.count
+  end
 
   def self.receive_mail(message)
     @user = User.find_by_email(message.from.first)
@@ -82,6 +87,24 @@ class Memory < ActiveRecord::Base
       Mailer.receive_email_not_user(message.from.first, message.to.first).deliver
     end
 
+  end
+
+  def dynamic_style_format_symbol
+    URI.escape(@dynamic_style_format).to_sym
+  end
+
+  def styles
+    unless @dynamic_style_format.blank?
+      { dynamic_style_format_symbol => @dynamic_style_format }
+    else
+      {}
+    end
+  end
+
+  def dynamic_photo_url(format)
+    @dynamic_style_format = format
+    photo.reprocess!(dynamic_style_format_symbol) unless photo.exists?(dynamic_style_format_symbol)
+    photo.url(dynamic_style_format_symbol)
   end
 
   private

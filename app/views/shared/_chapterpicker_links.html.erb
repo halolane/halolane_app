@@ -1,7 +1,7 @@
 <% if not @profile.chapterlist.nil? %>
 	<ul class="chapterPicker_links">
 		<% @profile.chapterlist.reverse.each do |chp| %>
-			<% if chp.chapter_num == @profile.chaptercount %>
+			<% if chp.chapter_num == @chapter.chapter_num %>
 			  <li class="chapterpicker_link active" href="<%= 'chp' + chp.id.to_s %>">
 			  	<div class="nubbin" data-behavior="nubbin hover_content">
 					 	<div class="spacer"></div>
@@ -10,7 +10,7 @@
 					   <% end %>
 					   <%= link_to "Edit", edit_chapter_path(chp), class: "edit_chapter", remote: true %>
 					</div>
-			    <a class="chapterlist_link" href="<%= '#chp' + chp.chapter_num.to_s %>" data-placement="right" rel="tooltip" title="<%= chp.chapter_num.to_s + " - " + chp.chapter_name %>"><%= "Chapter " + chp.chapter_num.to_s + " - " + chp.chapter_name %></a>
+			    <a class="chapterlist_link" href="<%= root_url + @profile.url + "/chapter/" + chp.chapter_num.to_s %>" data-placement="right" rel="tooltip" title="<%= chp.chapter_num.to_s + " - " + chp.chapter_name %>"><%= "Chapter " + chp.chapter_num.to_s + " - " + chp.chapter_name %></a>
 			  </li>
 			<% else %>
 			  <li class="chapterpicker_link" id="<%= 'chp' + chp.id.to_s %>">
@@ -21,7 +21,7 @@
 					   <% end %>
 					   <%= link_to "Edit", edit_chapter_path(chp), class: "edit_chapter",  remote: true  %>
 					</div>
-			    <a class="chapterlist_link" href="<%= '#chp' + chp.chapter_num.to_s %>" data-placement="right" rel="tooltip" title="<%= chp.chapter_num.to_s + " - " + chp.chapter_name %>"><%= "Chapter " + chp.chapter_num.to_s + " - " + chp.chapter_name %></a>
+			    <a class="chapterlist_link" href="<%= root_url + @profile.url + "/chapter/" + chp.chapter_num.to_s %>" data-placement="right" rel="tooltip" title="<%= chp.chapter_num.to_s + " - " + chp.chapter_name %>"><%= "Chapter " + chp.chapter_num.to_s + " - " + chp.chapter_name %></a>
 			  </li>
 			<% end %>
 		<% end %>

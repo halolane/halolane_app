@@ -1,0 +1,7 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		var new_title = "<%= @new_tile %>";
+		var hidden_input = '<input id="memory_title" name="memory[title]" type="hidden" value="' + new_title + '"/>';
+		$('.currentTitleName').html(new_title + hidden_input);
+	<% end %>
+});

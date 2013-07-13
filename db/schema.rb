@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130703231836) do
+ActiveRecord::Schema.define(:version => 20130711195534) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -100,6 +100,9 @@ ActiveRecord::Schema.define(:version => 20130703231836) do
     t.date     "date"
     t.boolean  "has_photo"
     t.integer  "page_id"
+    t.integer  "tile_num"
+    t.string   "description"
+    t.string   "title"
   end
 
   add_index "memories", ["profile_id", "created_at"], :name => "index_memories_on_profile_id_and_created_at"
@@ -109,9 +112,9 @@ ActiveRecord::Schema.define(:version => 20130703231836) do
   create_table "pages", :force => true do |t|
     t.integer  "page_num"
     t.integer  "chapter_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-    t.integer  "template_num"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "template_id"
   end
 
   create_table "profiles", :force => true do |t|
@@ -155,6 +158,28 @@ ActiveRecord::Schema.define(:version => 20130703231836) do
     t.text     "question"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "templates", :force => true do |t|
+    t.string   "description"
+    t.integer  "height"
+    t.integer  "width"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "template_num"
+  end
+
+  create_table "tiles", :force => true do |t|
+    t.integer  "template_id"
+    t.integer  "datarow"
+    t.integer  "datacol"
+    t.integer  "datasizex"
+    t.integer  "datasizey"
+    t.integer  "tile_num"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "height"
+    t.integer  "width"
   end
 
   create_table "useractionlogs", :force => true do |t|

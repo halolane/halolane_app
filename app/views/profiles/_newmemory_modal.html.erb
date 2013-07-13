@@ -1,71 +1,57 @@
 <!-- Modal -->
-<div id="newmemorymodal" class="modal hide fade newmemorymodal" tabindex="-1" role="dialog" aria-labelledby="newMemoryLabel" aria-hidden="true">
+<div id="newstorymodal" class="modal hide fade newmemorymodal" tabindex="-1" role="dialog" aria-labelledby="newMemoryLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="newMemoryLabel">Write a new story about <%= @profile.first_name %></h3>
   </div>
   <div class="modal-body">
-  	<div class="createChapter_form">
-	  	<%= render 'new_chapter_form' %>
+  	<div class="createTitle_form">
+	  	<%= render 'profiles/new_question_form' %>
 	  </div>
-		<%= form_for @memory, :html => { :multipart => true }, :remote => true do |f| %>
+		<%= form_for @memory do |f| %>
 	  <%= render 'shared/error_messages', object: f.object %>
-
-	  <input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
-	  <input type="hidden" id="memory_user_id" name="memory[user_id]" value="<%= current_user.id %>" />
 	  <div class="field">
-	  				<div class="addchapter">
-				<h4>Chapter</h4>
+			
 
+		  <div class"hidden_fields">
+		  	<input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
+			  <input type="hidden" id="memory_page_id" name="memory[page_id]" value="<%= @page.id %>" />
+		  	
+			  <span class="newstory_tile_num">
+		  		<input type="hidden" id="memory_tile_num" name="memory[tile_num]" value="insert_tile_num" />
+		  	</span>
+		  </div>
+		  <div class="titleBox">
+				<h4>Title</h4>
+				
+				<div class="titlePicker">
+				  <div class="titlePickerInnerWrapper">
+				    <div class="createTitle">
 
-				<div class="chapterPicker">
-				  <div class="chapterPickerInnerWrapper">
-				    <div class="createChapter">
-					    
 				    </div>
 
-				    <div class="chapterPickerInner">
-				      <%= render 'shared/chapterpicker_list' %>
+				    <div class="titlePickerInner">
+				      <%= render 'profiles/question_picker' %>
 				    </div>
 				  </div>
-				  <div class="chapterPickerOuter">
-				    <div class="currentChapter">
-				            
+				  <div class="titlePickerOuter">
+				    <div class="currentTitle">
 				      <div class="iconWrapper">        
 				        <i class="icon-sort-down"></i>
-				        
 				      </div>
-
-				        <span class="currentChapterName"><%= "Chapter " + @profile.chapterlist.last.chapter_num.to_s + " - " + @profile.chapterlist.last.chapter_name %>
-				        	<input id="memory_chapter" name="memory[chapter]" type="hidden" value="<%= @profile.chapterlist.last.id %>">
-
-				        </span>
+			        <span class="currentTitleName">
+			        	Current Title
+			        	<input id="memory_title" name="memory[title]" type="hidden" value="Current Title"/>
+			        </span>
 				    </div>
 				  </div>
 				</div>
 
-			</div>
-	  	<!-- <div class="suggeststory">
-	  		<a href="#" title="Are you stuck? Click here." rel="tooptip">
-	  		<i class="icon-lightbulb"></i> Suggest a story
-		  	</a>
-	  	</div>
-	  	<div class="memoryquestion hidden">
-	  		<p>
-	  			<% if current_user.memorycount == 0 %>
-	  				What are a few names you considered for <%= @profile.first_name %> and why did you choose the name <%= @profile.first_name %>?
-	  			<% elsif current_user.memorycount == 1 %>
-	  				What I remember most about the arrival of <%= @profile.first_name %>?
-	  			<% elsif current_user.memorycount == 2 %>
-	  				What were songs that <%= @profile.first_name %> liked as a baby and which one was their favorite?
-	  			<% else %>
-	  			<%= StorybookQuestion.find(rand(StorybookQuestion.count) + StorybookQuestion.first.id).question.gsub("@profile.first_name", @profile.first_name) %>
-	  			<% end %>
-	  		</p>
-	  		<div class="skipquestion">
-		  		<a rel="tooltip" title="Skip this question"><i class="icon-forward"></i></a>
-		  	</div>
-	  	</div> -->
+			</div><!-- 
+		  <div class="titleBox">
+			  <h4>Title</h4>
+			  <%= f.text_field :title, :required => true, maxlength:"50"%>
+		  </div> -->
 			<div class="composerBox expanded">
 				<h4>Story</h4>
 				<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>

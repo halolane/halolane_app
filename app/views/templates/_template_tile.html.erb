@@ -1,0 +1,82 @@
+<% if @page.memories.find_by_tile_num(tile.tile_num).blank? %>
+<li data-row="<%= tile.datarow %>" data-col="<%= tile.datacol %>" data-sizex="<%= tile.datasizex %>" data-sizey="<%= tile.datasizey %>" class="gs_w EmptyTile storyWrapper">
+	<%= (render "templates/empty_tile_content").gsub("insert_tile_num",tile.tile_num.to_s).html_safe %>
+</li>
+<% else %>
+	
+<li data-row="<%= tile.datarow %>" data-col="<%= tile.datacol %>" data-sizex="<%= tile.datasizex %>" data-sizey="<%= tile.datasizey %>" class="gs_w  storyWrapper">
+	<span class="story-edit-btn">
+		<% if signed_in? and current_user.canContribute?(@profile) %>
+			<div class="dropdown">
+				<a class="dropdown-toggle icon-chevron story-edit-icon" data-toggle="dropdown" href="#"><i class="icon-chevron-down"></i></a>
+				
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						
+						
+							<li class="story-edit-options"><%= link_to "Delete", @page.memories.find_by_tile_num(tile.tile_num), method: :delete, data: { confirm: "Are you sure you want to delete this story?" }, title: "Delete this story",  %></li>
+						<% if current_user?(@page.memories.find_by_tile_num(tile.tile_num).user) %>
+							<li class="story-edit-options"><%= link_to "Edit", edit_memory_path(@page.memories.find_by_tile_num(tile.tile_num)), title: "Edit this story" %></li>
+						<% end %>
+						<!-- for future implementation
+						<li><a href="#">Comment</a></li>
+						<li><a href="#">Flag</a></li>
+						-->
+					</ul>
+			</div>
+		<% end %>
+	</span>
+		<%= link_to zoomstory_memory_path(@page.memories.find_by_tile_num(tile.tile_num)), :remote => true, :class => "notextdecoration" do %>
+			<span class="hoverMask active"></span>
+		<% end %>
+		<div class="box-title">
+			<div class="box-titlecontent">
+			<%= @page.memories.find_by_tile_num(tile.tile_num).title %>
+			</div>
+		</div>
+
+		<% if @page.memories.find_by_tile_num(tile.tile_num).photo.file? %>
+			<div class="box-image">
+
+				<%= image_tag @page.memories.find_by_tile_num(tile.tile_num).dynamic_photo_url(tile.width.to_s + "x" + tile.height.to_s + "#"), class: "storyimage" %>
+			</div>
+		<% else %>
+			<div class='box-content-only-text'>
+				<div class="box-content-text">
+				<i class="icon-quote-left"></i>
+				 <%= @page.memories.find_by_tile_num(tile.tile_num).content %> <i class="icon-quote-right"></i>
+				 </div>
+			</div>
+		<% end %>
+
+		<div class='box-footer'>
+			<% if @page.memories.find_by_tile_num(tile.tile_num).photo.file? %>
+			<span class='box-content'>
+				<%= @page.memories.find_by_tile_num(tile.tile_num).content %>
+			</span>
+			<% end %>
+			<span class="box-storystamp">
+			By <%= @page.memories.find_by_tile_num(tile.tile_num).user.first_name + " " + @page.memories.find_by_tile_num(tile.tile_num).user.last_name %> on
+				<%= @page.memories.find_by_tile_num(tile.tile_num).date.strftime("%a, %b %d, %Y")  %>
+			</span>
+			<span class="like-btn">
+				<div class="likebutton">
+					<% if current_user.like?(@page.memories.find_by_tile_num(tile.tile_num)) %>
+						<%= link_to unlike_memory_path(@page.memories.find_by_tile_num(tile.tile_num)), :class => "liked", :rel => "tooltip", :placeholder => "Like this story", :remote => true do %>
+							<i class="icon-heart"></i> 
+							<% if @page.memories.find_by_tile_num(tile.tile_num).numlikes > 0 %>
+								<span class="likecount"><%= @page.memories.find_by_tile_num(tile.tile_num).numlikes %></span>
+							<% end %>
+						<% end %>
+					<% else %>
+						<%= link_to like_memory_path(@page.memories.find_by_tile_num(tile.tile_num)), :class => "unliked", :rel => "tooltip", :placeholder => "Unlike this story", :remote => true  do %>
+							<i class="icon-heart"></i> 
+							<% if @page.memories.find_by_tile_num(tile.tile_num).numlikes > 0 %>
+								<span class="likecount"><%= @page.memories.find_by_tile_num(tile.tile_num).numlikes %></span>
+							<% end %>
+						<% end %>
+					<% end %> 
+				</div>
+			</span>
+		</div>
+	</li>
+<% end %>

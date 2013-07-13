@@ -11,18 +11,20 @@
 		<i class="icon-circle-arrow-right icon-4"></i>
 	</div>
 </div>
-<div id="content">
-    <%= render 'shared/memoryfeed' %>
 
-</div>
+
+<%= render ( "templates/template" ) %>
+
+
+
 <%= render 'coachmarks' %>
-
 <%= render 'invitation_modal' %>
 <%= render 'confirm_email' %>
-<%= render 'newmemory_modal' %>
 <%= render 'editmemory_modal' %>
 <%= render 'email_stories_modal' %>
 <%= render 'firstthreestories_backdrop' %>
 <%= render 'shared/loading_spinner' %>
+<%= render "profiles/newmemory_modal" %>
+
 <div id="zoomstory" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="betamodalLabel" aria-hidden="true">
 </div>

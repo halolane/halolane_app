@@ -7,27 +7,35 @@ class MemoriesController < ApplicationController
     
     @profile = Profile.find(params[:memory][:profile_id])
     authorized = Relationship.exists?(:profile_id => @profile.id , :user_id => current_user.id)
-    @page = Chapter.find(params[:memory][:chapter]).pagelist.last
+
     begin
       @memory = current_user.memories.build(:profile_id => @profile.id, 
         :photo => params[:memory][:photo],
-        :content => params[:memory][:content],
+        :content => (params[:memory][:content]).strip,
         :date => (params[:memory][:date]).to_date,
-        :page_id => @page.id,
+        :page_id => (params[:memory][:page_id]),
+        :tile_num => (params[:memory][:tile_num]),
+        :title => (params[:memory][:title]).strip,
         :has_photo => (params[:memory][:photo] != nil)) 
     rescue 
       @memory = current_user.memories.build(:profile_id => @profile.id, 
           :photo => params[:memory][:photo],
-          :content => params[:memory][:content],
+          :content => (params[:memory][:content]).strip,
           :date => Date.today, 
-          :page_id => @page.id,
+          :page_id => (params[:memory][:page_id]),
+          :tile_num => (params[:memory][:tile_num]),
+          :title => (params[:memory][:title]).strip,
           :has_photo => (params[:memory][:photo] != nil)) 
     end
 
+    @page = Page.find_by_id(params[:memory][:page_id])
+    @chapter = Chapter.find_by_id(@page.chapter_id)
+
     respond_to do | format |   
       if @memory.save
-        format.html { redirect_to root_url + @profile.url } 
-        format.js 
+        format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + @page.page_num.to_s } 
+        format.json { render json: @memory, status: :created, location: @memory }
+        # format.js 
         current_user.actionlog!(@profile.id, @page_name, "New story created" )
       else
         format.html { redirect_to root_url + @profile.url } 
@@ -62,6 +70,14 @@ class MemoriesController < ApplicationController
       else
         format.html { redirect_to root_url + @profile.url, notice: 'Unable to unlike memory.' } 
       end
+    end
+  end
+
+  def update_title 
+    
+    @new_tile = params[:memory][:question]
+    respond_to do | format |   
+        format.js 
     end
   end
 

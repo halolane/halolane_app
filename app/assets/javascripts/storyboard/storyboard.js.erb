@@ -19,14 +19,20 @@ $(document).ready(function(){
           }   
       }
   });
+  $('.deletepage').tooltip({
+  	placement : 'top'
+  });
 	$('a').tooltip({
   	placement : 'bottom'
   });
   $('button').tooltip({
   	placement : 'right'
   });
-   $('i').tooltip({
+  $('i').tooltip({
   	placement : 'bottom'
+  });
+  $('input.template_thumb').tooltip({
+  	placement : 'top'
   });
   $('img').tooltip({
   	placement : 'top'
@@ -46,6 +52,12 @@ $(document).ready(function(){
 		$('.currentChapterName').html(new_chapter + hidden_input);
   });
 
+  $('.pagenumwrapper').hover(function(){
+  	$(this).children('.delete-page').fadeTo(50,1);
+  }, function() {
+  	$(this).children('.delete-page').fadeTo(50,0);
+  });
+
 	$(".icon-off, .icon-cog, .iconaddcontributor, .playslideshow, .skipquestion, .iconsignout, .iconhelp, .iconfamtree").fadeTo("fast", 0.6);
 	$(".icon-off, .icon-cog, .iconaddcontributor, .playslideshow, .skipquestion, .iconsignout, .iconhelp, .iconfamtree").hover(function() {
 		$(this).fadeTo('fast',1);
@@ -57,6 +69,7 @@ $(document).ready(function(){
 	});
 
 	$(".currentChapter").click(function() {
+
 		$('.chapterPickerInnerWrapper').addClass('visible');
 		$('.createChapter_form').addClass('visible');
 		$('.chapterPicker').append('<div class="chapterPickerMask"></div>')
@@ -67,7 +80,46 @@ $(document).ready(function(){
 		});
 	});
 
-	
+	$('a.link_newstorymodal').click(function(){
+		var tile_num = $(this).attr('id');
+		var newInput = '<input type="hidden" id="memory_tile_num" name="memory[tile_num]" value="' + tile_num + '"/>'
+		$('.newstory_tile_num').html(newInput);
+		var sampleTitleClass = ".sampletitle-" + tile_num
+		var sampleTitle = $(sampleTitleClass).text();
+		var hidden_input = '<input id="memory_title" name="memory[title]" type="hidden" value="' + sampleTitle + '"/>';
+		$('.currentTitleName').html(sampleTitle + hidden_input);
+	});
+
+	$('.titlePickerItem').click(function() {
+
+  	$('.titlePickerInnerWrapper').removeClass('visible');
+  	$('.createTitle_form').removeClass('visible');
+		$('div').remove('.titlePickerMask')
+		var new_title = $(this).closest('li').text();
+		var hidden_input = '<input id="memory_title" name="memory[title]" type="hidden" value="' + new_title + '"/>';
+		$('.currentTitleName').html(new_title + hidden_input);
+  });
+
+  $('.createTitleButton').click(function(){
+  	$('.titlePickerInnerWrapper').removeClass('visible');
+  	$('.createTitle_form').removeClass('visible');
+		$('div').remove('.titlePickerMask')
+  });
+
+	$(".currentTitle").click(function() {
+		var currentTitleName = $.trim($('.currentTitleName').text());
+		var newInput = '<input type="text" required="true" id="memory_question" name="memory[question]" title="This field can\'t be blank" class="createTitleName" id="new_title_name" maxLength="50" value="' + currentTitleName + '"/>'
+		$('.createChapterNameContainer').html(newInput);
+		$('.titlePickerInnerWrapper').addClass('visible');
+		$('.createTitle_form').addClass('visible');
+		$('.titlePicker').append('<div class="titlePickerMask"></div>')
+		$(".titlePickerMask").bind('click',function() {
+			$('.createTitle_form').removeClass('visible');
+			$('.titlePickerInnerWrapper').removeClass('visible');
+			$('div').remove('.titlePickerMask')
+		});
+	});
+
 
 	$(".newmemorybtn").fadeTo("fast", 0.8);
 	$(".newmemorybtn").hover(function() {
@@ -109,21 +161,11 @@ $(document).ready(function(){
 		$(this).fadeTo('fast',1);
 	});
 
-	$(".newbox").hover(function() {
-		$(this).find(".box-text").fadeTo(50,0.5);
-		$(this).find(".box-user").fadeTo(50,0.5);
-		$(this).find(".storyimage").fadeTo(50,0.8);
-		$(this).find(".box-timestamp").fadeTo(50,0.5);
+	$(".storyWrapper").hover(function() {
 		$(this).find(".story-edit-btn").fadeTo(50,1);
-		$(this).find(".like-btn").fadeTo(50,1);
 
 	}, function() {
-		$(this).find(".box-text").fadeTo(50,1);
-		$(this).find(".box-user").fadeTo(50,1);
-		$(this).find(".storyimage").fadeTo(50,1);
-		$(this).find(".box-timestamp").fadeTo(50,1);
    	$(this).find(".story-edit-btn").fadeTo(50,0);
-   	$(this).find(".like-btn").fadeTo(50,0);
  	});
 
 	$(".playslideshow").click(function() {
@@ -214,14 +256,14 @@ $(document).ready(function(){
 		    
 	});
 
-	$('#newmemorymodal, #addcontributor').on('show', function () {
+	$('.newmemorymodal, #addcontributor').on('show', function () {
 		$('body, html').scrollLeft(0);
 		$("body").mousewheel(function(event) {
       $(this).unbind('mousewheel').mousewheel();
     });
   });
 
-  $('#newmemorymodal, #addcontributor').on('hide', function () {
+  $('.newmemorymodal, #addcontributor').on('hide', function () {
 		$("body").mousewheel(function(event, delta) {
       this.scrollLeft -= (delta * 30);
       event.preventDefault();
@@ -259,7 +301,7 @@ $(document).ready(function(){
 
 	// use this if you want to use the spinner
 	$(".savestory_button").click(function(){
-		$('#newmemorymodal').modal('hide');
+		$('.newmemorymodal').modal('hide');
 	 	$('#loading_spinner').modal('show');
 	});
 

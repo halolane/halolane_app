@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require bootstrap
+//= require introjs
 //= require_tree ./storyboard
 //= require jquery.remotipart

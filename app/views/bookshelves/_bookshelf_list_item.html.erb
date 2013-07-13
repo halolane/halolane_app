@@ -8,7 +8,7 @@
         <ul class="dropdown-menu bookshelf" role="menu" aria-labelledby="dLabel" >
           
           <li><%= link_to "Edit", edit_profile_path(book), title: "Edit this storybook" %></li>
-          <li><%= link_to "Delete", book, method: :delete, data: { confirm: "Are you sure you want to delete this storybook? All the stories will be deleted permanently." }, title: "Delete this storybook",  %></li>
+          <li><%= link_to "Delete", book, method: :delete, data: { confirm: "Are you sure you want to delete this storybook? All the stories will be deleted permanently." }, title: "Delete this storybook" %></li>
           <!-- for future implementation
           <li><a href="#">Comment</a></li>
           <li><a href="#">Flag</a></li>
@@ -27,7 +27,7 @@
       <div class="boardCoverWrapper">
         <span class="hoverMask"></span>
         <% if not(book.photofeed[0].blank?) and book.photofeed[0].photo.file? %>
-        <%= image_tag book.photofeed[0].photo.url(:cover), class: "boardCover" %>
+        <%= image_tag book.photofeed[0].dynamic_photo_url("216x146#"), class: "boardCover" %>
         <% end %>
         </span>
         <span class="boardPinCount">
@@ -38,7 +38,7 @@
         <li>
           <span class="hoverMask">
             <% if not(book.photofeed[1].blank?) and book.photofeed[1].photo.file? %>
-            <%= image_tag book.photofeed[1].photo.url(:thumb), class: "thumb" %>
+            <%= image_tag book.photofeed[1].dynamic_photo_url("51x51#"), class: "thumb" %>
             <% end %>
           </span>
         </li>

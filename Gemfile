@@ -29,6 +29,7 @@ gem 'jquery-ui-rails'
 gem 'asset_sync'
 gem 'unicorn'
 gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem "introjs-rails"
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

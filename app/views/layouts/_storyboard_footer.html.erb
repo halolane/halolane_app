@@ -1,0 +1,39 @@
+<div class="add_page_panel">
+  <a id="add_page_panel_button"><i class="icon-plus"></i> Add a new page </a>
+  <div class="panel">
+    <h2>Select a template</h2>
+      <div class="templates">
+
+        <%= render partial: 'profiles/new_page_form', collection: @template_types, :as => :template_type %>
+      </div>
+  </div>
+</div>
+ 
+<div class="footerstripe">
+    <div class="currentChapter showChapterList" data-step="4" data-intro="Pages and stories are organized by chapter. You can decide how you want to organize <%= @profile.first_name %> story." data-position="top"><i class="icon-chevron-sign-up showchapterlist"></i> <%= "Chapter " + @chapter.chapter_num.to_s + " - " + @chapter.chapter_name %></div>
+    <div class="pagenums" data-step="3" data-intro="Stories are organized in pages. You can add, delete and change pages here." data-position="top">
+      <% if @page.page_num != 1 %>
+      <a class="pagenav" href="<%= root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + (@page.page_num + 1).to_s  %>"><i class="icon-chevron-left"></i></a>
+      <% end %>
+      
+      <% @chapter.pagelist.each do |pg| %>
+      <span class="pagenumwrapper">
+        <div class="delete-page">
+        <%= link_to pg, method: :delete, class: "image deletepage", data: { confirm: "Are you sure you want to delete this page? All the stories in this page will be deleted forever." }, title: "Delete this page" do %>
+          <i class="icon-trash"></i>
+        <% end %>
+        </div>
+        <% if @page.page_num == pg.page_num %>
+          <span class="pagenum active"><%= pg.page_num %></span>
+        <% else %>
+          <a href="<%= root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + pg.page_num.to_s %>">
+            <span class="pagenum"><%= pg.page_num.to_s %></span></a>
+        <% end %>
+        </span>
+      <% end %>
+
+      <% if @page.page_num != @chapter.pagelist.count %>
+      <a class="pagenav" href="<%= root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + (@page.page_num + 1).to_s  %>"><i class="icon-chevron-right"></i></a>
+      <% end %>
+    </div>
+</div>
