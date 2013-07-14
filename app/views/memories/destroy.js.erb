@@ -1,0 +1,7 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		var $tile_num_class = '.tile' + <%= @memory.tile_num.to_s %>;
+		$($tile_num_class).addClass('EmptyTile');
+	 	$($tile_num_class).html("<%= escape_javascript (render('templates/empty_tile_content').gsub('insert_tile_num',@memory.tile_num.to_s).html_safe) %>"); 
+	<% end %>
+});

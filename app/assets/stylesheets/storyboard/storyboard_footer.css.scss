@@ -7,7 +7,7 @@
 .add_page_panel {
 	z-index: 1000;
 	padding-bottom: 20px;
-	position:absolute;
+	position:fixed;
 	right:0;
 	bottom:0;
 	width: 100%;
@@ -70,8 +70,10 @@
 .footerstripe {
 	display: inline;
 	z-index: 1100;
-	position: absolute;
+	position: fixed;
 	bottom:0;
+	right:0;
+	left:0;
 	height: 20px;
 	width: 100%;
 	border-top:2px solid #476B04;

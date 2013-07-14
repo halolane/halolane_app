@@ -118,20 +118,23 @@ class MemoriesController < ApplicationController
       redirect_to root_url, notice: 'That story was not found.'
       return
     end
+
     @profile = Profile.find(@memory.profile_id)
-    if current_user.isEditor?(@profile)
+    @questions = StorybookQuestion.all
+    @page = Page.find(@memory.page_id)
+    @chapter = Chapter.find(@page.chapter_id) 
+
+    if current_user.isEditor?(@profile) or current_user.memories.exists?(:id => params[:id])
       @memory.destroy
     else
-      begin 
-         @memory = current_user.memories.find_by_id(params[:id])
-         @memory.destroy
-      rescue
         flash[:error] = "You don't have permission to delete this"
-        redirect_back_or root_url
-        return
-      end
     end
-    redirect_back_or root_url
+
+    respond_to do |format|
+      format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + @page.page_num.to_s }
+      format.js
+      format.json { head :no_content }
+    end
   end
 
   private

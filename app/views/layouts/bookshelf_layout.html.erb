@@ -38,7 +38,6 @@
 <body class="columns-4">
   <div class="headerandbody" data-step="1" data-intro="Welcome to your FamilyTales! Here you'll find the bookshelves of your family storybooks." data-position="bottom">
   <%= render 'layouts/header' %>
-  <%= render 'shared/loading_spinner_icon' %>
   <div class="mainContainer">
     <% flash.each do |key, value| %>
        <div class="alert alert-<%= key %>"><%= value %></div>
@@ -48,7 +47,6 @@
   </div>
   </div>
 <%= render 'shared/new_user_storybook_modal' %>
-<%= render 'shared/loading_spinner' %>
 
   <script type="text/javascript">
   function startIntro(){
