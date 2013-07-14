@@ -1,0 +1,19 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		$('.pagenums').html("<%= escape_javascript render('pages/new_page_num_list') %>");
+		$('.pagenumwrapper').hover(function(){
+	  	$(this).children('.delete-page').fadeTo(50,1);
+	  }, function() {
+	  	$(this).children('.delete-page').fadeTo(50,0);
+	  });
+		
+		$('.gridster').html("<%= escape_javascript render('pages/new_gridster_content') %>");
+		$(".panel").slideToggle(500);
+		var grid = $(".gridster ul").gridster({
+        widget_margins: [10, 10],
+        widget_base_dimensions: [140, 140],
+        shift_larger_widgets_down: false
+    }).data('gridster');
+    grid.disable();
+	<% end %>
+});

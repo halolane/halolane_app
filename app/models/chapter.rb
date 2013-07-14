@@ -22,7 +22,11 @@ class Chapter < ActiveRecord::Base
 
   def createpage! (template_num = 1)
     new_page_num = pagecount + 1
-    template_id = Template.find_by_template_num(template_num).id
+    begin
+      template_id = Template.find_by_template_num(template_num).id
+    rescue
+      return
+    end
     @page = pages.create!(chapter_id: id, page_num: new_page_num, template_id: template_id)
   end
 

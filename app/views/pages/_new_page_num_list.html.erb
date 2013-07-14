@@ -1,0 +1,17 @@
+<a class="pagenav" href="<%= root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + (@page.page_num - 1).to_s  %>"><i class="icon-chevron-left"></i></a>
+
+<% @chapter.pagelist.each do |pg| %>
+<span class="pagenumwrapper">
+  <div class="delete-page">
+  <%= link_to pg, method: :delete, class: "image deletepage", data: { confirm: "Are you sure you want to delete this page? All the stories in this page will be deleted forever." }, title: "Delete this page" do %>
+    <i class="icon-trash"></i>
+  <% end %>
+  </div>
+  <% if @page.page_num == pg.page_num %>
+    <span class="pagenum active"><%= pg.page_num %></span>
+  <% else %>
+    <a href="<%= root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + pg.page_num.to_s %>">
+      <span class="pagenum"><%= pg.page_num.to_s %></span></a>
+  <% end %>
+  </span>
+<% end %>

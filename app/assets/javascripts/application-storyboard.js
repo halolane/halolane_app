@@ -11,9 +11,11 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require bootstrap
 //= require introjs
 //= require_tree ./storyboard
 //= require jquery.remotipart
+//= require turbolinks

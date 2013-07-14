@@ -40,10 +40,14 @@ class PagesController < ApplicationController
     @chapter = Chapter.find(params[:page][:chapter_id])
     @profile = Profile.find(@chapter.profile_id)
     template_num = params[:page][:template_num]
-
+    @page = @chapter.createpage!(template_num)
+    @template = Template.find_by_template_num(template_num)
+    @tiles = @template.tilelist
+    @questions = StorybookQuestion.all
     respond_to do |format|
-      if @chapter.createpage!(template_num)
-        format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + @chapter.pagecount.to_s }
+      if ! @page.nil?
+        format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + @chapter.pagecount.to_s, notice: 'New page created.'}
+        format.js
         format.json { render json: @page, status: :created, location: @page }
       else
         format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s  }
