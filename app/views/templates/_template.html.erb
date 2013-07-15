@@ -1,4 +1,4 @@
-<div class="gridster" style="width:<%= @template.width %>px" data-step="2" data-intro="These are stories about <%= @profile.first_name %>. They can be text or pictures. Answer the suggested questions if you like or make up your own." data-position="left">
+<div class="gridster" style="width:<%= @template.width %>px" data-step="1" data-intro="These are stories about <%= @profile.first_name %>. They can be text or pictures. Answer the suggested questions if you like or make up your own." data-position="left">
 	<ul style="height:<%= @template.height %>px; position: relative; ">
 	<%= render partial: 'templates/template_tile', collection: @tiles, :as => :tile %>
 	</ul>

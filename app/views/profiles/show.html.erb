@@ -12,18 +12,24 @@
 	</div>
 </div>
 
+<div class="welcomesneakpeek-coachmark hide">
+  <%  if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) %>
+    <%= image_tag("/assets/images/coachmarks/sneakpeek.png") %>
+  <% else %>
+    <%= image_tag("/assets/images/coachmarks/welcomestorybook.png") %>
+  <% end %>
+  <div class="sneakpeek_buttons">
+    <a class="btn skipguide" >Done</a> &nbsp; or &nbsp;
+    <button class="green_button nextguide">Next</button>
+  </div>
+</div> 
 
 <%= render ( "templates/template" ) %>
-
-
-
-<%= render 'coachmarks' %>
 <%= render 'invitation_modal' %>
 <%= render 'confirm_email' %>
 <%= render 'editmemory_modal' %>
 <%= render 'email_stories_modal' %>
 <%= render 'firstthreestories_backdrop' %>
-<%= render 'shared/loading_spinner' %>
 <%= render "profiles/newmemory_modal" %>
 
 <div id="zoomstory" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="betamodalLabel" aria-hidden="true">

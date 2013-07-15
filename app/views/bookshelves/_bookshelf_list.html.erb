@@ -1,7 +1,7 @@
-<div class="ajax UserInfoBar InfoBarBase Module centeredWithinWrapper" id="bookshelf<%= bookshelf.id %>" data-step="2" data-intro="A bookshelf is a collection of storybooks." data-position="bottom">
+<div class="ajax UserInfoBar InfoBarBase Module centeredWithinWrapper" id="bookshelf<%= bookshelf.id %>" data-step="1" data-intro="A bookshelf is a collection of storybooks." data-position="bottom">
   <ul class="userStats">
     <% if current_user.bookshelfContributor?(bookshelf.id) or current_user.bookshelfEditor?(bookshelf.id) %>
-    <li style="width:50px;" data-step="3" data-intro="You can invite family and friends to each bookshelf to view or create family storybooks with you." data-position="bottom">
+    <li style="width:50px;" data-step="2" data-intro="You can invite family and friends to each bookshelf to view or create family storybooks with you." data-position="bottom">
       <a href="#addcontributor<%= bookshelf.id %>" class="newstorybooklink Module" rel="tooltip" data-placement="bottom" title="Invite family and friends to this bookshelf" data-toggle="modal" data-keyboard="true">
       <span class="icon-stack">
         <i class="icon-user icon-stack-base"></i>
@@ -45,10 +45,10 @@
 <div class="UserProfileContent Module">
   <div class="UserBoards ajax ownProfile Module" style="display: block;"><div class="moduleMask"></div>
     <div class="ajax Grid Module">
-      <div class="padItems Module centeredWithinWrapper fixedHeightLayout ajax GridItems ui-sortable" data-step="4" data-intro="Start your first storybook now!" data-position="bottom">
+      <div class="padItems Module centeredWithinWrapper fixedHeightLayout ajax GridItems ui-sortable" data-step="3" data-intro="Start your first storybook now!" data-position="bottom">
         <% if current_user.bookshelfContributor?(bookshelf.id) or current_user.bookshelfEditor?(bookshelf.id) %>
         <div class="item">
-          <a href="#newstorybook<%= bookshelf.id %>" class="newstorybooklink BoardCreateRep Module" rel="tooltip" data-placement="bottom" title="Create a new storybook" data-toggle="modal" data-keyboard="true">
+          <a href="#newstorybook" id="<%= bookshelf.id %>" class="newstorybooklink BoardCreateRep Module" rel="tooltip" data-placement="bottom" title="Create a new storybook" data-toggle="modal" data-keyboard="true">
             <i class="icon-plus-sign icon-4"></i><span>Create a storybook</span>
           </a>
         </div>
@@ -58,41 +58,6 @@
         <%= render partial: 'bookshelves/bookshelf_list_item', collection: @books, :as => :book %>
       </div>
     </div>
-  </div>
-</div>
-
-<!-- New Storybook Modal -->
-<div id="newstorybook<%= bookshelf.id %>"  class="modal hide fade newstorybook" tabindex="-1" role="dialog" role="dialog" aria-labelledby="addcontributorLabel" aria-hidden="true">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="newstorybookLabel">Create a new storybook</h3>
-  </div>
-  <div class="modal-body">
-      
-    <h4>I want to start a storybook about my</h4>
-    <p>
-      <%= form_for(@profile) do |p| %>
-      <input id="profile_bookshelf_id" name="profile[bookshelf_id]"  value="<%= bookshelf.id %>" type="hidden">
-      <%= render 'shared/error_messages', object: p.object %>
-      <p><%= select "relationship","description", 
-                  Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%></p>
-      <p>
-        <%= p.text_field :first_name, :placeholder => "Their first name", :required => true %>
-      </p>
-      <p>
-        <%= p.text_field :last_name, :placeholder => "Their last name", :required => true %>
-      </p>
-    <p>
-      <label for="profile_birthday">Their birthday</label><br>
-      <%= p.text_field :birthday, :type => "date", :required => true %>
-    </p>
-
-        
-    </p>
-  </div>
-  <div class="modal-footer">
-    <%= p.submit "Start your storybook", class: "green_button startstorybook_button" %>
-    <% end %>
   </div>
 </div>
 

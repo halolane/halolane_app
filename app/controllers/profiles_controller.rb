@@ -106,17 +106,23 @@ class ProfilesController < ApplicationController
 
     @relationship = params[:relationship][:description]
 
-  	if @profile.save
-      current_user.contribute!(@profile, @relationship, true, "edit", true)
-      @chapter = @profile.createchapter!('The beginning')
-      @chapter.createpage!
-      current_user.actionlog!(@profile.id, @page_name, "create")
-      Mailer.delay.new_storybook(current_user, @profile, root_url + @profile.url)
-  		redirect_to root_url + @profile.url
-  	else
-      flash[:error] = "Sorry, we're not able to create your storybook."
-      redirect_to root_url
-  	end
+
+    respond_to do |format|
+      if @profile.save
+        current_user.contribute!(@profile, @relationship, true, "edit", true)
+        @chapter = @profile.createchapter!('The beginning')
+        @chapter.createpage!(2)
+        current_user.actionlog!(@profile.id, @page_name, "create")
+        Mailer.delay.new_storybook(current_user, @profile, root_url + @profile.url)
+        format.html { redirect_to root_url + @profile.url }
+        format.json { render json: @profile, status: :created, location: @profile }
+      else
+        flash[:error] = "Sorry, we're not able to create your storybook."
+
+        format.html { redirect_to root_url  }
+        format.json { render json: @profile.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

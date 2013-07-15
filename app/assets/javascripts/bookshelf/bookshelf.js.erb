@@ -37,60 +37,12 @@ $(document).ready(function(){
       }
     })
   });
-  
-  $(".startstorybook_button").click(function(){
-    $('#newstorybook').modal('hide');
-    $('#loading_spinner').modal('show');
+
+  $('.newstorybooklink').click(function(){
+    var chapter_num = $(this).attr('id');
+    var newInput = '<input id="profile_bookshelf_id" name="profile[bookshelf_id]"  value="' + chapter_num + '" type="hidden">';
+    $('.newstorybook_chapter_num').html(newInput);
   });
-
-  $('#loading_spinner').on('show', function () {
-      $('.loading-spinner-icon').removeClass('hide');
-  });
-
-  $('#loading_spinner').on('hide', function () {
-      $('.loading-spinner-icon').addClass('hide');
-  
-  });
-
-  $('#newuserstorybook').on('show', function () {
-     $('.welcomefamilytales-coachmark').removeClass('hide');
-  });
-
-  $('#newuserstorybook').on('hide', function () {
-    $('.welcomefamilytales-coachmark').addClass('hide');
-    $('.bookshelf-coachmark').addClass('hide');
-    $('.bookshelfinvite-coachmark').addClass('hide');
-    $('.firststorybook-coachmark').addClass('hide');
-  });
-
-  $('.skipguide').click(function(){
-    $('.welcomefamilytales-coachmark').addClass('hide');
-    $('.bookshelf-coachmark').addClass('hide');
-    $('.bookshelfinvite-coachmark').addClass('hide');
-    $('.firststorybook-coachmark').removeClass('hide');
-  });
-
-  $('.nextguide').click(function(){
-     if (!$('.welcomefamilytales-coachmark').hasClass("hide")) {
-        $('.welcomefamilytales-coachmark').addClass('hide');
-        $('.bookshelf-coachmark').removeClass('hide');
-     }
-      else if (!$('.bookshelf-coachmark').hasClass("hide")) {
-        $('.bookshelf-coachmark').addClass('hide');
-        $('.bookshelfinvite-coachmark').removeClass('hide');
-     }
-
-     else if (!$('.bookshelfinvite-coachmark').hasClass("hide")) {
-        $('.bookshelfinvite-coachmark').addClass('hide');
-        $('.firststorybook-coachmark').removeClass('hide');
-     }
-     else if (!$('.firststorybook-coachmark').hasClass("hide")) {
-        $('.firststorybook-coachmark').addClass('hide');
-        $('#newuserstorybook').modal('hide');
-     }
-  });
-
-
 
   $('.firststorybook-coachmark').click(function() {
     $('.modal.in').modal('hide');

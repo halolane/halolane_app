@@ -13,6 +13,9 @@ $(document).ready(function(){
 			$('.storyboardSidebar').addClass('collapsed').animate({
       top: '800px'
 	    },500).delay(500).fadeOut(400);
+	    $('.nav_left.hotspot').addClass('collapsed');
+			$('.nav_controls.left').addClass('collapsed');
+			$('.storyboardSidebarMenu').addClass('hidden');	
 		}
 	});
 
@@ -20,6 +23,9 @@ $(document).ready(function(){
 		$('.storyboardSidebar').addClass('collapsed').animate({
       top: '800px'
     },500).delay(500).fadeOut(400);
+    $('.nav_left.hotspot').addClass('collapsed');
+			$('.nav_controls.left').addClass('collapsed');
+			$('.storyboardSidebarMenu').addClass('hidden');	
 	});
 
 	$('.chapterpicker_link').hover(function() {

@@ -47,7 +47,23 @@
           (signed_in? && current_user.canContribute?(@profile) && current_user.memorycount == 0 && @profile.memorycount > 0 ) %>
     <script type="text/javascript">
       $(window).load(function(){
-        startIntro ();
+
+        $('#newuserstorybook').modal('show');
+        $('.welcomesneakpeek-coachmark').removeClass('hide');
+        $('#newuserstorybook').on('hide', function () {
+          $('.welcomesneakpeek-coachmark').addClass('hide');
+          startIntro();
+        });
+
+        $('#newuserstorybook').on('show', function () {
+          $('.welcomesneakpeek-coachmark').removeClass('hide');
+        });
+        $('.nextguide').click(function(){
+          $('#newuserstorybook').modal('hide');
+        });
+        $('.skipguide').click(function(){
+          $('#newuserstorybook').modal('hide');
+        });
       });
     </script>
     <!-- crazy egg -->
@@ -69,7 +85,23 @@
     <% if signed_in? && current_user.canContribute?(@profile) && current_user.memorycount == 0  && @profile.memorycount == 0 %>
     <script type="text/javascript">
       $(window).load(function(){
-        startIntro ();  
+
+        $('#newuserstorybook').modal('show');
+        $('.welcomesneakpeek-coachmark').removeClass('hide');
+        $('#newuserstorybook').on('hide', function () {
+          $('.welcomesneakpeek-coachmark').addClass('hide');
+          startIntro();
+        });
+
+        $('#newuserstorybook').on('show', function () {
+          $('.welcomesneakpeek-coachmark').removeClass('hide');
+        });
+        $('.nextguide').click(function(){
+          $('#newuserstorybook').modal('hide');
+        });
+        $('.skipguide').click(function(){
+          $('#newuserstorybook').modal('hide');
+        });
       });
     </script>
   <% end %>
@@ -125,33 +157,40 @@
 
 <%= render 'layouts/storyboard_footer' %>
 <%= render 'shared/new_user_storybook_modal' %>
-<%= render 'shared/loading_spinner' %>
+<div class="welcomesneakpeek-coachmark hide">
+  <%  if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) %>
+    <%= image_tag("/assets/images/coachmarks/sneakpeek.png") %>
+  <% else %>
+    <%= image_tag("/assets/images/coachmarks/welcomestorybook.png") %>
+  <% end %>
+  <div class="sneakpeek_buttons">
+    <a class="btn skipguide" >Done</a> &nbsp; or &nbsp;
+    <button class="green_button nextguide">Next</button>
+  </div>
+</div> 
 <%= render 'explorer_acct_modal' %>
   <script type="text/javascript">
     function startIntro(){
       introJs().setOption('skipLabel', 'Exit').onchange(function(targetElement) {
           switch (targetElement.getAttribute("data-step"))
           {
-              case "1":
-                  $("header").addClass("introjs-showElement");
-              break;
 
-              case "2":
+              case "1":
                   $(".gridster").addClass('shiftright');
               break;
 
-              case "3":
+              case "2":
                 $(".introjs-tooltip").css("margin-left", "-100px");
                 $(".gridster").removeClass('shiftright');
-                $(".gridster").removeClass("introjs-showElement");
-
               break;
 
-              case "4":
+              case "3":
+              $('body, html').scrollLeft(0);
                 $(".introjs-tooltip").css("margin-left", "0px");
+
               break;
 
-              case "5":         
+              case "4":         
                 $("header").addClass("intro-showElement");
               break;
           }

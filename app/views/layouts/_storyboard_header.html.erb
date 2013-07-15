@@ -3,17 +3,17 @@
       <nav>
         <ul class="nav btn-topbar-left">
           <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-            <li class="storyboardlogo">
+            <li class="storyboardlogo" data-no-turbolink>
               <%= link_to image_tag("/assets/images/small-logo.png"), signout_path, method: "delete", id: "logo", rel:"tooltip", title:"Go to the FamilyTales home page" %> 
             </li>
           <% else %>
-            <li class="storyboardlogo">
+            <li class="storyboardlogo" data-no-turbolink>
               <%= link_to image_tag("/assets/images/small-logo.png"), root_path, id: "logo" %> 
             </li>
           <% end %>
 
           <% if signed_in? && current_user.canContribute?(@profile) %>
-            <li class="iconaddcontributor _showAddCollaborator" data-step="5" data-intro="You have complete control who want to view, contribute or edit <%= @profile.first_name %>'s storybook." data-position="bottom">
+            <li class="iconaddcontributor _showAddCollaborator" data-step="4" data-intro="You have complete control who want to view, contribute or edit <%= @profile.first_name %>'s storybook." data-position="bottom">
               <a href="#addcontributor" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
                 <span class="icon-stack">
                   <i class="icon-user icon-stack-base"></i>
@@ -25,11 +25,11 @@
         </ul>
         <ul class="nav pull-right">
              <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-              <li><div class="topbarname" data-step="1" data-intro="Welcome to FamilyTales! This is <%= @profile.first_name %>'s sample storybook."><h4>
+              <li><div class="topbarname"><h4>
                 <%= @profile.first_name + " " + @profile.last_name + "\'s storybook" %>
               </h4></div></li>
             <% else %>
-              <li><div class="topbarname" data-step="1" data-intro="Welcome to FamilyTales! This is <%= @profile.first_name %>'s storybook."><h4>
+              <li><div class="topbarname"><h4>
                 <% if signed_in? && current_user.isEditor?(@profile) %>
                   <%= link_to  @profile.first_name + " " + @profile.last_name + "\'s storybook", edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
                 <% else %>

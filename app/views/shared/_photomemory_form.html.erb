@@ -1,7 +1,0 @@
-<%= form_for @photomemory, :html => { :multipart => true } do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <input type="hidden" id="photomemory_profile_id" name="photomemory[profile_id]" value="<%= @profile.id %>" />
-  <input type="hidden" id="photomemory_user_id" name="photomemory[user_id]" value="<%= current_user.id %>" />
-  	<%= f.file_field :photo %>
-  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
-<% end %>

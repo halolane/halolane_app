@@ -8,25 +8,30 @@
   	<h4>I want to start a storybook about my</h4>
   	<p>
   		<%= form_for(@profile) do |p| %>
+      <div class="newstorybook_chapter_num">
+      </div>
 		  <%= render 'shared/error_messages', object: p.object %>
-		  <p><%= select "relationship","description", 
-				  				Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%></p>
-		  <p>
-				<%= p.text_field :first_name, :placeholder => "Their first name", :required => true %>
-		  </p>
-		  <p>
-				<%= p.text_field :last_name, :placeholder => "Their last name", :required => true %>
-		  </p>
+      <p><%= select "relationship","description", 
+                  Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%></p>
+      <p>
+        <%= p.text_field :first_name, :placeholder => "Their first name", :required => true %>
+      </p>
+      <p>
+        <%= p.text_field :last_name, :placeholder => "Their last name", :required => true %>
+      </p>
     <p>
-      <label for="profile_birthday">Their birthday</label>
-      <%= p.text_field :birthday, :type => "date", :required => true, :value => Date.today %>
+      <label for="profile_birthday">Their birthday</label><br>
+      <%= p.text_field :birthday, :type => "date", :required => true %>
     </p>
-
-		  	
   	</p>
   </div>
-  <div class="modal-footer">
+  <div class="modal-footer newstorybook_footer">
+    <div class="loading hide">
+    <%= render('shared/loading_spinner')%>
+    </div>
+    <div class="startstorybook">
   	<%= p.submit "Start your storybook", class: "green_button startstorybook_button" %>
+    </div>
 		<% end %>
   </div>
 </div>

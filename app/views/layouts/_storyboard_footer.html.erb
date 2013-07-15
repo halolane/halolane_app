@@ -10,8 +10,8 @@
 </div>
  
 <div class="footerstripe">
-    <div class="currentChapter showChapterList" data-step="4" data-intro="Pages and stories are organized by chapter. You can decide how you want to organize <%= @profile.first_name %> story." data-position="top"><i class="icon-chevron-sign-up showchapterlist"></i> <%= "Chapter " + @chapter.chapter_num.to_s + " - " + @chapter.chapter_name %></div>
-    <div class="pagenums" data-step="3" data-intro="Stories are organized in pages. You can add, delete and change pages here." data-position="top">
+    <div class="currentChapter showChapterList" data-step="3" data-intro="Pages and stories are organized by chapter. You can decide how you want to organize <%= @profile.first_name %> story." data-position="top"><i class="icon-chevron-sign-up showchapterlist"></i> <%= "Chapter " + @chapter.chapter_num.to_s + " - " + @chapter.chapter_name %></div>
+    <div class="pagenums" data-step="2" data-intro="Stories are organized in pages. You can add, delete and change pages here." data-position="top">
       <% if @page.page_num != 1 %>
       <a class="pagenav" href="<%= root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + (@page.page_num - 1).to_s  %>"><i class="icon-chevron-left"></i></a>
       <% end %>

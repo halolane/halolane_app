@@ -24,19 +24,45 @@
   <%= stylesheet_link_tag "application-bookshelf", media: "all" %>
   <%= javascript_include_tag "application-bookshelf" %>
 
-
   <% if signed_in? && current_user.storybookcount == 0 %>
     <script type="text/javascript">
       $(window).load(function(){
+        
+        $('#newuserstorybook').modal('show');
+        $('.welcomefamilytales-coachmark').removeClass('hide');
+        $('#newuserstorybook').on('hide', function () {
+          $('.welcomefamilytales-coachmark').addClass('hide');
           startIntro();
+        });
+
+        $('#newuserstorybook').on('show', function () {
+          $('.welcomefamilytales-coachmark').removeClass('hide');
+        });
+        $('.nextguide').click(function(){
+          $('#newuserstorybook').modal('hide');
+        });
+        $('.skipguide').click(function(){
+          $('#newuserstorybook').modal('hide');
+        });
       });
     </script>
   <% end %>
+
+  <script type="text/javascript">
+    $(window).load(function(){
+      $(".startstorybook_button").click(function(){
+        $('.startstorybook').addClass('hide');
+        $('.loading').removeClass('hide');
+      });
+    });
+  </script>
+
+
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>  <!-- partial app/views/layouts/_shim.html.erb -->
 </head>
 <body class="columns-4">
-  <div class="headerandbody" data-step="1" data-intro="Welcome to your FamilyTales! Here you'll find the bookshelves of your family storybooks." data-position="bottom">
+  <div class="headerandbody">
   <%= render 'layouts/header' %>
   <div class="mainContainer">
     <% flash.each do |key, value| %>
@@ -46,26 +72,32 @@
     <%= debug(params) if Rails.env.development? %>
   </div>
   </div>
+
 <%= render 'shared/new_user_storybook_modal' %>
+<div class="welcomefamilytales-coachmark hide">
+  <%= image_tag("/assets/images/coachmarks/welcomebookshelf.png") %>
+  <div class="sneakpeek_buttons">
+    <a class="btn skipguide" >Done</a> &nbsp; or &nbsp;
+    <button class="green_button nextguide">Next</button>
+  </div>
+</div>  
 
   <script type="text/javascript">
   function startIntro(){
     introJs().setOption('skipLabel', 'Exit').onchange(function(targetElement) {
         switch (targetElement.getAttribute("data-step"))
         {
-            case "1":
-              $(".introjs-tooltip").css("margin-left", "350px");
-            break;
 
-            case "2":
+
+            case "1":
               $(".introjs-tooltip").css("margin-left", "400px");
             break;
 
-            case "3":
+            case "2":
               $(".introjs-tooltip").css("margin-left", "0px");
             break;
 
-            case "4":
+            case "3":
             break;
         }
       }).start().onexit(function() {

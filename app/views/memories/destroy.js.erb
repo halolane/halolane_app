@@ -3,5 +3,14 @@ $(document).ready(function(){
 		var $tile_num_class = '.tile' + <%= @memory.tile_num.to_s %>;
 		$($tile_num_class).addClass('EmptyTile');
 	 	$($tile_num_class).html("<%= escape_javascript (render('templates/empty_tile_content').gsub('insert_tile_num',@memory.tile_num.to_s).html_safe) %>"); 
+	 	$('a.link_newstorymodal').click(function(){
+			var tile_num = $(this).attr('id');
+			var newInput = '<input type="hidden" id="memory_tile_num" name="memory[tile_num]" value="' + tile_num + '"/>'
+			$('.newstory_tile_num').html(newInput);
+			var sampleTitleClass = ".sampletitle-" + tile_num
+			var sampleTitle = $(sampleTitleClass).text();
+			var hidden_input = '<input id="memory_title" name="memory[title]" type="hidden" value="' + sampleTitle + '"/>';
+			$('.currentTitleName').html(sampleTitle + hidden_input);
+		});
 	<% end %>
 });
