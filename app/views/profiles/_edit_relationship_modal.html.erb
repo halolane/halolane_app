@@ -1,0 +1,23 @@
+<!-- Modal -->
+<div id="editrelationshipmodal" class="modal hide fade editrelationshipmodal" tabindex="-1" role="dialog" aria-labelledby="editrelationshipmodalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="editrelationshipmodalLabel">Edit Relationship</h3>
+  </div>
+  <div class="modal-body">
+    <div class="messageBox"> 
+			<%= form_for(@relationship) do |f| %>
+		  <%= render 'shared/error_messages', object: f.object %>
+		  <h4> <%= @profile.first_name %> is my <br><br><%= select "relationship","description", 
+				  				Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%>
+		  <%= render 'shared/error_messages', object: f.object %></h4>
+		  <br>
+		</div>
+	</div>
+
+		
+  <div class="modal-footer">
+		<%= f.submit "Update your relationship", class: "green_button " %>
+		<% end %>
+  </div>
+</div>

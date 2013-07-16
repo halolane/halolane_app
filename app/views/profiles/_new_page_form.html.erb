@@ -1,4 +1,4 @@
-<%= form_for @newpage, :html => { :multipart => true }, :remote => true do |f| %>
+<%= form_for @newpage do |f| %>
 	<input type="hidden" id="page_chapter_id" name="page[chapter_id]" value="<%= @chapter.id %>" />
 	<input type="hidden" id="page_template_num" name="page[template_num]" value="<%= template_type.id %>" />
 

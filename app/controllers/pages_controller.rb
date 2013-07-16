@@ -32,6 +32,13 @@ class PagesController < ApplicationController
   # GET /pages/1/edit
   def edit
     @page = Page.find(params[:id])
+    @chapter = Chapter.find(@page.chapter_id)
+    @profile = Profile.find(@chapter.profile_id) 
+    @template_types = Template.all
+    respond_to do |format|
+      format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + @page.page_num.to_s }
+      format.js
+    end
   end
 
   # POST /pages
@@ -60,10 +67,11 @@ class PagesController < ApplicationController
   # PUT /pages/1.json
   def update
     @page = Page.find(params[:id])
-
+    @chapter = Chapter.find(@page.chapter_id)
+    @profile = Profile.find(@chapter.profile_id) 
     respond_to do |format|
       if @page.update_attributes(params[:page])
-        format.html { redirect_to @page, notice: 'Page was successfully updated.' }
+        format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + @page.page_num.to_s, notice: 'Page was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

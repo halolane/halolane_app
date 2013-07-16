@@ -38,7 +38,6 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <%= render 'shared/loading_spinner_icon' %>
   <div class="container other">
     <% flash.each do |key, value| %>
        <div class="alert alert-<%= key %>"><%= value %></div>
@@ -53,6 +52,5 @@ window.usabilla_live = lightningjs.require("usabilla_live", "//w.usabilla.com/96
 /*]]>{/literal}*/</script>
 <!-- end usabilla live embed code -->
 <%= render 'shared/new_user_storybook_modal' %>
-<%= render 'shared/loading_spinner' %>
 </body>
 </html>

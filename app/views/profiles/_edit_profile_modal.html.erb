@@ -1,0 +1,24 @@
+<!-- Modal -->
+	<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="modal-header-content">Edit <%= @profile.first_name %>'s Storybook</h3>
+  </div>
+  <div class="modal-body">
+  	<%= form_for(@profile) do |f| %>
+		  <%= render 'shared/error_messages', object: f.object %>
+      <p>
+		  	<%= f.label :first_name %>
+		  	<%= f.text_field :first_name %>
+  		</p>
+		  <p>
+		  	<%= f.label :last_name %>
+		  	<%= f.text_field :last_name %>
+		  </p>
+		  <p>
+		  	<%= f.label :birthday %>
+		  	<%= f.text_field :birthday, :type => "date" %>
+      </p>
+  </div>
+  <div class="modal-footer">
+	  <%= f.submit "Save changes", class: "green_button" %> 
+  </div>

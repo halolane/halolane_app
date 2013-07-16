@@ -1,14 +1,25 @@
 <div class="add_page_panel">
   <a id="add_page_panel_button"><i class="icon-plus"></i> Add a new page </a>
   <div class="panel">
-    <h2>Select a template</h2>
-      <div class="templates">
+    <div class="templatedesc">
+      <h2>Select a template</h2>
+    </div>
+    <div class="templates">
 
-        <%= render partial: 'profiles/new_page_form', collection: @template_types, :as => :template_type %>
-      </div>
+      <%= render partial: 'profiles/new_page_form', collection: @template_types, :as => :template_type %>
+    </div>
   </div>
 </div>
- 
+<div class="edit_page_panel">
+  <div class="edit_panel">
+    <div class="edittemplatedesc">
+      <h2>Change this template</h2>
+    </div>
+    <div class="templates_edit">
+    </div>
+  </div>
+</div>
+
 <div class="footerstripe">
     <div class="currentChapter showChapterList" data-step="3" data-intro="Pages and stories are organized by chapter. You can decide how you want to organize <%= @profile.first_name %> story." data-position="top"><i class="icon-chevron-sign-up showchapterlist"></i> <%= "Chapter " + @chapter.chapter_num.to_s + " - " + @chapter.chapter_name %></div>
     <div class="pagenums" data-step="2" data-intro="Stories are organized in pages. You can add, delete and change pages here." data-position="top">
@@ -18,10 +29,21 @@
       
       <% @chapter.pagelist.each do |pg| %>
       <span class="pagenumwrapper">
-        <div class="delete-page">
-        <%= link_to pg, method: :delete, class: "image deletepage", data: { confirm: "Are you sure you want to delete this page? All the stories in this page will be deleted forever." }, title: "Delete this page" do %>
-          <i class="icon-trash"></i>
-        <% end %>
+        <div class="page-edit-btn hidden">
+          <% if @chapter.pagelist.count > 1 %>
+            <div class="delete-page">
+            <%= link_to pg, method: :delete, class: "image deletepage", data: { confirm: "Are you sure you want to delete this page? All the stories in this page will be deleted forever." }, title: "Delete this page" do %>
+              <i class="icon-trash"></i>
+            <% end %>
+            </div>
+          <% end %>
+          <div class="edit-page">
+            <% if pg.memories.blank? %>
+              <%= link_to "Edit", edit_page_url(pg), :class => "edit_page_link", :remote => true %>
+            <% else %>
+              <a href="javascript:void(0);" onclick="alert('You can only edit a page once you delete all the stories on that page.');">Edit </a>
+            <% end %>
+          </div>
         </div>
         <% if @page.page_num == pg.page_num %>
           <span class="pagenum active"><%= pg.page_num %></span>

@@ -25,11 +25,11 @@
         </ul>
         <ul class="nav pull-right">
              <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-              <li><div class="topbarname"><h4>
+              <li><div class="topbarname" data-no-turbolink><h4>
                 <%= @profile.first_name + " " + @profile.last_name + "\'s storybook" %>
               </h4></div></li>
             <% else %>
-              <li><div class="topbarname"><h4>
+              <li><div class="topbarname" data-no-turbolink><h4>
                 <% if signed_in? && current_user.isEditor?(@profile) %>
                   <%= link_to  @profile.first_name + " " + @profile.last_name + "\'s storybook", edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
                 <% else %>
@@ -43,21 +43,26 @@
                 <div class="dropdown">
                   <a class="dropdown-toggle" data-toggle="dropdown" href="#"><h4 class="storybook-user"><%= current_user.first_name + " " + current_user.last_name %></h4> <i class="icon-chevron-sign-down gray"></i></a>
                   <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
-                    <li><%= link_to "Edit your user settings", edit_user_path(current_user) %></li>
+                    <li data-no-turbolink><%= link_to "Edit your user settings", edit_user_path(current_user) %></li>
                     <li class="divider"></li>
 
                     <% if signed_in? && current_user.isEditor?(@profile) %>
-                    <li><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
+                    <li data-no-turbolink><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
                     <% end %>
                     
-                    <li><%= link_to "View your other storybooks", root_path %></li>
+                    <li data-no-turbolink><%= link_to "View your other storybooks", root_path %></li>
                     <% if has_relationship?(@profile.id, current_user.id) %>
-                      <li><%= link_to "Change your relationship to " + @profile.first_name, edit_relationship_path(@relationship) %></li>
+                      <li data-no-turbolink>
+                      <a href="#editrelationshipmodal" class="editrelationshipmodallink" rel="tooltip" data-toggle="modal" data-keyboard="true">Change your relationship to <%= @profile.first_name%>
+                      </a>
+
+
+                      </li>
                     <% end %>
 
                     <li class="divider"></li>
 
-                    <li><%= link_to "Log out", signout_path, method: "delete" %></li>
+                    <li data-no-turbolink><%= link_to "Log out", signout_path, method: "delete" %></li>
                     <li><a href="javascript:void(0);" onclick="startIntro();">Help</a></li>
                     <!-- 
                     <li><%= link_to "Privacy Settings" %></li>

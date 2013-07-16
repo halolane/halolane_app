@@ -53,9 +53,9 @@ $(document).ready(function(){
   });
 
   $('.pagenumwrapper').hover(function(){
-  	$(this).children('.delete-page').fadeTo(50,1);
+  	$(this).find('.page-edit-btn').removeClass('hidden');
   }, function() {
-  	$(this).children('.delete-page').fadeTo(50,0);
+  	$(this).find('.page-edit-btn').addClass('hidden');
   });
 
 	$(".icon-off, .icon-cog, .iconaddcontributor, .playslideshow, .skipquestion, .iconsignout, .iconhelp, .iconfamtree").fadeTo("fast", 0.6);
@@ -298,5 +298,9 @@ $(document).ready(function(){
 
 	$(".zoomstoryMask").click(function(){
 		$('#zoomstory').modal('show');
+	});
+
+	$(".edit_page_link").click(function(){
+		$(".edit_panel").slideToggle(500);
 	});
 });

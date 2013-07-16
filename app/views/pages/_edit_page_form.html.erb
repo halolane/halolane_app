@@ -1,0 +1,7 @@
+<% @template_types.each do |template_type| %>
+	<%= form_for @page do |f| %>
+		<input type="hidden" id="page_template_id" name="page[template_id]" value="<%= template_type.id %>" />
+
+		<%= image_submit_tag("/assets/images/templatethumbs/template"+template_type.template_num.to_s + ".png", :rel => "tooltip", :class => "template_thumb", :alt => "Template "+ template_type.template_num.to_s, :title => "Template "+ template_type.template_num.to_s) %>
+	<% end %>
+<% end %>

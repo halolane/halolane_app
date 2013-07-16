@@ -1,0 +1,6 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		$('.edittemplatedesc').html('<h2>Change this page\'s template or <a href="javascript:void(0);" onclick=\'$(".edit_panel").slideToggle(500);\'>Cancel</a></h2> ')
+		$('.templates_edit').html("<%= escape_javascript render('pages/edit_page_form') %>");
+	<% end %>
+});

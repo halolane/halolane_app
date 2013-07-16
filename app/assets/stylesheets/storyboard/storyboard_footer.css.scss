@@ -4,7 +4,7 @@
 *
 *********************************************************************/
 
-.add_page_panel {
+.add_page_panel, .edit_page_panel {
 	z-index: 1000;
 	padding-bottom: 20px;
 	position:fixed;
@@ -36,7 +36,7 @@
 	text-decoration: none !important;
 }
 
-.add_page_panel .panel {
+.add_page_panel .panel, .edit_page_panel .edit_panel {
 	overflow: hidden;
 	clear:both;
 	height:220px;
@@ -46,7 +46,7 @@
 	display: none;
 }
 
-.templates {
+.templates, .templates_edit {
 	overflow: hidden;
 	border-top: 1px solid #555;
 	border-bottom: 1px solid #555;
@@ -58,7 +58,7 @@
 	float: left;
 	display: inline-block;
 	margin: 2%;
-	opacity:0.4;
+	opacity:0.6;
 	filter:alpha(opacity=40); /* For IE8 and earlier */
 }
 
@@ -133,7 +133,8 @@ a.pagenav {
 	cursor: pointer;
 }
 
-.delete-page {
+.page-edit-btn {
+	text-align: center;
 	position: absolute;
 	display:inline;
 	padding-left: 10px;
@@ -148,7 +149,18 @@ a.pagenav {
 	border-radius: 10px;
 	bottom: 0;
 	font-size:15px;
-	opacity: 0;
+	a {
+		text-decoration: none !important;
+		color: #333;
+	}
+
+	a:hover {
+		color: #5a8f00;
+	}
+}
+
+.hidden {
+	display: none !important;
 }
 
 a.deletepage {

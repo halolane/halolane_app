@@ -5,9 +5,11 @@
 			  <li class="chapterpicker_link active" href="<%= 'chp' + chp.id.to_s %>">
 			  	<div class="nubbin" data-behavior="nubbin hover_content">
 					 	<div class="spacer"></div>
-					   <%= link_to chp, method: :delete, class: "image delete", data: { confirm: "Are you sure you want to delete this chapter? All the stories in this chapter will be deleted." }, title: "Delete this chapter" do %>
-						   <i class="icon-trash"></i>
-					   <% end %>
+					 	<% if @profile.chapterlist.count > 1 %>
+						   <%= link_to chp, method: :delete, class: "image delete", data: { confirm: "Are you sure you want to delete this chapter? All the stories in this chapter will be deleted." }, title: "Delete this chapter" do %>
+							   <i class="icon-trash"></i>
+						   <% end %>
+						  <% end %>
 					   <%= link_to "Edit", edit_chapter_path(chp), class: "edit_chapter", remote: true %>
 					</div>
 			    <a class="chapterlist_link" href="<%= root_url + @profile.url + "/chapter/" + chp.chapter_num.to_s %>" data-placement="right" rel="tooltip" title="<%= chp.chapter_num.to_s + " - " + chp.chapter_name %>"><%= "Chapter " + chp.chapter_num.to_s + " - " + chp.chapter_name %></a>

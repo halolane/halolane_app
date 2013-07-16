@@ -4,25 +4,19 @@
 <div class="row">
 	<div class="span6 offset3">
 		<%= form_for(@profile) do |f| %>
-
 		  <%= render 'shared/error_messages', object: f.object %>
-
       <p>
 		  	<%= f.label :first_name %>
 		  	<%= f.text_field :first_name %>
   		</p>
-
 		  <p>
 		  	<%= f.label :last_name %>
 		  	<%= f.text_field :last_name %>
 		  </p>
-
 		  <p>
 		  	<%= f.label :birthday %>
 		  	<%= f.text_field :birthday, :type => "date" %>
       </p>
-
-
 		  <%= f.submit "Save changes", class: "green_button" %> 
 		  or 
 		  <h4 style="display:inline-block;"><%= link_to "Cancel", root_url + @profile.url %></h4>
