@@ -977,7 +977,7 @@ height: 600px;
 	background-color:rgba(95,143,5,0.7) !important;
 }
 
-.likecount {
+.likecount, .commentcount {
 height: 15px;
 width: 15px;
 display: block;
@@ -998,12 +998,33 @@ font-weight: 600;
 color: #fff;
 }
 
+.comment-div {
+	-webkit-overflow-scrolling: touch;
+	overflow-y: hidden
+}
+
+.comment-icon {
+	opacity: 0.8;
+}
+.likebutton {
+	width: 32px;
+}
+
+.story-actions {
+	float: right;
+	padding-right: 20px;
+}
+.zoom-story-actions {
+	float: none !important;
+	margin-left: 30px;
+	margin-top: 10px;
+}
 .box-footer {
 
 	position: absolute !important;
 	bottom: 0;
 	width: 100%;
-	background-color:rgba(0,0,0,0.3);
+	background-color:rgba(0,0,0,0.4);
 	z-index: 100 !important;
 	cursor:default !important;
 }
@@ -1014,7 +1035,7 @@ color: #fff;
 	position: absolute !important;
 	top: 0;
 	width: 100%;
-	background-color:rgba(0,0,0,0.3);
+	background-color:rgba(0,0,0,0.4);
 	z-index: 100 !important;
 	cursor:default !important;
 }
@@ -1413,11 +1434,11 @@ color: #fff;
 
 
 .like-btn{
-	padding-right: 20px;
+	
 	position: relative  !important;
-	float: right;
 	opacity: 0.8;
 	z-index: 1  !important;
+	display: inline-block;
 	a {
 		text-decoration: none;
 	}
@@ -1428,6 +1449,13 @@ color: #fff;
 		color: black;
 	}
 }
+
+.comment-icon{
+	color: #9a1b39;
+	display: inline-block;
+}
+
+
 
 .story-edit-icon {
 height: 15px;
@@ -1467,6 +1495,20 @@ color: #fff;
 	}
 }
 
+.comment-edit-btn {
+	position: absolute;
+	opacity: 0;
+	padding-top: 10px;
+	padding-left: 10px;
+	z-index: 101;
+	.btn {
+		font-size: 0.7em;
+	}
+	a.icon-chevron {
+		text-decoration: none;
+		color: #9a1b39;
+	}
+}
 .red {
 	color: #9a1b39;
 }
@@ -1500,8 +1542,7 @@ color: #fff;
 .icon-small {
 	font-size: 1.0em;
 }
-
-#zoomstory.modal, #sneakpeakmodal1.modal, #sneakpeakmodal2.modal, 
+#sneakpeakmodal1.modal, #sneakpeakmodal2.modal, 
 #sneakpeakmodal3.modal, #sneakpeakmodal4.modal, #comingsoonfeatures.modal, 
 #addbyemail_backdrop.modal, #newmemorymodal.modal {
 	position: absolute; 
@@ -1510,6 +1551,100 @@ color: #fff;
 	overflow-x: hidden;
 }
 
+#zoomstory.modal {
+	position: absolute; 
+	width: 880px;
+	height: 520px;
+	overflow-y: hidden;
+overflow-x: hidden;
+}
+
+#zoomstory.modal.in {
+	left:35%;
+}
+.zoom-footer {
+	width: 520px;
+	color: white;
+}
+
+.zoom-title {
+	width: 520px;
+	color: white;
+}
+.zoomstory-body {
+	padding-left: 0px;
+	padding-top: 0px;
+	overflow-y: hidden;
+overflow-x: hidden;
+}
+.zoom-image {
+	width: 520px;
+	height: 520p;
+}
+
+.zoomstory-content {
+	width: 520px;
+	height: 520px;
+	display: inline-block;
+	overflow-y: hidden;
+overflow-x: hidden;
+float: left;
+}
+
+.zoomstoryRightContainer {
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	width: 360px;
+	height: 100%;
+	border-left: 1px left #DDD;
+	color: #333;
+	background-color: #FAFAFA;
+}
+
+.divider {
+  *width: 100%;
+  height: 1px;
+  margin: 9px 1px;
+  *margin: -5px 0 5px;
+  overflow: hidden;
+  background-color: #e5e5e5;
+  border-bottom: 1px solid #DDD;
+}
+
+.zoom-close-btn {
+	height: 20px;
+	padding-right: 10px;
+}
+.zoom-storystamp {
+	width: 100%;;
+}
+
+.zoom-like-btn {
+	left: 0px;
+	padding-right: 0px !important;
+	position: relative !important;
+	float: none !important;
+}
+.zoom-box-content-text {
+	padding-right: 30px;
+	padding-left: 30px;
+	font-size: 2em;
+	line-height: 2.25em;
+}
+
+.zoom-titlecontent {
+	font-size: 20px;
+}
+
+.zoom-content-only-text { 
+	height: 100%;
+	color: white;
+	background-color:rgba(95,143,5,0.7) !important;
+	padding-left: 0px;
+	padding-right: 0px;
+	width: 520px;
+}
 .skipguide, .skipguide:hover {
 
 }
@@ -1520,6 +1655,53 @@ color: #fff;
 
 .sneakpeek_buttons {
 	text-align: center;
+}
+
+.commentContainer {
+	overflow-x: hidden;
+	overflow-y: scroll;
+
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 5px;
+	height: 240px;
+	.commentItem {
+		padding-top: 10px;
+		border-bottom: 1px dotted #DDD;
+		.commentContent {
+			font-size: 12px;
+			.comment-user {
+				font-weight: bold;
+			}
+		}
+		.comment-storystamp {
+			padding-top: 2px;
+			font-size: 10px;
+			color: gray;
+		}
+	}
+}
+
+.newCommentContainer {
+	
+	padding-bottom:10px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	.newcommentform {
+		padding-left:20px;
+		padding-right:20px;
+	}
+	.new_comment_btn {
+		padding: 0.4em 1em;
+
+		float: right;
+	}
+}
+
+.newcomment {
+	position: absolute;
+	bottom: 0;
 }
 
 .DropdownButton{display:-moz-inline-stack;display:inline-block;vertical-align:middle;*vertical-align:auto;zoom:1;*display:inline;position:relative}.DropdownButton>.Button{display:-moz-inline-stack;display:inline-block;vertical-align:middle;*vertical-align:auto;zoom:1;*display:inline}.DropdownButton>.Button:active,.DropdownButton>.Button.active{-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none}.DropdownButton.categoriesButton .categories{padding:3px 0 0}

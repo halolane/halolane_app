@@ -25,9 +25,11 @@
 			</div>
 		<% end %>
 	</span>
+		<div class="zoomstorylink" data-no-turbolink>
 		<%= link_to zoomstory_memory_path(@page.memories.find_by_tile_num(tile.tile_num)), :remote => true, :class => "notextdecoration" do %>
-			<span class="hoverMask active"></span>
+			<span class="hoverMask active zoomstoryMask"></span>
 		<% end %>
+		</div>
 		<div class="box-title">
 			<div class="box-titlecontent">
 			<%= @page.memories.find_by_tile_num(tile.tile_num).title %>
@@ -58,24 +60,30 @@
 			By <%= @page.memories.find_by_tile_num(tile.tile_num).user.first_name + " " + @page.memories.find_by_tile_num(tile.tile_num).user.last_name %> on
 				<%= @page.memories.find_by_tile_num(tile.tile_num).date.strftime("%a, %b %d, %Y")  %>
 			</span>
-			<span class="like-btn">
-				<div class="likebutton">
-					<% if current_user.like?(@page.memories.find_by_tile_num(tile.tile_num)) %>
-						<%= link_to unlike_memory_path(@page.memories.find_by_tile_num(tile.tile_num)), :class => "liked", :rel => "tooltip", :placeholder => "Like this story", :remote => true do %>
-							<i class="icon-heart"></i> 
-							<% if @page.memories.find_by_tile_num(tile.tile_num).numlikes > 0 %>
-								<span class="likecount"><%= @page.memories.find_by_tile_num(tile.tile_num).numlikes %></span>
+			<span class="story-actions">
+				<span class="like-btn">
+					<div class="likebutton">
+						<% if current_user.like?(@page.memories.find_by_tile_num(tile.tile_num)) %>
+							<%= link_to unlike_memory_path(@page.memories.find_by_tile_num(tile.tile_num)), :class => "liked", :rel => "tooltip", :placeholder => "Like this story", :remote => true do %>
+								<i class="icon-heart"></i> 
+								<% if @page.memories.find_by_tile_num(tile.tile_num).numlikes > 0 %>
+									<span class="likecount"><%= @page.memories.find_by_tile_num(tile.tile_num).numlikes %></span>
+								<% end %>
 							<% end %>
-						<% end %>
-					<% else %>
-						<%= link_to like_memory_path(@page.memories.find_by_tile_num(tile.tile_num)), :class => "unliked", :rel => "tooltip", :placeholder => "Unlike this story", :remote => true  do %>
-							<i class="icon-heart"></i> 
-							<% if @page.memories.find_by_tile_num(tile.tile_num).numlikes > 0 %>
-								<span class="likecount"><%= @page.memories.find_by_tile_num(tile.tile_num).numlikes %></span>
+						<% else %>
+							<%= link_to like_memory_path(@page.memories.find_by_tile_num(tile.tile_num)), :class => "unliked", :rel => "tooltip", :placeholder => "Unlike this story", :remote => true  do %>
+								<i class="icon-heart"></i> 
+								<% if @page.memories.find_by_tile_num(tile.tile_num).numlikes > 0 %>
+									<span class="likecount"><%= @page.memories.find_by_tile_num(tile.tile_num).numlikes %></span>
+								<% end %>
 							<% end %>
-						<% end %>
-					<% end %> 
-				</div>
+						<% end %> 
+					</div>
+				</span>
+				<span class="comment-icon">
+					<i class="icon-comment"></i>
+					<span class="commentcount"><%= @page.memories.find_by_tile_num(tile.tile_num).commentcount %></span>
+				</span>
 			</span>
 		</div>
 	</li>

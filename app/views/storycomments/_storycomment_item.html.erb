@@ -1,0 +1,9 @@
+<div class="commentItem">
+	<div class="commentContent">
+	  <span class="comment-user green"><%= comment.user.first_name + " " + comment.user.last_name %></span>  
+	  <%= raw (comment.content) %>
+	</div>
+	<div class="comment-storystamp">
+		<%= time_ago_in_words(comment.created_at)  %> ago.
+	</div>
+</div>

@@ -1,0 +1,6 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		$('#storycomment_content').val('');
+		$('.commentContainer').append("<%= escape_javascript render('storycomments/new_storycomment') %>");
+	<% end %>
+});

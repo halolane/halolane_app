@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   has_many :bookshelfrelations, dependent: :destroy
   has_many :bookshelves, through: :bookshelfrelations, dependent: :destroy
   has_many :bookshelves_with_bookshelfrelations, :through => :bookshelfrelations, :source => :bookshelf
-
+  has_many :storycomments, dependent: :destroy
 
   before_save { |user| user.email = email.downcase }
 

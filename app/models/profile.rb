@@ -58,9 +58,9 @@ class Profile < ActiveRecord::Base
   def memoryfeed(chapter_num = nil, page_num = nil)
     if chapter_num.nil? and page_num.nil?
       self.chapters.first.pages.first.memories
-    elsif ! chapter_num.nil? and ! page_num.nil? and ! self.chapters.find_by_chapter_num(chapter_num).nil? and ! self.chapters.find_by_chapter_num(chapter_num).pages.find_by_page_num(page_num).nil?
+    elsif ! chapter_num.nil? and ! page_num.nil? and ! self.chapters.find_by_chapter_num(chapter_num).nil? and ! self.chapters.find_by_chapter_num(chapter_num).pages.nil?
       self.chapters.find_by_chapter_num(chapter_num).pages.find_by_page_num(page_num).memories
-    elsif ! chapter_num.nil? and ! self.chapters.find_by_chapter_num(chapter_num).nil?
+    elsif ! self.chapters.find_by_chapter_num(chapter_num).pages.blank? and ! chapter_num.nil? and ! self.chapters.find_by_chapter_num(chapter_num).nil?
       self.chapters.find_by_chapter_num(chapter_num).pages.first.memories
     end
   end

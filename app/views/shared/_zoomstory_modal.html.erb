@@ -1,41 +1,86 @@
 <!-- Modal -->
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-
-    <span class="like-btn">
-			<div class="likebutton">
-				<% if current_user.like?(@memory) %>
-					<%= link_to unlike_memory_path(@memory), :remote => true, :class => "btn" do %>
-						Unlike
-					<% end %>
-				<% else %>
-					<%= link_to like_memory_path(@memory), :remote => true, :class => "btn" do %>
-						<i class="icon-heart red"></i> Like
-					<% end %>
-				<% end %> 
+  <div class="modal-body zoomstory-body">
+  	<div class="zoomstory-content">
+				
+	  	<% if @memory.photo.file? %>
+				<div class="box-image zoom-image">
+					<%= image_tag @memory.photo, class: "storyimage" %>
+					</br>
+				</div>
+			<% else %>
+				<div class='box-content-only-text zoom-content-only-text'>
+					<div class="box-content-text zoom-box-content-text">
+					<i class="icon-quote-left"></i>
+					 <%= raw (@memory.content ) %> <i class="icon-quote-right"></i>
+					 </div>
+				</div>
+			<% end %>
+		</div>
+		<div class="zoomstoryRightContainer">
+			<div class="zoom-close-btn">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			</div>
-		</span>
+			<div class="box-titlecontent zoom-titlecontent">
+				<%= @memory.title %>
+			</div>
+			<div class="box-storystamp zoom-storystamp">
+				By <%= @memory.user.first_name + " " + @memory.user.last_name %> on
+					<%= @memory.date.strftime("%a, %b %d, %Y")  %>
+			</div>
+			<% if @memory.photo.file? %>
+				<span class='box-content'>
+					<%= @memory.content %>
+				</span>
+				<% end %>
+			
+			<div class="story-actions zoom-story-actions">
+				<span class="like-btn zoom-like-btn">
+					<div class="likebutton">
+						<% if current_user.like?(@memory) %>
+							<%= link_to unlike_memory_path(@memory), :class => "liked", :rel => "tooltip", :placeholder => "Like this story", :remote => true do %>
+								<i class="icon-heart"></i> 
+								<% if @memory.numlikes > 0 %>
+									<span class="likecount"><%= @memory.numlikes %></span>
+								<% end %>
+							<% end %>
+						<% else %>
+							<%= link_to like_memory_path(@memory), :class => "unliked", :rel => "tooltip", :placeholder => "Unlike this story", :remote => true  do %>
+								<i class="icon-heart"></i> 
+								<% if @memory.numlikes > 0 %>
+									<span class="likecount"><%= @memory.numlikes %></span>
+								<% end %>
+							<% end %>
+						<% end %> 
+					</div>
+					
+				</span>
+				<span class="comment-icon zoom-comment-icon">
+						<i class="icon-comment"></i>
+						<span class="commentcount"><%= @memory.commentcount %></span>
+					</span>
+			</div>
+			<div class="divider"></div>
+			<div class="comment-div">
+				<div class="commentContainer">
+				<% @comments = @memory.storycomments  %>
+				<% if @comments.count > 0 %>
+				<%= render partial: 'storycomments/storycomment_item', collection: @comments, :as => :comment %>
+				<% end %>
+				</div>
+			</div>
+			<div class="newCommentContainer">
+				<div class="newcommentform">
+					<% @storycomment = Storycomment.new  %>
+					<%= form_for @storycomment, :html => { :multipart => true }, :remote => true do |f| %>
+						<div class"hidden_fields">
+					  	<input type="hidden" id="storycomment_memory_id" name="storycomment[memory_id]" value="<%= @memory.id %>" />
+					  </div>
+					  <div class="commentComposerBox">
+					  	<%= f.text_area :content, placeholder: "Add a comment", rows:"1", cols:"10", maxlength:"250"%>
+					  </div>
+					  <%= f.submit "Add comment", class: "green_button new_comment_btn"%>
+					<% end %>
+				</div>
+			</div>
+		</div>
   </div>
-  <div class="modal-body">
-  	<% if @memory.photo.file? %>
-			<span class="box-image">
-				<%= image_tag @memory.photo, class: "storyimage" %>
-				</br>
-			</span>
-		<% end %>
-		<span class='box-text'>
-			<%= raw(@memory.content) %>
-		</span>
-
-		<span class='box-user'>
-			<!-- <%= link_to gravatar_for(@memory.user), @memory.user %> -->
-			<%= @memory.user.first_name + " " + @memory.user.last_name %>
-			<!-- <%= link_to @memory.user.first_name + " " + @memory.user.last_name, @memory.user %> -->
-		</span>
-		<span class="box-timestamp">
-			Posted <%= time_ago_in_words(@memory.created_at) %> ago.
-		</span>
-  </div>
-  <div class="modal-footer">
-		<button class="green_button" data-dismiss="modal" aria-hidden="true">Close</button>
-	</div>

@@ -19,6 +19,7 @@ class Memory < ActiveRecord::Base
 
   has_one :chapter, through: :pages
   has_many :likememories, dependent: :destroy
+  has_many :storycomments, dependent: :destroy
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true
@@ -105,6 +106,10 @@ class Memory < ActiveRecord::Base
     @dynamic_style_format = format
     photo.reprocess!(dynamic_style_format_symbol) unless photo.exists?(dynamic_style_format_symbol)
     photo.url(dynamic_style_format_symbol)
+  end
+
+  def commentcount()
+    storycomments.count()
   end
 
   private

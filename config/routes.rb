@@ -11,7 +11,7 @@ HalolaneApp::Application.routes.draw do
 
 
   resources :likememories
-
+  resources :storycomments
 
   resources :authentications
   resources :users

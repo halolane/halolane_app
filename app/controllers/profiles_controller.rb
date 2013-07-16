@@ -150,12 +150,14 @@ class ProfilesController < ApplicationController
     def showprofile
       store_location
       @newpage = Page.new
+      @storycomment = Storycomment.new 
       @template_types = Template.all
       @questions = StorybookQuestion.all
       if signed_in? or is_invited?(params[:invitation_token])
         @memory = @profile.memories.build 
         @invitation = @profile.invitations.build
       end
+      
       if @profile.memoryfeed(params[:chapter_num],params[:page_num]).nil?
         flash[:notice] = "That storybook page does not exists. We redirected you the first page of this storybook."
         @chapter = @profile.chapterlist.first

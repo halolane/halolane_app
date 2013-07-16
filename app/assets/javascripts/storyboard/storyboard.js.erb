@@ -168,6 +168,13 @@ $(document).ready(function(){
    	$(this).find(".story-edit-btn").fadeTo(50,0);
  	});
 
+ 	$(".commentItem").hover(function(){
+ 		$(this).find(".comment-edit-btn").fadeTo(50,1);
+
+	}, function() {
+   	$(this).find(".comment-edit-btn").fadeTo(50,0);
+ 	});
+
 	$(".playslideshow").click(function() {
 		$('#slideshow').removeClass("hide");
 	 	$('.flexslider').flexslider({
@@ -296,17 +303,7 @@ $(document).ready(function(){
 	 	$($tile_num_class).html('<div class="loading-spinner"><div class="loading-spinner-content"><i class="icon-spinner icon-spin icon-4x"></i><div class="loading-desc"><h2 >Loading... </h2></div></div></div>');
 	});
 
-  $container.imagesLoaded(function() {
-    $container.isotope({
-      itemSelector : '.newbox', 
-     /* filter: '*',*/
-      layoutMode: 'masonryHorizontal',
-      animationEngine: 'jquery',
-      animationOptions: {
-         easing: 'linear',
-         queue: false,
-       }
-    });
-  });
-
+	$(".zoomstoryMask").click(function(){
+		$('#zoomstory').modal('show');
+	});
 });
