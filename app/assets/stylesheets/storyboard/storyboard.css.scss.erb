@@ -1496,22 +1496,35 @@ color: #fff;
 }
 
 .comment-edit-btn {
-	position: absolute;
+	position: relative;
 	opacity: 0;
-	padding-top: 10px;
 	padding-left: 10px;
-	z-index: 101;
-	.btn {
-		font-size: 0.7em;
-	}
-	a.icon-chevron {
+
+	float: right;
+	a {
 		text-decoration: none;
 		color: #9a1b39;
+		opacity: 0.4;
+		font-weight: bold;
+		text-shadow: 0 1px 0 white;
+		font-size: 18px;
+		font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+		padding: 0;
+		cursor: pointer;
+		background: transparent;
+		border: 0;
+		-webkit-appearance: none;
+	}
+	a:hover {
+		opacity: 0.8;
 	}
 }
 .red {
+	
 	color: #9a1b39;
+	
 }
+
 .dropdown-menu
 {
 	position: absolute;

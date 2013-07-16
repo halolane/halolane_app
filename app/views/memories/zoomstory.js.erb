@@ -4,5 +4,11 @@ $(document).ready(function(){
    	$("body").mousewheel(function(event) {
       $(this).unbind('mousewheel').mousewheel();
     });
+    $(".commentItem").hover(function(){
+	 		$(this).find(".comment-edit-btn").fadeTo(50,1);
+
+		}, function() {
+	   	$(this).find(".comment-edit-btn").fadeTo(50,0);
+	 	});
 	<% end %>
 });

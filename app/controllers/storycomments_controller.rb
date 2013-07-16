@@ -22,4 +22,26 @@ class StorycommentsController < ApplicationController
       end
     end
   end
+
+  def destroy
+    begin 
+      @storycomment = Storycomment.find_by_id(params[:id])
+    rescue
+      redirect_to root_url, notice: 'That comment was not found.'
+      return
+    end
+    @memory = Memory.find(@storycomment.memory_id)
+    @profile = Profile.find(@memory.profile_id)
+
+    if current_user.isEditor?(@profile) or current_user.storycomments.exists?(:id => params[:id])
+      @storycomment.destroy
+    else
+        flash[:error] = "You don't have permission to delete this"
+    end
+
+    respond_to do |format|
+      format.js
+      format.json { head :no_content }
+    end
+  end
 end

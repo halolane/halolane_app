@@ -1,0 +1,7 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		$(".commentItem").bind("ajax:success", function() { 
+	    $(this).remove();
+	  });
+	<% end %>
+});
