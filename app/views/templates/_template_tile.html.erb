@@ -1,6 +1,16 @@
 <% if @page.memories.find_by_tile_num(tile.tile_num).blank? %>
 <li data-row="<%= tile.datarow %>" data-col="<%= tile.datacol %>" data-sizex="<%= tile.datasizex %>" data-sizey="<%= tile.datasizey %>" class="gs_w EmptyTile storyWrapper tile<%= tile.tile_num %>">
-	<%= (render "templates/empty_tile_content").gsub("insert_tile_num",tile.tile_num.to_s).html_safe %>
+	<a href="#newstorymodal" class="link_newstorymodal" id="<%= tile.tile_num %>" data-toggle="modal" data-dismiss="modal" aria-hidden="true">
+		<span class="hoverMask"></span>
+	</a>
+	<i class="icon-plus-sign icon-4"></i>
+	<span class="sampletitle-<%= tile.tile_num %>">
+		<% if ! @questions[tile.tile_num - 1].nil? %>
+			<%= @questions[tile.tile_num - 1].question.gsub("@profile.first_name",@profile.first_name) %>
+		<% else %>
+			<%= @questions.sample.question.gsub("@profile.first_name",@profile.first_name) %>
+		<% end %>
+	</span>
 </li>
 <% else %>
 	
@@ -10,7 +20,7 @@
 			<div class="dropdown">
 				<a class="dropdown-toggle icon-chevron story-edit-icon" data-toggle="dropdown" href="#"><i class="icon-chevron-down"></i></a>
 				
-					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" data-no-turbolink>
 						
 						
 							<li class="story-edit-options"><%= link_to "Delete", @page.memories.find_by_tile_num(tile.tile_num), method: :delete, data: { confirm: "Are you sure you want to delete this story?" }, title: "Delete this story", :remote => true  %></li>

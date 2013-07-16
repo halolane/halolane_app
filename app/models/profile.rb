@@ -50,9 +50,9 @@ class Profile < ActiveRecord::Base
     Chapter.where("profile_id = ?", id).count
   end
 
-  def createchapter! (chapter_name = "New chapter")
+  def createchapter! (chapter_name = "New chapter", subtype = "")
     new_chapter_num = chaptercount + 1
-    @chapter = chapters.create!(profile_id: id, chapter_name: chapter_name, chapter_num: new_chapter_num)
+    @chapter = chapters.create!(profile_id: id, chapter_name: chapter_name, chapter_num: new_chapter_num, subtype: subtype)
   end
 
   def memoryfeed(chapter_num = nil, page_num = nil)

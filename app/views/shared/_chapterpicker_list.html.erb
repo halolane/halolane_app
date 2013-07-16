@@ -1,6 +1,6 @@
 <% if not @profile.chapterlist.nil? %>
 	<ul class="chapterPicker_list">
-		<% @profile.chapterlist.reverse.each do |chp| %>
+		<% @profile.chapterlist.each do |chp| %>
 			<% if chp.chapter_num == @profile.chaptercount %>
 			  <li class="chapterPickerItem active" id="<%= chp.id %>">
 			    <%= "Chapter " + chp.chapter_num.to_s + " - " + chp.chapter_name %>

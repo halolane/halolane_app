@@ -2,11 +2,11 @@
 <div class="row">
   <div class="span6 offset3">
 
-	  <h3 id="editmemorymodalLabel">Edit your story about <%= @profile.first_name %></h3>
-
-	  <div class="messageBox"> 
-			<%= form_for(@memory) do |f| %>
+	  <h3 id="editmemorymodalLabel" class="center">Edit your story about <%= @profile.first_name %></h3></br></br>
+	  <%= form_for(@memory) do |f| %>
 		  <%= render 'shared/error_messages', object: f.object %>
+	  <div class="messageBox"> 
+			
 		  <div class="field">
 		  	<% if @memory.photo.file? %>
 				<span class="edit-image">
@@ -15,7 +15,12 @@
 				</span>
 			<% end %>
 		  	</br>
+	  	<div class="TitleBox">
+		  	<h4>Title</h4>
+		  	<%= f.text_field :title, rows:"1", cols:"10", :value => @memory.title %>
+		  </div>
 			<div class="composerBox expanded">
+			<h4>Story</h4>
 			  	<%= f.text_area :content, rows:"1", cols:"10", maxlength:"250", :value => @memory.content %><br><br>
 			</div>
 		</div>

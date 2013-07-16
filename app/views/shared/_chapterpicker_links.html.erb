@@ -1,6 +1,6 @@
 <% if not @profile.chapterlist.nil? %>
 	<ul class="chapterPicker_links">
-		<% @profile.chapterlist.reverse.each do |chp| %>
+		<% @profile.chapterlist.each do |chp| %>
 			<% if chp.chapter_num == @chapter.chapter_num %>
 			  <li class="chapterpicker_link active" href="<%= 'chp' + chp.id.to_s %>">
 			  	<div class="nubbin" data-behavior="nubbin hover_content">

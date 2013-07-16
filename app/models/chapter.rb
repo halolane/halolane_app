@@ -1,5 +1,5 @@
 class Chapter < ActiveRecord::Base
-  attr_accessible :chapter_name, :chapter_num, :profile_id
+  attr_accessible :chapter_name, :chapter_num, :profile_id, :subtype
 
   belongs_to :profile
   has_many :pages, dependent: :destroy

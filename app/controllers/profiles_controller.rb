@@ -110,8 +110,7 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.save
         current_user.contribute!(@profile, @relationship, true, "edit", true)
-        @chapter = @profile.createchapter!('The beginning')
-        @chapter.createpage!(2)
+        create_chapters
         current_user.actionlog!(@profile.id, @page_name, "create")
         Mailer.delay.new_storybook(current_user, @profile, root_url + @profile.url)
         format.html { redirect_to root_url + @profile.url }
@@ -126,6 +125,37 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+    def create_chapters
+      @chapter = @profile.createchapter!("All about " + @profile.first_name, "title")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("Great Expectation", "pregnancy")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 1st month", "1mt")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 2nd month", "2mt")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 3rd month", "3mt")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 4th month", "4mt")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 5th month", "5mt")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 6th month", "6mt")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 7th month", "7mt")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 8th month", "8mt")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 9th month", "9mt")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 10th month", "10mt")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 11th month", "11mt")
+      @chapter.createpage!(2)
+      @chapter = @profile.createchapter!("The 12th month", "12mt")
+      @chapter.createpage!(2)
+    end
 
     def get_profile
       begin
@@ -152,7 +182,7 @@ class ProfilesController < ApplicationController
       @newpage = Page.new
       @storycomment = Storycomment.new 
       @template_types = Template.all
-      @questions = StorybookQuestion.all
+      
       if signed_in? or is_invited?(params[:invitation_token])
         @memory = @profile.memories.build 
         @invitation = @profile.invitations.build
@@ -178,11 +208,20 @@ class ProfilesController < ApplicationController
             end
           end
         else
-          @chapter = @profile.chapterlist.last
+          @chapter = @profile.chapterlist.first
           @page = @chapter.pagelist.first
         end
         @template = Template.find_by_id(@page.template_id)
 
+        if ! @chapter.subtype.blank? and ! StorybookQuestion.find_by_subtype(@chapter.subtype).nil?
+          if @chapter.chapter_num == 1 and @page.page_num == 1
+            @questions = StorybookQuestion.where("subtype = ?",@chapter.subtype).order(:tile_num)
+          else
+            @questions = StorybookQuestion.where("subtype = ?",@chapter.subtype)
+          end
+        else
+          @questions = StorybookQuestion.all
+        end
         @tiles = @template.tilelist
         render :layout => "storyboard_layout"
       end 
