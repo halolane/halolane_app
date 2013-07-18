@@ -172,7 +172,7 @@
   </div>
 </div> 
 <%= render 'explorer_acct_modal' %>
-  <script type="text/javascript">
+  <script type="text/javascript" data-turbolinks-eval=false>
     function startIntro(){
       introJs().setOption('skipLabel', 'Exit').onchange(function(targetElement) {
           switch (targetElement.getAttribute("data-step"))
@@ -206,7 +206,7 @@
     </script>
   <% if current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
     <!-- crazy egg -->
-    <script type="text/javascript">
+    <script type="text/javascript" data-turbolinks-eval=false>
     setTimeout(function(){var a=document.createElement("script");
     var b=document.getElementsByTagName("script")[0];
     a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0017/3827.js?"+Math.floor(new Date().getTime()/3600000);
