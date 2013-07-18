@@ -1,4 +1,4 @@
-<% if @page.memories.find_by_tile_num(tile.tile_num).blank? %>
+<% if @page.memories.blank? and @page.memories.find_by_tile_num(tile.tile_num).blank? %>
 <li data-row="<%= tile.datarow %>" data-col="<%= tile.datacol %>" data-sizex="<%= tile.datasizex %>" data-sizey="<%= tile.datasizey %>" class="gs_w EmptyTile storyWrapper tile<%= tile.tile_num %>">
 	<div data-no-turbolink>
 	<a href="#newstorymodal" class="link_newstorymodal" id="<%= tile.tile_num %>" data-toggle="modal" data-dismiss="modal" aria-hidden="true">
