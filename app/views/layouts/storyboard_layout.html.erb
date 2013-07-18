@@ -138,6 +138,7 @@
    
 </head>
 <body>
+
   <% if current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
     <header class="navbar-inverse navbar-fixed-top">
       <%= render 'layouts/sneakpeek_header' %>
@@ -153,9 +154,11 @@
   <% flash.each do |key, value| %>
      <div class="alert alert-<%= key %>"><%= value %></div>
   <% end %>
+<div id="storycontent">
 	<%= yield %>
-
+</div>
 <%= render 'layouts/storyboard_footer' %>
+
 <%= render 'shared/new_user_storybook_modal' %>
 <div class="welcomesneakpeek-coachmark hide">
   <%  if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) %>
@@ -210,5 +213,6 @@
     a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
     </script>
   <% end %>
+
 </body>
 </html>
