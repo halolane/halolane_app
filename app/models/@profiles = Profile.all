@@ -76,4 +76,38 @@ end
 	m.update_attributes(:page_id => p_id)
 end
 
+@profiles.each do |p|
+	if p.chapters.count < 14
+		p.chapters.destroy_all
+		@chapter = p.createchapter!("All about " + p.first_name, "title")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("Great Expectation", "pregnancy")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 1st month", "1mt")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 2nd month", "2mt")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 3rd month", "3mt")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 4th month", "4mt")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 5th month", "5mt")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 6th month", "6mt")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 7th month", "7mt")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 8th month", "8mt")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 9th month", "9mt")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 10th month", "10mt")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 11th month", "11mt")
+    @chapter.createpage!(2)
+    @chapter = p.createchapter!("The 12th month", "12mt")
+    @chapter.createpage!(2)
+	end
+end
+
 
