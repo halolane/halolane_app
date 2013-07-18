@@ -79,14 +79,14 @@
   <div class="modal-footer">
 		<div id="messageTools" class="_addLinkBlock messageTools" >
 
-			<div class="controls">
+			<div class="controls" data-no-turbolink>
 				<span id="memorycounter">
 				</span>
-				<span class="addphoto-icon">		
-					<a href="#" title="Add an image" rel="tooptip"><i class="icon-camera"></i></a>
+				<span class="addphoto-icon" data-no-turbolink>		
+					<a href="javascript:void(0);" title="Add an image" rel="tooptip"><i class="icon-camera"></i></a>
 				</span>
-				<span class="adddate-icon">		
-					<a href="#" title="Date this story" rel="tooptip"><i class="icon-calendar"></i></a>
+				<span class="adddate-icon" data-no-turbolink>		
+					<a href="javascript:void(0);" title="Date this story" rel="tooptip"><i class="icon-calendar"></i></a>
 				</span>
 				<span class="btn-post">
 					<% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>

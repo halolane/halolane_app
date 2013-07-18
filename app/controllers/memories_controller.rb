@@ -30,6 +30,8 @@ class MemoriesController < ApplicationController
 
     @page = Page.find_by_id(params[:memory][:page_id])
     @chapter = Chapter.find_by_id(@page.chapter_id)
+    @template = @page.template
+    @tile = @template.tiles.find_by_tile_num(params[:memory][:tile_num])
 
     respond_to do | format |   
       if @memory.save

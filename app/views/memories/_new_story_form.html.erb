@@ -30,7 +30,7 @@
 <% if @memory.photo.file? %>
 	<div class="box-image">
 
-		<%= image_tag @memory.dynamic_photo_url(tile.width.to_s + "x" + tile.height.to_s + "#"), class: "storyimage" %>
+		<%= image_tag @memory.dynamic_photo_url(@tile.width.to_s + "x" + @tile.height.to_s + "#"), class: "storyimage" %>
 	</div>
 <% else %>
 	<div class='box-content-only-text'>
