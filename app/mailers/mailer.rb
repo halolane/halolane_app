@@ -54,15 +54,15 @@ class Mailer < ActionMailer::Base
     @email = "story+" + @profile.url + "@thefamilytales.com"
 
     #Temp file set up for the vcf
-    file_name = @profile.first_name + "_" + @profile.last_name + "_add_new_story_by_email.vcf"
-    tmp_file_name = "tmp/" + @profile.first_name + "_" + @profile.last_name + "_" + Time.now.strftime("%Y-%m-%d-%H%M%S") + ".vcf"
-    tmp_file = File.new(tmp_file_name, "w")
-    tmp_file.puts(@profile.get_vcf_file)
-    tmp_file.close
+    # file_name = @profile.first_name + "_" + @profile.last_name + "_add_new_story_by_email.vcf"
+    # tmp_file_name = "tmp/" + @profile.first_name + "_" + @profile.last_name + "_" + Time.now.strftime("%Y-%m-%d-%H%M%S") + ".vcf"
+    # tmp_file = File.new(tmp_file_name, "w")
+    # tmp_file.puts(@profile.get_vcf_file)
+    # tmp_file.close
     
-    attachments[file_name] = File.read(tmp_file)
+    # attachments[file_name] = File.read(tmp_file)
     full_name = @profile.first_name + " "  + @profile.last_name
-    subject =  "Add new stories by email to " + full_name + "'s FamilyTales storybook!"
+    subject =  full_name + "'s FamilyTales storybook had been created!"
     mail( :from => "\"FamilyTales\" <hello@thefamilytales.com>", 
           :to => @user.email, 
           :subject => subject )
