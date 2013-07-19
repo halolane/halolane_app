@@ -179,6 +179,12 @@ class ProfilesController < ApplicationController
 
     def showprofile
       store_location
+      @user = current_user
+      if current_user.newfeature == true
+        current_user.toggle!(:newfeature)
+        sign_in @user
+      end
+
       @newpage = Page.new
       @storycomment = Storycomment.new 
       @template_types = Template.all

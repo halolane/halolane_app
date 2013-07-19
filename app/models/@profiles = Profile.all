@@ -110,4 +110,9 @@ end
 	end
 end
 
+@users = User.all
+
+@users.each do |u|
+    u.update_attributes(:newfeature => true)
+end
 
