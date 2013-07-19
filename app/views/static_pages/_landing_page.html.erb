@@ -1,155 +1,47 @@
 
-<!--[if lte IE 8]>
-<script src='//html5shiv.googlecode.com/svn/trunk/html5.js'></script>
-<![endif]-->
-<!-- <meta property="fb:app_id"      content="317620684966973" /> 
-<meta property="og:url"         content="https://www.shoplocket.com/" /> 
-<meta property="og:title"       content="ShopLocket | Sell anything from anywhere in minutes" /> 
-<meta property="og:description" content="ShopLocket is the easiest way to sell something online. No store to setup, no risk to get started. With ShopLocket selling something is just as easy as embedding a Youtube video. Simply create your product, embed it in your website, Facebook page, or blog post, and start selling!" /> 
-<meta property="og:image"       content="https://www.shoplocket.com/assets/static/logo.png" />  -->
 
-<section class='above_fold'>
-  <div class='content'>
-    <h2>
-      Collect your family's precious moments
-      <br>
-      in a free storybook to pass on for generations
+  <div id="first" class="panel">
+    <section id="content">
+        <h1>familytales</h1>
 
-    </h2>
-    <div class='carousel'>
-      <div class='nav'>
-        <a href="" class="nav_control left">&lt;</a>
-        <a href="" class="nav_control right">&gt;</a>
-      </div>
-      <div class='swipe'>
-        <div class='swipe-wrap'>
-          <div class='item first active'>
-            <div class='team-pic'>
-              <%= image_tag("/assets/images/frontpage/carousel/Slide1.png", :alt => "Slide1", rel:"tooltip", title:"Click here for a sneak peek") %>
-            </div>
-            <div class='bubble imagine'>
-             Start your <strong>baby's private <br>
-             FamilyTales storybook </strong> <br>
-             from the very beginning
-            </div>
-          </div>
+        <%= form_for(@user) do |f| %>
+            <fieldset>
+                <legend><strong>Organized. Private. Timeless.</strong></legend>
+                <p>
+                The best way to capture and treasure baby books with your family.
+                </p>
+                
+                <p>
+                
+                  <%= render 'shared/error_messages', object: f.object %>
+                  <%= f.text_field :first_name, :required => true, :placeholder => "First Name" %>
 
-          <div class='item second'>
-            <%= image_tag("/assets/images/frontpage/carousel/Slide2.png", :alt => "Slide2", :width => "500" ) %>
-            <div class='bubble integrates'>
-              Create or import <br>
-              your family tree
-            </div>
-            <div class='bubble imagine'>
-              Relive your family's precious<br>
-              moments in their <strong>personalized <br>storybook</strong>
-            </div>
-          </div>
-          
-          <div class='item third'>
-            <div class='bubble integrates'>
-              Never miss another <br> 
-              <strong>precious family moment</strong>!
-            </div>
-            <%= image_tag("/assets/images/frontpage/carousel/Slide3.png", :alt => "Slide3" ) %>
-            <div class='bubble simple'>
-    
-              Easily upload <strong> photos, videos <br>and audio clips</strong> to your storybook<br>directly from your phone
-              
-            </div>
-          </div>
-          <div class='item fourth'>
-            <%= image_tag("/assets/images/frontpage/carousel/Slide4.png", :alt => "Slide4" ) %>
-            <div class='bubble social'>
-              Imagine your great-great-grandchild <br>
-              in 100 years. Now imagine them<br>
-               <strong>learning your victories.</strong> 
-            </div>
-          </div>
+                  <%= f.text_field :last_name, :required => true, :placeholder => "Last Name" %>
 
-          <div class='item fifth'>
-            <%= image_tag("/assets/images/frontpage/carousel/Slide5-1.png", :alt => "Slide5" ) %>
-            <div class='bubble social'>
-              Print off your family's <br>
-              FamilyTales storybook <br>
-               <strong>to keep or share</strong> 
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+                  <%= f.text_field :email, type: "email", :required => true, :placeholder => "Email" %>
+
+                  <%= f.password_field :password, :required => true, :pattern => ".{6,}", :title => "6 characters minimum", :placeholder => "Password" %>
+                <div class="submit-btn">
+                <%= f.submit "Create my FREE storybook", class: "green_button" %>
+                  <div class="center">- or -</div>
+                <a class="btn-auth btn-facebook large" href="/auth/facebook">Login with <b>Facebook</b></a>
+                </div>
+                </p>
+                Already have an account? <a href="#signin_modal" data-toggle="modal" data-dismiss="modal" aria-hidden="true" >Log in now</a>
+                <p class="learnmore">
+                  See more <a href="#first"><i class="icon-circle"></i></a>  <a href="#second"><i class="icon-circle-blank"></i><a/>  <a href="#third"><i class="icon-circle-blank"></i><a/>
+                </p>
+            </fieldset>
+        <% end %>
+
+    </section>  
+  
   </div>
-</section>
 
-
-<section class='signup_bar'>
-  <div class='content'>
-    
-    <div class='facebook'>
-      <!--<a href="/auth/facebook"><%= image_tag("/assets/images/connect-with-facebook.png", :alt => "Connect-with-FB", :width => "395" ) %></a>-->
-      <a class="btn-auth btn-facebook large" href="/auth/facebook">Sign up with <b>Facebook</b></a>
-    </div>
-    <div class='signup_form'>
-      <!--
-        <form action='/users' class='' id='main_signup' method='post' name=''>
-        <input id="authenticity_token" name="authenticity_token" type="hidden" value="k8AsftGaHQ5EVK5fZhHGIhbkdq4urolE06ObiZiMJQk=" />
-        <input id='email' name='user[email]' placeholder='Email address' required='required' type='email'>
-        <input id='password' name='user[password]' placeholder='Password' required='required' type='password'>
-      -->
-
-          <a class="signup_button" data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#signup_modal"><i class="icon-envelope"></i> Sign up by <b>email</b></a>
-      </form>
-    </div>
+  <div id="second" class="panel">
+    <a name="second" />
   </div>
-</section>
 
-<section class='future'>
-<div class='content'>
-<h3>
-FamilyTales rocks! Here's why
-</h3>
-<div class='item seamless'>
-<i class="icon-lock icon-4x"></i>
-<h5 class='subtext'>
-Private.
-</h5>
-<p>
-Have the peace of mind that you have complete control over who can view and add to your family's storybook.
-</p>
-</div>
-<div class='item social'>
-<i class="icon-time icon-4x"></i>
-<h5 class='subtext'>
-Time-saving.
-</h5>
-<p>
-Save your precious moments in an organized fashion with our beautifully designed storybook. All it takes is a few clicks!
-</p>
-</div>
-<div class='item responsive'>
-<i class="icon-comments-alt icon-4x"></i>
-<h5 class='subtext'>
-Social.
-</h5>
-<p>
-Stay in touch and updated with your family (your most important network), no matter where they are.
-</p>
-</div>
-</div>
-</section>
-
-
-
-<section class='signup_bar_simple'>
-<div class='content'>
-<h3>
-Start celebrating your family stories today.
-</h3>
-<p>
-  <!-- When website is live, use the code below:
-  <a href="/signup" class="signup_button">Sign up now</a>
--->
-<a class="signup_button" data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="/signup" >Sign up now</a>
-</p>
-</div>
-</section>
+  <div id="third" class="panel">
+    <a name="third" />
+  </div>
