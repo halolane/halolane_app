@@ -1,7 +1,5 @@
 
-
-  <div id="first" class="panel">
-    <section id="content">
+  <section id="content">
         <h1>familytales</h1>
 
         <%= form_for(@user) do |f| %>
@@ -29,19 +27,26 @@
                 </p>
                 Already have an account? <a href="#signin_modal" class="signin_modallink" data-toggle="modal" data-keyboard="true">Log in now</a>
                 <p class="learnmore">
-                  See more <a href="#first"><i class="icon-circle"></i></a>  <a href="#second"><i class="icon-circle-blank"></i><a/>  <a href="#third"><i class="icon-circle-blank"></i><a/>
+                  See more 
+                  <span class="learnmore-circles">
+                  <a href="#first" class="first-btn learnmore-btn active"><i class="icon-circle"></i></a>  
+                  <a href="#second-btn" class="second-btn learnmore-btn"><i class="icon-circle"></i><a/>  
+                  <a href="#third-btn" class="third-btn learnmore-btn"><i class="icon-circle"></i><a/>
+                  </span>
                 </p>
             </fieldset>
         <% end %>
 
     </section>  
-  
+
+  <div id="first" class="panel">
+    <a name="first"/>
   </div>
 
-  <div id="second" class="panel">
+  <div id="second" class="panel hide">
     <a name="second" />
   </div>
 
-  <div id="third" class="panel">
+  <div id="third" class="panel hide">
     <a name="third" />
   </div>
