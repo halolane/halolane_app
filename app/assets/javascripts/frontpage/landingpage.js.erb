@@ -33,22 +33,22 @@ $(document).ready(function(){
 	$('.first-btn').click(function(){
 		$('.learnmore-btn').removeClass('active');
 		$(this).addClass('active');
-		$('.panel').addClass('hide');
-		$('#first').removeClass('hide');
+		$('.panel').addClass('hidden');
+		$('#first').removeClass('hidden');
 	});
 
 	$('.second-btn').click(function(){
 		$('.learnmore-btn').removeClass('active');
 		$(this).addClass('active');
-		$('.panel').addClass('hide');
-		$('#second').removeClass('hide');
+		$('.panel').addClass('hidden');
+		$('#second').removeClass('hidden');
 	});
 
 	$('.third-btn').click(function(){
 		$('.learnmore-btn').removeClass('active');
 		$(this).addClass('active');
-		$('.panel').addClass('hide');
-		$('#third').removeClass('hide');
+		$('.panel').addClass('hidden');
+		$('#third').removeClass('hidden');
 	});
 
 	$('[placeholder]').focus(function() {
@@ -73,11 +73,4 @@ $(document).ready(function(){
 	    }
 	  })
 	});
-
-	if($('#second').is(':visible')) {
-		alert('hi');	
-	}
-
-
-
 });
