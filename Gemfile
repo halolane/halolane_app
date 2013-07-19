@@ -31,9 +31,7 @@ gem 'asset_sync'
 gem 'unicorn'
 gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem "introjs-rails"
-gem 'wiselinks'
-gem 'jquery-turbolinks'
-gem 'turbolinks'
+gem 'imgkit'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
