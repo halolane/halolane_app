@@ -273,6 +273,10 @@ input[type="text"] {
 }
 
 
+#betamodal #betapassword, #signin_modal input {
+width: 60%;
+}
+
 #session_password {
 	margin-left: 92px;
 }
@@ -306,7 +310,34 @@ input[type="email"], input[type="password"] {
 	cursor:pointer;margin:0em;font-size:16px;margin-right:0%
 }
 
-.green_button:hover {
+.signin_button {
+width: 50%;
+position: relative;
+padding: 0.9em 2em;
+color: #fff;
+display: inline-block;
+font-size: 1.2em;
+text-align: center;
+background-color: #69a100;
+background-image: -webkit-linear-gradient(#95c53d, #69a100, #5f8f05);
+background-image: -moz-linear-gradient(#95c53d, #69a100, #5f8f05);
+color: #fff;
+text-align: center;
+-moz-border-radius: 4px;
+-webkit-border-radius: 4px;
+border-radius: 4px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+border-width: 1px;
+border-style: solid;
+border-color: #5f8f05;
+text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.6);
+cursor: pointer;
+margin: 0em;
+font-size: 16px;
+margin-right: 0%;
+}
+
+.green_button:hover, .signin_button:hover {
 	background-image:-webkit-linear-gradient(#69a100, #95c53d, #5f8f05);
 
 	color:#fff;
