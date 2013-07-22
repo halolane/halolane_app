@@ -1,4 +1,5 @@
 class MemoriesController < ApplicationController
+  include ActionView::Helpers::TextHelper
   before_filter :signed_in_user, only: [:create, :destroy, :edit, :like]
   before_filter :correct_user,   only: :edit
   before_filter :set_page_name
@@ -40,6 +41,12 @@ class MemoriesController < ApplicationController
         current_user.actionlog!(@profile.id, @page_name, "New story created" )
       else
         format.html { redirect_to root_url + @profile.url } 
+        @error_msg = "Sorry, we're not able to save your story because of the following " + pluralize(@memory.errors.count, "error") + ":<ul>"
+        @memory.errors.full_messages.each do |msg|
+          @error_msg = @error_msg + "<li>" + msg + "</li>"
+        end 
+        @error_msg = @error_msg + "</ul>"
+        format.js 
         format.json { render json: @memory, status: :created, location: @memory }
       end
     end    

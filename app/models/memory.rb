@@ -23,10 +23,14 @@ class Memory < ActiveRecord::Base
   validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true
-  validates :date, presence: true
-  validates :content, :length => { :maximum => 250 }
+  validates_date :date, :after => "1700-01-01",
+                :after_message => 'must be a correct date',
+                :on_or_before => Date.today,
+                :on_or_before_message => 'must be before today\'s date'
+  validates :content, :length => { :maximum => 250, :message => 'Story exceeds 250 characters'}
   validates :title, :length => { :maximum => 140 }
   
+
   validates_attachment :photo,
   :content_type => { :content_type => /image/ },
   :size => { :in => 0..5.megabytes }
@@ -116,7 +120,7 @@ class Memory < ActiveRecord::Base
 
     def content_and_photo_not_blank
       if photo_file_name.nil? and content.blank?
-        self.errors.add :base, 'My string can not be nil'
+        self.errors.add :base, 'You did not submit a story or a picture.'
       end
     end
 

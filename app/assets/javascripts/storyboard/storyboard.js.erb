@@ -293,7 +293,7 @@ $(document).ready(function(){
 	$(".savestory_button").click(function(){
 		$('.modal.in').modal('hide');
 	 	var $tile_num_class = '.tile' + $('#memory_tile_num').val();
-	 	$($tile_num_class).html('<div class="loading-spinner"><div class="loading-spinner-content"><i class="icon-spinner icon-spin icon-4x"></i><div class="loading-desc"><h2 >Loading... </h2></div></div></div>');
+	 	$($tile_num_class).prepend('<div class="loading-spinner"><div class="loading-spinner-content"><i class="icon-spinner icon-spin icon-4x"></i><div class="loading-desc"><h2 >Loading... </h2></div></div></div>');
 	});
 
 	$(".zoomstoryMask").click(function(){
