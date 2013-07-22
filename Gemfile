@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '1.9.2'
+ruby '1.9.3'
 
 gem 'rails', '3.2.11'
 gem 'bootstrap-sass', '2.1'
@@ -28,7 +28,6 @@ gem 'aws-sdk'
 gem 'mailman', require: false
 gem 'jquery-ui-rails'
 gem 'asset_sync'
-gem 'unicorn'
 gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem "introjs-rails"
 gem 'imgkit'
@@ -70,6 +69,7 @@ end
 
 group :production do
   gem "pg", "~> 0.14.1"
+  gem 'unicorn'
   gem "therubyracer"
   gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 end
