@@ -6,6 +6,19 @@
 	width: 100%;
 	text-align: center;
 	margin-left: -20px;
+	li {
+		display: list-item !important;
+		list-style: disc !important;
+		list-style-type: disc !important;
+		list-style-position: inside !important;
+	}
+
+	ul, menu, dir {
+		padding-top: 5px;
+		display: block;
+		list-style-type: disc;
+		list-style-position: inside !important;
+	}
 }
 
 .modal-body {

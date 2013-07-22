@@ -18,9 +18,6 @@ class Profile < ActiveRecord::Base
   validates :last_name, presence: true, length: { maximum: 50 }
   validates :url, length: { maximum: 50 }
 
-  validates_date :birthday, :before => :deathday,
-                            :before_message => 'must be before date of passing'
-
   validates_date :birthday, :after => "1700-01-01",
   							:after_message => 'must be a correct date',
   							:on_or_before => Date.today,
