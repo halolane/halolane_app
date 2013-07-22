@@ -13,7 +13,7 @@
           <% end %>
 
           <% if signed_in? && current_user.canContribute?(@profile) %>
-            <li class="iconaddcontributor _showAddCollaborator" data-step="4" data-intro="You have complete control who you want to view, contribute or edit <%= @profile.first_name %>'s storybook." data-position="bottom">
+            <li class="iconaddcontributor _showAddCollaborator" data-step="5" data-intro="You have complete control who you want to view, contribute or edit <%= @profile.first_name %>'s storybook." data-position="bottom">
               <a href="#addcontributor" class="iconaddcontributorlink" rel="tooltip" data-placement="bottom" title="Invite your friends & family" data-toggle="modal" data-keyboard="true">
                 <span class="icon-stack">
                   <i class="icon-user icon-stack-base"></i>

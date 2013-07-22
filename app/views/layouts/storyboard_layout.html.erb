@@ -179,25 +179,33 @@
           {
 
               case "1":
-                  $(".gridster").addClass('shiftright');
+                $(".gridster").addClass('shiftright');
               break;
 
               case "2":
-                $(".introjs-tooltip").css("margin-left", "-100px");
                 $(".gridster").removeClass('shiftright');
+                $('.nav_controls.right').fadeTo("fast",1);
+                $('.nav_controls.left').fadeTo("fast",1);
               break;
 
               case "3":
-              $('body, html').scrollLeft(0);
-                $(".introjs-tooltip").css("margin-left", "0px");
-
+                $(".introjs-tooltip").css("margin-left", "-100px");
+                $(".gridster").removeClass('shiftright');
+                $('.nav_controls.right').fadeTo("fast", 0);
+                $('.nav_controls.left').fadeTo("fast",0);
               break;
 
-              case "4":         
+              case "4":
+                $('body, html').scrollLeft(0);
+                $(".introjs-tooltip").css("margin-left", "0px");
+              break;
+
+              case "5":         
                 $("header").addClass("intro-showElement");
               break;
           }
         }).start().onexit(function() {
+          $('.nav_controls.right').fadeTo("fast", 0);
           $(".gridster").removeClass('shiftright');
           $(".gridster").removeClass("introjs-showElement");
           $("header").removeClass("intro-showElement");
