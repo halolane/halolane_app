@@ -38,7 +38,7 @@ class StaticPagesController < ApplicationController
 
   def about
     @user = User.new
-    render :layout => "home_layout"
+    render :layout => "about_layout"
   end
 
   private
