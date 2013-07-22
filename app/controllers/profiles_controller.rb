@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  include ActionView::Helpers::TextHelper
   before_filter :signed_in_user, only: [:create, :destroy]
   before_filter :correct_user, only: [:edit, :update, :show]
   before_filter :can_edit, only: [:edit, :update]
@@ -116,8 +117,12 @@ class ProfilesController < ApplicationController
         format.html { redirect_to root_url + @profile.url }
         format.json { render json: @profile, status: :created, location: @profile }
       else
-        flash[:error] = "Sorry, we're not able to create your storybook."
-
+        error_msg = "sorry, we're not able to create your storybook because of the following " + pluralize(@profile.errors.count, "error") + ":<ul>"
+        @profile.errors.full_messages.each do |msg|
+          error_msg = error_msg + "<li>" + msg + "</li>"
+        end 
+        error_msg = error_msg + "</ul>"
+        flash[:error] = error_msg
         format.html { redirect_to root_url  }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
