@@ -56,7 +56,7 @@
 
   <script type="text/javascript">
     $(window).load(function(){
-      $(".startstorybook_button").click(function(){
+      $(".startstorybook_button").click('ajax:complete', function(){
         $('.startstorybook').addClass('hide');
         $('.loading').removeClass('hide');
       });

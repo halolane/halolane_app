@@ -7,8 +7,8 @@
       
         <ul class="dropdown-menu bookshelf" role="menu" aria-labelledby="dLabel" >
           
-          <li><%= link_to "Edit", edit_profile_path(book), title: "Edit this storybook" %></li>
-          <li><%= link_to "Delete", book, method: :delete, data: { confirm: "Are you sure you want to delete this storybook? All the stories will be deleted permanently." }, title: "Delete this storybook" %></li>
+          <li><%= link_to "Edit", edit_profile_path(book) %></li>
+          <li><%= link_to "Delete", book, method: :delete, data: { confirm: "Are you sure you want to delete this storybook? All the stories will be deleted permanently." } %></li>
           <!-- for future implementation
           <li><a href="#">Comment</a></li>
           <li><a href="#">Flag</a></li>
