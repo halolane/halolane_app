@@ -78,16 +78,12 @@
 						<% if current_user.like?(@page.memories.find_by_tile_num(tile.tile_num)) %>
 							<%= link_to unlike_memory_path(@page.memories.find_by_tile_num(tile.tile_num)), :class => "liked", :rel => "tooltip", :placeholder => "Like this story", :remote => true do %>
 								<i class="icon-heart"></i> 
-								<% if @page.memories.find_by_tile_num(tile.tile_num).numlikes > 0 %>
 									<span class="likecount"><%= @page.memories.find_by_tile_num(tile.tile_num).numlikes %></span>
-								<% end %>
 							<% end %>
 						<% else %>
 							<%= link_to like_memory_path(@page.memories.find_by_tile_num(tile.tile_num)), :class => "unliked", :rel => "tooltip", :placeholder => "Unlike this story", :remote => true  do %>
 								<i class="icon-heart"></i> 
-								<% if @page.memories.find_by_tile_num(tile.tile_num).numlikes > 0 %>
 									<span class="likecount"><%= @page.memories.find_by_tile_num(tile.tile_num).numlikes %></span>
-								<% end %>
 							<% end %>
 						<% end %> 
 					</div>
