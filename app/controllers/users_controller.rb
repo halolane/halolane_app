@@ -44,6 +44,12 @@ class UsersController < ApplicationController
     elsif @user.save 
 
       sign_in @user
+
+      # Save to Mailchimp List
+      if Rails.env.production?  
+        mailchimp_save
+      end
+
       if params[:invitation].nil?
        
         new_bookshelf_name = @user.last_name + " Family Bookshelf"
@@ -141,5 +147,19 @@ class UsersController < ApplicationController
 
     def admin_user
       redirect_to(root_path) unless current_user.admin?
+    end
+
+    def mailchimp_save
+      mailchimp_api_key = "9d733223f7c559a0b6f133d7c604ca86-us7"
+      mailchimp_list_id = "21e5e3a5f1"
+      g = Gibbon.new(mailchimp_api_key)
+      g.list_subscribe({:id => mailchimp_list_id,
+                        :email_address => @user.email,
+                        :double_optin => false,
+                        :send_welcome => false,
+                        :merge_vars => {'FNAME' => "#{@user.first_name}",
+                                        'LNAME' => "#{@user.last_name}"
+                                       }
+                      })
     end
 end
