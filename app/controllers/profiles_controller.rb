@@ -114,8 +114,12 @@ class ProfilesController < ApplicationController
       @profile = Profile.new(first_name: params[:profile][:first_name], last_name: params[:profile][:last_name], birthday: (params[:profile][:birthday]) , deathday: Date.today, privacy: 2, bookshelf_id: params[:profile][:bookshelf_id])
     end
 
-    @relationship = params[:relationship][:description]
+    if current_user.newfeature == true
+      current_user.toggle!(:newfeature)
+      sign_in @user
+    end
 
+    @relationship = params[:relationship][:description]
 
     respond_to do |format|
       if @profile.save
@@ -194,10 +198,6 @@ class ProfilesController < ApplicationController
     def showprofile
       store_location
       @user = current_user
-      if current_user.newfeature == true
-        current_user.toggle!(:newfeature)
-        sign_in @user
-      end
 
       @newpage = Page.new
       @storycomment = Storycomment.new 

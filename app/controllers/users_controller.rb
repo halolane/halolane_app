@@ -152,7 +152,7 @@ class UsersController < ApplicationController
     def mailchimp_save
       mailchimp_api_key = "9d733223f7c559a0b6f133d7c604ca86-us7"
       mailchimp_list_id = "21e5e3a5f1"
-      g = Gibbon.new(mailchimp_api_key)
+      g = Gibbon::API.new(mailchimp_api_key)
       g.list_subscribe({:id => mailchimp_list_id,
                         :email_address => @user.email,
                         :double_optin => false,
