@@ -131,7 +131,7 @@ class Mailer < ActionMailer::Base
   def validate_account(user, url)
     @user = user
     @url = url
-    mail(:from => "\"FamilyTales\" <hello@thefamilytales.com>", :to => @user.email , :subject => 'Welcome to FamilyTales')
+    mail(:from => "\"Beatrice Law, FamilyTales\" <hello@thefamilytales.com>", :to => @user.email , :subject => 'Welcome to FamilyTales')
   end
 
   def resend_validation(user, url)
