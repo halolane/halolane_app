@@ -1,15 +1,23 @@
-<div class="add_page_panel">
-  <a id="add_page_panel_button"><i class="icon-plus"></i> Add a new page </a>
-  <div class="panel">
-    <div class="templatedesc">
-      <h2>Select a template</h2>
-    </div>
-    <div class="templates">
 
-      <%= render partial: 'profiles/new_page_form', collection: @template_types, :as => :template_type %>
+<div class="bottom_tabs">
+  <div class="add_customization_panel">
+    <a href="#customize_modal" id="add_customization" data-toggle="modal" data-keyboard="true">Customize Page</a>
+  </div>
+  <div class="add_page_panel">
+    <a id="add_page_panel_button"><i class="icon-plus"></i> Add a new page </a>
+    <div class="panel">
+      <div class="templatedesc">
+        <h2>Select a template</h2>
+      </div>
+      <div class="templates">
+
+        <%= render partial: 'profiles/new_page_form', collection: @template_types, :as => :template_type %>
+      </div>
     </div>
   </div>
+
 </div>
+
 <div class="edit_page_panel">
   <div class="edit_panel">
     <div class="edittemplatedesc">

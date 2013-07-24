@@ -46,6 +46,7 @@ HalolaneApp::Application.routes.draw do
   match '/pagenotfound', to: 'static_pages#pagenotfound'
   match '/storybooknotfound', to: 'static_pages#pagenotfound'
   match '/createstorybook', to: 'profiles#new'
+  match '/storybook/customize', to: 'profiles#customize'
   match '/story/updatetitle', to: 'memories#update_title'
   match '/signup', to: 'users#new'
   match '/signin', to: 'sessions#new'

@@ -46,6 +46,15 @@ class ProfilesController < ApplicationController
     Mailer.delay.send_vcf(current_user, @profile, root_url + @profile.url)
   end
 
+  def customize
+    message = params[:customize][:message]
+    Mailer.delay.customize_request(current_user, message)
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.js
+    end
+  end
+
   def show
     if ! params[:url].blank?
       @profile = Profile.find_by_url(params[:url])

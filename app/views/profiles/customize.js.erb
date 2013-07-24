@@ -1,0 +1,7 @@
+$(document).ready(function(){
+	<%= remotipart_response do %>
+		$('.modal.in').modal('hide') 
+		$('#customize_message').val('');
+		$('#customizethanks').modal('show');
+	<% end %>
+});

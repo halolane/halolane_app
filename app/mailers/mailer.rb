@@ -23,13 +23,22 @@ class Mailer < ActionMailer::Base
     @user = user
     @msg = msg
     @full_name = @profile.first_name + " "  + @profile.last_name
-    @full_user_name =  @user.first_name + " " + @user.last_name 
     subject = "Check out " + @full_name + "'s FamilyTales storybook that I created"
     @url = url
     mail( :from => "\"" + @full_user_name + "\" <hello@thefamilytales.com>", 
           :to => @invitation.recipient_email, 
           :subject => subject )
     @invitation.update_attribute(:sent_at, Time.now)
+  end
+
+  def customize_request(user, msg)
+    @msg = msg
+    @user = user
+    @full_user_name =  @user.first_name + " " + @user.last_name 
+    subject = @full_user_name + " requested the following customization"
+    mail( :from => "\"New Customization\" <hello@thefamilytales.com>", 
+          :to => "hello@thefamilytales.com", 
+          :subject => subject )
   end
 
   def invitation_bookshelf(invitation, user, url, msg)
@@ -130,4 +139,6 @@ class Mailer < ActionMailer::Base
     @url = url
     mail(:from => "\"FamilyTales\" <hello@thefamilytales.com>", :to => @user.email , :subject => 'Confirm your FamilyTales account')
   end
+
+
 end

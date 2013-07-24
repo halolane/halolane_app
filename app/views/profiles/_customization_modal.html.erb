@@ -1,0 +1,21 @@
+<!-- Modal -->
+<div id="customize_modal" class="modal hide fade" tabindex="-1" role="dialog" role="dialog" aria-labelledby="addcontributorLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="addcontributorLabel">Customize your storybook</h3>
+  </div>
+  <div class="modal-body">
+  		<p>Thank you for showing interest in customizations! At the moment, we do not have this feature ready yet. </p> </br>
+  		<p>Please let us know what type of customizations you would like to see built.</p>
+  		<br>
+  		<form accept-charset="UTF-8" action="/storybook/customize" class="new_memory" id="new_memory" data-remote="true" enctype="multipart/form-data" method="get">
+		  <textarea rows="8" id="customize_message" name="customize[message]"  cols="30" ></textarea>
+		
+  </div>
+  <div class="modal-footer">
+	  <p>
+	  	<input class="green_button" name="commit" type="submit" value="Send">
+	 	</p>
+		</form>
+  </div>
+</div>
