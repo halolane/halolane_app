@@ -56,9 +56,11 @@
 
   <script type="text/javascript">
     $(window).load(function(){
-      $(".startstorybook_button").click(function(){
-        $('.startstorybook').addClass('hide');
-        $('.loading').removeClass('hide');
+      $("#new_profile").submit(function(){
+        if($('#profile_first_name').val() != "" && $('#profile_last_name').val() != "" ) { 
+          $('.startstorybook').addClass('hide');
+          $('.loading').removeClass('hide');
+        }
       });
     });
   </script>
