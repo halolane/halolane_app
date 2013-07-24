@@ -23,11 +23,6 @@ class Profile < ActiveRecord::Base
   							:on_or_before => Date.today,
   							:on_or_before_message => 'must be a correct date'
 
-  validates_date :deathday, :after => "1700-01-01",
-  							:after_message => 'must be a correct date',
-  							:on_or_before => Date.today,
-  							:on_or_before_message => 'must be a correct date'
-
   validates_numericality_of :privacy, :greater_than_or_equal_to => 0,
                             :only_integer => true, :allows_nil => false
 
