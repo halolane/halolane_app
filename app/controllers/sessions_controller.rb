@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       sign_in @user
       flash[:success] = "Hi " + @user.first_name + "! Welcome back to FamilyTales."
-      redirect_to root_url
+      redirect_to library_url
     else
       flash.now[:error] = 'Invalid email/password combination'
       render 'new'

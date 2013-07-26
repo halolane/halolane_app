@@ -61,7 +61,7 @@ class UsersController < ApplicationController
           flash[:error] = "We had issues sending an email to " + @user.email + " Please provide a valid email."
         end
         
-        redirect_to root_url
+        redirect_to library_url
       else
         if @invitation.invite_type == "bookshelf" 
 
@@ -69,7 +69,7 @@ class UsersController < ApplicationController
           current_user.createbookshelf!(new_bookshelf_name)
           current_user.createbookshelfrelation!(@bookshelf, @invitation.permission, false)
           Mailer.delay.validate_account(@user, root_url + "login/" + @user.token)
-          redirect_to root_url
+          redirect_to library_url
         else
           relationship = params[:relationship][:description]
           current_user.contribute!(@profile, relationship, @invitation.permission == "edit", @invitation.permission)

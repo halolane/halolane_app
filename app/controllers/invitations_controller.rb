@@ -80,7 +80,7 @@ class InvitationsController < ApplicationController
             current_user.createbookshelfrelation!(@bookshelf, @invitation.permission)
           end
           flash[:success] = "Hi " + @user_check.first_name + "! You've accepted invitation to the bookshelf " + @bookshelf.name + "."
-          redirect_to root_url
+          redirect_to library_url
         else
           @user = User.new
         end

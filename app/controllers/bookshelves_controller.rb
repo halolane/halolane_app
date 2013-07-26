@@ -15,11 +15,19 @@ class BookshelvesController < ApplicationController
   # GET /bookshelves/1
   # GET /bookshelves/1.json
   def show
-    @bookshelf = Bookshelf.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @bookshelf }
+    if signed_in?
+      @user = current_user
+      @profile = Profile.new
+      @invitation = Invitation.new
+      @memories = @user.memories.paginate(page: params[:page])
+      @invited_books = @user.getinvitedbooks
+      @bookshelves = @user.bookshelves_with_bookshelfrelations.paginate(page: params[:page])
+      @memory = current_user.memories.build 
+      current_user.actionlog!("", @page_name, "Logged-in user views family tree home" )
+      render :layout => "bookshelf_layout"
+    else
+      @user = User.new
+      render :layout => "home_layout"
     end
   end
 

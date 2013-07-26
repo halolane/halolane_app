@@ -41,7 +41,7 @@ HalolaneApp::Application.routes.draw do
   root to: 'static_pages#home'
   resources :password_resets
 
-  
+  match '/library', to: 'bookshelves#show'
   match '/about', to: 'static_pages#about'
   match '/pagenotfound', to: 'static_pages#pagenotfound'
   match '/storybooknotfound', to: 'static_pages#pagenotfound'

@@ -16,15 +16,7 @@ class StaticPagesController < ApplicationController
       @user = User.new
       render :layout => "home_layout"
     elsif signed_in?
-      @user = current_user
-      @profile = Profile.new
-      @invitation = Invitation.new
-      @memories = @user.memories.paginate(page: params[:page])
-      @invited_books = @user.getinvitedbooks
-      @bookshelves = @user.bookshelves_with_bookshelfrelations.paginate(page: params[:page])
-      @memory = current_user.memories.build 
-      current_user.actionlog!("", @page_name, "Logged-in user views family tree home" )
-      render :layout => "bookshelf_layout"
+      redirect_to library_url
     else
       @user = User.new
       render :layout => "home_layout"

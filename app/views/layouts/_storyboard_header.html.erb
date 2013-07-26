@@ -8,7 +8,7 @@
             </li>
           <% else %>
             <li class="storyboardlogo" data-no-turbolink>
-              <%= link_to image_tag("/assets/images/small-logo.png"), root_path, id: "logo", class: "headerlogo" %> 
+              <%= link_to image_tag("/assets/images/small-logo.png"), library_path, id: "logo", class: "headerlogo" %> 
             </li>
           <% end %>
 
@@ -50,7 +50,7 @@
                     <li data-no-turbolink><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
                     <% end %>
                     
-                    <li data-no-turbolink><%= link_to "View your other storybooks", root_path %></li>
+                    <li data-no-turbolink><%= link_to "View your other storybooks", library_path %></li>
                     <% if has_relationship?(@profile.id, current_user.id) %>
                       <li data-no-turbolink>
                       <a href="#editrelationshipmodal" class="editrelationshipmodallink" rel="tooltip" data-toggle="modal" data-keyboard="true">Change your relationship to <%= @profile.first_name%>

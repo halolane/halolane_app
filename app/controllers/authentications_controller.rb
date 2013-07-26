@@ -12,16 +12,16 @@ class AuthenticationsController < ApplicationController
       @user = User.find(authentication.user.id)
       sign_in @user
       flash[:success] = "Hi " + @user.first_name + "! Welcome back to FamilyTales."
-      redirect_to root_url
+      redirect_to library_url
     elsif @user_check
       sign_in @user_check
       @user_check.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
       flash[:success] = "Hi " + @user_check.first_name + "! Welcome back to FamilyTales."
-      redirect_to root_url
+      redirect_to library_url
     elsif current_user
       current_user.authentications.create!(:provider => omniauth['provider'], :uid => omniauth['uid'])
       flash[:notice] = "Authentication successful."
-      redirect_to root_url
+      redirect_to library_url
     else
       temppassword = rand(999999).to_s.center(6, rand(9).to_s)
       @user = User.new(email: omniauth['info']['email'],
