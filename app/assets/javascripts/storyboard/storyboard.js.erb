@@ -303,4 +303,8 @@ $(document).ready(function(){
 	$(".edit_page_link").click(function(){
 		$(".edit_panel").slideToggle(500);
 	});
+
+	$('.modal[data-color]').on('show hidden', function () {
+	  $('body').toggleClass('modal-color-'+ $(this).data('color'));
+	});
 });

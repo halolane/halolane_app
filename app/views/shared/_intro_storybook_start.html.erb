@@ -1,0 +1,8 @@
+<div id="tourcontrols" class="tourcontrols hide" style="right: 30px;">
+	<p>Congratulations on creating your first FamilyTales storybook for <%= @profile.first_name %>! Would you like a tour?</p>
+	<div class="center guideoptions">
+		<span class="button green_button nextguide" id="activatetour"><a href="javascript:void(0);" onclick="startIntro();">Yes</a></span> or
+		<span id="activatetour"><a class="btn skipguide" href="javascript:void(0);" onclick="endIntro();">No</a></span> 
+	</div>
+		<span class="close" id="canceltour" onclick="endIntro();">x</span>
+</div>

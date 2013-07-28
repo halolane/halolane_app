@@ -31,6 +31,8 @@ class AuthenticationsController < ApplicationController
                       password_confirmation: temppassword )
       if @user.save
         sign_in @user
+        cookies.permanent[:first_time_bookshelf] = true
+        cookies.permanent[:first_time_storybook] = true
         # Save to Mailchimp List
         if Rails.env.production?  
           mailchimp_save
@@ -46,7 +48,7 @@ class AuthenticationsController < ApplicationController
           flash[:error] = "We had issues sending an email to " + @user.email + " Please provide a valid email."
         end
 
-        redirect_to root_url
+        redirect_to welcome_intro_url
       else
         flash[:notice] = "Signup failed."
         redirect_to signup_url

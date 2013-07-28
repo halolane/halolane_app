@@ -13,18 +13,7 @@
 	</div>
 </div>
 
-<div class="welcomesneakpeek-coachmark hide">
-  <%  if  ( current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" ) %>
-    <%= image_tag("/assets/images/coachmarks/sneakpeek.png") %>
-  <% else %>
-    <%= image_tag("/assets/images/coachmarks/welcomestorybook.png") %>
-  <% end %>
-  <div class="sneakpeek_buttons">
-    <a class="btn skipguide" >Done</a> &nbsp; or &nbsp;
-    <button class="green_button nextguide">Next</button>
-  </div>
-</div> 
-
+<%= render 'shared/intro_storybook_start' %>
 <%= render ( "templates/template" ) %>
 <%= render 'invitation_modal' %>
 <%= render 'confirm_email' %>

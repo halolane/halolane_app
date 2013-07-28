@@ -30,26 +30,10 @@
   <%= stylesheet_link_tag "application-bookshelf", media: "all" %>
   <%= javascript_include_tag "application-bookshelf" %>
 
-  <% if current_user.newfeature or current_user.storybookcount == 0 %>
+  <% if ! cookies[:first_time_bookshelf].blank? %>
     <script type="text/javascript">
       $(window).load(function(){
-        
-        $('#newuserstorybook').modal('show');
-        $('.welcomefamilytales-coachmark').removeClass('hide');
-        $('#newuserstorybook').on('hide', function () {
-          $('.welcomefamilytales-coachmark').addClass('hide');
-          startIntro();
-        });
-
-        $('#newuserstorybook').on('show', function () {
-          $('.welcomefamilytales-coachmark').removeClass('hide');
-        });
-        $('.nextguide').click(function(){
-          $('#newuserstorybook').modal('hide');
-        });
-        $('.skipguide').click(function(){
-          $('#newuserstorybook').modal('hide');
-        });
+        $('.tourcontrols').removeClass('hide');
       });
     </script>
   <% end %>
@@ -104,6 +88,7 @@
 
   <script type="text/javascript">
   function startIntro(){
+    $('.tourcontrols').addClass('hide');
     introJs().setOption('skipLabel', 'Exit').onchange(function(targetElement) {
         switch (targetElement.getAttribute("data-step"))
         {
@@ -124,7 +109,14 @@
         $(".gridster").removeClass('shiftright');
         $(".gridster").removeClass("introjs-showElement");
         $("header").removeClass("intro-showElement");
+        $.removeCookie("first_time_bookshelf");
       });
+    }
+
+    function endIntro () {
+
+      $.removeCookie("first_time_bookshelf");
+      $('.tourcontrols').addClass('hide');
     }
   </script>
   <!-- begin olark code -->

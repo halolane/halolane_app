@@ -25,9 +25,20 @@ class StaticPagesController < ApplicationController
   end
 
   def welcome_one
-    @user = current_user
+    if signed_in?
+      @user = current_user
       @profile = Profile.new
-    render :layout => "bookshelf_layout"
+      @invitation = Invitation.new
+      @memories = @user.memories.paginate(page: params[:page])
+      @invited_books = @user.getinvitedbooks
+      @bookshelves = @user.bookshelves_with_bookshelfrelations.paginate(page: params[:page])
+      @memory = current_user.memories.build 
+      current_user.actionlog!("", @page_name, "Logged-in user views family tree home" )
+      render :layout => "bookshelf_layout"
+    else
+      @user = User.new
+      render :layout => "home_layout"
+    end
   end
 
   def privacy_policy

@@ -70,27 +70,11 @@
       });
     });
   </script>
-    <% if signed_in? && current_user.canContribute?(@profile) && current_user.memorycount == 0  && @profile.memorycount == 0 %>
+
+  <% if ! cookies[:first_time_storybook].blank? %>
     <script type="text/javascript">
       $(window).load(function(){
-
-        $('#newuserstorybook').modal('show');
-        $('.welcomesneakpeek-coachmark').removeClass('hide');
-        $('#newuserstorybook').on('hide', function () {
-          $('.welcomesneakpeek-coachmark').addClass('hide');
-          
-        });
-
-        $('#newuserstorybook').on('show', function () {
-          $('.welcomesneakpeek-coachmark').removeClass('hide');
-        });
-        $('.nextguide').click(function(){
-          $('#newuserstorybook').modal('hide');
-          startIntro();
-        });
-        $('.skipguide').click(function(){
-          $('#newuserstorybook').modal('hide');
-        });
+        $('.tourcontrols').removeClass('hide');
       });
     </script>
   <% end %>
@@ -127,7 +111,6 @@
    
 </head>
 <body>
-
   <% if current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
     <header class="navbar-inverse navbar-fixed-top">
       <%= render 'layouts/sneakpeek_header' %>
@@ -163,6 +146,7 @@
 <%= render 'explorer_acct_modal' %>
   <script type="text/javascript" data-turbolinks-eval=false>
     function startIntro(){
+      $('.tourcontrols').addClass('hide');
       introJs().setOption('skipLabel', 'Exit').onchange(function(targetElement) {
           switch (targetElement.getAttribute("data-step"))
           {
@@ -198,7 +182,12 @@
           $(".gridster").removeClass('shiftright');
           $(".gridster").removeClass("introjs-showElement");
           $("header").removeClass("intro-showElement");
+          $.removeCookie("first_time_storybook");
         });
+      }
+      function endIntro () {
+        $.removeCookie("first_time_storybook");
+        $('.tourcontrols').addClass('hide');
       }
     </script>
   <% if current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>

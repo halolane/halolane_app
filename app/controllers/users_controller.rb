@@ -44,7 +44,8 @@ class UsersController < ApplicationController
     elsif @user.save 
 
       sign_in @user
-
+      cookies.permanent[:first_time_bookshelf] = true
+      cookies.permanent[:first_time_storybook] = true
       # Save to Mailchimp List
       if Rails.env.production?  
         mailchimp_save
@@ -61,7 +62,7 @@ class UsersController < ApplicationController
           flash[:error] = "We had issues sending an email to " + @user.email + " Please provide a valid email."
         end
         
-        redirect_to library_url
+        redirect_to welcome_intro_url
       else
         if @invitation.invite_type == "bookshelf" 
 
@@ -69,7 +70,7 @@ class UsersController < ApplicationController
           current_user.createbookshelf!(new_bookshelf_name)
           current_user.createbookshelfrelation!(@bookshelf, @invitation.permission, false)
           Mailer.delay.validate_account(@user, root_url + "login/" + @user.token)
-          redirect_to library_url
+          redirect_to welcome_intro_url
         else
           relationship = params[:relationship][:description]
           current_user.contribute!(@profile, relationship, @invitation.permission == "edit", @invitation.permission)
