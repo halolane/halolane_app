@@ -31,6 +31,10 @@ class AuthenticationsController < ApplicationController
                       password_confirmation: temppassword )
       if @user.save
         sign_in @user
+        # Save to Mailchimp List
+        if Rails.env.production?  
+          mailchimp_save
+        end
         @user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
         new_bookshelf_name = @user.last_name + " Family Bookshelf"
         new_bookshelf = @user.createbookshelf!(new_bookshelf_name) 
@@ -60,4 +64,20 @@ class AuthenticationsController < ApplicationController
     flash[:notice] = "Successfully destroyed authentication."
     redirect_to authentications_url
   end
+
+  private
+    def mailchimp_save
+      mailchimp_api_key = "9d733223f7c559a0b6f133d7c604ca86-us7"
+      mailchimp_list_id = "21e5e3a5f1"
+      g = Gibbon::API.new(mailchimp_api_key)
+
+      g.lists.subscribe({ :id => mailchimp_list_id, 
+                          :email => {:email => @user.email}, 
+                          :double_optin => false, 
+                          :send_welcome => false, 
+                          :merge_vars => {:FNAME => @user.first_name, 
+                                          :LNAME => @user.last_name}
+                        })
+
+    end
 end

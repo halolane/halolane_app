@@ -1,0 +1,53 @@
+.page {
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+-moz-box-shadow: 0 0 15px 0 #b8b39d;
+-webkit-box-shadow: 0 0 15px 0 #b8b39d;
+box-shadow: 0 0 15px 0 #b8b39d;
+border-collapse: separate;
+background: url(images/bg_content.png) repeat-y right white;
+width: 930px;
+min-height: 500px;
+margin: 0 auto;
+border: 1px solid #c7c7c7;
+}
+
+.page:before, .page:after {
+content: "";
+display: table;
+}
+
+.page:after {
+clear: both;
+}
+
+.onboarding_page #page_container {
+width: 100%;
+}
+
+.page #page_container, .page #nav_container, .page #banner_container {
+width: 663px;
+float: left;
+}
+
+#page_container {
+padding: 20px;
+}
+
+.onboarding_page #line-container {
+position: relative;
+margin-left: auto;
+margin-right: auto;
+}
+
+.onboarding_page #dotted-line {
+position: absolute;
+background-image: url(<%= asset_path "/assets/images/steps_line.gif" %>);
+background-repeat: repeat-x;
+height: 5px;
+width: 640px;
+margin-top: 15px;
+left: 50%;
+margin-left: -320px;
+}

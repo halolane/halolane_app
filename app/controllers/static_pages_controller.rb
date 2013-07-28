@@ -24,6 +24,12 @@ class StaticPagesController < ApplicationController
     
   end
 
+  def welcome_one
+    @user = current_user
+      @profile = Profile.new
+    render :layout => "bookshelf_layout"
+  end
+
   def privacy_policy
     
   end
