@@ -121,3 +121,13 @@ end
     Mailer.first_daily_question(u).deliver
 end
 
+@users = Users.all
+@users.each do |u|
+    @profiles = u.profiles
+    @profiles.each do |p|
+        Mailer.daily_question(u,p,@question).deliver
+    end
+end
+
+What do you wish for @profile.first_name when @profile.first_name grows up?
+
