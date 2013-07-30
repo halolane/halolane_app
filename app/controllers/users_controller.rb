@@ -47,9 +47,9 @@ class UsersController < ApplicationController
       cookies.permanent[:first_time_bookshelf] = true
       cookies.permanent[:first_time_storybook] = true
       # Save to Mailchimp List
-      # if Rails.env.production?  
+      if Rails.env.production?  
         mailchimp_save
-      # end
+      end
 
       if params[:invitation].nil?
        
