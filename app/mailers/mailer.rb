@@ -131,7 +131,7 @@ class Mailer < ActionMailer::Base
   def validate_account(user, url)
     @user = user
     @url = url
-    mail(:from => "\"Beatrice Law, FamilyTales\" <hello@thefamilytales.com>", :to => @user.email , :subject => 'Welcome to FamilyTales')
+    mail(:from => "\"Beatrice, FamilyTales\" <hello@thefamilytales.com>", :to => @user.email , :subject => 'Welcome to FamilyTales')
   end
 
   def resend_validation(user, url)
@@ -140,5 +140,15 @@ class Mailer < ActionMailer::Base
     mail(:from => "\"FamilyTales\" <hello@thefamilytales.com>", :to => @user.email , :subject => 'Confirm your FamilyTales account')
   end
 
+  def daily_question(user, profile, question)
+    @user = user
+    @profile = profile
+    @question = question.gsub("@profile.first_name",@profile.first_name)
+    mail(:from => "\"FamilyTales\" <hello@thefamilytales.com>", :to => @user.email , :subject => @question)
+  end
 
+  def first_daily_question(user)
+    @user = user
+    mail(:from => "\"FamilyTales\" <hello@thefamilytales.com>", :to => @user.email , :subject => "Tell a Tale by Email")
+  end
 end
