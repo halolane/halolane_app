@@ -265,7 +265,7 @@ class ProfilesController < ApplicationController
       
       if @profile.url != "alexdunphy"
         flash[:notice] = "Please log in to FamilyTales to view " + @profile.first_name + "\'s storybook."
-        redirect_to(login_url) unless (signed_in? and current_user.canView?(@profile))
+        redirect_to(login_url) unless ( current_user.canView?(@profile))
       end
     end
 

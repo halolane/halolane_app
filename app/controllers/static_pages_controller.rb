@@ -41,6 +41,12 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def error_page
+  end
+
+  def not_found
+  end
+
   def privacy_policy
     
   end
