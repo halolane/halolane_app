@@ -117,17 +117,23 @@ end
 end
 
 @users = User.all
-@users.each do |u|
+@users2.each do |u|
     Mailer.first_daily_question(u).deliver
 end
 
-@users = Users.all
+u = User.find(65)
+
+@users = User.all
 @users.each do |u|
+  if u.id != 155
     @profiles = u.profiles
     @profiles.each do |p|
-        Mailer.daily_question(u,p,@question).deliver
+        Mailer.delay.daily_question(u,p,@question)
     end
+  end
 end
 
-What do you wish for @profile.first_name when @profile.first_name grows up?
+@question = 'What advice would you give @profile.first_name when @profile.first_name grows up?' 
+
+@question = 'What do you wish for @profile.first_name when @profile.first_name grows up?'
 

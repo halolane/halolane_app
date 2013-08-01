@@ -27,7 +27,7 @@ class Memory < ActiveRecord::Base
                 :after_message => 'must be a correct date',
                 :on_or_before => (Date.today + 2),
                 :on_or_before_message => 'must be before today\'s date'
-  validates :content, :length => { :maximum => 250, :message => 'Story exceeds 250 characters'}
+  validates :content
   validates :title, :length => { :maximum => 140 }
   
 

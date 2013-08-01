@@ -78,7 +78,7 @@ class Profile < ActiveRecord::Base
     output << 'VERSION:3.0'
     output << 'N:' + self.first_name + " " + self.last_name + ';FamilyTales;;;'
     output << 'FN:FamilyTales ' + self.first_name + " " + self.last_name 
-    output << 'EMAIL;type=INTERNET;type=HOME;type=pref:story+' + self.url + '@familytales.co'
+    output << 'EMAIL;type=INTERNET;type=HOME;type=pref:story+' + self.url + '@thefamilytales.com'
     output << 'item1.URL;type=pref:www.familytales.co/' + self.url
     output << 'item1.X-ABLabel:_$!<HomePage>!$_'
     output << 'END:VCARD'
