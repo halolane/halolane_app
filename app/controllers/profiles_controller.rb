@@ -264,7 +264,8 @@ class ProfilesController < ApplicationController
       end
       
       if @profile.url != "alexdunphy"
-        redirect_to(root_path) unless (current_user.canView?(@profile))
+        flash[:notice] = "Please log in to FamilyTales to view " + @profile.first_name + "\'s storybook."
+        redirect_to(login_url) unless (signed_in? and current_user.canView?(@profile))
       end
     end
 
@@ -284,7 +285,7 @@ class ProfilesController < ApplicationController
         end
       end
       
-      redirect_to(root_path + @profile.url) unless (current_user.isEditor?(@profile))
+      redirect_to(root_path + @profile.url) unless (signed_in? and current_user.isEditor?(@profile))
     end
 
     def createnewuser
