@@ -12,7 +12,7 @@
       </div>
 		  <%= render 'shared/error_messages', object: p.object %>
       <p><%= select "relationship","description", 
-                  Relationshipdesc.all.collect {|p| [ p.description, p.id ] }%></p>
+                  Relationshipdesc.where("description = ? or description = ?",'Son','Daughter').collect {|p| [ p.description, p.id ] }%></p>
       <p>
         <%= p.text_field :first_name, :placeholder => "Their first name", :required => true %>
       </p>
