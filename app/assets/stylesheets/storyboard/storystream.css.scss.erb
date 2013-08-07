@@ -1,0 +1,242 @@
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+@import url(https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two);
+@import url(https://fonts.googleapis.com/css?family=Merienda);
+
+@-webkit-keyframes pulse_animation {
+	0% { -webkit-transform: scale(1); }
+	30% { -webkit-transform: scale(1); }
+	40% { -webkit-transform: scale(1.08); }
+	50% { -webkit-transform: scale(1); }
+	60% { -webkit-transform: scale(1); }
+	70% { -webkit-transform: scale(1.05); }
+	80% { -webkit-transform: scale(1); }
+	100% { -webkit-transform: scale(1); }
+}
+
+.memorycontainer {
+	padding-top: 80px;
+}
+
+.hero-unit h1 {
+	font-family: 'Merienda', 'Shadows Into Light Two', cursive;
+	text-align: center;
+	font-size: 2em;
+}
+
+.header {
+	margin-top: -2em;
+	margin-bottom: 3em;
+}
+
+.shareicons {
+	float: right;
+	font-size: 1.2em;
+}
+
+.storydate {
+	float: left;
+	font-size: 0.8em;
+	text-decoration: underline;
+}
+
+.storydivider {
+	display: block;
+	margin: 2em auto;
+	width: 20em;
+	height: 2em;
+}
+
+.likebutton {
+	font-size: 2em;
+	text-align: center;
+}
+
+.heart {
+	text-align:center;
+}
+
+.icon-heart {
+  -webkit-animation-name: 'pulse_animation';
+	-webkit-animation-duration: 5000ms;
+	-webkit-transform-origin:70% 70%;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+
+.icon-heart:active {
+	color: red;
+	font-size: 1.1em;
+	-webkit-transform: scale(1.25) ease-in;
+	-moz-transform: scale(1.25);
+}
+
+.mom_reply {
+	font-size: 1.4em;
+	line-height: 1.4em;
+	text-align: center;
+	p {
+		font-size: 1.4em;
+		line-height: 1.4em;
+		text-align: center;
+	}
+}
+
+.see-more {
+	font-size: 1em;
+	font-style: italic;
+	color: #0DA24F;
+	text-align: center;
+}
+
+.user_profile {
+	font-style: italic;
+	font-size: 1.4em;
+	line-height: 1.4em;
+	text-align: center;
+}
+
+.hero-unit, .hero-unit-question {
+	background-color: rgba(224, 255, 194, 0.6);
+	padding: 3em;
+	margin-bottom: 30px;
+}
+.hero-unit:hover {
+	background-color: rgba(224, 255, 194, 0.9);
+}
+.hero-unit-question {
+	background: rgba(0, 0, 0, 0.03);
+	border: 2px dashed #bbb;
+	color: #888;
+	h1.question {
+		font-family: 'Merienda', 'Shadows Into Light Two', cursive;
+		text-align: center;
+		font-size: 2em;
+	}
+}
+
+.newstorycontent {
+	font-size: 1.2em;
+	line-height: 1.2em;
+	text-align: center;
+	background-color: #F5F5F5;
+	border: 1px dotted #bbb;
+}
+
+.hero-unit-question:hover{background:rgba(0,0,0,0.07);border-color:#888;color:#5f5f5f;text-shadow:none}
+
+.hero-unit-question > .mom_reply {
+	border: 1px dashed;
+}
+
+.replies {
+	display: none;
+	margin-top: 1.5em;
+}
+
+.reply {
+	font-size: 1em;
+	line-height: 1.5em;
+	border-top: 1px dotted #A2D39C;
+}
+
+figure, figcaption { 
+	display:block;
+}
+
+#polaroids {
+	padding:2em 0;
+	/*setting a width and adding overflow:hidden will clear the floats we're going to apply to figure*/
+	width:100%;
+	overflow:hidden;
+	text-align: center;
+}
+
+#polaroids figure {
+	width: 300px; /*width of the images*/
+	/*margin:0 auto; /*space between the images*/
+	margin: 1em 0.5em;
+	display: inline-block;
+}
+
+#polaroids figure {
+	padding: 6px 8px 10px 8px; /*size of the frame for the Polaroid effect*/
+	/*give the frame's background colour a gradient*/
+	background: #eee6d8; /*fallback colour for browsers that don't support gradients*/
+	background: -webkit-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);
+	background: -moz-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);
+	background: -o-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);
+	background: -ms-linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);
+	background: linear-gradient(top, #ede1c9, #fef8e2 20%, #f2ebde 60%);
+	/*give the Polaroids a small drop shadow*/
+	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+	-moz-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+	box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+}
+
+/* By default, we tilt all our images -2 degrees */
+/***Rotate the images 1 degrees anti-clockwise***/
+#polaroids figure {
+	-webkit-transform:rotate(-1deg);
+	-moz-transform: rotate(-1deg);
+	-o-transform: rotate(-1deg);
+	-ms-transform: rotate(-1deg);
+	transform: rotate(-1deg);
+	-webkit-backface-visibility:hidden; /*prevent rotated text in the caption being jagged in Chrome and Safari*/
+	/* Add scaling transforms */
+	-webkit-transition: -webkit-transform .15s linear;
+	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+	-moz-box-shadow: 0 3px 6px rgba(0,0,0,.25);
+}
+
+/***Rotate each even numbered image 2 degrees clockwise***/
+#polaroids figure:nth-child(even) { /*see support section below for more info on nth-child*/
+	-webkit-transform:rotate(2deg);
+	-moz-transform: rotate(2deg);
+	-o-transform: rotate(2deg);
+	-ms-transform: rotate(2deg);
+	transform: rotate(2deg);
+	/*because the image is rotated the opposite way, the drop-shadow needs moving to the other side of the image*/
+	-webkit-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+	-moz-box-shadow: 4px 4px 8px -4px rgba(0, 0, 0, .75);
+	box-shadow: -4px 4px 8px -4px rgba(0, 0, 0, .75);
+}
+
+#polaroids figcaption {
+	text-align: center;
+	font-family: 'Reenie Beanie', cursive; /* Reenie Beanie is available through Google Webfonts */
+	font-size:1em;
+	color: #454f40;
+	letter-spacing: 0.09em;
+}
+
+/* Scale the images on hover, add transitions for smoothing things out, and ensure the hover appears on top */
+#polaroids figure:hover {
+	-webkit-transform: scale(1.25);
+	-moz-transform: scale(1.25);
+	position: relative;
+	z-index: 5;
+}
+
+.video {
+	position: relative;
+	padding-bottom: 56.25%;
+}
+
+.video-wrapper {
+	width: 33em;
+	max-width: 100%;
+	margin: 1em auto;
+}
+
+.video iframe,
+.video object,
+.video embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}

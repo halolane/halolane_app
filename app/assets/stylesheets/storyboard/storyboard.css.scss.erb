@@ -20,11 +20,6 @@ time, mark, audio, video {
 }
 
 
-
-body {
-	padding-top: 40px;
-}
-
 .alert {
 	z-index: 11 !important;
 	margin-bottom: 10px !important;
@@ -34,8 +29,8 @@ body {
 }
 
 body {
-background-color:#F7F5F5;
-background:#282828 url(<%= asset_path "/assets/images/textured_paper.png" %>);
+background-color:#F5F5F5;
+/*background:#282828 url(<%= asset_path "/assets/images/textured_paper.png" %>);*/
 font-family: arial;
 font-size: 15px;
 line-height: 20px;
@@ -78,9 +73,28 @@ table {
 	vertical-align: middle;
 }
 
-.navbar .navbar-inner .container {
+.navbar .navbar-inner {
     top: 0px;
-    width: 940px;
+    width: 100%;
+}
+
+.navbar-inner {
+	background-position: 0 0;
+	background-repeat: repeat-x;
+	background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.42, #e9e9e9), color-stop(0.71, #f6f6f6));
+	background-image: -moz-linear-gradient(center bottom, #e9e9e9 42%, #f6f6f6 71%);
+	background-color: #c9cccf;
+	min-width: 960px;
+	height: 38px;
+	float: left;
+	position: fixed;
+	left: 0;
+	padding-left: 0;
+	right: 0;
+	z-index: 100;
+	li {
+		display: inline-block;
+	}
 }
 
 .navbar .nav > li > a {
@@ -88,6 +102,15 @@ table {
 	padding-right: 0px;
 	padding-bottom: 0px;
 	padding-left: 0px;
+}
+
+.nav > li > a > img {
+	max-width: 100% !important;
+	width: auto\9;
+	height: auto;
+	vertical-align: middle;
+	border: 0;
+	-ms-interpolation-mode: bicubic;
 }
 
 
@@ -107,30 +130,7 @@ table {
 	line-height:2em;vertical-align:-35%
 }
 
-.topbarname {
-	float: left;
-	text-align: center;
-	margin-right: 250px;
-	margin-top: 0px;
-	font-size: 12px;
-	text-align: middle;
-	vertical-align: middle;
 
-	h4 { 
-		font-size: 18px; 
-		line-height: 20px; 
-		color: #696969;
-	}
-
-	a {
-		color: #696969;
-		text-decoration: none;
-	}
-
-	a:hover { 
-		background-color: transparent;
-	}
-}
 
 li.playslideshow {
 	padding-top: 10px;
@@ -294,17 +294,113 @@ div.dropdown:hover > ul.dropdown-menu.addnewstory {
 }
 
 li.storyboardlogo {
+	position: relative;
+	top: -8px;
 	margin: 0px 0px;
 	margin-top: -8px !important;
 	margin-left: 10px;
 	width: 150px;
 	height: 38px;
+	display: inline-block;
 }
 
+.settingsdropdown {
+	position: relative;
+	left: -139px;
+}
 .headerlogo {
-	width: 140px !important;
+	width: 100%;
+	height: 100%;
+}
+.headerlogoimage {
+	width: 100%;
+	height: 100%;
+	background-image:url(<%= asset_path "/assets/images/small-logo.png" %>);
+	background-size: cover;
 }
 
+.topbarname {
+	float: left;
+	text-align: center;
+	margin-right: 0 !important;
+	margin-top: 0px;
+	font-size: 12px;
+	text-align: middle;
+	vertical-align: middle;
+	width: 100%;
+	margin-left: 40%;
+
+	h4 { 
+		font-size: 18px; 
+		line-height: 20px; 
+		color: #696969;
+	}
+
+	a {
+		color: #696969;
+		text-decoration: none;
+	}
+
+	a:hover { 
+		background-color: transparent;
+	}
+}
+
+@media (max-width: 320px) {
+	.topbarname {
+    margin-left: 5%;
+  }
+  .loggedinuser {
+  	margin-left: 1.5em;
+  }
+  li.storyboardlogo {
+		width: 38px;
+		height: 38px;
+		display: inline-block;
+	}
+
+	.headerlogoimage {
+		width: 100%;
+		height: 100%;
+		background-image:url(<%= asset_path "/assets/images/FamilyTalesTreeLogo.png" %>);
+		background-size: cover;
+	}
+}
+
+@media (min-width: 321px) and  (max-width: 767px) {
+	.topbarname {
+    margin-left: 5%;
+  }
+  .loggedinuser {
+  	margin-left: 1.5em;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+	.topbarname {
+    margin-left: 30%;
+  }
+  .loggedinuser {
+  	margin-left: 10em;
+  }
+}
+
+@media (min-width: 980px) {
+	.topbarname {
+    margin-left: 80%;
+  }
+  .loggedinuser {
+  	margin-left: 25em;
+  }
+}
+
+@media (min-width: 1200px) {
+	.topbarname {
+    margin-left: 90%;
+  }
+  .loggedinuser {
+  	margin-left: 35em;
+  }
+}
 
 .dropdown-toggle {
 	text-decoration: none !important;
@@ -318,9 +414,12 @@ h4.storybook-user {
 }
 
 .loggedinuser {
+	position: relative;
+	top: -15px;
 	padding: 8.5px;
 	border-right: 1px solid #cdcdcd;
 	border-left: 1px solid #cdcdcd;
+	
 	h4 {
 		font-size: 18px;
 		line-height: 20px;
@@ -363,18 +462,20 @@ padding-left: 10px;
 
 
 .iconaddcontributor{
+	position: relative;
+	top: -16px;
 	padding-top: 3px;
-padding-right: 5px;
-padding-left: 0px;
-border-left: 1px solid #cdcdcd;
-border-right: 1px solid #cdcdcd;
-height: 35px;
-width: 30px;
-padding-left: 10px;
-a{
-	height: 38px;
-width: 30px;
-}
+	padding-right: 5px;
+	padding-left: 0px;
+	border-left: 1px solid #cdcdcd;
+	border-right: 1px solid #cdcdcd;
+	height: 35px;
+	width: 30px;
+	padding-left: 10px;
+	a{
+		height: 38px;
+	width: 30px;
+	}
 }
 
 /******************* New memory modal /*******************/
@@ -1009,6 +1110,10 @@ font-weight: 600;
 color: #fff;
 }
 
+.likecount {
+	margin-left: 20px !important;
+}
+
 .comment-div {
 	-webkit-overflow-scrolling: touch;
 	overflow-y: hidden
@@ -1500,8 +1605,7 @@ color: #fff;
 .story-edit-btn {
 	position: absolute;
 	opacity: 0;
-	padding-top: 10px;
-	padding-left: 10px;
+	margin-left: -25px;
 	z-index: 101;
 	.btn {
 		font-size: 0.7em;
@@ -1511,6 +1615,7 @@ color: #fff;
 		color: black;
 	}
 }
+
 
 .comment-edit-btn {
 	position: relative;

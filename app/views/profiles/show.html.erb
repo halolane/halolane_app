@@ -1,7 +1,7 @@
 <% provide(:title, @profile.first_name + " " + @profile.last_name) %>
-<%= render 'layouts/storyboard_sidebar' %>
 
-<div class=" nav_left hotspot collapsed">
+
+<!-- <div class=" nav_left hotspot collapsed">
 	<div class="nav_controls left collapsed">
 		<i class="icon-circle-arrow-left icon-4"></i>
 	</div>
@@ -11,15 +11,13 @@
 	<div class="nav_controls right" data-step="2" data-intro="You scroll through FamilyTales horizontally like a physical storybook."  data-position="left">
 		<i class="icon-circle-arrow-right icon-4"></i>
 	</div>
-</div>
+</div> -->
 
 <%= render 'shared/intro_storybook_start' %>
-<%= render ( "templates/template" ) %>
+<%= render "shared/memoryfeed" %>
 <%= render 'invitation_modal' %>
-<%= render 'confirm_email' %>
 <%= render 'editmemory_modal' %>
 <%= render 'email_stories_modal' %>
-<%= render 'firstthreestories_backdrop' %>
 <%= render "profiles/newmemory_modal" %>
 <%= render "profiles/customization_modal" %>
 <%= render "profiles/customize_thanks" %>

@@ -1,16 +1,13 @@
   <div class="navbar-inner">
-    <div class="container">
+  <div class="container">
       <nav>
         <ul class="nav btn-topbar-left">
-          <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
+          
             <li class="storyboardlogo" data-no-turbolink>
-              <%= link_to image_tag("/assets/images/small-logo.png"), signout_path, method: "delete", id: "logo", rel:"tooltip", title:"Go to the FamilyTales home page", class: "headerlogo" %> 
+              <%= link_to library_path, id: "logo", class: "headerlogo" do %> 
+                <div class="headerlogoimage"></div>
+              <% end %>
             </li>
-          <% else %>
-            <li class="storyboardlogo" data-no-turbolink>
-              <%= link_to image_tag("/assets/images/small-logo.png"), library_path, id: "logo", class: "headerlogo" %> 
-            </li>
-          <% end %>
 
           <% if signed_in? && current_user.canContribute?(@profile) %>
             <li class="iconaddcontributor _showAddCollaborator" data-step="5" data-intro="You have complete control who you want to view, contribute or edit <%= @profile.first_name %>'s storybook." data-position="bottom">
@@ -22,61 +19,48 @@
               </a>
             </li>
           <% end %>
-        </ul>
-        <ul class="nav pull-right">
-             <% if signed_in? && current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-              <li><div class="topbarname" data-no-turbolink><h4>
-                <%= @profile.first_name + " " + @profile.last_name + "\'s storybook" %>
-              </h4></div></li>
+
+          <li><div class="topbarname" data-no-turbolink><h4>
+            <% if signed_in? && current_user.isEditor?(@profile) %>
+              <%= link_to  @profile.first_name + " " + @profile.last_name + "\'s storybook", edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
             <% else %>
-              <li><div class="topbarname" data-no-turbolink><h4>
-                <% if signed_in? && current_user.isEditor?(@profile) %>
-                  <%= link_to  @profile.first_name + " " + @profile.last_name + "\'s storybook", edit_profile_path(@profile), rel:"tooltip", title:"Edit storybook settings" %>
-                <% else %>
-                  <%= @profile.first_name + " " + @profile.last_name + "\'s storybook" %>
-                <% end %>
-              </h4></div></li>
+              <%= @profile.first_name + " " + @profile.last_name + "\'s storybook" %>
             <% end %>
-            <% if signed_in? and current_user.email != ('familytalesuser2@gmail.com') and @profile.url != "alexdunphy" %>
+          </h4></div>
+          </li>
 
-              <li class="loggedinuser">
-                <div class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><h4 class="storybook-user"><%= current_user.first_name + " " + current_user.last_name %></h4> <i class="icon-chevron-sign-down gray"></i></a>
-                  <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
-                    <li data-no-turbolink><%= link_to "Edit your user settings", edit_user_path(current_user) %></li>
-                    <li class="divider"></li>
+          <li class="loggedinuser">
+            <div class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><h4 class="storybook-user"><%= current_user.first_name + " " + current_user.last_name %></h4> <i class="icon-chevron-sign-down gray"></i></a>
+              <ul class="dropdown-menu settingsdropdown" role="menu" aria-labelledby="dLabel">
+                <li data-no-turbolink><%= link_to "Edit your user settings", edit_user_path(current_user) %></li>
+                <li class="divider"></li>
 
-                    <% if signed_in? && current_user.isEditor?(@profile) %>
-                    <li data-no-turbolink><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
-                    <% end %>
-                    
-                    <li data-no-turbolink><%= link_to "View your other storybooks", library_path %></li>
-                    <% if has_relationship?(@profile.id, current_user.id) %>
-                      <li data-no-turbolink>
-                      <a href="#editrelationshipmodal" class="editrelationshipmodallink" rel="tooltip" data-toggle="modal" data-keyboard="true">Change your relationship to <%= @profile.first_name%>
-                      </a>
+                <% if signed_in? && current_user.isEditor?(@profile) %>
+                <li data-no-turbolink><%= link_to "Edit this storybook settings", edit_profile_path(@profile) %></li>
+                <% end %>
+                
+                <li data-no-turbolink><%= link_to "View your other storybooks", library_path %></li>
+                <% if has_relationship?(@profile.id, current_user.id) %>
+                  <li data-no-turbolink>
+                  <a href="#editrelationshipmodal" class="editrelationshipmodallink" rel="tooltip" data-toggle="modal" data-keyboard="true">Change your relationship to <%= @profile.first_name%>
+                  </a>
 
 
-                      </li>
-                    <% end %>
+                  </li>
+                <% end %>
 
-                    <li class="divider"></li>
-
-                    <li data-no-turbolink><%= link_to "Log out", signout_path, method: "delete" %></li>
-                    <li><a href="javascript:void(0);" onclick="startIntro();">Help</a></li>
-                    <!-- 
-                    <li><%= link_to "Privacy Settings" %></li>
-                  -->
-                  </ul>
-                </div>
-              </li>
-          <% else %>    
-            <li class="loggedinuser">
-              <h4 class="storybook-user">Explorer User</h4>
-            </li>
-          <% end %>
-
+                <br>
+                <li data-no-turbolink><%= link_to "Log out", signout_path, method: "delete" %></li>
+                <br>
+                <li><a href="javascript:void(0);" onclick="startIntro();">Help</a></li>
+                <!-- 
+                <li><%= link_to "Privacy Settings" %></li>
+              -->
+              </ul>
+            </div>
+          </li>
         </ul>
-      </nav>
-    </div>
+        </nav>
+        </div>
   </div>

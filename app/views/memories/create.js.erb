@@ -1,13 +1,12 @@
 $(document).ready(function(){
 	<%= remotipart_response do %>
 		<% if @memory.save %>  
-			var $tile_num_class = '.tile' + $('#memory_tile_num').val();
-			$($tile_num_class).removeClass('EmptyTile');
-		 	$($tile_num_class).html("<%= escape_javascript render('memories/new_story_form') %>"); 
-
+			
+		 	$('.hero-unit-question').after("<%= escape_javascript render('memories/new_story_form') %>"); 
+		 	$('.heronewquestion').html("<%= escape_javascript render('memories/new_question_form') %>");
 		 	// clear form
 			$('#memory_photo').val('');
-			$('textarea#memory_content').replaceWith('<textarea cols="10" id="memory_content" maxlength="250" name="memory[content]" placeholder="Write a new story..." rows="1" class=""></textarea>');
+			$('textarea#memory_content').replaceWith('<textarea class="newstorycontent placeholder" cols="10" id="memory_content" name="memory[content]" placeholder="Write a new story..." rows="2"></textarea>');
 		<% else %>
 			$('.loading-spinner').remove();
 			$('.errormodal-body').empty();

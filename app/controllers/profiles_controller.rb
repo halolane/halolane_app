@@ -233,15 +233,16 @@ class ProfilesController < ApplicationController
         end
         @template = Template.find_by_id(@page.template_id)
 
-        if ! @chapter.subtype.blank? and ! StorybookQuestion.find_by_subtype(@chapter.subtype).nil?
-          if @chapter.chapter_num == 1 and @page.page_num == 1
-            @questions = StorybookQuestion.where("subtype = ?",@chapter.subtype).order(:tile_num)
-          else
-            @questions = StorybookQuestion.where("subtype = ?",@chapter.subtype)
-          end
-        else
+        # if ! @chapter.subtype.blank? and ! StorybookQuestion.find_by_subtype(@chapter.subtype).nil?
+        #   if @chapter.chapter_num == 1 and @page.page_num == 1
+        #     @questions = StorybookQuestion.where("subtype = ?",@chapter.subtype).order(:tile_num)
+        #   else
+        #     @questions = StorybookQuestion.where("subtype = ?",@chapter.subtype)
+        #   end
+        # else
           @questions = StorybookQuestion.all
-        end
+          @question = @questions.sample.question.gsub("@profile.first_name",@profile.first_name)
+        # end
         @tiles = @template.tilelist
         render :layout => "storyboard_layout"
       end 

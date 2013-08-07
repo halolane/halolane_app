@@ -7,15 +7,14 @@ class MemoriesController < ApplicationController
   def create
     
     @profile = Profile.find(params[:memory][:profile_id])
-    authorized = Relationship.exists?(:profile_id => @profile.id , :user_id => current_user.id)
-
+    @questions = StorybookQuestion.all
+    @question = @questions.sample.question.gsub("@profile.first_name",@profile.first_name)
+    
     begin
       @memory = current_user.memories.build(:profile_id => @profile.id, 
         :photo => params[:memory][:photo],
         :content => (params[:memory][:content]).strip,
         :date => (params[:memory][:date]).to_date,
-        :page_id => (params[:memory][:page_id]),
-        :tile_num => (params[:memory][:tile_num]),
         :title => (params[:memory][:title]).strip,
         :has_photo => (params[:memory][:photo] != nil)) 
     rescue 
@@ -23,20 +22,13 @@ class MemoriesController < ApplicationController
           :photo => params[:memory][:photo],
           :content => (params[:memory][:content]).strip,
           :date => Date.today, 
-          :page_id => (params[:memory][:page_id]),
-          :tile_num => (params[:memory][:tile_num]),
           :title => (params[:memory][:title]).strip,
           :has_photo => (params[:memory][:photo] != nil)) 
     end
 
-    @page = Page.find_by_id(params[:memory][:page_id])
-    @chapter = Chapter.find_by_id(@page.chapter_id)
-    @template = @page.template
-    @tile = @template.tiles.find_by_tile_num(params[:memory][:tile_num])
-
     respond_to do | format |   
       if @memory.save
-        format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + @page.page_num.to_s } 
+        format.html { redirect_to root_url + @profile.url } 
         format.js 
         current_user.actionlog!(@profile.id, @page_name, "New story created" )
       else

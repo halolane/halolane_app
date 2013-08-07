@@ -17,18 +17,7 @@
   
   <%= stylesheet_link_tag    "application-storyboard", media: "all" %>
   <%= javascript_include_tag "application-storyboard" %>
-
-         <script type="text/javascript">
-            var gridster = "";
-            $(document).ready(function () {
-              var grid = $(".gridster ul").gridster({
-                  widget_margins: [10, 10],
-                  widget_base_dimensions: [140, 140],
-                  shift_larger_widgets_down: false
-              }).data('gridster');
-              grid.disable();
-            });
-        </script>
+  <script src="http://tinymce.cachefly.net/4.0/tinymce.min.js"></script>
 
    <!-- Google analytics start -->
   <script>
@@ -78,32 +67,6 @@
       });
     </script>
   <% end %>
-
-
-   <!--Mouse wheel horizontal scroll -->
-  <script>
-
-    $(function() {
-      $("body").mousewheel(function(event, delta) {
-        this.scrollLeft -= (delta * 30);
-        event.preventDefault();
-      });
-
-      $('#zoomstory').on('hide', function () {
-        $("body").mousewheel(function(event, delta) {
-          this.scrollLeft -= (delta * 30);
-          event.preventDefault();
-        });
-      });
-
-      $('#sneakpeakmodal1').on('hide', function () {
-        $("body").mousewheel(function(event, delta) {
-          this.scrollLeft -= (delta * 30);
-          event.preventDefault();
-        });
-      });
-    });
-  </script>
   
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>  <!-- partial app/views/layouts/_shim.html.erb -->
@@ -111,25 +74,15 @@
    
 </head>
 <body>
-  <% if current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-    <header class="navbar-inverse navbar-fixed-top">
-      <%= render 'layouts/sneakpeek_header' %>
-    </header>
-    <div class="navbar">
+  
       <%= render 'layouts/storyboard_header' %>
-    </div>
-  <% else %>
-    <header class="navbar navbar-fixed-top">
-      <%= render 'layouts/storyboard_header' %>
-    </header>
-  <% end %>
+
   <% flash.each do |key, value| %>
      <div class="alert alert-<%= key %>"><%= value %></div>
   <% end %>
 <div id="storycontent">
-	<%= yield %>
+  <%= yield %>
 </div>
-<%= render 'layouts/storyboard_footer' %>
 
 <%= render 'shared/new_user_storybook_modal' %>
 <div class="welcomesneakpeek-coachmark hide">
@@ -190,14 +143,50 @@
         $('.tourcontrols').addClass('hide');
       }
     </script>
-  <% if current_user.email == ('familytalesuser2@gmail.com') and @profile.url == "alexdunphy" %>
-    <!-- crazy egg -->
-    <script type="text/javascript" data-turbolinks-eval=false>
-    setTimeout(function(){var a=document.createElement("script");
-    var b=document.getElementsByTagName("script")[0];
-    a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0017/3827.js?"+Math.floor(new Date().getTime()/3600000);
-    a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+    <script>
+      $(function() {
+          $('.see-more').click(function(e) {
+              $('.replies').slideToggle();
+          });
+      });
     </script>
-  <% end %>
+  
 </body>
+<script type="text/javascript">
+    //   tinymce.init({
+    //       selector: "div.mom_reply",
+    //       theme: "modern",
+    //       plugins: [
+    //           ["autolink link image charmap preview hr anchor spellchecker"],
+    //           ["wordcount insertdatetime media"],
+    //           ["save contextmenu directionality paste"]
+    //       ],
+    //       add_unload_trigger: false,
+    //       schema: "html5",
+    //       inline: true,
+    //       toolbar: "undo redo | bold italic link image | media",
+    //       statusbar: false,
+    //       menubar: false
+    //   });
+
+    //   tinymce.init({
+    //       selector: "h1.question",
+    //       theme: "modern",
+    //       add_unload_trigger: false,
+    //       schema: "html5",
+    //       inline: true,
+    //       statusbar: false,
+    //       menubar: false
+    //   });
+
+    //   tinymce.init({
+    //       selector: "figcaption",
+    //       theme: "modern",
+    //       add_unload_trigger: false,
+    //       schema: "html5",
+    //       inline: true,
+    //       statusbar: false,
+    //       menubar: false
+    //   });
+    </script>
 </html>
