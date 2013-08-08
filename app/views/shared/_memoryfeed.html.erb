@@ -1,4 +1,4 @@
-<% if @memoryfeed_items.any? %>
+
 <div class="container memorycontainer">
 	<div class="hero-unit-question">
       <div class="header">
@@ -20,6 +20,7 @@
 
       <% end %>
   </div>
+  <% if @memoryfeed_items.any? %>
 	<%= render partial: 'shared/memoryfeed_item', collection: @memoryfeed_items %>
+  <% end %>
 </div> <!-- /container -->
-<% end %>
