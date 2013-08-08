@@ -12,14 +12,12 @@ class MemoriesController < ApplicationController
     
     begin
       @memory = current_user.memories.build(:profile_id => @profile.id, 
-        :photo => params[:memory][:photo],
         :content => (params[:memory][:content]).strip,
         :date => (params[:memory][:date]).to_date,
         :title => (params[:memory][:title]).strip,
         :has_photo => (params[:memory][:photo] != nil)) 
     rescue 
       @memory = current_user.memories.build(:profile_id => @profile.id, 
-          :photo => params[:memory][:photo],
           :content => (params[:memory][:content]).strip,
           :date => Date.today, 
           :title => (params[:memory][:title]).strip,
@@ -28,6 +26,10 @@ class MemoriesController < ApplicationController
 
     respond_to do | format |   
       if @memory.save
+        if not params[:memory][:photo].nil?
+          @photo = @memory.memoryphotos.build(:photo => params[:memory][:photo])
+          @photo.save
+        end
         format.html { redirect_to root_url + @profile.url } 
         format.js 
         current_user.actionlog!(@profile.id, @page_name, "New story created" )
@@ -100,7 +102,12 @@ class MemoriesController < ApplicationController
 
   def update
     @memory = current_user.memories.find_by_id(params[:id])
-    if @memory.update_attributes(params[:memory])
+    if not params[:memory][:photo].nil?
+      @photo = @memory.memoryphotos.build(:photo => params[:memory][:photo])
+      @photo.save
+    end
+
+    if @memory.update_attributes(:title => params[:memory][:title], :content => params[:memory][:content])
       @profile = Profile.find_by_id(@memory.profile_id)
       flash[:success] = "Memory updated"
       current_user.actionlog!(@profile.id, @page_name, "Memory updated" )

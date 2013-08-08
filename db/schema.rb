@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130801063819) do
+ActiveRecord::Schema.define(:version => 20130808204539) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -109,6 +109,16 @@ ActiveRecord::Schema.define(:version => 20130801063819) do
   add_index "memories", ["profile_id", "created_at"], :name => "index_memories_on_profile_id_and_created_at"
   add_index "memories", ["user_id", "created_at"], :name => "index_memories_on_user_id_and_created_at"
   add_index "memories", ["user_id", "profile_id", "created_at"], :name => "index_memories_on_user_profile_created"
+
+  create_table "memoryphotos", :force => true do |t|
+    t.integer  "memory_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+  end
 
   create_table "pages", :force => true do |t|
     t.integer  "page_num"

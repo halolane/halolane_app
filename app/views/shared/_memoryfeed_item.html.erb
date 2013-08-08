@@ -39,6 +39,14 @@
           <figcaption></figcaption> <!--the caption that appears below the image-->
       </figure>
     <% end %>
+    <% if not memoryfeed_item.memoryphotos.blank? %>
+      <% memoryfeed_item.memoryphotos.each do |mp| %>
+      <figure> <!--use figure to contain each image and caption-->
+          <%= image_tag mp.photo.url %>
+          <figcaption></figcaption> <!--the caption that appears below the image-->
+      </figure>
+      <% end %>
+    <% end %>
   </div>
   <div class="heart">
     <span class="like-btn">

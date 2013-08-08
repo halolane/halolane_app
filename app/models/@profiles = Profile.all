@@ -125,7 +125,7 @@ u = User.find(65)
 
 @users = User.all
 @users.each do |u|
-  if u.id != 155
+  if u.id != 155 and u.id != 177 and u.id != 173
     @profiles = u.profiles
     @profiles.each do |p|
         Mailer.delay.daily_question(u,p,@question)
@@ -133,7 +133,7 @@ u = User.find(65)
   end
 end
 
-@question = 'What advice would you give @profile.first_name when @profile.first_name grows up?' 
+@question = 'What was the last thing that @profile.first_name did that surprised you?' 
 
 @question = 'What do you wish for @profile.first_name when @profile.first_name grows up?'
 

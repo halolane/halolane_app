@@ -17,6 +17,7 @@ class Memory < ActiveRecord::Base
   belongs_to :profile
   belongs_to :page
 
+  has_many :memoryphotos, dependent: :destroy
   has_one :chapter, through: :pages
   has_many :likememories, dependent: :destroy
   has_many :storycomments, dependent: :destroy

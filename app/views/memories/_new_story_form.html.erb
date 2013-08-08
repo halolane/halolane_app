@@ -33,11 +33,19 @@
   <div class="user_profile"> - <%= @memory.user.first_name %></div>
   <div id="polaroids">
       <!--Image One-->
-   	<% if @memory.photo.file? %>
+    <% if @memory.photo.file? %>
       <figure> <!--use figure to contain each image and caption-->
-      		<%= image_tag @memory.photo.url %>
+          <%= image_tag @memory.photo.url %>
           <figcaption></figcaption> <!--the caption that appears below the image-->
       </figure>
+    <% end %>
+    <% if not @memory.memoryphotos.blank? %>
+      <% @memory.memoryphotos.each do |mp| %>
+      <figure> <!--use figure to contain each image and caption-->
+          <%= image_tag mp.photo.url %>
+          <figcaption></figcaption> <!--the caption that appears below the image-->
+      </figure>
+      <% end %>
     <% end %>
   </div>
   <div class="heart">

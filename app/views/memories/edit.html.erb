@@ -13,7 +13,15 @@
 					<%= image_tag @memory.photo, class: "storyimage" %>
 					</br>
 				</span>
-			<% end %>
+				<% end %>
+				<% if not @memory.memoryphotos.blank? %>
+		      <% @memory.memoryphotos.each do |mp| %>
+		     	<span class="edit-image">
+		          <%= image_tag mp.photo.url, class: "storyimage" %>
+		          </br>
+		      </span>
+		      <% end %>
+		    <% end %>
 		  	</br>
 	  	<div class="TitleBox">
 		  	<h4>Title</h4>
@@ -24,12 +32,11 @@
 			  	<%= f.text_area :content, rows:"1", cols:"10", maxlength:"250", :value => @memory.content %><br><br>
 			</div>
 		</div>
-		<% if ! @memory.photo.file? %>
-			<div class="addphoto">
-				<p>Add a photo to your story:<br>
-				<%= f.file_field :photo, :title => "Add a photo"%></p>
-			</div>
-		<% end %>
+	
+		<div class="addphoto">
+			<p>Add a new photo to this story:<br>
+			<%= f.file_field :photo, :title => "Add a photo"%></p>
+		</div>
 
 		<div class="btn-post">
 			<div class="actions">
