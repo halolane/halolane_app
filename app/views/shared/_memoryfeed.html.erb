@@ -10,14 +10,18 @@
       <h1 class="question heronewquestion"><%= @question %>
       	<input id="memory_title" name="memory[title]" type="hidden" value="<%= @question %>"/>
       </h1>
-      <input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
-      <img class="storydivider" src="assets/black-divider.png" />
-      <%= f.text_area :content, :class => "newstorycontent", placeholder: "Write a new story about " + @profile.first_name + "...", rows:"1", cols:"10", rows: "2" %>
-      <div id="polaroids">
-	      <%= f.file_field :photo%>
-	      <br><%= f.submit "Save this story", class: "green_button savestory_button"%>
+      <div class="answerquestion">
+        <div class="green_button">Answer this question</div>
       </div>
-
+      <div class="hero-unit-hidden">
+        <input type="hidden" id="memory_profile_id" name="memory[profile_id]" value="<%= @profile.id %>" />
+        <img class="storydivider" src="assets/black-divider.png" />
+        <%= f.text_area :content, :class => "newstorycontent", placeholder: "Write a new story about " + @profile.first_name + "...", rows:"1", cols:"10", rows: "2" %>
+        <div id="polaroids">
+  	      <%= f.file_field :photo%>
+  	      <br><%= f.submit "Save this story", class: "green_button savestory_button"%>
+        </div>
+      </div>
       <% end %>
   </div>
   <% if @memoryfeed_items.any? %>
