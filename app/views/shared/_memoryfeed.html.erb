@@ -7,8 +7,8 @@
           </span>
       </div>
       <%= form_for @memory, :html => { :multipart => true }, :remote => true do |f| %>
-      <h1 class="question heronewquestion"><%= @question %>
-      	<input id="memory_title" name="memory[title]" type="hidden" value="<%= @question %>"/>
+      <h1 class="question heronewquestion">
+      <%= f.text_area :title, class: "heronewquestionfield", rows: "3", :value => @question %>
       </h1>
       <div class="answerquestion">
         <div class="green_button">Answer this question</div>
