@@ -10,8 +10,8 @@
 
 class Memory < ActiveRecord::Base
   
-  attr_accessible :content, :title, :profile_id, :photo, :date, :page_id, :has_photo, :tile_num
-  has_attached_file :photo, :styles => Proc.new { |photo| photo.instance.styles }
+  attr_accessible :content, :title, :profile_id, :photo, :date, :page_id, :has_photo, :tile_num, :user_id
+  has_attached_file :photo, :styles => Proc.new { |photo| photo.instance.styles }, :source_file_options =>  {:all => '-auto-orient'}
 
   belongs_to :user
   belongs_to :profile

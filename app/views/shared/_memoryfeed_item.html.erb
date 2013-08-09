@@ -35,14 +35,14 @@
       <!--Image One-->
    	<% if memoryfeed_item.photo.file? %>
       <figure> <!--use figure to contain each image and caption-->
-      		<%= image_tag memoryfeed_item.photo.url %>
+      		<%= image_tag memoryfeed_item.dynamic_photo_url("300x600>") %>
           <figcaption></figcaption> <!--the caption that appears below the image-->
       </figure>
     <% end %>
     <% if not memoryfeed_item.memoryphotos.blank? %>
       <% memoryfeed_item.memoryphotos.each do |mp| %>
       <figure> <!--use figure to contain each image and caption-->
-          <%= image_tag mp.photo.url %>
+          <%= image_tag mp.dynamic_photo_url("300x600>") %>
           <figcaption></figcaption> <!--the caption that appears below the image-->
       </figure>
       <% end %>
