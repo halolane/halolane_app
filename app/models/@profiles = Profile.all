@@ -124,16 +124,19 @@ end
 u = User.find(65)
 
 @users = User.all
+datetime = "Fri, 09 Aug 2013 11:05:44 +0000".to_datetime
 @users.each do |u|
   if u.id != 155 and u.id != 177 and u.id != 173
     @profiles = u.profiles
     @profiles.each do |p|
-        Mailer.delay.daily_question(u,p,@question)
+        Mailer.delay(:run_at => datetime).daily_question(u,p,@question)
     end
   end
 end
 
-@question = 'What was the last thing that @profile.first_name did that surprised you?' 
+@question = 'What are things @profile.first_name inherited from you or your family members?' 
+
+
 
 @question = 'What do you wish for @profile.first_name when @profile.first_name grows up?'
 
