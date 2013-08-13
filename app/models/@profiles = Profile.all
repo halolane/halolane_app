@@ -124,9 +124,9 @@ end
 u = User.find(65)
 
 @users = User.all
-datetime = "Fri, 09 Aug 2013 11:05:44 +0000".to_datetime
+datetime = "13 Aug 2013 11:35".to_datetime
 @users.each do |u|
-  if u.id != 155 and u.id != 177 and u.id != 173
+  if u.id != 155 and u.id != 177 and u.id != 173 and u.id != 138
     @profiles = u.profiles
     @profiles.each do |p|
         Mailer.delay(:run_at => datetime).daily_question(u,p,@question)
