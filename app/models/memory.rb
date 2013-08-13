@@ -26,7 +26,7 @@ class Memory < ActiveRecord::Base
   validates :profile_id, presence: true
   validates_date :date, :after => "1700-01-01",
                 :after_message => 'must be a correct date',
-                :on_or_before => (Date.today + 2),
+                :on_or_before => (Date.today + 3),
                 :on_or_before_message => 'must be before today\'s date'
   validates :title, :length => { :maximum => 140 }
   

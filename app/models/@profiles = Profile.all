@@ -134,9 +134,11 @@ datetime = "Fri, 09 Aug 2013 11:05:44 +0000".to_datetime
   end
 end
 
+@question = 'What are a list of places you hope to take @profile.first_name someday and why?'
+
 @question = 'What are things @profile.first_name inherited from you or your family members?' 
 
 
 
-@question = 'What do you wish for @profile.first_name when @profile.first_name grows up?'
+
 
