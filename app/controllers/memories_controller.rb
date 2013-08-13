@@ -128,9 +128,7 @@ class MemoriesController < ApplicationController
     end
 
     @profile = Profile.find(@memory.profile_id)
-    @questions = StorybookQuestion.all
-    @page = Page.find(@memory.page_id)
-    @chapter = Chapter.find(@page.chapter_id) 
+
 
     if current_user.isEditor?(@profile) or current_user.memories.exists?(:id => params[:id])
       @memory.destroy
@@ -139,7 +137,7 @@ class MemoriesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s + "/page/" + @page.page_num.to_s }
+      format.html { redirect_to root_url + @profile.url }
       format.js
       format.json { head :no_content }
     end

@@ -4,14 +4,14 @@ $(document).ready(function(){
 			
 		 	$('.hero-unit-question').after("<%= escape_javascript render('memories/new_story_form') %>"); 
 		 	$('.heronewquestion').html("<%= escape_javascript render('memories/new_question_form') %>");
-		 	$('.hero-unit-hidden').slideToggle();
+		 	$('.hero-unit-hidden').slideUp();
       $('.answerquestion').removeClass('hide');
 
 		 	// clear form
 			$('#memory_photo').val('');
 			$('textarea#memory_content').replaceWith('<textarea class="newstorycontent placeholder" cols="10" id="memory_content" name="memory[content]" placeholder="Write a new story..." rows="2"></textarea>');
 			$('.answerquestion').click(function(){
-        $('.hero-unit-hidden').slideToggle();
+        $('.hero-unit-hidden').slideDown();
         $('.answerquestion').addClass('hide');
       });
       $(".hero-unit").hover(function() {

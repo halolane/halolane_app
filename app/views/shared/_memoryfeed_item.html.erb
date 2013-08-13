@@ -8,7 +8,7 @@
             <ul class="dropdown-menu storyeditmenu" role="menu" aria-labelledby="dLabel">
               
               
-                <li class="story-edit-options"><%= link_to "Delete", @memory, method: :delete, data: { confirm: "Are you sure you want to delete this story?" }, title: "Delete this story", :remote => true  %></li>
+                <li class="story-edit-options"><%= link_to "Delete", memoryfeed_item, method: :delete, data: { confirm: "Are you sure you want to delete this story?" }, title: "Delete this story", :remote => true  %></li>
               <% if current_user?(memoryfeed_item.user) %>
                 <li class="story-edit-options"><%= link_to "Edit", edit_memory_path(memoryfeed_item), title: "Edit this story" %></li>
               <% end %>
