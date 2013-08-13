@@ -147,32 +147,6 @@ class ProfilesController < ApplicationController
     def create_chapters
       @chapter = @profile.createchapter!("All about " + @profile.first_name, "title")
       @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("Great Expectation", "pregnancy")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 1st month", "1mt")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 2nd month", "2mt")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 3rd month", "3mt")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 4th month", "4mt")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 5th month", "5mt")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 6th month", "6mt")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 7th month", "7mt")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 8th month", "8mt")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 9th month", "9mt")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 10th month", "10mt")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 11th month", "11mt")
-      @chapter.createpage!(2)
-      @chapter = @profile.createchapter!("The 12th month", "12mt")
-      @chapter.createpage!(2)
     end
 
     def get_profile
@@ -199,39 +173,39 @@ class ProfilesController < ApplicationController
       store_location
       @user = current_user
 
-      @newpage = Page.new
+      # @newpage = Page.new
       @storycomment = Storycomment.new 
-      @template_types = Template.all
+      # @template_types = Template.all
       
       if signed_in? or is_invited?(params[:invitation_token])
         @memory = @profile.memories.build 
         @invitation = @profile.invitations.build
       end
       
-      if @profile.memoryfeed(params[:chapter_num],params[:page_num]).nil?
-        flash[:notice] = "That storybook page does not exists. We redirected you the first page of this storybook."
-        @chapter = @profile.chapterlist.first
-        @page = @chapter.pagelist.first
-        @template = Template.find_by_id(@page.template_id)
-        @tiles = @template.tilelist
-        redirect_to root_url + @profile.url + "/chapter/" + @chapter.chapter_num.to_s
-      else
-        @memoryfeed_items = @profile.memoryfeed(params[:chapter_num],params[:page_num]).paginate(page: params[:page])
-        if ! @profile.chapters.find_by_chapter_num(params[:chapter_num]).nil?
-          @chapter = @profile.chapters.find_by_chapter_num(params[:chapter_num])
-          if params[:page_num] != nil and ! @chapter.pages.find_by_page_num(params[:page_num]).nil?
-            @page = @chapter.pages.find_by_page_num(params[:page_num])
-          else
-            @page = @chapter.pagelist.first
-            if params[:page_num] != nil and @chapter.pages.find_by_page_num(params[:page_num]).nil?
-              flash[:notice] = "That storybook page does not exists. We redirected you the first page of this storybook."
-            end
-          end
-        else
-          @chapter = @profile.chapterlist.first
-          @page = @chapter.pagelist.first
-        end
-        @template = Template.find_by_id(@page.template_id)
+      # if @profile.memoryfeed(params[:chapter_num],params[:page_num]).nil?
+      #   flash[:notice] = "That storybook page does not exists. We redirected you the first page of this storybook."
+      #   # @chapter = @profile.chapterlist.first
+      #   # @page = @chapter.pagelist.first
+      #   # @template = Template.find_by_id(@page.template_id)
+      #   # @tiles = @template.tilelist
+      #   redirect_to root_url + @profile.url 
+      # else
+        @memoryfeed_items = @profile.memoryfeed().paginate(page: params[:page])
+        # if ! @profile.chapters.find_by_chapter_num(params[:chapter_num]).nil?
+        #   @chapter = @profile.chapters.find_by_chapter_num(params[:chapter_num])
+        #   if params[:page_num] != nil and ! @chapter.pages.find_by_page_num(params[:page_num]).nil?
+        #     @page = @chapter.pages.find_by_page_num(params[:page_num])
+        #   else
+        #     @page = @chapter.pagelist.first
+        #     if params[:page_num] != nil and @chapter.pages.find_by_page_num(params[:page_num]).nil?
+        #       flash[:notice] = "That storybook page does not exists. We redirected you the first page of this storybook."
+        #     end
+        #   end
+        # else
+        #   @chapter = @profile.chapterlist.first
+        #   @page = @chapter.pagelist.first
+        # end
+        # @template = Template.find_by_id(@page.template_id)
 
         # if ! @chapter.subtype.blank? and ! StorybookQuestion.find_by_subtype(@chapter.subtype).nil?
         #   if @chapter.chapter_num == 1 and @page.page_num == 1
@@ -243,9 +217,9 @@ class ProfilesController < ApplicationController
           @questions = StorybookQuestion.all
           @question = @questions.sample.question.gsub("@profile.first_name",@profile.first_name)
         # end
-        @tiles = @template.tilelist
+        # @tiles = @template.tilelist
         render :layout => "storyboard_layout"
-      end 
+      # end 
     end
 
     def correct_user
