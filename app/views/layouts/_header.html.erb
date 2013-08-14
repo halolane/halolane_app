@@ -1,24 +1,26 @@
-
   <div class="navbar-inner">
-    <div class="container">
+  <div class="container">
       <nav>
         <ul class="nav btn-topbar-left">
-            <li class="storyboardlogo">
-              <%= link_to image_tag("/assets/images/small-logo.png"), root_path, class: "headerlogo", id: "logo" %> 
+          
+          <li class="storyboardlogo" data-no-turbolink>
+              <%= link_to library_path, id: "logo", class: "headerlogo" do %> 
+                <div class="headerlogoimage"></div>
+              <% end %>
             </li>
-            <li class="follow_twitter">
-              <a href="http://twitter.com/myFamilyTales" title="Follow us on Twitter" target="_blank"><i class="icon-twitter"></i></a>
-            </li>
-            <li class="follow_facebook">
-              <a href="http://www.facebook.com/myFamilyTales" title="Become a fan on Facebook" target="_blank"><i class="icon-facebook"></i></a>
-            </li>
-        </ul>
-       <div class="headertitle"><h4>
+
+          <li class="follow_twitter">
+            <a href="http://twitter.com/myFamilyTales" title="Follow us on Twitter" target="_blank"><i class="icon-twitter"></i></a>
+          </li>
+          <li class="follow_facebook">
+            <a href="http://www.facebook.com/myFamilyTales" title="Become a fan on Facebook" target="_blank"><i class="icon-facebook"></i></a>
+          </li>
+
+          <li class="headertitlecontent"><div class="headertitle" data-no-turbolink><h4>
               <%= yield(:title) %>
             </h4></div>
-       <% if signed_in? %>
-        <ul class="nav pull-right userinfonav">
-          
+          </li>
+
           <li class="loggedinuser">
               <div class="dropdown">
             
@@ -36,17 +38,6 @@
               </div>
           </li>
         </ul>
-        <% else %>
-          <ul class="nav pull-right userinfonav">
-            
-            <li class="signup">
-              <a href="/signup" class="">Signup</a>
-            </li>
-            <li class="login">
-              <a href="/login" class="">Login</a>
-            </li>
-          </ul>
-        <% end %>
-      </nav>
-    </div>
+        </nav>
+        </div>
   </div>

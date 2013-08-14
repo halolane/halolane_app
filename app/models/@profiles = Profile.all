@@ -140,5 +140,12 @@ end
 
 
 
+@profiles = Profile.where('extract(month from birthday) = ?', 8)
 
+@profiles.each do |p|
+ puts p.id.to_s + ", " + p.first_name + " " + p.last_name + ", " + p.birthday.to_s
+end
 
+date2 = "2013-08-20".to_date
+date1 = @profile.birthday
+(date2.year * 12 + date2.month) - (@profile.birthday.year * 12 + @profile.birthday.month)

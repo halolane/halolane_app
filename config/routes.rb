@@ -44,6 +44,7 @@ HalolaneApp::Application.routes.draw do
   match "/500", :to => "static_pages#error_page"
   match "/404", :to => "static_pages#not_found"
   match '/welcome/intro', to: 'static_pages#welcome_one'
+  match '/welcome/intro2', to: 'static_pages#welcome_two'
   match '/library', to: 'bookshelves#show'
   match '/about', to: 'static_pages#about'
   match '/pagenotfound', to: 'static_pages#pagenotfound'

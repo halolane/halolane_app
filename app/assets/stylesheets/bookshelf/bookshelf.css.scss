@@ -289,15 +289,6 @@ text-align: center !important;
 *
 *****************************************************************/
 
-li.storyboardlogo {
-margin: 0px 0px;
-margin-top: -8px !important;
-margin-left: 10px;
-width: 150px;
-height: 38px;
-display: inline-block;
-}
-
 .sm {
 	display: inline;
 }
@@ -311,12 +302,16 @@ display: inline-block;
 
 .headertitle {
 
-	position: relative;
-	display: inline;
+	float: left;
 	text-align: center;
-	top: 10px;
-	right: 5px;
-	text-align: center;
+	margin-right: 0 !important;
+	margin-top: 0px;
+	font-size: 12px;
+	text-align: middle;
+	vertical-align: middle;
+	width: 100%;
+	margin-left: 40%;
+
 	h4 { margin: 0 0;}
 	h4 { 
 		font-size: 18px; 
@@ -332,6 +327,17 @@ display: inline-block;
 	a:hover { 
 		background-color: transparent;
 	}
+}
+
+.dropdown-toggle {
+	text-decoration: none !important;
+}
+h4.storybook-user {
+	margin-top: -10px;
+	display: inline !important;
+	text-decoration: none !important;
+	color: #999;
+	
 }
 
 .nav.btn-topbar-left {

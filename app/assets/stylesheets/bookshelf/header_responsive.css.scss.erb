@@ -1,0 +1,90 @@
+
+li.storyboardlogo {
+  position: relative;
+  top: 0px;
+  margin: 0px 0px;
+  margin-top: -8px !important;
+  margin-left: 10px;
+  width: 150px;
+  height: 38px;
+  display: inline-block;
+}
+
+.loggedinuser {
+position: relative;
+top: -42px;
+padding: 8.5px;
+border-right: 1px solid #cdcdcd;
+border-left: 1px solid #cdcdcd;
+}
+
+li.headertitlecontent {
+display: inline-block;
+}
+
+.headerlogo {
+  width: 100%;
+  height: 100%;
+}
+.headerlogoimage {
+  width: 100%;
+  height: 100%;
+  background-image:url(<%= asset_path "/assets/images/small-logo.png" %>);
+  background-size: cover;
+}
+
+@media (max-width: 320px) {
+	.headertitle {
+    margin-left: 5%;
+  }
+  .loggedinuser {
+  	margin-left: 1.5em;
+  }
+  li.storyboardlogo {
+		width: 38px;
+		height: 38px;
+		display: inline-block;
+	}
+
+	.headerlogoimage {
+		width: 100%;
+		height: 100%;
+		background-image:url(<%= asset_path "/assets/images/FamilyTalesTreeLogo.png" %>);
+		background-size: cover;
+	}
+}
+
+@media (min-width: 321px) and  (max-width: 767px) {
+	.headertitle {
+    margin-left: 5%;
+  }
+  .loggedinuser {
+  	margin-left: 1.5em;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+	.headertitle {
+    margin-left: 55%;
+  }
+  .loggedinuser {
+  	margin-left: 20em;
+  }
+}
+
+@media (min-width: 980px) {
+	.headertitle {
+    margin-left: 100%;
+  }
+  .loggedinuser {
+  	margin-left: 30em;
+  }
+}
+
+@media (min-width: 1200px) {
+	.headertitle {
+    margin-left: 150%;
+  }
+  .loggedinuser {
+  	margin-left: 40em;
+  }
+}

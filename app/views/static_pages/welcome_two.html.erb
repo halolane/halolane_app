@@ -1,0 +1,38 @@
+<% provide(:title, 'Welcome To FamilyTales') %>
+<div class="
+page onboarding_page
+">
+  <div id="page_container"><section class="new_invite_flow"><div class="invite-all">
+	<div id="line-container">
+		<div id="dotted-line"></div>
+	</div>
+
+	<div id="steps-container">
+		<ul id="steps">
+			<li id="first">
+				<%= image_tag("/assets/images/dot1_inactive.png") %>
+				<p class="active">Create your child's storybook</p>
+			</li>
+			<li id="second">
+				<%= image_tag("/assets/images/dot2_active.png") %>
+				<p class="inactive">Set the Email Frequency</p>
+			</li>
+		</ul>
+	</div>
+
+  <div class="main-steps-content">
+<p class="invite-heading1">Set how often you want to receive questions about <%= current_user.profiles.first.first_name %>!</p>
+
+<div id="invite-import" class="section2">
+	<div class="box-line"></div>
+	<p class="invite-heading2">Set Email Frequency</p>
+	<p class="invite-heading3">The more questions you answer, the more <%= current_user.profiles.first.first_name %> can know about <%= current_user.profiles.first.first_name %> childhood.</p>
+
+<p>
+	<a id="next-btn" class="green_button startstorybook_button">Send</a>
+</p></div>
+</div>
+
+</div>
+</section></div>
+</div>

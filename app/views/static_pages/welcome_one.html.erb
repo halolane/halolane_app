@@ -1,5 +1,60 @@
-<% provide(:title, 'My Library') %>
-<%= render 'shared/intro_start' %>
-<%= render 'shared/user_frontpage' %>
-<%= render 'static_pages/coachmarks' %>
-<%= render 'shared/new_storybook_modal' %>
+<% provide(:title, 'Welcome To FamilyTales') %>
+<div class="
+page onboarding_page
+">
+  <div id="page_container"><section class="new_invite_flow"><div class="invite-all">
+	<div id="line-container">
+		<div id="dotted-line"></div>
+	</div>
+
+	<div id="steps-container">
+		<ul id="steps">
+			<li id="first">
+				<%= image_tag("/assets/images/dot1_active.png") %>
+				<p class="active">Create your child's storybook</p>
+			</li>
+			<li id="second">
+				<%= image_tag("/assets/images/dot2_inactive.png") %>
+				<p class="inactive">Set the Email Frequency</p>
+			</li>
+		</ul>
+	</div>
+
+  <div class="main-steps-content">
+<p class="invite-heading1">Welcome to FamilyTales, <%= @user.first_name %>! Create your first FamilyTales storybook about your child.</p>
+
+<div id="invite-import" class="section2">
+	<div class="box-line"></div>
+
+	<p class="invite-heading2">Create a storybook about my</p>
+	<p class="invite-heading3"></p>
+  	<p>
+  		<%= form_for(@profile) do |p| %>
+      <div class="newstorybook_chapter_num">
+      	<input id="profile_bookshelf_id" name="profile[bookshelf_id]" value="<%= current_user.bookshelves.first.id %>" type="hidden">
+      </div>
+		  <%= render 'shared/error_messages', object: p.object %>
+      <p><%= select "relationship","description", 
+                  Relationshipdesc.where("description = ? or description = ?",'Son','Daughter').collect {|p| [ p.description, p.id ] }%></p>
+      <p>
+        <%= p.text_field :first_name, :placeholder => "Their first name", :required => true %>
+      </p>
+      <p>
+        <%= p.text_field :last_name, :placeholder => "Their last name", :required => true %>
+      </p>
+    <p>
+      <label for="profile_birthday">Their birthday</label><br>
+      <%= p.text_field :birthday, :required => true, :value => (Date.today - 1) %>
+    </p>
+	</p>
+
+
+<p>
+	<%= p.submit "Create my storybook", class: "green_button startstorybook_button" %>
+	<% end %>
+</p>
+</div>
+
+</div>
+</section>
+</div>
