@@ -98,7 +98,7 @@ body {
 #content {
 	display: inline;
 	position: fixed;
-	width: 24em;
+	width: 40%;
 	height: 36.5em;
 	margin-left: 10%;
 	z-index: 500;
@@ -113,15 +113,15 @@ body {
 }
 
 legend {
-display: block;
--webkit-padding-start: 2px;
--webkit-padding-end: 2px;
-border: none;
-border-image-source: initial;
-border-image-slice: initial;
-border-image-width: initial;
-border-image-outset: initial;
-border-image-repeat: initial;
+	display: block;
+	-webkit-padding-start: 2px;
+	-webkit-padding-end: 2px;
+	border: none;
+	border-image-source: initial;
+	border-image-slice: initial;
+	border-image-width: initial;
+	border-image-outset: initial;
+	border-image-repeat: initial;
 }
 
 #about {
@@ -155,17 +155,18 @@ border-image-repeat: initial;
 #content h1, #about h1 {
 	background-image: url(<%= asset_path "/assets/FamilyTales_dropshadow.png" %>);
 	background-repeat: no-repeat;
-	width: 16em;
-	height: 5em;
+	width: 40%;
+	height: 4em;
 	text-indent: -1000px;
 	overflow: hidden;
 	margin: 5% 0 0 0;
+	background-size: 100%;
 }
 
 #content p {
 	font-size: 1.2em;
 	margin: 0px 0 20px 0;
-	width: 18em;
+	width: 80%;
 }
 
 #content #start {
@@ -307,10 +308,9 @@ ul#nav li a:hover {
 
 .new_user legend {
 	display: block;
-	width: 100%;
 	padding: .3em 0;
 	margin-bottom: .3em; 
-	font-size: 22px;
+	font-size: 2.5em;
 	color: #333;
 	border-bottom: 1px solid #B9B9B9;
 }
