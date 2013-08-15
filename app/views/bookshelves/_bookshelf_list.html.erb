@@ -11,23 +11,23 @@
     </li>
     <% end %>
     <% if (bookshelf.bookshelfrelations.where(:permission => "view").count) > 0 %>
-    <li>
+    <!-- <li>
       <a href="#">
         <%= bookshelf.bookshelfrelations.where(:permission => "view").count %> viewers
       </a>
-    </li>
+    </li> -->
     <% end %>
     <% if (bookshelf.bookshelfrelations.where(:permission => "contribute").count) > 0 %>
-    <li>
+    <!-- <li>
       <a href="#">
         <%= bookshelf.bookshelfrelations.where(:permission => "contribute").count %> Contributors
       </a>
-    </li>
+    </li> -->
     <% end %>
     <li>
-      <a href="#">
+    <!--   <a href="#">
         <%= bookshelf.bookshelfrelations.where(:permission => "edit").count %> Editors
-      </a>
+      </a> -->
     </li>
   </ul>
   <div class="bookshelfName">
