@@ -1,4 +1,17 @@
 
+.span6 {
+	text-align: center !important;
+	width: 100% !important;
+	margin: 0 !important;
+}
+.container.other {
+	width: 100%;
+}
+
+input {
+	width: 50%;
+}
+
 .alert {
 	z-index: 11 !important;
 	margin-bottom: 10px !important;
@@ -269,33 +282,9 @@ display: inline-block;
 	top: -20px;
 }
 
-.headertitle {
-
-	position: relative;
-	display: inline;
-	text-align: center;
-	top: 10px;
-	right: 5px;
-	text-align: center;
-	h4 { margin: 0 0;}
-	h4 { 
-		font-size: 18px; 
-		line-height: 20px; 
-		color: #696969;
-	}
-
-	a {
-		color: #696969;
-		text-decoration: none;
-	}
-
-	a:hover { 
-		background-color: transparent;
-	}
-}
-
 .nav.btn-topbar-left {
 	display: inline-block;
+	width: 100%;
 }
 .navbar-fixed-top {
 top: 0;
@@ -534,34 +523,23 @@ float: right;
 		color: #696969;
 	}
 }
-.follow_facebook, .follow_twitter { 
-	display: inline-block;
-	text-decoration: none;
-
- 	font-size: 25px;
- 	width: 30px;
-	text-align: center;
-	padding-top: 9px;
-	padding-bottom: 6px;
- 	a, a:hover {
- 		text-decoration: none !important;
-		background-color: transparent !important;
- 	}
-}
 
 .follow_facebook {
 	margin-left: -3px;
 }
 
 .icon-facebook, .icon-twitter {
-	 color: #5f8f05;
+	 color: gray;
 }
 
-.login, .follow_twitter {
+.login {
 	border-left: 1px solid #cdcdcd;
 }
 
-.signup, .follow_facebook{
+.follow_twitter, .follow_facebook {
+	border: none;
+}
+.signup {
 	border-left: 1px solid #cdcdcd;
 	border-right: 1px solid #cdcdcd;
 }

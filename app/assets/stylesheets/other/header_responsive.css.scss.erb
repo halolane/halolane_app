@@ -1,0 +1,159 @@
+
+li.storyboardlogo {
+  position: relative;
+  top: 0px;
+  margin: 0px 0px;
+  margin-top: -8px !important;
+  margin-left: 10px;
+  width: 150px;
+  height: 38px;
+  display: inline-block;
+}
+
+.loggedinuser {
+position: relative;
+padding: 8.5px;
+border-right: 1px solid #cdcdcd;
+border-left: 1px solid #cdcdcd;
+}
+
+
+li.login, li.signup {
+  position: relative;
+  right: 10%;;
+}
+
+.headertitle {
+  margin-bottom: 10px;
+  float: left;
+  text-align: center;
+  margin-right: 0 !important;
+  margin-top: 0px;
+  font-size: 12px;
+  text-align: middle;
+  vertical-align: middle;
+  width: 100%;
+
+  h4 { margin: 0 0;}
+  h4 { 
+    font-size: 18px; 
+    line-height: 20px; 
+    color: #696969;
+  }
+
+  a {
+    color: #696969;
+    text-decoration: none;
+  }
+
+  a:hover { 
+    background-color: transparent;
+  }
+}
+
+li.headertitlecontent {
+display: inline-block;
+margin-left: 20%;
+}
+
+.follow_facebook, .follow_twitter { 
+  display: inline-block;
+  text-decoration: none;
+
+  font-size: 25px;
+  width: 30px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 2px;
+  a, a:hover {
+    text-decoration: none !important;
+    background-color: transparent !important;
+  }
+}
+
+li.signup, li.login {
+  display: inline-block;
+}
+
+.headerlogo {
+  width: 100%;
+  height: 100%;
+}
+.headerlogoimage {
+  width: 100%;
+  height: 100%;
+  background-image:url(<%= asset_path "/assets/images/small-logo.png" %>);
+  background-size: cover;
+}
+
+@media (max-width: 320px) {
+	li.headertitlecontent {
+    margin-left: 5%;
+  }
+  .loggedinuser {
+  	margin-left: 1.5em;
+  }
+  li.storyboardlogo {
+		width: 38px;
+		height: 38px;
+		display: inline-block;
+	}
+
+	.headerlogoimage {
+		width: 100%;
+		height: 100%;
+		background-image:url(<%= asset_path "/assets/images/FamilyTalesTreeLogo.png" %>);
+		background-size: cover;
+	}
+}
+
+@media (min-width: 321px) and  (max-width: 767px) {
+	li.headertitlecontent {
+    margin-left: 5%;
+  }
+  .loggedinuser {
+  	margin-right: 40%;
+  }
+  li.login, li.signup {
+    position: relative;
+    right: 50%;;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+	li.headertitlecontent {
+    margin-left: 23%;
+  }
+  .loggedinuser {
+  	margin-right: 13%;
+  }
+  li.login, li.signup {
+    position: relative;
+    right: 20%;;
+  }
+}
+
+@media (min-width: 980px) {
+	li.headertitlecontent {
+    margin-left: 25%;
+  }
+  .loggedinuser {
+  	margin-right: 13%;
+  }
+  li.login, li.signup {
+    position: relative;
+    right: 15%;;
+  }
+}
+
+@media (min-width: 1200px) {
+	li.headertitlecontent {
+    margin-left: 30%;
+  }
+  .loggedinuser {
+  	margin-right: 10%;
+  }
+  li.login, li.signup {
+    position: relative;
+    right: 10%;;
+  }
+}

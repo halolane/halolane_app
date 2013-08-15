@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   before_filter :set_page_name
+  before_filter :signed_in_user, only: [:welcome_one, :welcome_two]
 
   def home
     if not params[:verify_token] == nil

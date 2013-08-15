@@ -20,7 +20,7 @@
               <%= yield(:title) %>
             </h4></div>
           </li>
-
+          <% if signed_in? %>
           <li class="loggedinuser">
               <div class="dropdown">
             
@@ -37,6 +37,14 @@
                 </ul>
               </div>
           </li>
+          <% else %>
+            <li class="signup">
+              <a href="/signup" class="">Signup</a>
+            </li>
+            <li class="login">
+              <a href="/login" class="">Login</a>
+            </li>
+          <% end %>
         </ul>
         </nav>
         </div>
