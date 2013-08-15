@@ -21,7 +21,7 @@ class Memory < ActiveRecord::Base
   has_one :chapter, through: :pages
   has_many :likememories, dependent: :destroy
   has_many :storycomments, dependent: :destroy
-  validate :content_and_photo_not_blank
+  # validate :content_and_photo_not_blank
   validates :user_id, presence: true  
   validates :profile_id, presence: true
   validates_date :date, :after => "1700-01-01",

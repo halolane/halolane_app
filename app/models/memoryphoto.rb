@@ -1,7 +1,7 @@
 class Memoryphoto < ActiveRecord::Base
   attr_accessible :memory_id, :photo
 	belongs_to :memory
-  has_attached_file :photo, :styles => Proc.new { |photo| photo.instance.styles }, :source_file_options =>  {:all => '-auto-orient'}
+  has_attached_file :photo, :source_file_options =>  {:all => '-auto-orient'}, :styles => Proc.new { |photo| photo.instance.styles }
 
   validates_attachment :photo,
   :content_type => { :content_type => /image/ },
