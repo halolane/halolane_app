@@ -26,8 +26,12 @@
 
       <div class="boardCoverWrapper">
         <span class="hoverMask"></span>
-        <% if not(book.photofeed[0].blank?) and book.photofeed[0].photo.file? %>
-        <%= image_tag book.photofeed[0].dynamic_photo_url("216x146#"), class: "boardCover" %>
+        <% if not(book.photofeed[0].blank?) %>
+          <% if book.photofeed[0].photo.file? %>
+            <%= image_tag book.photofeed[0].dynamic_photo_url("216x146#"), class: "boardCover" %>
+          <% else %>
+            <%= image_tag book.photofeed[0].memoryphotos.first.dynamic_photo_url("216x146#"), class: "boardCover" %>
+          <% end %>
         <% end %>
         </span>
         <span class="boardPinCount">
@@ -37,31 +41,47 @@
       <ul class="boardThumbs">
         <li>
           <span class="hoverMask">
-            <% if not(book.photofeed[1].blank?) and book.photofeed[1].photo.file? %>
-            <%= image_tag book.photofeed[1].dynamic_photo_url("51x51#"), class: "thumb" %>
+            <% if not(book.photofeed[1].blank?) %>
+              <% if book.photofeed[1].photo.file? %>
+                <%= image_tag book.photofeed[1].dynamic_photo_url("51x51#"), class: "thumb" %>
+              <% else %>
+                <%= image_tag book.photofeed[1].memoryphotos.first.dynamic_photo_url("51x51#"), class: "thumb" %>
+              <% end %>
             <% end %>
           </span>
         </li>
         <li>
-            <span class="hoverMask">
-              <% if not(book.photofeed[2].blank?) and book.photofeed[2].photo.file? %>
-              <%= image_tag book.photofeed[2].photo.url(:thumb), class: "thumb" %>
+          <span class="hoverMask">
+            <% if not(book.photofeed[2].blank?) %>
+              <% if book.photofeed[2].photo.file? %>
+                <%= image_tag book.photofeed[2].dynamic_photo_url("51x51#"), class: "thumb" %>
+              <% else %>
+                <%= image_tag book.photofeed[2].memoryphotos.first.dynamic_photo_url("51x51#"), class: "thumb" %>
               <% end %>
-            </span>
+            <% end %>
+          </span>
         </li>
         <li>
-            <span class="hoverMask">
-              <% if not(book.photofeed[3].blank?) and book.photofeed[3].photo.file? %>
-              <%= image_tag book.photofeed[3].photo.url(:thumb), class: "thumb" %>
+          <span class="hoverMask">
+            <% if not(book.photofeed[3].blank?) %>
+              <% if book.photofeed[3].photo.file? %>
+                <%= image_tag book.photofeed[3].dynamic_photo_url("51x51#"), class: "thumb" %>
+              <% else %>
+                <%= image_tag book.photofeed[3].memoryphotos.first.dynamic_photo_url("51x51#"), class: "thumb" %>
               <% end %>
-            </span>
+            <% end %>
+          </span>
         </li>
         <li>
-            <span class="hoverMask">
-              <% if not(book.photofeed[4].blank?) and book.photofeed[4].photo.file? %>
-              <%= image_tag book.photofeed[4].photo.url(:thumb), class: "thumb" %>
+          <span class="hoverMask">
+            <% if not(book.photofeed[4].blank?) %>
+              <% if book.photofeed[4].photo.file? %>
+                <%= image_tag book.photofeed[4].dynamic_photo_url("51x51#"), class: "thumb" %>
+              <% else %>
+                <%= image_tag book.photofeed[4].memoryphotos.first.dynamic_photo_url("51x51#"), class: "thumb" %>
               <% end %>
-            </span>
+            <% end %>
+          </span>
         </li>
       </ul>
       <button type="button" class="rounded ShowModalButton Button hasText Module ajax btn">
