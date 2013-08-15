@@ -15,18 +15,18 @@ page onboarding_page
 			</li>
 			<li id="second">
 				<%= image_tag("/assets/dot2_active.png") %>
-				<p class="inactive">Set the Email Frequency</p>
+				<p class="inactive">Set the Tell-a-Tale frequency</p>
 			</li>
 		</ul>
 	</div>
 
   <div class="main-steps-content">
-<p class="invite-heading1">Set how often you want to receive questions about <%= current_user.profiles.first.first_name %>!</p>
+<p class="invite-heading1">Set how often you want to receive Tell-a-Tale questions by email about <%= current_user.profiles.first.first_name %>!</p>
 
 <div id="invite-import" class="section2">
 	<div class="box-line"></div>
-	<p class="invite-heading2">Set Email Frequency</p>
-	<p class="invite-heading3">The more questions you answer, the more <%= current_user.profiles.first.first_name %> can know about <%= current_user.profiles.first.first_name %>'s childhood.</p>
+	<p class="invite-heading2">Set Tell-a-Tale Frequency</p>
+	<p class="invite-heading3">Tell-a-Tale is an email you get with a single question like, <strong>"What is one life lesson you would like to share with <%= current_user.profiles.first.first_name %>?"</strong> Simply reply back to the email and we will save it to <%= current_user.profiles.first.first_name %>'s storybook. The more questions you answer, the more <%= current_user.profiles.first.first_name %> can know about <%= current_user.profiles.first.first_name %>'s childhood.</p>
 	<%= form_for(@emailsubscription) do |p| %>
 	<p>	
 		<div id="slider-range-min"></div><br>
