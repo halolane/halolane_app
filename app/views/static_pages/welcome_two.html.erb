@@ -26,12 +26,33 @@ page onboarding_page
 <div id="invite-import" class="section2">
 	<div class="box-line"></div>
 	<p class="invite-heading2">Set Email Frequency</p>
-	<p class="invite-heading3">The more questions you answer, the more <%= current_user.profiles.first.first_name %> can know about <%= current_user.profiles.first.first_name %> childhood.</p>
-
+	<p class="invite-heading3">The more questions you answer, the more <%= current_user.profiles.first.first_name %> can know about <%= current_user.profiles.first.first_name %>'s childhood.</p>
+	<%= form_for(@emailsubscription) do |p| %>
+	<p>	
+		<div id="slider-range-min"></div><br>
+		<%= p.text_area :emailperweek, :required => true, :size => '1x1', :readonly => true %><span class="emaildesc"> times a week</span>
+	</p><br>
 <p>
-	<a id="next-btn" class="green_button startstorybook_button">Send</a>
+	<%= p.submit "Set Email Frequency", class: "green_button startstorybook_button" %> 
+	<% end %>
 </p></div>
 </div>
+
+<script type="text/javascript">
+    $(function() {
+      $( "#slider-range-min" ).slider({
+        range: "min",
+        value: <%= @emailsubscription.emailperweek %>,
+        min: 0,
+        max: 7,
+        slide: function( event, ui ) {
+          $( "#emailsubscription_emailperweek" ).val(ui.value );
+        }
+      });
+      
+      	$( "#emailsubscription_emailperweek" ).val($( "#slider-range-min" ).slider( "value" ) );
+    });
+  </script>
 
 </div>
 </section></div>

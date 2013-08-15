@@ -31,18 +31,18 @@ class StaticPagesController < ApplicationController
       render :layout => "bookshelf_layout"
     else
       @user = User.new
-      render :layout => "home_layout"
+      redirect_to root_url
     end
   end
 
   def welcome_two
     if signed_in?
       @user = current_user
-      @profile = Profile.new 
+      @profile = Profile.new
+      @emailsubscription = current_user.emailsubscription
       render :layout => "bookshelf_layout"
     else
-      @user = User.new
-      render :layout => "home_layout"
+      redirect_to root_url
     end
   end
 

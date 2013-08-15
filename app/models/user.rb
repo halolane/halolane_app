@@ -12,6 +12,7 @@
 class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
   has_secure_password
+  has_one :emailsubscription, dependent: :destroy
   has_many :invitations, dependent: :destroy, :class_name => 'Invitation', :foreign_key => 'sender_id'
   has_many :memories, dependent: :destroy
   has_many :relationships, dependent: :destroy
@@ -29,6 +30,7 @@ class User < ActiveRecord::Base
 
   before_save :create_remember_token
   before_create :generate_token
+  after_create :create_email_subscription
 
   validates :first_name, presence: true, length: { maximum: 50 }
   validates :last_name, presence: true, length: { maximum: 50 }
@@ -181,6 +183,11 @@ class User < ActiveRecord::Base
   end
 
   private
+
+    def create_email_subscription
+      @emailsubscription = Emailsubscription.new(user_id: self.id, emailperweek: 2)
+      @emailsubscription.save
+    end
 
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64

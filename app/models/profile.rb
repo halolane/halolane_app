@@ -19,9 +19,9 @@ class Profile < ActiveRecord::Base
   validates :url, length: { maximum: 50 }
 
   validates_date :birthday, :after => "1700-01-01",
-  							:after_message => 'must be a correct date',
-  							:on_or_before => Date.today + 1,
-  							:on_or_before_message => 'must be a correct date YYYY-MM-DD'
+  							:after_message => 'must be a correct date YYYY-MM-DD',
+  							:on_or_before => Date.today + 2,
+  							:on_or_before_message => 'cannot be a future date'
 
   validates_numericality_of :privacy, :greater_than_or_equal_to => 0,
                             :only_integer => true, :allows_nil => false

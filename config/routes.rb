@@ -22,6 +22,7 @@ HalolaneApp::Application.routes.draw do
   resources :invitations
   resources :password_resets
   resources :relationships
+  resources :emailsubscriptions
 
   resources :profiles do
     member {get "getvcf"}

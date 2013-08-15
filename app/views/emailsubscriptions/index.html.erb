@@ -1,0 +1,21 @@
+<h1>Listing emailsubscriptions</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @emailsubscriptions.each do |emailsubscription| %>
+  <tr>
+    <td><%= link_to 'Show', emailsubscription %></td>
+    <td><%= link_to 'Edit', edit_emailsubscription_path(emailsubscription) %></td>
+    <td><%= link_to 'Destroy', emailsubscription, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Emailsubscription', new_emailsubscription_path %>

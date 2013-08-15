@@ -124,7 +124,7 @@ end
 u = User.find(65)
 
 @users = User.all
-datetime = "13 Aug 2013 11:35".to_datetime
+datetime = "15 Aug 2013 12:05".to_datetime
 @users.each do |u|
   if u.id != 155 and u.id != 177 and u.id != 173 and u.id != 138
     @profiles = u.profiles
@@ -134,7 +134,7 @@ datetime = "13 Aug 2013 11:35".to_datetime
   end
 end
 
-@question = 'What are a list of places you hope to take @profile.first_name someday and why?'
+@question = 'What was the last cute outfit that @profile.first_name wore? Hint: a picture is worth a thousand words!'
 
 @question = 'What are things @profile.first_name inherited from you or your family members?' 
 
@@ -149,3 +149,9 @@ end
 date2 = "2013-08-20".to_date
 date1 = @profile.birthday
 (date2.year * 12 + date2.month) - (@profile.birthday.year * 12 + @profile.birthday.month)
+
+@users = User.all
+@users.each do |u|
+ e = Emailsubscription.new(:user_id => u.id, :emailperweek => 2)
+ e.save
+end

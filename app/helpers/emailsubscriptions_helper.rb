@@ -1,0 +1,2 @@
+module EmailsubscriptionsHelper
+end

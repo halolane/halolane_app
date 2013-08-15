@@ -127,7 +127,11 @@ class ProfilesController < ApplicationController
         create_chapters
         current_user.actionlog!(@profile.id, @page_name, "create")
         Mailer.delay.new_storybook(current_user, @profile, root_url + @profile.url)
-        format.html { redirect_to root_url + @profile.url }
+        if current_user.profiles.count == 1
+          format.html { redirect_to welcome_intro2_url }
+        else
+          format.html { redirect_to root_url + @profile.url }
+        end
         format.json { render json: @profile, status: :created, location: @profile }
       else
         error_msg = "Sorry, we're not able to create your storybook because of the following " + pluralize(@profile.errors.count, "error") + ":<ul>"
@@ -136,7 +140,11 @@ class ProfilesController < ApplicationController
         end 
         error_msg = error_msg + "</ul>"
         flash[:error] = error_msg
-        format.html { redirect_to root_url  }
+        if current_user.profiles.count == 0
+          format.html { redirect_to welcome_intro_url }
+        else
+          format.html { redirect_to library_url  }
+        end
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
