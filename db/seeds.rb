@@ -30,6 +30,15 @@
  	Relationshipdesc.find_or_create_by_description(r)
  end
 
+plan_list = [
+	["Free", 0],
+	["Basic", 4.99],
+	["Pro", 9.99]
+]
+plan_list. each do |name, price|
+ 	Plan.find_or_create_by_price(name: name, price: price )
+end
+
 template_list = [
 	[1, "Six tiles, two oversized", 1297, 680],
 	[2, "title page", 1297, 680],

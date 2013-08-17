@@ -6,6 +6,7 @@ class Profile < ActiveRecord::Base
   attr_accessible :birthday, :deathday, :first_name, :last_name, :privacy, :bookshelf_id
   belongs_to :bookshelf
 
+  has_one  :subscription, dependent: :destroy
   has_many :relationships, dependent: :destroy
   has_many :memories, dependent: :destroy
   has_many :users, through: :relationships

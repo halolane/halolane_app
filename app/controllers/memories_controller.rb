@@ -23,19 +23,20 @@ class MemoriesController < ApplicationController
           :title => (params[:memory][:title]).strip,
           :has_photo => (params[:memory][:photo] != nil)) 
     end
-
+    if not params[:memory][:photo].nil?
+      @photo = @memory.memoryphotos.build(:photo => params[:memory][:photo])
+    end
     respond_to do | format |   
-      if @memory.save
-        if not params[:memory][:photo].nil?
-          @photo = @memory.memoryphotos.build(:photo => params[:memory][:photo])
-          @photo.save
-        end
+      if @memory.save and @photo.save
         format.html { redirect_to root_url + @profile.url } 
         format.js 
         current_user.actionlog!(@profile.id, @page_name, "New story created" )
       else
         format.html { redirect_to root_url + @profile.url } 
-        @error_msg = "Sorry, we're not able to save your story because of the following " + pluralize(@memory.errors.count, "error") + ":<ul>"
+        @error_msg = "Sorry, we're not able to save your story because of the following " + pluralize(@memory.errors.count, "error") + ":<ul>" 
+        @photo.errors.full_messages.each do |msg|
+          @error_msg = @error_msg + "<li>" + msg + "</li>"
+        end
         @memory.errors.full_messages.each do |msg|
           @error_msg = @error_msg + "<li>" + msg + "</li>"
         end 

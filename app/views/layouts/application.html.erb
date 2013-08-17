@@ -28,7 +28,7 @@
   
   <%= stylesheet_link_tag "application-other", media: "all" %>
   <%= javascript_include_tag "application-other" %>
-  
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
 
   <% if full_title(yield(:title)) == "FamilyTales" && signed_in? && current_user.storybookcount == 0 %>

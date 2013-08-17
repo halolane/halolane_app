@@ -33,6 +33,7 @@ gem "twitter-bootstrap-rails", :git => 'git://github.com/seyhunak/twitter-bootst
 gem "introjs-rails"
 gem 'imgkit'
 gem 'gibbon'
+gem 'stripe'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
