@@ -190,23 +190,24 @@ var WRInitTime=(new Date()).getTime();
                       Loading
       </div>  
             <div id="responseNews"></div>
-                  <form class="row-fluid" id="newsletter" method="post" action="#">
+                  <%= form_for @user, :html => {:class => "row-fluid"} do |f| %>
                       <div class="span3">
                           <label>First Name *</label>
-                          <input type="text"  placeholder=" " required name="First Name" >
+                          <%= f.text_field :first_name, :placeholder => "First Name" %>
                       </div>
                       <div class="span3">
                           <label>Last Name *</label>
-                          <input type="text"  placeholder=" " required name="Last Name" >
+                          <%= f.text_field :last_name, :placeholder => "Last Name" %>
                       </div>
                       <div class="span3">
                           <label>Email *</label>
-                          <input type="email"  placeholder=" " required name="Email">
+                          <%= f.text_field :email, :placeholder => "Email" %>
                       </div>
                       <div class="span2">
-                          <input type="submit" class="button" value="Move onward!">
+                          <%= f.submit "Move onward!", class: "button" %>
+                          
                       </div>
-                  </form>
+                  <% end %>
                   <br>
                   <form style="text-align:center" class="row-fluid" id="newsletter" method="post" action="#">
                       - or -<br><br>

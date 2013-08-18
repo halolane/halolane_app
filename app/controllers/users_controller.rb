@@ -21,11 +21,18 @@ class UsersController < ApplicationController
   end
 
   def create    
+    if params[:user][:password].nil?
+      letters =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+      password = (0...8).map{ letters[rand(letters.length)] }.join
+    else
+      password = params[:user][:password]
+    end
+
     @user = User.new(email: params[:user][:email], 
       first_name: params[:user][:first_name],
       last_name: params[:user][:last_name],
-      password: params[:user][:password], 
-      password_confirmation: params[:user][:password] )
+      password: password, 
+      password_confirmation: password )
     if !params[:invitation].nil? && !params[:invitation][:token].nil?
       @invitation = Invitation.find_by_token(params[:invitation][:token])
       if @invitation.invite_type == "bookshelf"
