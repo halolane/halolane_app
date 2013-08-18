@@ -1,33 +1,68 @@
-<div class='header wrapper'>
-  <header>
-    <div class='branding'>
-      <h1 class='logo'>
-        <a href="/" class="home"><%= image_tag("/assets/images/fulllogo.png") %></a>
-      </h1>
-      
-      <div class='sm'>
-        <a href="http://twitter.com/myFamilyTales" title="Follow us on Twitter" target="_blank"><i class="icon-twitter"></i></a>
-        <a href="http://www.facebook.com/myFamilyTales" title="Become a fan on Facebook" target="_blank"><i class="icon-facebook"></i></a>
-      </div>
-    </div>
-    <nav>
-      <ul>
-        <li class="header-links">
-          <a href="/" class="home selected"><h3>Home</h3></a>
-        </li>
-        <li class="header-links">
-          <a href="/about" class=""><h3>About</h3></a>
-        </li>
-        <li class="header-links">
-          <a href="http://blog.familytales.co" class=""><h3>Blog</h3></a>
-        </li>
-        <li class='login'>
-          <a href="/login" class="">Login</a>
-        </li>
-        <li class='signup'>
-          <a href="/signup" class="">Signup</a>
-        </li>
-      </ul>
-    </nav>
+<!-- Header-->
+  <header id="home">
+      <!-- Head-->            
+          <div class="container head">
+              <div class="row-fluid">
+                   <!-- Logo-->
+                  <div class="span4 logo">
+                      <a href="index.html" title="Back to Home">                               
+                          <img src="assets/fulllogo.png" alt="Logo">
+                      </a>
+                  </div>
+                  <!-- End Logo-->
+
+                  <!-- Social-->
+                  <div class="span8 social">                            
+                      <ul>
+                          <li title="Twitter" class="tooltip_hover"><a href="https://twitter.com/myFamilyTales"><i class="icon-twitter"></i></a></li>
+                          <li title="Facebook" class="tooltip_hover"><a href="https://www.facebook.com/myFamilyTales"><i class="icon-facebook"></i></a></li>
+                          <li title="Pinterest" class="tooltip_hover"><a href="http://pinterest.com/thefamilytales"><i class="icon-pinterest"></i></a></li>
+                      </ul>
+                  </div>
+                  <!-- End Social-->                        
+              </div>
+          </div>           
+      <!-- End Head-->
+
+      <!-- Nav-->
+      <nav>
+          <div class="container">
+              <div class="row-fluid">
+                  <!-- Menu-->
+                  <ul id="menu" class="span9">
+                      <li><a href="#home">Home</a></li>
+                      <li><a href="#about">About</a></li>
+                      <li><a href="#steps">Steps</a></li>                               
+                      <li><a href="#sneak">Sneak Peek</a></li>
+                      <li><a href="#pricing">Pricing</a></li>
+                      <li><a href="#contact">Contact</a></li>
+                  </ul>
+                  <!-- End Menu-->
+                  <div class="span3">
+                      <div class="language">
+                          <a data-toggle="modal" data-dismiss="modal" aria-hidden="true" href="#signin_modal">Log in</a>
+                          <a href="#contact" class="signup_header_link">Sign up</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </nav>
+      <!-- End Nav-->
+
+      <section class="head_info">
+          <div class="container">
+              <div class="row-fluid">
+                  <div class="span7">
+                      <h1 class="animated delay2 fadeInLeftBig">A memory a day<br>A story for a lifetime</h1>
+                      <h5 class="animated delay2 fadeInLeftBig">Capturing your baby's stories<br> takes less than 3 minutes!</h5>
+                      <h4><a href="#contact" class="button">Start FREE storybook</a></h4>
+                      <br>
+                      <p class="animated delay3 fadeInUp">Available in digital and print formats</p>
+                  </div>
+                  
+              </div>
+          </div>
+      </section>
+     
   </header>
-</div>
+<!-- End Header-->

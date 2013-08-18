@@ -34,6 +34,7 @@ gem "introjs-rails"
 gem 'imgkit'
 gem 'gibbon'
 gem 'stripe'
+gem 'fancybox-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

@@ -1,13 +1,8 @@
 HalolaneApp::Application.routes.draw do 
 
 
-  get "plan/index"
-
-  get "subscription/new"
-
-  get "subscription/create"
-
-  get "subscription/show"
+  resources :subscriptions
+  resources :plans
 
   resources :pages
 

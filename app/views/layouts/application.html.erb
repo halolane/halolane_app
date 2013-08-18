@@ -27,9 +27,14 @@
   <!-- Google analytics end --> 
   
   <%= stylesheet_link_tag "application-other", media: "all" %>
+  <%= javascript_include_tag "https://js.stripe.com/v2/", "application" %>
   <%= javascript_include_tag "application-other" %>
-  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
-
+  
+  <script type="text/javascript">
+  // This identifies your website in the createToken call below
+  Stripe.setPublishableKey('pk_test_9rD0nrSaQybAQSCGEdTTiELM');
+  // ...
+  </script>
 
   <% if full_title(yield(:title)) == "FamilyTales" && signed_in? && current_user.storybookcount == 0 %>
     <script type="text/javascript">

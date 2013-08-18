@@ -12,7 +12,9 @@
 class User < ActiveRecord::Base
   attr_accessible :first_name, :last_name, :email, :password, :password_confirmation
   has_secure_password
-  has_one :emailsubscription, dependent: :destroy
+
+  has_one  :subscriptions
+  has_one  :emailsubscription, dependent: :destroy
   has_many :invitations, dependent: :destroy, :class_name => 'Invitation', :foreign_key => 'sender_id'
   has_many :memories, dependent: :destroy
   has_many :relationships, dependent: :destroy

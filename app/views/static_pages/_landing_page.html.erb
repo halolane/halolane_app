@@ -4,67 +4,275 @@ var WRInitTime=(new Date()).getTime();
 </script>
 <!-- ClickTale end of Top part -->
 
-  <section id="content">
-        <h1></h1>
+<!-- section area-->
+  <section class="section_area" id="about">
+      <div class="container">
+          <div class="row-fluid">
+              <div class="span7">                        
+                  <!-- Slide -->  
+                  <section class="camera_wrap" id="slide_about">
+                      <div  data-src="assets/sleeping-asian-baby.jpg"></div>
+                      <div  data-src="assets/happy-family.jpg"></div>
+                      <div  data-src="assets/baby.jpg"></div>             
+                  </section>
+                  <!-- End Slide -->
+              </div>
+              <div class="span5">                        
+                  <h1 class="title">
+                      Once Upon a Family ...
+                      <span class="underline-heading"></span>
+                  </h1> 
+                  <div class="subtitle">
+                      <h5 class="color_title">Behind every good story is passion. Ours is family.</h5>
+                  </div>                           
+                  <p>We believe family is forever and its stories are timeless. <strong>FamilyTales</strong> helps you capture and share family's precious moments so they can be passed on for generations.</p>
 
-        <%= form_for(@user) do |f| %>
-            <fieldset>
-                <legend><strong>A memory a day.<br /> A story for a lifetime.</strong></legend>
-                <p>
-                Start receiving questions about your baby by email today!
-                </p>
-                
-                <p>
-                
-                  <%= render 'shared/error_messages', object: f.object %>
-                  <%= f.text_field :first_name, :required => true, :placeholder => "First Name" %>
-
-                  <%= f.text_field :last_name, :required => true, :placeholder => "Last Name" %>
-
-                  <%= f.text_field :email, type: "email", :required => true, :placeholder => "Email" %>
-
-                  <%= f.password_field :password, :required => true, :pattern => ".{6,}", :title => "6 characters minimum", :placeholder => "Password" %>
-                <div class="submit-btn">
-                <%= f.submit "Create my FREE storybook", class: "green_button" %>
-                  <div class="center">- or -</div>
-                <a class="btn-auth btn-facebook large" href="/auth/facebook">Login with <b>Facebook</b></a>
-                </div>
-                </p>
-                Already have an account? <a href="#signin_modal" class="signin_modallink" data-toggle="modal" data-keyboard="true">Log in now</a>
-                <p class="learnmore">
-                  See more 
-                  <span class="learnmore-circles">
-                  <a href="javascript:void(0)" class="first-btn learnmore-btn active"><i class="icon-circle"></i></a>  
-                  <a href="javascript:void(0)" class="second-btn learnmore-btn"><i class="icon-circle"></i><a/>  
-                  <a href="javascript:void(0)" class="third-btn learnmore-btn"><i class="icon-circle"></i><a/>
-                  </span>
-                </p>
-            </fieldset>
-        <% end %>
-
-    </section>  
-
-  <div id="first" class="panel">
-    <a name="first"/>
-  </div>
-
-  <div id="second" class="panel hidden">
-    <a name="second" />
-    <div id="imgcontainer" >
-      <img class="bgpics" src="assets/bg2.png" />
-    </div>
-  </div>
-
-  <div id="third" class="panel hidden">
-    <a name="third" />
-    <div id="imgcontainer" >
-      <img class="bgpics" src="assets/bg3.png" />
-    </div>
-  </div>
+                  <p>And it all starts with your baby. We guide you through the story telling using hand-picked questions that are relevant to you and your baby. We then organize your baby's stories, pictures and videos for you in weekly, monthly and quarterly books. And all you need to do is spend less than 3 minutes a day telling them. Leave the rest to us.</p> 
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- End section area-->
 
 
+   <!-- section area-->
+  <section class="section_area" id="steps">
+      <div class="container">
+          <div class="row-fluid">
+              <h1 class="title">
+                  It's as easy as 1, 2, 3 ...
+                  <span class="underline-heading"></span>
+              </h1> 
+              <p>We realize being a mom can be a job and a half. So we've made the process really simple.</p>
+          </div>
 
-<script type="text/javascript" id="vidyard_embed_code_NwTY0nTivSUPveCHi5i1yA" src="//play.vidyard.com/NwTY0nTivSUPveCHi5i1yA.js?v=3.0&type=lightbox"></script>
+          <!-- Info service-->
+          <div class="row-fluid padding_top"> 
+            
+              <div class="flexslider">
+                  <!-- carousel 2 -->
+                  <ul class="slides services">
+                      <li>
+                          <img src="assets/services/Step1.png" alt="Image1" />                                
+                          <p class="color_title">Receive a Question</p><p>FamilyTales emails to you questions that are personalized and relevant to your baby, e.g. "What was the funniest thing that Sophie did over the  Thanksgiving long weekend?" You get to choose how often you want to receive the questions.</p>
+                      </li>   
+                                  
+                      <li>
+                          <img src="assets/services/Step2.png" alt="Image2" />
+                          <p class="color_title">Respond with a Memory</p><p>Memories can be text, pictures or videos. You can reply anytime and from anywhere you want - it's just like replying to a regular email! You can even invite other family members with whom you'd like to share the questions and responses.</p>
+                      </li>
+                      
+                    <li>
+                        <img src="assets/services/Step3.png" alt="Image3" />
+                        <p class="color_title">View/Share your Memories</p><p>Access you private bookshelf to view your submitted memories. We'll even send a weekly digest of your baby's stories with the option of receiving our professionally designed monthly e-books and a printed book every quarter. Storyfic!</p>
+                    </li>  
+                                 
+                  </ul>
+                  <!--End ul stepslider-carousel-->   
+              </div><!--End flexsilider-->                              
+          </div>
+          <!-- End Info service--> 
+      </div>
+  </section>
+  <!-- End section area-->
+
+  <!-- section area-->
+  <section class="section_area" id="sneak">
+      <div class="container">
+          <div class="row-fluid">
+              <div class="span7">                        
+                  <ul class="rslides">
+                      <li><img src="assets/iphone_800x500.png" alt=""></li>
+                      <li><img src="assets/ipad_800x500.png" alt=""></li>
+                      <li><img src="assets/mag_800x500.png" alt=""></li>
+                  </ul>
+                  
+              </div>
+              <div class="span5">                        
+                  <h1 class="title">
+                      Available online or as an e-book or in print
+                      <span class="underline-heading"></span>
+                  </h1>  
+                  <p><strong>FamilyTales</strong> provides you the flexibity to view your baby's storybooks online from your computer or your smartphone and tablet devices.</p>
+
+                  <p>We also take care of organizing your memories, pictures, and videos into beautiful monthly e-books which you can read and share anywhere and anytime.</p>
+
+                  <p>But it doesn't stop there. If you opt to, we can also send you gorgeously designed printed books of your baby's stories every 3 months. Send us your stories and don't fret about putting them together. It's never been this easy!</p>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!-- End section area-->
+
+  <!-- This used to be where sample pages and testimonial sections where. Check index-old.html for them -->
+
+  <!-- section area-->
+  <section class="section_area" id="pricing">
+      <div class="container">
+          <div class="row-fluid">
+             <h1 class="title">
+                  Select a plan that fits you
+                  <span class="underline-heading"></span>
+              </h1> 
+          </div>
+          
+          <section id="dg-container" class="dg-container">
+              <div class="dg-wrapper">
+                 
+                  <div class="span4 item_princing">
+                      <h2>Premium</h2>
+                      <h1>$4.99 <span>/ month</span></h1>
+                      <div class="info">
+                          <ul>
+                              <li>Unlimited Storage</li>
+                              <li>Unlimited Invites</li>
+                              <li>Weekly Story Digest</li>
+                              <li>First month's E-book FREE</li>
+                              <li>Monthly E-books</li>
+                          </ul>
+                          <p> <a href="#" class="button">Submit</a></p>
+                      </div>                        
+                  </div>
+
+                  <div class="span4 item_princing">
+                      <h2>Gold</h2>
+                      <h1>$9.99 <span>/ month</span></h1>
+                      <div class="info">
+                          <ul>
+                              <li>Unlimited Storage</li>
+                              <li>Unlimited Invites</li>
+                              <li>Weekly Story Digest</li>
+                              <li>First month's E-book FREE</li>
+                              <li>Monthly E-book</li>
+                              <li>Quarterly 7'x5' Printed book</li>
+                          </ul>
+                          <p> <a href="#" class="button">Submit</a></p>
+                      </div>                        
+                  </div>
+
+                  <div class="span4 item_princing">
+                      <h2>Basic</h2>
+                      <h1>FREE</h1>
+                      <div class="info">
+                          <ul>
+                              <li>Unlimited Storage</li>
+                              <li>Unlimited Invites</li>
+                              <li>Weekly Story Digest</li>
+                              <li>First month's E-book FREE</li>
+                          </ul>
+                          <p> <a href="#" class="button">Submit</a></p>
+                      </div>                        
+                  </div>                 
+              </div>
+              <div class="nav_princing">   
+                  <span class="dg-prev">&lt;</span>
+                  <span class="dg-next">&gt;</span>
+              </div>
+          </section>
+
+
+      </div>
+  </section>
+  <!-- End section area-->
+
+  <!-- section area-->
+  <section class="section_area" id="contact">
+      <div class="container">
+          <div class="row-fluid">
+             <h1 class="title">
+                  Start your FREE storybook now!
+                  <span class="underline-heading"></span>
+              </h1> 
+
+              <div class="newsletter">
+                <div id="loadingNews" style="display: none" class='alert'>
+                      <a class='close' data-dismiss='alert'>×</a>
+                      Loading
+      </div>  
+            <div id="responseNews"></div>
+                  <form class="row-fluid" id="newsletter" method="post" action="#">
+                      <div class="span3">
+                          <label>First Name *</label>
+                          <input type="text"  placeholder=" " required name="First Name" >
+                      </div>
+                      <div class="span3">
+                          <label>Last Name *</label>
+                          <input type="text"  placeholder=" " required name="Last Name" >
+                      </div>
+                      <div class="span3">
+                          <label>Email *</label>
+                          <input type="email"  placeholder=" " required name="Email">
+                      </div>
+                      <div class="span2">
+                          <input type="submit" class="button" value="Move onward!">
+                      </div>
+                  </form>
+                  <br>
+                  <form style="text-align:center" class="row-fluid" id="newsletter" method="post" action="#">
+                      - or -<br><br>
+                      <a class="btn-auth btn-facebook large" href="/auth/facebook" data-original-title="">Sign up with <b>Facebook</b></a>
+                  </form>
+              </div>
+          </div>
+
+          <h1 class="title">
+              Contact Us
+              <span class="underline-heading"></span>
+          </h1> 
+          <div class="row-fluid">
+              <div class="span8">
+                  <div class="contact">
+                  
+                    <div id="loading" style="display: none" class='alert'>
+              <a class='close' data-dismiss='alert'>×</a>
+              Loading
+          </div>
+          <div id="response"></div>
+                          
+                        <form id="contact2" method="post" action="http://simplify.coralixthemes.com/book/demo">
+                          <div class="input_form">
+                              <label>Name</label>
+                              <input type="text" required name="Name">
+                          </div>
+                          <div class="input_form">
+                              <label>Email *</label>
+                              <input type="email" required name="Email">
+                          </div>
+                          <div class="input_form">
+                              <label>Subject *</label>
+                              <input type="text" required name="Subject">
+                          </div>
+                          <div class="input_form">
+                              <label>Message *</label>
+                              <textarea name="Message"></textarea>
+                          </div>
+
+                          <p class="text_right">All fields with an * are required.</p>
+
+                          <div class="input_form">
+                              <input type="submit" class="button" value="Send Email">
+                          </div>
+                      </form>
+                      <div id="result"></div>
+                  </div>
+              </div>
+              <div class="span4">
+                  <p>FamilyTales<br>
+                  Suite 100<br>
+                  151 Charles St. W<br>
+                  Kitchener, Ontario<br>
+                  Canada <br>
+                  Tel. 1-877-753-9166</p>
+
+                  <p>Questions? Concerns? Comments? Suggestions?</p>
+                  <p>We'd love to hear from you!</p>
+              </div>
+          </div>
+
+      </div>
+  </section>
+<!-- End section area-->
+
 <!-- ClickTale Bottom part -->
 
 <script type='text/javascript'>

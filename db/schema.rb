@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130817023013) do
+ActiveRecord::Schema.define(:version => 20130817043755) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -135,6 +135,13 @@ ActiveRecord::Schema.define(:version => 20130817023013) do
     t.integer  "template_id"
   end
 
+  create_table "plans", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
+    t.decimal  "price",      :precision => 8, :scale => 2
+  end
+
   create_table "profiles", :force => true do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -186,6 +193,15 @@ ActiveRecord::Schema.define(:version => 20130817023013) do
     t.string   "content"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "subscriptions", :force => true do |t|
+    t.integer  "plan_id"
+    t.integer  "profile_id"
+    t.string   "stripe_customer_token"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
+    t.integer  "user_id"
   end
 
   create_table "templates", :force => true do |t|
