@@ -23,11 +23,15 @@ class MemoriesController < ApplicationController
           :title => (params[:memory][:title]).strip,
           :has_photo => (params[:memory][:photo] != nil)) 
     end
+    photosaved = true
     if not params[:memory][:photo].nil?
       @photo = @memory.memoryphotos.build(:photo => params[:memory][:photo])
+      if ! @photo.save
+        photosaved = false
+      end
     end
     respond_to do | format |   
-      if @memory.save and @photo.save
+      if @memory.save and photosaved
         format.html { redirect_to root_url + @profile.url } 
         format.js 
         current_user.actionlog!(@profile.id, @page_name, "New story created" )
