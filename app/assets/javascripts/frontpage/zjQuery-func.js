@@ -131,11 +131,6 @@ $(document).ready(function(){
             jQuery(this).find('.resalte').stop(true, true).animate({right: 0, top: 0},600);            
          }); 
 
-     //================================== Slide About the author =============================//
-
-	$('#slide_about').camera({
-		 height: '55%'
-	});
                  
 });
 	
