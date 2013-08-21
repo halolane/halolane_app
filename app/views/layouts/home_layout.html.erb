@@ -6,6 +6,7 @@
       href="/assets/images/favicon1.png">
   <title><%= full_title(yield(:title)) %></title>
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset='utf-8'>
   <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
   <meta property="fb:app_id"      content="388701887900457" /> 
@@ -69,6 +70,65 @@
     });
   });
 </script>
+
+<!-- fluidvid script starts: makes vimeo vid responsive -->
+<script type="text/javascript">
+  window.fluidvids = (function (window, document, undefined) {
+
+    'use strict';
+
+    /*
+     * Constructor function
+     */
+    var Fluidvids = function (elem) {
+      this.elem = elem;
+    };
+
+    /*
+     * Prototypal setup
+     */
+    Fluidvids.prototype = {
+
+      init : function () {
+
+        var videoRatio = (this.elem.height / this.elem.width) * 100;
+        this.elem.style.position = 'absolute';
+        this.elem.style.top = '0';
+        this.elem.style.left = '0';
+        this.elem.width = '100%';
+        this.elem.height = '100%';
+
+        var wrap = document.createElement('div');
+        wrap.className = 'fluidvids';
+        wrap.style.width = '100%';
+        wrap.style.position = 'relative';
+        wrap.style.paddingTop = videoRatio + '%';
+        
+        var thisParent = this.elem.parentNode;
+        thisParent.insertBefore(wrap, this.elem);
+        wrap.appendChild(this.elem);
+
+      }
+
+    };
+
+    /*
+     * Initiate the plugin
+     */
+    var iframes = document.getElementsByTagName( 'iframe' );
+
+    for (var i = 0; i < iframes.length; i++) {
+      var players = /www.youtube.com|player.vimeo.com/;
+      if (iframes[i].src.search(players) > 0) {
+        new Fluidvids(iframes[i]).init();
+      }
+    }
+
+  })(window, document);
+</script>
+<!-- fluidvid script ends -->
+
+
 <!-- crazyegg script starts -->
 <script type="text/javascript">
   setTimeout(function(){var a=document.createElement("script");
