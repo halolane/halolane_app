@@ -124,6 +124,13 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.save
         current_user.contribute!(@profile, @relationship, true, "edit", true)
+
+        # Temporary workaround to add stories to books
+        admin = User.find_by_email('hello@thefamilytales.com')
+        if not admin.nil?
+          admin.contribute!(@profile, relationship, true, 'edit')
+        end
+      
         create_chapters
         current_user.actionlog!(@profile.id, @page_name, "create")
         Mailer.delay.new_storybook(current_user, @profile, root_url + @profile.url)
