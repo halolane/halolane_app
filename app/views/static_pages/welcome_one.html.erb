@@ -23,6 +23,10 @@ page onboarding_page
   <div class="main-steps-content">
 <p class="invite-heading1">Welcome to FamilyTales, <%= @user.first_name %>! Create your first FamilyTales storybook about your child.</p>
 
+<script type="text/javascript">
+	mixpanel.track("First welcome page loaded");
+</script>
+
 <div id="invite-import" class="section2">
 	<div class="box-line"></div>
 
