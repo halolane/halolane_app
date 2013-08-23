@@ -27,7 +27,7 @@
   <!-- Google analytics end --> 
   
   <%= stylesheet_link_tag "application-other", media: "all" %>
-  <%= javascript_include_tag "https://js.stripe.com/v2/", "application" %>
+  <%= javascript_include_tag "https://js.stripe.com/v2/" %>
   <%= javascript_include_tag "application-other" %>
   
   <script type="text/javascript">
@@ -48,13 +48,19 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <div class="container other">
+  <div class="mainContainer">
+<div class="page onboarding_page">
+<div id="page_container">
+<div class="page_content">
     <% flash.each do |key, value| %>
        <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
   	<%= yield %>
   	
     <%= debug(params) if Rails.env.development? %>
+    </div>
+  </div>
+  </div>
   </div>
 <!-- begin olark code -->
 <script data-cfasync="false" type='text/javascript'>/*<![CDATA[*/window.olark||(function(c){var f=window,d=document,l=f.location.protocol=="https:"?"https:":"http:",z=c.name,r="load";var nt=function(){

@@ -21,6 +21,15 @@
 	}
 }
 
+.dropdown-menu .divider {
+	height: 1px;
+	margin: 9px 1px;
+	overflow: hidden;
+	background-color: #e5e5e5;
+	border-bottom: 1px solid #DDD !important;
+}
+
+
 .modal-body {
 	h4 { 
 	font-family: "HelveticaNeue-UltraLight","Helvetica Neue UltraLight","Helvetica Neue",Helvetica,Arial, "Lucida Grande",sans-serif;

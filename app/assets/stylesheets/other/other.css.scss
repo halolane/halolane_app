@@ -1,3 +1,87 @@
+html {
+background: #e3e3e3 !important;
+}
+
+body {
+	padding-bottom: 60px;
+	font-family: "proxima-nova-soft", "myriad-pro", sans-serif !important;
+	color: #565656;
+	background-attachment: fixed;
+	background: #e3e3e3;
+}
+
+
+.mainContainer {
+padding-top: 60px;
+padding-right: 80px;
+}
+
+.onboarding_page {
+	background-image: none;
+}
+
+.no_decoration {
+	text-decoration: none !important;
+}
+
+.dropdown-menu .divider {
+	height: 1px;
+	margin: 9px 1px;
+	overflow: hidden;
+	background-color: #e5e5e5;
+	border-bottom: 1px solid #DDD !important;
+}
+
+.page {
+-webkit-border-radius: 6px;
+-moz-border-radius: 6px;
+border-radius: 6px;
+-moz-box-shadow: 0 0 15px 0 #b8b39d;
+-webkit-box-shadow: 0 0 15px 0 #b8b39d;
+box-shadow: 0 0 15px 0 #b8b39d;
+border-collapse: separate;
+background: url(images/bg_content.png) repeat-y right white;
+width: 75%;
+min-height: 500px;
+margin: 0 auto;
+border: 1px solid #c7c7c7;
+}
+
+.onboarding_page .invite-heading1 {
+text-align: left;
+font-size: 1.2em;
+padding-top: 20px;
+}
+
+.onboarding_page p{
+	font-size: 1.2em;
+}
+
+.page:before, .page:after {
+content: "";
+display: table;
+}
+
+.page:after {
+clear: both;
+}
+
+.page:before, .page:after {
+content: "";
+display: table;
+}
+
+.page_content {
+padding: 20px;
+padding-left: 40px;
+padding-right: 40px;
+}
+
+.page #page_container, .page #nav_container, .page #banner_container {
+float: left;
+text-align: left;
+width: 100%;
+}
 
 .span6 {
 	text-align: center !important;
@@ -170,9 +254,6 @@ width: 1250px;
 	color:#555;font-size:16px;font-weight:normal;padding:0 26px 0 13px
 }
 
-.mainContainer {
-	padding-top: 40px;
-}
 
 .bookshelfName:hover {
 	color: #5f8f05;

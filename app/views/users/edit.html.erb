@@ -1,12 +1,8 @@
-<% provide(:title, "Edit user") %> 
+<% provide(:title, "Edit settings") %> 
 
 <div class="row">
   <div class="span6 offset3">
-      <% if current_user.verified == false %>
-        <h4>
-          Please update your setting to save your storybooks.
-        </h4>
-      <% end %>
+      <h4>Edit your settings</h4><br><br>
       <%= render 'shared/user_edit_form' %> 
     </div><!-- .tab-pane tab2 -->
   </div><!-- .tabcontent -->

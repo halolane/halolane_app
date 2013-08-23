@@ -124,9 +124,9 @@ end
 u = User.find(65)
 
 @users = User.all
-datetime = "15 Aug 2013 12:05".to_datetime
+datetime = "22 Aug 2013 12:35".to_datetime
 @users.each do |u|
-  if u.id != 155 and u.id != 177 and u.id != 173 and u.id != 138
+  if u.emailsubscription.emailperweek > 1
     @profiles = u.profiles
     @profiles.each do |p|
         Mailer.delay(:run_at => datetime).daily_question(u,p,@question)
@@ -134,7 +134,7 @@ datetime = "15 Aug 2013 12:05".to_datetime
   end
 end
 
-@question = 'What was the last cute outfit that @profile.first_name wore? Hint: a picture is worth a thousand words!'
+@question = 'What are favourite activities you do with @profile.first_name right now?'
 
 @question = 'What are things @profile.first_name inherited from you or your family members?' 
 
@@ -152,6 +152,5 @@ date1 = @profile.birthday
 
 @users = User.all
 @users.each do |u|
- e = Emailsubscription.new(:user_id => u.id, :emailperweek => 2)
- e.save
+ u.subscription = Subscription.new(user_id: u.id, plan_id: Plan.find_by_price(0).id)
 end

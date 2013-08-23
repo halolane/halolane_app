@@ -1,0 +1,18 @@
+
+<% if @cancel_at_period_end or @current_period_end < DateTime.now %>
+  <p class="invite-heading1">We'd love to have you back — email us at <a href="mailto:hello@thefamilytales.com" target="_blank">hello@thefamilytales.com</a> and let us know what we can do for you.<p>
+
+  <p>If you resubscribe, we won't charge you until <%= @current_period_end.strftime("%B %d, %Y") %>.</p>
+
+  <p><%= link_to "Resubscribe", subscriptions_resubscribe_path, class: "green_button no_decoration" %></p>
+
+<% else %>
+  <p class="invite-heading1">Hooray! You're currently subscribed to receive monthly FamilyTales e-books and unlimited storage until <%= @current_period_end.strftime("%B %d, %Y") %>.</p>
+
+  <p>
+  	If you'd like to cancel your subscription, you can do so at anytime. You'll continue to receive monthly e-books and unlimited storage until <%= @current_period_end.strftime("%B %d, %Y") %>. We'll be sad to see you go! Email us at <a href="mailto:hello@thefamilytales.com" target="_blank">hello@thefamilytales.com</a> and let us know what we can do for you.</p>
+
+  <p><%= link_to "Cancel my subscription", subscriptions_cancel_path, action: "cancel", class: "green_button no_decoration", data: { confirm: "Are you sure you want to cancel your FamilyTales subscription" } %></p>
+<% end %>
+
+<p class="invite-heading1">We last charged you $49.00 on <%= @current_period_start.strftime("%B %d, %Y") %></p>

@@ -1,7 +1,6 @@
 HalolaneApp::Application.routes.draw do 
 
 
-  resources :subscriptions
   resources :plans
 
   resources :pages
@@ -27,6 +26,10 @@ HalolaneApp::Application.routes.draw do
   resources :relationships
   resources :emailsubscriptions
 
+  match "/subscriptions/cancel", :to => "subscriptions#cancel"
+  match "/subscriptions/resubscribe", :to => "subscriptions#resubscribe"
+  resources :subscriptions
+
   resources :profiles do
     member {get "getvcf"}
   end
@@ -40,6 +43,7 @@ HalolaneApp::Application.routes.draw do
   get "password_resets/new"
   get "users/new"
   get "profiles/new"
+
   get '/login', :to => 'sessions#new', :as => :login
 
   root to: 'static_pages#home'
@@ -47,6 +51,7 @@ HalolaneApp::Application.routes.draw do
   
   match "/500", :to => "static_pages#error_page"
   match "/404", :to => "static_pages#not_found"
+  match "/payments", :to => "subscriptions#new"
   match '/welcome/intro', to: 'static_pages#welcome_one'
   match '/welcome/intro2', to: 'static_pages#welcome_two'
   match '/library', to: 'bookshelves#show'
