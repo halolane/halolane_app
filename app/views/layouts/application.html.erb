@@ -32,7 +32,7 @@
   
   <script type="text/javascript">
   // This identifies your website in the createToken call below
-  Stripe.setPublishableKey('pk_test_9rD0nrSaQybAQSCGEdTTiELM');
+  Stripe.setPublishableKey("<%= Rails.configuration.stripe[:publishable_key] %>");
   // ...
   </script>
 

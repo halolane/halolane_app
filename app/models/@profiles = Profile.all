@@ -152,5 +152,5 @@ date1 = @profile.birthday
 
 @users = User.all
 @users.each do |u|
- u.subscription = Subscription.new(user_id: u.id, plan_id: Plan.find_by_price(0).id)
+ u.subscription = Subscription.new(user_id: u.id, plan_id: Plan.find_by_price(0).id, current_period_start: DateTime.now, current_period_end: DateTime.now + 1.month)
 end
