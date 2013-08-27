@@ -188,7 +188,7 @@ class User < ActiveRecord::Base
   private
 
     def create_subscription
-      @subscription = Subscription.new(user_id: self.id, plan_id: Plan.find_by_price(0).id, current_period_start: DateTime.now, current_period_end: DateTime.now + 1.month)
+      @subscription = Subscription.new(user_id: self.id, plan_id: Plan.find_by_price(0).id, current_period_start: DateTime.now, current_period_end: DateTime.now + 30.days)
       @subscription.save
     end
 

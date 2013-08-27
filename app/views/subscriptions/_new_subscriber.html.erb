@@ -6,7 +6,7 @@
 <%= form_tag subscriptions_path do %>
 
   <script src="https://checkout.stripe.com/v2/checkout.js"></script>
-  <button id="customButton" class="green_button">Subscribe now for $49/year</button>
+  <button id="customButton" class="green_button">Subscribe now for $4.99 per month</button>
 
   <script>
     $('#customButton').click(function(){
@@ -18,9 +18,9 @@
       StripeCheckout.open({
         key:         	"<%= Rails.configuration.stripe[:publishable_key] %>",
         name: 				"FamilyTales",
-        description: 	"Subscribe now for $49",
+        description: 	"Subscribe now for $4.99",
         image:       	"/assets/stripe_familytales_icon.png",
-        panelLabel: 	"Subscribe now for $49",
+        panelLabel: 	"Subscribe now for $4.99",
         address: 			true, 
         token:       token
       });
