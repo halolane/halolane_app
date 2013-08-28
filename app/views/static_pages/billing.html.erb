@@ -1,0 +1,68 @@
+<% provide(:title, 'Welcome To FamilyTales') %>
+<div class="
+page onboarding_page
+">
+  <div id="page_container"><section class="new_invite_flow"><div class="invite-all">
+	<div id="line-container">
+		<div id="dotted-line"></div>
+	</div>
+
+	<div id="steps-container">
+		<ul id="steps">
+			<li id="first">
+				<%= image_tag("/assets/dot1_inactive.png") %>
+				<p class="active">Create your child's storybook</p>
+			</li>
+			<li id="second">
+				<%= image_tag("/assets/dot1_inactive.png") %>
+				<p class="inactive">Set the Tell-a-Tale frequency</p>
+			</li>
+		</ul>
+	</div>
+
+  <div class="main-steps-content">
+<p class="invite-heading1">It's so important to capture not just pictures, but stories about our children, so that future generations, even grown up <%= current_user.profiles.first.first_name %>, can know about them.</p>
+
+<script type="text/javascript">
+	mixpanel.track("First welcome page loaded");
+</script>
+
+<div id="invite-import" class="section2">
+	<div class="box-line"></div>
+	<p class="invite-heading2">First 30 days free</p>
+	<p class="invite-heading3">Please provide your credit card to start your free trial of FamilyTales. You can cancel anytime with a click of a button in our Payments page. After this trial period, you only pay $4.99 per month for everything you see in the video below. </p>
+
+	<%= form_tag subscriptions_path do %>
+
+	  <script src="https://checkout.stripe.com/v2/checkout.js"></script>
+	  <button id="customButton" class="green_button">Start your free 30-day trial</button>
+
+	  <script>
+	    $('#customButton').click(function(){
+	      var token = function(res){
+	        var $input = $('<input type=hidden name=stripeToken />').val(res.id);
+	        $('form').append($input).submit();
+	      };
+
+	      StripeCheckout.open({
+	        key:         	"<%= Rails.configuration.stripe[:publishable_key] %>",
+	        name: 				"FamilyTales",
+	        description: 	"Start your free 30-day trial",
+	        image:       	"/assets/stripe_familytales_icon.png",
+	        panelLabel: 	"Start your free 30-day trial",
+	        token:       token
+	      });
+
+	      return false;
+	    });
+	  </script>
+	<% end %><br>
+	 <!-- Slide -->  
+  <iframe src="http://player.vimeo.com/video/72832150" width="600" height="375" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+  <!-- End Slide -->
+</div>
+
+
+</div>
+</section></div>
+</div>

@@ -48,7 +48,8 @@ class SubscriptionsController < ApplicationController
     @subscription.current_period_end = DateTime.strptime(@customer["subscription"]["current_period_end"].to_s,'%s')
     @subscription.stripe_customer_token = @customer.id
     @subscription.save!
-    redirect_to payments_path, :notice => "Thank you for subscribing!"
+    @profile = current_user.profiles.first
+    redirect_to root_url + @profile.url, :notice => "Welcome to " + @profile.first_name + "\'s FamilyTales storybook! Start responding to questions about your baby below."
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to payments_path

@@ -47,6 +47,17 @@ class StaticPagesController < ApplicationController
     end
   end
 
+  def billing
+    if signed_in?
+      @user = current_user
+      @profile = Profile.new
+      @emailsubscription = current_user.emailsubscription
+      render :layout => "bookshelf_layout"
+    else
+      redirect_to root_url
+    end
+  end
+
   def error_page
   end
 
