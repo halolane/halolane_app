@@ -590,7 +590,6 @@ float: right;
 
 
 .login, .signup {
-	float: right;
 	padding: 9px;
 	width: 50px;
 	text-align: center;
@@ -615,6 +614,7 @@ float: right;
 
 .login {
 	border-left: 1px solid #cdcdcd;
+	border-right: 1px solid #cdcdcd;
 }
 
 .follow_twitter, .follow_facebook {
@@ -622,7 +622,6 @@ float: right;
 }
 .signup {
 	border-left: 1px solid #cdcdcd;
-	border-right: 1px solid #cdcdcd;
 }
 
 .login:hover, .signup:hover, .follow_facebook:hover, .follow_twitter:hover   {
