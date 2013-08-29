@@ -117,14 +117,14 @@ end
 end
 
 @users = User.all
-@users2.each do |u|
+@users.each do |u|
     Mailer.first_daily_question(u).deliver
 end
 
 u = User.find(65)
 
 @users = User.all
-datetime = "22 Aug 2013 12:35".to_datetime
+datetime = "29 Aug 2013 12:35".to_datetime
 @users.each do |u|
   if u.emailsubscription.emailperweek > 1
     @profiles = u.profiles
@@ -134,10 +134,17 @@ datetime = "22 Aug 2013 12:35".to_datetime
   end
 end
 
-@question = 'What are favourite activities you do with @profile.first_name right now?'
+@question = 'What is the most important thing you want to teach @profile.first_name?'
 
 @question = 'What are things @profile.first_name inherited from you or your family members?' 
 
+============================== Testing
+
+u = User.find(65)
+@profiles = u.profiles
+@profiles.each do |p|
+    Mailer.daily_question(u,p,@question).deliver
+end
 
 
 @profiles = Profile.where('extract(month from birthday) = ?', 8)

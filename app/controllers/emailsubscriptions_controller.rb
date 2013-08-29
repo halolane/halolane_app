@@ -1,6 +1,9 @@
 class EmailsubscriptionsController < ApplicationController
   # GET /emailsubscriptions
   # GET /emailsubscriptions.json
+  before_filter :signed_in_user, only: [:edit, :update, :tellatale]
+  before_filter :correct_user,   only: [:edit, :update]
+
   def index
     @emailsubscriptions = Emailsubscription.all
 
@@ -37,6 +40,9 @@ class EmailsubscriptionsController < ApplicationController
     @emailsubscription = Emailsubscription.find(params[:id])
   end
 
+  def tellatale
+    @emailsubscription = current_user.emailsubscription
+  end
   # POST /emailsubscriptions
   # POST /emailsubscriptions.json
   def create
@@ -60,10 +66,11 @@ class EmailsubscriptionsController < ApplicationController
 
     respond_to do |format|
       if @emailsubscription.update_attributes(params[:emailsubscription])
-        if current_user.profiles.count == 1
+        if @emailsubscription.emailperweek == 0
+          format.html { redirect_to library_url, notice: 'You have been unsubscribed from Tell-a-Tales by Email.' }
+        elsif current_user.memorycount == 0
           # format.html { redirect_to root_url + current_user.profiles.first.url, notice: 'Awesome! You should start receiving FamilyTales\'s Tell-a-Tale questions about ' + current_user.profiles.first.first_name + ' by email in a few days.' }
           format.html { redirect_to welcome_paymentinfo_path, notice: 'Awesome! You should start receiving FamilyTales\'s Tell-a-Tale questions about ' + current_user.profiles.first.first_name + ' by email in a few days.' }
-          
         else 
           format.html { redirect_to library_url, notice: 'Your email subcription was successfully updated.' }
         end
@@ -86,4 +93,13 @@ class EmailsubscriptionsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  private 
+    def correct_user
+      @emailsubscription = Emailsubscription.find(params[:id])
+      @user = User.find(@emailsubscription.user_id)
+      redirect_to(root_path) unless current_user?(@user)
+    rescue
+      redirect_to(root_path)
+    end
 end

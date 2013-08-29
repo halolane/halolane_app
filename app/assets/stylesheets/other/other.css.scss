@@ -13,7 +13,6 @@ body {
 
 .mainContainer {
 padding-top: 60px;
-padding-right: 80px;
 }
 
 .onboarding_page {
@@ -657,4 +656,27 @@ float: right;
   width: 50%;
   height: 35px;
   margin-bottom: 15px;
+}
+
+#slider-range-min {
+width: 80%;
+margin-left: 10%;
+}
+
+#emailsubscription_emailperweek {
+width: 30px;
+font-size: 1.2em;
+background-color: transparent;
+box-shadow: none;
+border: none;
+margin: 0px;
+padding: 0px;
+height: 20px;
+left: 15px;
+position: relative;
+color: #565656;
+}
+
+.edit_emailsubscription {
+	text-align: center;
 }

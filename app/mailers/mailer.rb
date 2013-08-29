@@ -144,6 +144,7 @@ class Mailer < ActionMailer::Base
     @user = user
     @profile = profile
     @question = question.gsub("@profile.first_name",@profile.first_name)
+    @tellatale_link = tellatale_url
     mail(:from => "\"FamilyTales\" <hello@thefamilytales.com>", :to => @user.email , :subject => @question)
   end
 

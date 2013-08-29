@@ -2,7 +2,11 @@ Hi <%= @user.first_name %>,
 
 <p><h2><%= @question %></h2></p>
 
-<p>Happy storytelling,</p>
-The FamilyTales Team
+<h4>Reply to this email with your response to the question above to add your story to <%= @profile.first_name %>'s storybook.</h4>
 
-<p><i>P.S. You are receiving this email as part of FamilyTales' new Tell a Tale by Email feature designed to enhance the richness of your story about <%= @profile.first_name %>. Just reply back with your response to the question and we will automatically add it to <%= @profile.first_name %>'s storybook. If you wish to unsubscribe from these emails, please reply with "Unsubscribe from Tell a Tale" in the Subject line.</i></p>
+<p>Happy storytelling,</p>
+The FamilyTales team<br><br>
+
+<p><i>You are receiving this email as part of FamilyTales' Tell-a-Tale by Email feature designed to enhance the richness of your story about <%= @profile.first_name %>. You're currently receiving <%= @user.emailsubscription.emailperweek %> questions each week. To change this, you can update your <%= link_to "tell-a-tale frequency", tellatale_url %>.</i></p>
+
+<p><i>If you wish to unsubscribe from these emails, please reply with "Unsubscribe from Tell a Tale" in the Subject line.</i></p>

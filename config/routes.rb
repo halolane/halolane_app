@@ -55,6 +55,7 @@ HalolaneApp::Application.routes.draw do
   match '/welcome/intro', to: 'static_pages#welcome_one'
   match '/welcome/intro2', to: 'static_pages#welcome_two'
   match '/welcome/paymentinfo', to: 'static_pages#billing'
+  match '/tellatale', to: 'emailsubscriptions#tellatale'
   match '/library', to: 'bookshelves#show'
   match '/about', to: 'static_pages#about'
   match '/pagenotfound', to: 'static_pages#pagenotfound'
