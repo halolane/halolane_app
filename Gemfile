@@ -35,6 +35,7 @@ gem 'imgkit'
 gem 'gibbon'
 gem 'stripe'
 gem 'fancybox-rails'
+gem 'mandrill-api'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

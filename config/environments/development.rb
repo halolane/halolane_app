@@ -39,14 +39,22 @@ HalolaneApp::Application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    :address              => "smtp.gmail.com",
+    :address =>        'smtp.mandrillapp.com',
     :port                 => 587,
-    :domain               => 'thefamilytales.com',
-    :user_name            => 'hello@thefamilytales.com', 
-    :password             => 'IVEYmba2013',
+    :user_name =>      ENV['MANDRILL_USERNAME'],
+    :password =>       ENV['MANDRILL_APIKEY'],
     :authentication       => 'plain',
     :enable_starttls_auto => true  
   }
+  # config.action_mailer.smtp_settings = {
+  #   :address              => "smtp.gmail.com",
+  #   :port                 => 587,
+  #   :domain               => 'thefamilytales.com',
+  #   :user_name            => 'hello@thefamilytales.com', 
+  #   :password             => 'IVEYmba2013',
+  #   :authentication       => 'plain',
+  #   :enable_starttls_auto => true  
+  # }
 
 end
 

@@ -1,16 +1,14 @@
 development:
-  :address: smtp.gmail.com
+  :address: smtp.mandrillapp.com
   :port: 587
   :authentication: plain
-  :domain: thefamilytales.com
   :user_name: hello@thefamilytales.com
-  :password: IVEYmba2013
+  :password: xPkondLc5P85dSOpmLpuPQ
   :enable_starttls_auto: true
 production:
-  :address: smtp.gmail.com
+  :address: smtp.mandrillapp.com
   :port: 587
   :authentication: plain
-  :domain: thefamilytales.com
   :user_name: hello@thefamilytales.com
-  :password: IVEYmba2013
+  :password: xPkondLc5P85dSOpmLpuPQ
   :enable_starttls_auto: true
