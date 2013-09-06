@@ -126,10 +126,10 @@ u = User.find(65)
 @users = User.all
 datetime = "29 Aug 2013 12:35".to_datetime
 @users.each do |u|
-  if u.emailsubscription.emailperweek > 1
+  if u.emailsubscription.emailperweek > 0
     @profiles = u.profiles
     @profiles.each do |p|
-        Mailer.delay(:run_at => datetime).daily_question(u,p,@question)
+        Mailer.delay.daily_question(u,p,@question)
     end
   end
 end
@@ -141,10 +141,10 @@ end
 ============================== Testing
 
 u = User.find(65)
-@profiles = u.profiles
-@profiles.each do |p|
-    Mailer.daily_question(u,p,@question).deliver
-end
+p = u.profiles.first
+@question = 'What was the most memorable thing @profile.first_name did this weekend?'
+Mailer.daily_question(u,p,@question).deliver
+
 
 
 @profiles = Profile.where('extract(month from birthday) = ?', 8)

@@ -69,8 +69,8 @@ class EmailsubscriptionsController < ApplicationController
         if @emailsubscription.emailperweek == 0
           format.html { redirect_to library_url, notice: 'You have been unsubscribed from Tell-a-Tales by Email.' }
         elsif current_user.memorycount == 0
-          # format.html { redirect_to root_url + current_user.profiles.first.url, notice: 'Awesome! You should start receiving FamilyTales\'s Tell-a-Tale questions about ' + current_user.profiles.first.first_name + ' by email in a few days.' }
-          format.html { redirect_to welcome_paymentinfo_path, notice: 'Awesome! You should start receiving FamilyTales\'s Tell-a-Tale questions about ' + current_user.profiles.first.first_name + ' by email in a few days.' }
+          format.html { redirect_to root_url + current_user.profiles.first.url, notice: 'Awesome! You should start receiving FamilyTales\'s Tell-a-Tale questions about ' + current_user.profiles.first.first_name + ' by email in a few days.' }
+          # format.html { redirect_to welcome_paymentinfo_path, notice: 'Awesome! You should start receiving FamilyTales\'s Tell-a-Tale questions about ' + current_user.profiles.first.first_name + ' by email in a few days.' }
         else 
           format.html { redirect_to library_url, notice: 'Your email subcription was successfully updated.' }
         end
